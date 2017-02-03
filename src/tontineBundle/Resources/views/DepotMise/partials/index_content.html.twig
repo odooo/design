@@ -1,0 +1,32 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            {#<th>Caissier</th>
+            <th>Collecteur</th>#}
+            <th>Montant déposé</th>
+            <th>Date dépot</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% if etat == 1 %}
+        {% set cmp = 0%}
+    {% endif %}
+    {% for depotMise in depotMises %}
+        {% if etat == 1 %}
+            {% set cmp = cmp + depotMise.montant%}
+        {% endif %}
+        {% include "tontineBundle:DepotMise:partials/item.html.twig"  with{index: loop.index}%}
+    {% endfor %}
+    </tbody>
+    {% if etat == 1 %}
+    <tfoot>
+        <tr>
+            <td style="font-weight: bold" colspan="4">Montant Total</td>
+            <td style="font-weight: bold">{{cmp | number_format(0, ',', ' ')}} F CFA</td>
+            <td colspan="2"> </td>
+        </tr>
+    </tfoot>
+    {% endif %}
+</table>

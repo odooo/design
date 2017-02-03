@@ -1,0 +1,23 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Depotmises list</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Depotmises list</h3>
+        </div>
+        <div class="box-body">
+            {% include "tontineBundle:DepotMise:partials/index_content.html.twig" %}  
+        </div>
+        <div class="box-footer">
+        <a href="{{ path('tontine_depotmise_new') }}" class="btn btn-primary">Créer nouveau depotMise</a>        </div>
+    </div>    
+
+    {% include 'default/modal.html.twig' with { modalId: 'preview-modal' } %}
+    {% include 'tontineBundle:DepotMise:modals/new-modal.html.twig' %}
+    {% include 'default/modal.html.twig' with { modalId: 'edit-modal' } %}
+{% endblock %}
+

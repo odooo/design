@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+    {% include "@tontine/Default/header.html.twig" %}
+{% endblock %}
+
+{% block menu %}
+    <div class="main-sidebar">
+        <div class="sidebar">
+            {% block sidebar %}
+                {% include "@tontine/Default/sidebar.html.twig" %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block container %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            {% block content_header %}
+                <h1>
+                    {% block page_title %}Global Design{% endblock %}
+
+                    <div class="page-quick-actions pull-right">{% block page_quick_actions %}{% endblock %}</div>
+                </h1>
+            {% endblock %}
+        </section>
+        <section class="content putHtml">
+            {% block content %}No content!{% endblock %}
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    {% include "@tontine/Default/footer.html.twig" %}
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'default/yop-layout.html.twig' %}
+
+{% block content_header %}
+    <h1>liste de visites 
+        {% if etat == 0 %}<span class="label label-primary">non validées</span>
+        {% elseif etat == 1 %}<span class="label label-warning">non effectuées</span>
+        {% elseif etat == 2 %}<span class="label label-success">effectuées</span>
+        {% elseif etat == 3 %}<span class="label label-danger">abandonnées</span>
+        {% endif %}
+    </h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h2 >
+                liste de visites 
+        {% if etat == 0 %}<span class="label label-primary">non validées</span>
+        {% elseif etat == 1 %}<span class="label label-warning">non effectuées</span>
+        {% elseif etat == 2 %}<span class="label label-success">effectuées</span>
+        {% elseif etat == 3 %}<span class="label label-danger">abandonnées</span>
+        {% endif %}
+            </h2>
+        </div>
+        <div class="box-body">
+            {% include "tontineBundle:Visite:partials/index_content.html.twig"%}  
+        </div>
+    </div>    
+
+    {% include 'default/modal.html.twig' with { modalId: 'preview-modal' } %}
+    {% include 'tontineBundle:Visite:modals/new-modal.html.twig' %}
+    {% include 'tontineBundle:Visite:modals/detailsmodal.html.twig' %}
+    {#% include 'tontineBundle:Visite:modals/newmodal.html.twig' %#}
+    {% include 'tontineBundle:Visite:modals/editmodal.html.twig' %}
+    {% include 'default/modal.html.twig' with { modalId: 'edit-modal' } %}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% javascripts '@tontineBundle/Resources/public/js/visite.js' %}
+        <script src='{{ asset_url }}'></script>
+    {% endjavascripts %}
+{% endblock %}
+

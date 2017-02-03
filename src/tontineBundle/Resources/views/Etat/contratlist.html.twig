@@ -1,0 +1,15 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Etats des Contrats résiliés et par periode et par type de motifs</h1>
+{% endblock %}
+
+{% block content %}
+    {{ render(controller('tontineBundle:Etat:criteriatForm', {'criteres': ['periode','typeMotif'], 'action':'tontine_etat_contrat'})) }}
+    {% include "tontineBundle:ResiliationContrat:partials/index_content.html.twig" %}
+    {% if resiliationContrats | length == 0 %}
+        <div>
+            <h4 style="text-align: center; color: black">Aucun résultat à afficher</h4>
+        </div>
+    {% endif %}
+{% endblock %}

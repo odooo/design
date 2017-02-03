@@ -1,0 +1,33 @@
+<tr scope="row">  
+    <td>{{ agent.id}}</td>
+    <td>{{ agent.nom}}</td>
+    <td>{{ agent.prenom}}</td>
+    <td>{{ agent.typeUtilisateur}}</td>
+    <td>
+        <div class="input-group btn">
+            <button type="button" class="btn btn-success  dropdown-toggle pull-right" data-toggle="dropdown">
+                Actions  <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{{path("tontine_agent_show",{'id':agent.id })}}">Voir</a>
+                </li>
+                <li>
+                    <a href="{{path('tontine_agent_update', {'id': agent.id } )}}">Modifier</a> 
+                </li>
+                <li>
+                    <div class="btn-group btn-toggle" onclick="onOffBtn({{agent.id}}, this)"> 
+                        {% if agent.enabled %}
+                            <button class="btn btn-sm btn-success active">Activé</button>
+                            <button class="btn btn-sm btn-default">Désactivé</button>
+                        {% else %}
+                            <button class="btn btn-sm btn-default">Activé</button>
+                            <button class="btn btn-sm btn-danger active">Désactivé</button>
+                        {% endif %}
+                    </div>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>
+</tr>

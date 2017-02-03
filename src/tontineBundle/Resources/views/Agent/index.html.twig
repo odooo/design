@@ -1,0 +1,80 @@
+{% extends 'default/yop-layout.html.twig' %}
+
+{% block title %}Gestion des Agents{% endblock %}
+
+{% block content %}
+    <div class="yop-app two-pane">
+        <div class="pane pane-one" id="user-list" data-title="Agent: ">
+            <div class="pane-header">
+                <div class="user-search-bar">
+                    <input type="text" name="search" class="form-control search-form" placeholder="Recherchez un agent..." />                
+                </div>
+            </div>
+            <div class="pane-body">
+                <div class="infinite-list">
+                    {% for agent in agents %}
+                    <div class="list-item" data-search="{{ agent.name }} {{ agent.contact }} {{ agent.profilName }}" data-href="{{ path('tontine_agent_preview', { 'id': agent.id }) }}" data-name="{{ agent.name }}">
+                        <div class="user-photo">
+                            <img src="{{ asset('uploads/pieces/') }}{{agent.photo}}" alt="Photo de profil de {{ agent.name }}">
+                        </div>                                                  
+                        <div class="user-description">
+                            <div class="user-name">{{ agent.name }}</div>
+                            <div class="user-phone">
+                                <span class="fa fa-phone"></span>
+                                {{ agent.contact }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>             
+        </div>
+        <div class="pane pane-two" id="user-pagelet" yop-with-toolbar>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% if agt is defined %}
+        <script>
+            $(function(){
+                Yop.Pagelet({            
+                   url: "{{ path('tontine_agent_preview', {'id':agt.id }) }}",
+                   pagelet: '#user-pagelet',
+                   title: '{{agt.prenom}} {{agt.nom}}'
+               });
+            });
+        </script>
+    {% endif %}
+{% endblock %}
+
+
+{#% block content %}
+    <h1>Listes Des Agents</h1>
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body">
+                {% include 'tontineBundle:Agent:partials/list.html.twig' with { agents: agents } %}
+            </div>
+        </div>
+    </section>
+   
+
+{% block javascripts %}
+   {{parent()}}
+   <script>
+       /* $(function () {
+            GpDataTable("#agents");
+        });*/
+    </script>
+{% endblock %}
+{% endblock %#}
+

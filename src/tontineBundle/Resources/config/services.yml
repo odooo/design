@@ -1,0 +1,23 @@
+services:
+#    tontine.example:
+#        class: tontineBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    tontine.manager.bien:
+        class: tontineBundle\Manager\BienManager
+        arguments: ['@doctrine.dbal.gspmanager_connection']
+        
+    tontine.menu_counters:
+        class: tontineBundle\Counters\MenuCounters
+        arguments: ['@doctrine.orm.entity_manager', '@service_container']
+        
+    tontine.type.awesome_selector:
+        class: tontineBundle\Form\Type\AwesomeSelectorType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: awesome_selector }
+
+    tontine.gsp.entity_manager:
+        class: tontineBundle\Manager\GspEntityManager
+        arguments: ['@doctrine.dbal.gspmanager_connection']
+

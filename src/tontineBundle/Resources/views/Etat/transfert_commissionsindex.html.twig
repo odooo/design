@@ -1,0 +1,18 @@
+{# empty Twig template #}
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Etats des transferts de commissions</h1>
+{% endblock %}
+
+{% block content %}
+    {{ render(controller('tontineBundle:Etat:criteriatForm', {'criteres': ['periode'], 'action':'tontine_etat_transfert_commissions'})) }}
+    {% include "tontineBundle:TransfertCommissions:partials/index_content.html.twig"%}
+    {% if transfertCommissions | length == 0 %}
+        <div>
+            <h4 style="text-align: center; color: black">Aucun résultat à afficher</h4>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{# empty Twig template #}

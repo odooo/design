@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            .header { position: absolute; top: -7mm; margin-bottom: 5mm; }
+           
+            .logo { height: 20mm; margin-left: 20mm; }
+            .header-content { margin-top: -10mm; margin-right: 10mm;margin-bottom: 10mm; margin-left: 30mm; font-size: 4mm; text-align: center }
+            .pagenum:before { content: counter(page); }  
+
+            .fiche-content { 
+            	margin-top: 20mm;
+            	text-align: center;
+            	font-family: 'Times New Roman', serif;
+            }          
+        </style>
+    </head>
+    <body>
+        <div class="footer">
+                      
+        </div>
+
+        <div class="header">            
+            <img  src="bundles/globalsevice.png" alt="Logo" class="logo" />
+            <p class="header-content">
+                <span style="">URL</span>:<a>www.globalserviceplus.com</a> / Email: <a>courrier@globalserviceplus.com </a>02 BP 1615 Cotonou, BENIN Tel. (229)<br /> 96983636, 94970707 ONG Loi 1901 2010/0336/DEP-ATL-LITT/SG/SAG-ASSOC DU 15 Juillet 2010  IFU 32012014469
+            </p>
+        </div>  
+
+        <div class="fiche-content">
+            <div align="center">
+                {% include 'tontineBundle:BienTontine:Fiche.html.twig' with { biens: results} %}
+            </div>            
+        </div>              
+        
+        
+    </body>
+</html>

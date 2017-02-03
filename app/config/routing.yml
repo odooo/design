@@ -1,0 +1,28 @@
+gsp:
+    resource: "@GSPBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tontine_api:
+    resource: "@tontineApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+    
+
+design:
+    resource: "@tontineBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+ajaxify_search:
+    resource: .
+    type: ajaxify-search
+
+tontine_app:
+   resource: "@tontineBundle/Controller/"
+   type:     annotation
+   
+    

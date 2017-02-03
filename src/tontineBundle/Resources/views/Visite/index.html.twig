@@ -1,0 +1,18 @@
+<div style="padding: 10px;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des visites</h3>
+            <h3 style="background-color: white">Client: <i>{{client.prenom}} {{client.nom | upper}}</i></h3>
+        </div>
+        <div class="box-body">
+            {% include "tontineBundle:Visite:partials/index_content.html.twig"
+                with {
+                    visites: client.visites,
+                }
+            %}  
+        </div>
+        <div class="box-footer">
+            <!--<a class="btn btn-primary" data-toggle="modal" data-target="#newVisiteModal" href="#" onclick="ajouterVisite({{client.id}}, 1)" data-rec = "{{client.id}}" >Ajouter une visite au client</a>-->
+        </div>
+    </div>
+</div>

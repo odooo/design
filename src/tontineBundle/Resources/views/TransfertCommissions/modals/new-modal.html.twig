@@ -1,0 +1,16 @@
+{% set modalId = 'new-transfertCommission-modal' %}
+
+{% extends 'default/modal.html.twig' %}
+
+{% block title %}
+    New Transfertcommission
+{% endblock %}
+
+{% block body %}
+    {{ render(controller('tontineBundle:TransfertCommissions:ajaxNewForm')) }}
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+    <input type="button" class ='transfertCommission_new_popup_submit btn btn-primary' value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+{% endblock %}

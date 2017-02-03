@@ -1,0 +1,12 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Visite creation</h1>
+{% endblock %}    
+
+{% block content %}
+
+    {% include 'tontineBundle:Visite:partials/form.html.twig' with { submit: 'Modifier' } %}
+
+{% endblock %}
+

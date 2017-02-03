@@ -1,0 +1,83 @@
+#help-widget {
+    position: relative;
+}
+
+#help-widget-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: transparent;
+    z-index: 9997;
+}
+
+#help-widget-icon {
+    display: none;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    right: 30px;
+    bottom: 30px;
+    border-radius: 50%;
+    background: #3c8dbc;
+    text-align: center;
+    cursor: pointer;
+    z-index: 9998;
+}
+
+#help-widget-icon .fa {
+    margin: 12px;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 24px;
+}
+
+#help-widget-content {
+    display: none;
+    position: fixed;
+    width: 300px;
+    height: 350px;
+    right: 20px;
+    bottom: 90px;
+    border-radius: 10px;
+    border: 2px solid #3c8dbc;
+    background-color: #ffffff;
+    z-index: 9999;
+}
+
+#triangle {
+    position: fixed;
+    bottom: 80px;
+    right: 45px;
+    width: 0;
+    height: 0;
+/*    border-top: 12px solid transparent;
+    border-right: 24px solid #3c8dbc;
+    border-bottom: 12px solid transparent;
+*/
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;  
+    border-top: 12px solid #3c8dbc;
+}
+
+#triangle:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;  
+    border-top: 14px solid #ffffff;
+}
+
+#help-widget-content .main-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}

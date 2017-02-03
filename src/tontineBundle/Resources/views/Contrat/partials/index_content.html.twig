@@ -1,0 +1,17 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Id</th>
+            <th>Code du bien</th>
+            <th>Date</th>
+            <th>Date de creation</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for contrat in contrats %}        
+        {% include "tontineBundle:Contrat:partials/item.html.twig" %}
+    {% endfor %}
+    </tbody>
+</table>

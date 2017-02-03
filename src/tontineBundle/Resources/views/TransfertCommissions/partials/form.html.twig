@@ -1,0 +1,26 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{{ form_start(form, {attr: {id: 'trasnfer-commission-form'}}) }}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Transfert de commissions</h3>
+        </div>
+        <div class="box-body container" style="max-width: 750px;">
+            {{ form_widget(form) }}
+            <div id="amount-block" class="well collapse text-center">
+                <h3>Montant de la commission: <span id="amount"></span></h3>
+            </div>
+        </div>
+        <div class="box-footer">
+            {% if isModal is not defined %}
+                {% block form_actions %}
+                    <div class="record-actions text-center">
+                        <button type="submit" class="btn btn-primary ajax" id="btn-submit">
+                            {% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}
+                        </button>
+                    </div>
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>                
+{{ form_end(form) }}

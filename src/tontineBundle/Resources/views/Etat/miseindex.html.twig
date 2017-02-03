@@ -1,0 +1,25 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Etats des mises</h1>
+{% endblock %}
+
+{% block content %}
+    {% if depotMises | length != 0 %}
+    <div class='row'>
+        <div class="col-md-12">
+            <a href="{{path('tontine_etat_mise_print')}}?pf={% if(criteres.periode) %}{{criteres.periode.dateFin | date()}}{% endif %}&pd={% if(criteres.periode) %}{{criteres.periode.dateDebut | date()}}{% endif %}&v={{criteres.ville}}&q={{criteres.quartier}}&c={% if(criteres.client) %}{{criteres.client.id}}{% endif %}" class="btn pull-right btn-primary"><i class="fa fa-print"></i> Imprimer</a>
+        </div>
+    </div>
+    {% endif %}
+    {{ render(controller('tontineBundle:Etat:criteriatForm', {'criteres': ['periode','ville', 'quartier', 'client'], 'action':'tontine_etat_mise'})) }}
+    {% include "tontineBundle:DepotMise:partials/index_content.html.twig" with {
+        etat: 1
+    } %}
+    {% if depotMises | length == 0 %}
+        <div>
+            <h4 style="text-align: center; color: black">Aucun résultat à afficher</h4>
+        </div>
+    {% endif %}
+{% endblock %}
+

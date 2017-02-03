@@ -1,0 +1,62 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        var tour = new Tour({
+            template: '<div class="popover tour">' +
+                '<div class="arrow"></div>' +
+                '<h3 class="popover-title text-center"></h3>' +
+                '<div class="popover-content"></div>' +
+                '<div class="popover-navigation">' +
+                    '<div class="btn-group">' +
+                        '<button class="btn btn-xs btn-default" data-role="prev">« Préc.</button>' + 
+                        '<button class="btn btn-xs btn-default" data-role="next">Suiv. »</button>' + 
+                    '</div>' +
+                    '<button class="btn btn-xs btn-default" data-role="end">Finir</button>' +
+                '</div>' +
+            '</div>',
+            
+            steps: [
+                {
+                    element: "#login-form",
+                    placement: "top",
+                    title: "Bienvenue",
+                    content: "Bienvenue sur l'application de gestion des ventes de Global Design. Suivez le guide pour vous connecter."
+                },
+                {
+                    element: "#userName",
+                    placement: "left",
+                    title: "Nom d'utilisateur",
+                    content: "Entrez votre nom d'utilisateur ou bien votre adresse e-mail"
+                },
+                {
+                    element: "#userPassword",
+                    placement: "left",
+                    title: "Mot de passe",
+                    content: "Entrez votre mot de passe"
+                },
+                {
+                    element: "#remember_me",
+                    placement: "left",
+                    title: "Rester connecté",
+                    content: "Cochez cette case pour conserver votre connexion sur ce ordinateur"
+                },
+                {
+                    element: "#btn-submit",
+                    placement: "left",
+                    content: "Validez ici pour vous connecter."
+                }
+            ]
+        });
+
+        $(function() {
+            tour.init();
+            tour.start();
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% if minMise is defined %}
+        <input type="hidden" id="tontine-min-mise" value="{{ minMise }}">
+        <div class="alert alert-danger collapse" id="alert-tontine-min-mise">
+            Vous devez déposer une mise minimal de {{ minMise | number_format(0, ',', ' ') }} Fcfa.
+        </div>
+    {% endif %}
+    {% if isModal is not defined %}
+        {% block form_actions %}
+            <div class="record-actions pull-right">
+                                <a href="{{ path('tontine_depotmise_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a><input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+            </div>
+        {% endblock %}
+    {% endif %}
+{{ form_end(form) }}

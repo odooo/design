@@ -1,0 +1,26 @@
+<tr>    
+                            
+    <td>{% if transfertFond.dateDebut %}{{ transfertFond.dateDebut|date('d/m/Y') }}{% endif %}</td>    
+                            
+    <td>{% if transfertFond.dateFin %}{{ transfertFond.dateFin|date('d/m/Y') }}{% endif %}</td>    
+                        
+    <td>{{ transfertFond.montant }}</td>    
+                            
+    <td>{% if transfertFond.createdAt %}{{ transfertFond.createdAt|date('d/m/Y H:i') }}{% endif %}</td>        
+
+    <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_transfert_fonds_show', { 'id': transfertFond.id }) }}"  class = "transfertfond_show" data-rec = "{{transfertFond.id}}" >show</a>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>    
+
+</tr>        

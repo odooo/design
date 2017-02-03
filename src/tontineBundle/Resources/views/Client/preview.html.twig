@@ -1,0 +1,125 @@
+<div style="padding: 10px;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Informations de l'utilisateur</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{% if client.photo %}{{ asset('uploads/pieces/') }}{{client.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" style="border-radius: 50%; width: 200px;">
+                </div>
+                <div class="col-sm-8">
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                            Actions
+                            <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            
+                            {% if  is_granted('ROLE_CLIENT_EDIT') %}
+                                    <li>
+                                        <a onclick="getEditClientForm({{client.id}})" href="{{ path('tontine_client_edit', { 'id': client.id }) }}" data-rec = "{{client.id}}" >Modifier</a>
+                                    </li>
+                            {% endif  %}
+                            
+                            {% if  is_granted('ROLE_CLIENT_VISITE_VIEW') %}
+                                    <li>
+                                        <a onclick="getClientVisiteList({{client.id}})" href="#" data-rec = "{{client.id}}" >Les visites</a>
+                                    </li>
+                             {% endif  %}
+                            {#% if client.condition %}
+                            <li>
+                                <a onclick="getClientShowCG({{client.id}})" href="{{ path('tontine_conditiongenerale_show', { 'id': client.condition.id }) }}" data-rec = "{{client.condition.id}}" >Afficher les CG</a>
+                            </li>
+                            <li>
+                                <a onclick="getEditClientCGForm({{client.id}})" href="{{ path('tontine_conditiongenerale_edit', { 'id': client.condition.id }) }}" data-rec = "{{client.condition.id}}" >Modifier les CG</a>
+                            </li>
+                            {% endif %#}
+                            <li class="divider"></li>
+                        </ul>
+                    </div>
+                    <div><strong>Nom: </strong><strong>{{ client.name }}</strong></div>
+                    <div><strong>Adresse: </strong>{{ client.adresse }}</div>
+                    <div><strong>Contact: </strong>{{ client.contacts | phone_number_format('INTERNATIONAL')}}</div>
+                    <div><strong>Date de naissance: </strong>Né(e) le {{ client.dateNaissance | date('d/m/Y') }}</div>
+                    <div><strong>Localisation: </strong>{{ client.ville }}, {{ client.quartier }}</div>
+                    <div><strong>Tontines: </strong>{{ client.tontines | length }} tontine(s) en cours</div>
+                    <div class="btn-group" style="margin-top: 20px">
+                        {% if not client.condition %}
+                            
+                                    {% if  is_granted('ROLE_CLIENT_ADD_CG') %}    
+                                    <a id="btncg" href="#" 
+                                        yop-popin="{{ path('tontine_cg_newpopup_form', { 'idc': client.id }) }}" 
+                                        yop-popin-size="medium" 
+                                        yop-js="initConditionForm" 
+                                        class="btn btn-primary" 
+                                        title="Accepter les conditions générales">
+                                        Accepter les conditions générales
+                                    </a>
+                                    {% endif %}
+                        {% else %}
+                            
+                            {% if client.condition.version != version_cg  %}
+                                                {% if  is_granted('ROLE_CLIENT_UPDATE_CG') %}
+                                               <a id="btncg" href="#" 
+                                                   yop-popin="{{ path('tontine_cg_newpopup_form', { 'idc': client.id }) }}" 
+                                                   yop-popin-size="medium" 
+                                                   yop-js="initConditionForm" 
+                                                   class="btn btn-danger yop-blink" 
+                                                   title="Mettre à jour les conditions générales">
+                                                   Mettre à jour les conditions générales
+                                               </a>
+                                               {% endif %}
+                            {% endif %}
+                        {% endif %}
+                       {% if  is_granted('ROLE_BIEN_VISITE') %}
+                        <a href="#" 
+                            yop-popin="{{ path('tontine_visite_newpopup_form', { 'idc': client.id }) }}" 
+                            yop-js="initVisitForm" 
+                            class="btn btn-primary" 
+                            title="Demander une visite de bien">
+                            Visite de bien
+                        </a>
+                       {% endif %}
+                                            
+                       {% if  is_granted('ROLE_TONTINE_CREATE') %}                     
+                        <a href="#" 
+                            yop-popin="{{ path('tontine_tontines_new_form', {client_id: client.id}) }}" 
+                            yop-popin-size="medium"
+                            yop-popin-positive="createNewTontine"
+                            yop-js="initTontineForm"                             
+                            class="btn btn-primary" 
+                            title="Démarrer une nouvelle tontine">
+                            Nouvelle tontine
+                        </a>
+                       {% endif %}
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </div>            
+    
+    <div class="box box-primary" style="margin-top: 20px">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des tontines en cours</h3>
+        </div>
+        {% if is_granted('ROLE_TONTINE_VIEW') %}   
+       
+        <div class="box-body no-padding">
+                        {% if (client.tontines|length) %}   
+                        {% for tontine in client.tontines %}
+                            <div style="padding: 10px; border-bottom: 1px solid #f4f4f4; cursor: pointer" yop-load="{{ path('tontine_tontines_preview', {id: tontine.id}) }}" yop-at="#user-pagelet">
+                                Tontine {{ tontine.mode.libelle }} ({{ tontine.montant | number_format(0, ',', ' ') }} Fcfa) démarrée le {{ tontine.createdAt | date('d/m/Y') }}
+                            </div>
+                        {% else %}
+                            <p class="text-center">
+                                Ce client n'a aucune tontine en cours !
+                            </p>
+                        
+                        {% endfor %}  
+                       {% endif %}
+        </div>
+     {% endif %}
+    </div>
+</div>    
+

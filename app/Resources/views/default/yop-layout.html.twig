@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/tontine/css/Yop.css') }}">
+{% endblock %}
+
+{% block header %}
+    {% include "@tontine/Default/header.html.twig" %}
+{% endblock %}
+
+{% block menu %}
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            {% block sidebar %}
+                {% include "@tontine/Default/sidebar.html.twig" %}
+            {% endblock %}
+        </section>
+    </aside>
+{% endblock %}
+
+{% block container %}
+    <div class="content-wrapper" id="yop-app" style="position: relative;">
+    {% block content %}{% endblock %}
+    </div>
+{% endblock %}
+
+{#{% block footer %}
+    {% include "@tontine/Default/footer.html.twig" %}
+{% endblock %}#}
+
+{% block javascript %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/tontine/js/yop.js') }}"></script>
+    <script>
+        $(function() {
+            Yop.mount('#yop-app');
+
+            Yop.onDom(function() {
+                refreshDatetimepicker();
+                refreshDatepicker();
+                refreshSelect2();
+                $('[data-select="awesome-selector"]').awesomeSelector();
+            });
+        });
+    </script>
+
+    <script src='{{ asset('bundles/tontine/js/client.js') }}'></script>
+    <script src='{{ asset('bundles/tontine/js/tontine.js') }}'></script>
+    <script src='{{ asset('bundles/tontine/js/visite.js') }}'></script>
+    <script src='{{ asset('bundles/tontine/js/contrat.js') }}'></script>
+    <script src='{{ asset('bundles/tontine/js/conditiongenerale.js') }}'></script>     
+    <script src='{{ asset('bundles/tontine/js/fincontrat.js') }}'></script>     
+    <script src='{{ asset('bundles/tontine/js/resiliationcontrat.js') }}'></script>     
+    <script src='{{ asset('bundles/tontine/js/fincontrat.js') }}'></script>    
+{% endblock %}

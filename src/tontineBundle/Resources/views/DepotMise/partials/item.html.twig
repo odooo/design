@@ -1,0 +1,25 @@
+<tr>        
+    <td>{{ index }}</td>    
+    {#<td>{% if depotMise.client %}{{ depotMise.client.name }}{% endif %}</td>                        
+    <td>{% if depotMise.caissier %}{{ depotMise.caissier.name }}{% endif %}</td>                            
+    <td>{% if depotMise.collecteur %}{{ depotMise.collecteur.name }}{% endif %}</td>#}
+    <td><strong>{{ depotMise.montant | number_format(0, ',', ' ') }} Fcfa</strong></td>                                
+    <td>{% if depotMise.date %}le {{ depotMise.date|date('d/m/Y') }}{% endif %}</td>
+    {#<td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_depotmise_show', { 'id': depotMise.id }) }}"  class = "depotmise_show" data-rec = "{{depotMise.id}}" >show</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_depotmise_edit', { 'id': depotMise.id }) }}"  class = "depotmise_edit" data-rec = "{{depotMise.id}}" >edit</a>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>#}
+</tr>        

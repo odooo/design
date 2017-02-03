@@ -1,0 +1,23 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Etats des Clients par Type de mise ville et quartier</h1>
+{% endblock %}
+
+{% block content %}
+    {% if clients | length != 0 %}
+    <div class='row'>
+        <div class="col-md-12">
+            <a href="{{path('tontine_etat_client_print')}}?v={{criteres.ville}}&q={{criteres.quartier}}&t={% if(criteres.typeMise) %}{{criteres.typeMise.id}}{% endif %}" class="btn pull-right btn-primary"><i class="fa fa-print"></i> Imprimer</a>
+        </div>
+    </div>
+    {% endif %}
+    {{ render(controller('tontineBundle:Etat:criteriatForm', {'criteres': ['ville', 'quartier', 'typeMise'], 'action':'tontine_etat_client'})) }}
+    {% include "tontineBundle:Client:partials/index_content.html.twig" %}
+    {% if clients | length == 0 %}
+        <div>
+            <h4 style="text-align: center; color: black">Aucun résultat à afficher</h4>
+        </div>
+    {% endif %}
+{% endblock %}
+

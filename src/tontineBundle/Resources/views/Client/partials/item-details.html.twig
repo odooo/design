@@ -1,0 +1,111 @@
+<table class="table table-striped table-bordered">
+    <tbody>    
+                                                
+        <tr>
+            <th>Id</th>
+            <td>{{ client.id }}</td>            
+        </tr>
+        
+        <tr>
+            <th>Date</th>    
+            <td>{% if client.createdAt %}{{ client.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>            
+        </tr>
+        
+        <tr>
+            <th>Photo</th>
+            <td> 
+                <div style="max-width: 400px">
+                    <img class="img-circle img-responsive" src="{{ asset('uploads/pieces/')}}{{client.photo}}"/>
+                </div>
+            </td>
+        </tr>
+                                                
+        <tr>
+            <th>Nom</th>
+            <td>{{ client.nom }}</td>            
+        </tr>    
+                                                
+        <tr>
+            <th>Prénom</th>
+            <td>{{ client.prenom }}</td>            
+        </tr> 
+        
+        <tr>
+            <th>Date de naissance</th>    
+            <td>{% if client.dateNaissance %}{{ client.dateNaissance|date('d/m/Y') }}{% endif %}</td>            
+        </tr>
+        
+        <tr>
+            <th>Quartie</th>
+            <td>{{ client.quartier }}</td>            
+        </tr>
+        
+        <tr>
+            <th>Ville</th>
+            <td>{{ client.ville }}</td>            
+        </tr>
+        
+        <tr>
+            <th>Contacts</th>
+            <td>{{ client.contacts | phone_number_format('INTERNATIONAL')}}</td>            
+        </tr>
+        
+        <tr>
+            <th>Adresse</th>
+            <td>{{ client.adresse }}</td>            
+        </tr>
+        
+        <tr>
+            <th> </th>
+            <td> </td>       
+        </tr>
+        
+        <tr>
+            <th>Enrégistré par</th>
+            <td>{% if client.CreatedBy %} {{ client.CreatedBy.prenom}} {{ client.CreatedBy.nom | upper}}{% endif %}</td>            
+        </tr>
+        
+        <tr>
+            <th>Modifié par</th>
+            <td>{% if client.UpdatedBy %} {{ client.UpdatedBy.prenom}} {{ client.UpdatedBy.nom | upper}} : le {{ client.UpdatedAt|date('d/m/Y H:i:s') }} {% endif %} </td>            
+        </tr>
+        
+        <tr>
+            <th>Actions</th>
+            <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_client_edit', { 'id': client.id }) }}"  class = "client_edit" data-rec = "{{client.id}}" >Modifier</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_visite_index', { 'idc': client.id }) }}" data-rec = "{{client.id}}" >Afficher les visites</a>
+                </li>
+                {% if client.condition %}
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_show', { 'id': client.condition.id }) }}"  class = "client_show" data-rec = "{{client.condition.id}}" >Afficher les CG</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_edit', { 'id': client.condition.id }) }}"  class = "client_show" data-rec = "{{client.condition.id}}" >Modifier les CG</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_new', { 'idc': client.id }) }}"  class = "client_edit" data-rec = "{{client.id}}" >Ajouter la condition générale</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a data-toggle="modal" data-target="#newVisiteModal" href="#" onclick="ajouterVisite({{client.id}}, 0)" data-rec = "{{client.id}}" >Enrégistrer une visite</a>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>
+        </tr>
+        
+  
+    </tbody>
+</table>

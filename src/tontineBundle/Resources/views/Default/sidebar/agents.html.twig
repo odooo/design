@@ -1,0 +1,11 @@
+{% if 'agents' in app.request.requestUri %}
+    <li>
+        <a><i class="fa fa-user"></i> <span>Agents</span> <i class="fa fa-caret-down"></i></a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_agent_new') }}"><i class="fa fa-plus"></i> <span>Créer un utilisateur</span></a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_agent') }}"><i class="fa fa-list"></i> <span>Liste des utilisateurs</span></a>
+    </li>
+    {% endif %}

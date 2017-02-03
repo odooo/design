@@ -1,0 +1,28 @@
+{% extends 'default/index.html.twig' %}
+
+{% block title %}Listes des tontines que vous avez démarré aujourd'hui{% endblock %}
+
+{% block content_header %}
+    <h1>{{ block('title') }}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                {{ block('title') }}
+            </h3>
+            <div class="box-tools pull-right">
+                <a href="{{ path('tontine_dashboard_my_today_tontines', {print: true}) }}" class="btn btn-primary btn-sm">Télécharger en PDF</a>
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                {% include 'tontineBundle:Default:partials/my_today_tontines_table.html.twig' %}
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('tontine_dashboard_my_today_tontines', {print: true}) }}" class="btn btn-primary btn-sm">Télécharger en PDF</a>
+        </div>
+    </div>
+{% endblock %}

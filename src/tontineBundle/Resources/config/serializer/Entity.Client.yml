@@ -1,0 +1,24 @@
+tontineBundle\Entity\Client:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        nom:
+            expose: true
+        prenom:
+            expose: true
+        dateNaissance:
+            expose: true
+            serialized_name: dateNaissance
+        contacts:
+            expose: true
+        adresse:
+            expose: true
+        quartier:
+            expose: true
+        ville:
+            expose: true
+    virtual_properties:
+        conditionAccept:
+            serialized_name: cg
+            type: boolean

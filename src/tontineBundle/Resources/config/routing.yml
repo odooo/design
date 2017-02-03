@@ -1,0 +1,11 @@
+tontine_dashboard:
+    path:     /
+    defaults: { _controller: tontineBundle:Default:index }
+    
+tontine_user_profile:
+    path:     /{id}/myprofile
+    defaults: { _controller: tontineBundle:Agent/Agent:profile }
+    
+tontine_agent:
+    resource: "@tontineBundle/Resources/config/routing/agent/agent.yml"
+    prefix:   /agents

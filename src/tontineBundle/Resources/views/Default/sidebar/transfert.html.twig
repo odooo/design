@@ -1,0 +1,17 @@
+{% if 'transfert-fonds' in app.request.requestUri %}
+    <li class="header" style="text-transform: uppercase; color: #fff">
+        Gestion des fonds
+    </li>
+    <li>
+        <a href="{{ path('tontine_transfert_fonds_new') }}">
+            <i class="fa fa-plus"></i> 
+            <span>Transfert de fonds</span>
+        </a>
+    </li>
+    {#<li>
+        <a href="{{ path('tontine_transfertcommissions_new') }}">
+            <i class="fa fa-plus"></i> 
+            <span>Transfert de commissions</span>
+        </a>
+    </li>#}
+{% endif %}

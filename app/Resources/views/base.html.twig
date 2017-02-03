@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Global Design{% endblock %}</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="icon" href="{{ asset('bundles/globalsevice.ico') }}" type="image/x-icon"/>
+        {# Shared style sheets #}
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet"
+              href="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/dist/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/dist/css/skins/skin-blue.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/select2/select2.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/filetype/filetype-icon-style.css') }}">
+         <link rel="stylesheet" href="{{ asset('bundles/tontine/css/loader.css') }}">
+
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/multiselect2sides/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/plugins/multiselect2sides/lib/google-code-prettify/prettify.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/tontine/css/bootstrap-tour.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/tontine/css/help-widget.css') }}">
+        {% block stylesheets %}{% endblock %}
+        
+        <style>
+            /*catiger*/
+            @keyframes fade {
+                from { opacity: 1.0; }
+                50% { opacity: 0.0; }
+                to { opacity: 1.0; }
+            }
+            
+            @-webkit-keyframes fade {
+                from { opacity: 1.0; }
+                50% { opacity: 0.0; }
+                to { opacity: 1.0; }
+            }
+            
+            .yop-blink {
+                animation:fade 1500ms infinite;
+                -webkit-animation:fade 1500ms infinite;
+            }
+        </style>
+    </head>
+    <body  class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+            {% block header %}{% endblock %}
+            {% block menu %}{% endblock %}
+            {% block container %}{% endblock %}
+            {% block footer %}{% endblock %}
+            
+            <!-- Modal loader -->
+            <div style="display: none" class="modal fade" id="loaderModal" tabindex="-1" role="dialog" aria-labelledby="loaderLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="loaderTitle"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="loader" class="cssload-loader"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </div>
+        <div id="help-widget">
+            <a id="help-widget-icon" style="width: 50px; height: 50px; display: inline;"><i class="fa fa-question"></i></a>
+            <div id="help-widget-content">
+                <div class="main-content">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active"><a data-toggle="tab" href="#help-contact">Contact</a></li>
+                        <li><a data-toggle="tab" href="#help-guides">Guides</a></li>
+                    </ul>
+                    <div class="tab-content" style="padding: 10px;">
+                        <div id="help-contact" class="tab-pane fade in active">
+                            <a href="tel:63917228" class="btn btn-block btn-success">
+                                <span class="fa fa-phone" style="margin-right: 5px;"></span>
+                                Appeler le 96 05 55 06
+                            </a>
+                            <div class="text-center" style="margin: 5px;">Ou bien écrivez-nous</div>
+                            <div>
+                                <form action="" method="post">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Votre nom complet">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Votre numéro">
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="" class="form-control" rows="3" placeholder="Votre message"></textarea>
+                                    </div>
+                                    <div class="text-center">
+                                        <button class="btn btn-primary" type="submit">
+                                            Envoyer
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="help-guides" class="tab-pane fade">
+                            <div>
+                                <input type="text" class="form-control" placeholder="Recherchez un guide">
+                            </div>
+                            <div id="guides-list">
+                                <p>Aucun guide n'est disponible actuellement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="triangle"></div>
+            </div>
+        </div>
+
+        {# Shared JS Files #}
+        <script src="{{ asset('bundles/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+        <script src="{{ asset('bundles/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('bundles/plugins/dist/js/app.min.js') }}"></script>
+        <script src="{{ asset('bundles/plugins/style/jquery.accordDate.js') }}"></script>
+        <script src="{{ asset('bundles/plugins/moment/moment-with-locales.js') }}"></script>
+
+        <script src="{{ asset('bundles/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('bundles/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+            
+        {#<script src="{{ asset('bundles/plugins/datatables/pdfmake.min.js') }}"></script>#}
+        {#<script src="{{ asset('bundles/plugins/datatables/vfs_fonts.js') }}"></script>#}
+        {#<script src="{{ asset('bundles/plugins/datatables/buttons.html5.min.js') }}"></script>#}
+        {#<script src="{{ asset('bundles/plugins/datatables/buttons.flash.min.js') }}"></script>#}
+        {##}
+        {#<script src="{{ asset('bundles/plugins/datatables/szip.min.js') }}"></script>#}
+        {#<script src="{{ asset('bundles/plugins/datatables/dataTables.buttons.min.js') }}"></script>#}
+        {#<script src="{{ asset('bundles/plugins/datatables/buttons.print.min.js ') }}"></script>#}
+        <script src="{{ asset('bundles/plugins/select2/select2.full.min.js') }}"></script>
+        <script type="text/javascript"
+                src="{{ asset('bundles/plugins/bower_components/moment/min/moment.min.js') }}"></script>
+        <script type="text/javascript"
+                src="{{ asset('bundles/plugins/bower_components/moment/locale/fr.js') }}"></script>
+        <script type="text/javascript"
+                src="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+        {% block javascript %}
+
+            {% javascripts '@tontineBundle/Resources/public/js/datatablefonction.js' %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            
+            {% javascripts '@tontineBundle/Resources/public/js/ajaxify-search.js' %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            {{ init_ajaxify_search() }}
+            
+            {% javascripts '@tontineBundle/Resources/public/js/loader.js' %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            
+            {% javascripts '@tontineBundle/Resources/public/js/enabledisableagent.js' %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}                
+
+            <script src="{{ asset('bundles/tontine/js/awesome-selector.js') }}"></script>   
+            <script src="{{ asset('bundles/tontine/js/bootstrap-tour.min.js') }}"></script>
+            <script src="{{ asset('bundles/tontine/js/help-widget.js') }}"></script>
+        {% endblock %} 
+
+        <script type="text/javascript">
+            $(function(){
+                
+                $('.datepicker').datetimepicker({
+                    locale:'fr',
+                    format:'DD/MM/YYYY'
+                });
+                
+                $('.datetimepicker').datetimepicker({
+                    locale:'fr',
+                    format:'DD/MM/YYYY HH:mm:s'
+                });
+
+                $('.select2').select2([{multiple: true}]);
+                
+            });
+            
+            function refreshDatepicker(){
+                $('.datepicker').datetimepicker({
+                    locale:'fr',
+                    format:'DD/MM/YYYY'
+                });
+            }
+            
+            function refreshDatetimepicker(){
+                $('.datetimepicker').datetimepicker({
+                    locale:'fr',
+                    format:'DD/MM/YYYY HH:mm:s'
+                });
+            }
+            
+            function refreshSelect2(){
+                $('.select2').select2([{multiple: true}]);
+            }
+        </script>
+    </body>
+</html>

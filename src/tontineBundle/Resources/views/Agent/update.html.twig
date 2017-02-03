@@ -1,0 +1,12 @@
+{% extends ":default:index.html.twig" %}
+
+{% block content %}
+    <h3>Modification de l'agent</h3>
+    {% include 'tontineBundle:Agent:partials/form.html.twig' 
+        with { 
+                form: form,
+                action: path('tontine_agent_update', {'id':agent.id}),
+                submit: "Appliquer"
+            } 
+    %}
+{% endblock %}

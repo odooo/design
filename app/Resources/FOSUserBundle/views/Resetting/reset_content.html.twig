@@ -1,0 +1,16 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row-fluid">
+    <div class=" col-sm-offset-4 col-sm-4" style="margin-top: 15%">
+        {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
+            <div class="form-login">
+                <h4>GSP-Tontine | Bienvenu</h4>
+                
+                {{ form_widget(form) }}
+                <div>
+                    <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
+                </div>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>

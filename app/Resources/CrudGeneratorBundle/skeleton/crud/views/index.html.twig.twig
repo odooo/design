@@ -1,0 +1,30 @@
+{% block extends %}
+{{ "{% extends '"~ config.templateName ~"' %}" }}
+{% endblock extends %}
+
+{% block body %}
+{{ "{% block "~ config.contentHeaderBlock ~" %}" }}
+    <h1>{{ entity_pluralized|capitalize }} list</h1>
+{{ "{% endblock %}" }}
+
+{{ "{% block "~ config.contentBlock ~" %}" }}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ entity_pluralized|capitalize }} list</h3>
+        </div>
+        <div class="box-body">
+            {{ '{% include "' ~ views_dir ~ 'partials/index_content.html.twig" %}' }}  
+        </div>
+        <div class="box-footer">
+        {% if 'new' in actions -%}
+            <a href="{{ "{{ path('" ~ route_name_prefix ~ "_new') }}" }}" class="btn btn-primary">Créer nouveau {{ entity_singularized }}</a>
+        {%- endif %}
+        </div>
+    </div>    
+
+    {{ "{% include 'default/modal.html.twig' with { modalId: 'preview-modal' } %}" }}
+    {{ "{% include '"~ views_dir ~ "modals/new-modal.html.twig' %}" }}
+    {{ "{% include 'default/modal.html.twig' with { modalId: 'edit-modal' } %}" }}
+{{ "{% endblock %}" }}
+{% endblock body %}
+

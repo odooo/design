@@ -1,0 +1,46 @@
+{% extends "default/index.html.twig" %}
+
+{% block title %}Liste des agences de APHEDD Finance{% endblock %}
+
+{% block content_header %}
+    <h3>Liste des agences de APHEDD Finance</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des agences de APHEDD Finance</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom de l'agence</th>
+                            <th>Contact de l'agence</th>
+                            <th>Adresse de l'agence</th>
+                            {#<th>Actions</th>#}
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for agency in agencies %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ agency.name }}</td>
+                            <td>{{ agency.contact }}</td>
+                            <td>{{ agency.address }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('tontine_agencies_create') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>                
+                Ajouter une agence
+            </a>
+        </div>
+    </div>
+{% endblock %}

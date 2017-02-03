@@ -1,0 +1,12 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% if isModal is not defined %}
+        {% block form_actions %}
+            <div class="record-actions pull-right">
+                                <a href="{{ path('tontine_fincontrat_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a><input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+            </div>
+        {% endblock %}
+    {% endif %}
+{{ form_end(form) }}

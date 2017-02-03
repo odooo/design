@@ -1,0 +1,3 @@
+gsp_homepage:
+    path:     /restclient
+    defaults: { _controller: GSPBundle:Default:index }

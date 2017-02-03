@@ -1,0 +1,18 @@
+<div>
+    <table id="agents" class="table table-bordered table-striped responsive-table" data-request="ajaxify-search" data-entity="tontineBundle\Entity\Agent" data-perpage="10">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Nom</th>
+                <th>Prenom</th>                       
+                <th>Type Utilisateur</th>                                                          
+                <th>Actions</th>                                                          
+            </tr>
+        </thead>
+        <tbody>
+            {% for agent in agents %}
+                {% include 'tontineBundle:Agent:partials/item.html.twig' with { agent: agent } %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

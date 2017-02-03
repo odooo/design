@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Liste des trfds enrégistrés</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            .header { position: absolute; top: -7mm; margin-bottom: 5mm; }
+           
+            .logo { height: 20mm; margin-left: 20mm; }
+            .header-content { margin-top: -10mm; margin-right: 10mm;margin-bottom: 10mm; margin-left: 30mm; font-size: 4mm; text-align: center }
+            .pagenum:before { content: counter(page); }  
+
+            .fiche-content { 
+            	margin-top: 60mm;
+            	text-align: center;
+            	font-family: 'Times New Roman', serif;
+            }
+            
+            table {
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="footer">
+                      
+        </div>
+
+        <div class="header">            
+            <p class="header-content">
+                <h2 style="text-align: center">Global Service Plus || APHEDD</h2>
+            </p>
+            <u><h3 style='width: 100%; text-align: center; font-weight: bold;'>Liste des transferts de fonds effectués durant une péride donnée</h3></u>
+            <p><u>Date</u>: {{ "now"|date("m/d/Y") }} |  <u>Nombre de transferts de fond(s)</u>:  {{transfertFonds | length}}</p>
+            <p style='font-weight: bold'><u>CRITERRES</u>:</p>
+            <p>
+                {% if criteres.periode %}
+                <u>Début</u>: {{ criteres.periode.dateDebut|date("m/d/Y") }} | <u>Fin</u>: {{ criteres.periode.dateFin|date("m/d/Y") }}
+                {% endif %}
+            </p>
+        </div>  
+
+        <div class="fiche-content">
+            <div align="center">
+                <table style='width: 100%'>
+                    <thead>
+                        <tr>
+                            <th>Date début</th>
+                            <th>Date fin</th>
+                            <th>Montant</th>
+                            <th>Date de transfert</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cmp = 0 %}
+                    {% for transfertFond in transfertFonds %} 
+                        {% set cmp = cmp + transfertFond.montant %}
+                        <tr>    
+                            
+                            <td>{% if transfertFond.dateDebut %}{{ transfertFond.dateDebut|date('d/m/Y') }}{% endif %}</td>    
+
+                            <td>{% if transfertFond.dateFin %}{{ transfertFond.dateFin|date('d/m/Y') }}{% endif %}</td>    
+
+                            <td>{{ transfertFond.montant }}</td>    
+
+                            <td>{% if transfertFond.createdAt %}{{ transfertFond.createdAt|date('d/m/Y H:i') }}{% endif %}</td>        
+                        </tr>        
+                    {% endfor %}
+                    <tr>
+                        <td>Total</td>
+                        <td style='text-align: center' colspan="3"><strong>{{ cmp | number_format(0, ',', ' ') }} F CFA</strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </div>              
+        
+        
+    </body>
+</html>

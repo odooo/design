@@ -1,0 +1,11 @@
+tontineBundle\Entity\Visite:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        dateDisponibilite:
+            expose: true
+        moyenDeplacement:
+            expose: true
+        client:
+            expose: true

@@ -1,0 +1,27 @@
+{% extends "default/index.html.twig" %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block title %}Ajouter une nouvelle agence{% endblock %}
+
+{% block content_header %}
+    <h3>Ajouter une nouvelle agence</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Ajouter une nouvelle agence</h3>
+        </div>
+        <div class="box-body">
+            <div class="container" style="max-width: 700px;">
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <div style="margin-top: 20px;">
+                        <a href="{{ path('tontine_agencies_index') }}" class="btn btn-default pull-left">Retour</a>
+                        <button type="submit" class="btn btn-primary pull-right">Valider</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

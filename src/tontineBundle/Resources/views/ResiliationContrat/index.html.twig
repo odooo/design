@@ -1,0 +1,29 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Resiliationcontrats list</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste Des Demandes De Resiliation De contrats </h3>
+        </div>
+        <div class="box-body">
+            {% include "tontineBundle:ResiliationContrat:partials/index_content.html.twig" %}  
+        </div>
+        <div class="box-footer">
+        <a href="{{ path('tontine_resiliationcontrat_new') }}" class="btn btn-primary">Créer nouveau resiliationContrat</a>        </div>
+    </div>    
+    {% include 'tontineBundle:ResiliationContrat:modals/newvalidate-modal.html.twig' %}
+    {% include 'default/modal.html.twig' with { modalId: 'preview-modal' } %}
+    {% include 'tontineBundle:ResiliationContrat:modals/new-modal.html.twig' %}
+    {% include 'default/modal.html.twig' with { modalId: 'edit-modal' } %}
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% javascripts '@tontineBundle/Resources/public/js/resiliationcontrat.js' %}
+        <script src='{{ asset_url }}'></script>
+    {% endjavascripts %}
+{% endblock %}

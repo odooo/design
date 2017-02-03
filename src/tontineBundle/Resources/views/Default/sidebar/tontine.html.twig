@@ -1,0 +1,41 @@
+{% if 'tontines' in app.request.requestUri or 'depotmise' in app.request.requestUri %}
+    <li class="header" style="text-transform: uppercase; color: #fff">
+        Gestion des tontines
+    </li>
+    <li>
+        <a href="{{ path('tontine_tontines_new') }}">
+            <i class="fa fa-plus"></i> 
+            <span>Nouvelle tontine</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_tontines_index') }}">
+            <i class="fa fa-list"></i> 
+            <span>Liste des tontines</span>
+        </a>
+    </li>
+    {#<li>
+        <a href="{{ path('tontine_depotmise_new') }}">
+            <i class="fa fa-money"></i> 
+            <span>Dépot de mise</span>
+        </a>
+    </li>#}
+    <li>
+        <a href="{{ path('tontine_contrat_new') }}">
+            <i class="fa fa-plus"></i> 
+            <span>Etablissement d'un contrat</span>
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_fincontrat_new') }}">
+            <i class="fa fa-minus"></i> 
+            <span>Enregistrement de Fin de Contrat</span>
+        </a>
+    </li>
+     <li>
+        <a href="{{ path('tontine_resiliationcontrat_new') }}">
+            <i class="fa fa-minus"></i> 
+            <span>Resiliation Contrat</span>
+        </a>
+    </li>
+{% endif %}

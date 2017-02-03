@@ -1,0 +1,20 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Liste des clients enrégistrés le {{ "now"|date("m/d/Y") }}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class='row-fluid'>
+        <div class="col-md-12">
+            <a href="{{path('tontine_etat_client_enregistrer_journalier_print')}}" class="btn pull-right btn-primary"><i class="fa fa-print"></i> Imprimer</a>
+        </div>
+    </div>
+    {% include "tontineBundle:Client:partials/index_content.html.twig" %}
+    {% if clients | length == 0 %}
+        <div>
+            <h4 style="text-align: center; color: black">Aucun client</h4>
+        </div>
+    {% endif %}
+{% endblock %}
+

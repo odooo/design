@@ -1,0 +1,70 @@
+<tr>    
+                        
+    <td>{{ visite.id }}</td>    
+    
+    <td>{% if visite.createdAt %}{{ visite.createdAt|date('d-m-Y H:i:s') }}{% endif %}</td>
+    
+    <td>
+        {% if visite.choixDate == 4 %}
+            <p><span class="label label-danger">Date personnelle:</span> {% if visite.dateDisponibilite %}{{ visite.dateDisponibilite|date('d-m-Y H:i:s') }}{% endif %}</p>
+        {% else %}
+            <p><span class="label label-success">Date prédéfinie:</span>
+                {% if visite.choixDate == 1 %}
+                    {% if visite.bien.dateVisite1 %} {{ visite.bien.dateVisite1|date('d-m-Y H:i:s') }}{% endif %}
+                {% elseif visite.choixDate == 2 %}
+                    {% if visite.bien.dateVisite2 %} {{ visite.bien.dateVisite2|date('d-m-Y H:i:s') }}{% endif %}
+                {% elseif visite.choixDate == 3 %}
+                    {% if visite.bien.dateVisite3 %} {{ visite.bien.dateVisite3|date('d-m-Y H:i:s') }}{% endif %}
+                {% endif %}</p>
+        {% endif %}
+    </td>    
+                        
+    <td>{{ visite.moyenDeplacement }}</td>
+    
+    <td>
+        {% if visite.etat == 0 %}
+            <p class="label label-primary">Nouvelle</p>
+        {% elseif visite.etat == 1 %}
+             <p class="label label-warning">Validée</p>
+        {% elseif visite.etat == 2 %}
+             <p class="label label-success">Clôturée</p>
+        {% elseif visite.etat == 3 %}
+             <p class="label label-danger">Abandonnée</p>
+        {% endif%}
+    </td>
+    
+    <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="#" yop-popin="{{ path('tontine_visite_preview', { 'id': visite.id }) }}" yop-popin-size="medium" title="Détals de la visite N° {{visite.id}} de: {{visite.client.prenom}} {{visite.client.nom}}">Détails</a>
+                </li>
+                {% if visite.etat == 0 %}
+                <li>
+                    <a href="#" yop-popin="{{ path('tontine_visite_editpopup_form', { 'id': visite.id }) }}" yop-popin-size="medium" title="Modification des paramètres de la visite N° {{visite.id}} de: {{visite.client.prenom}} {{visite.client.nom}}" 
+                       yop-js="initEditVisiteForm">Modifier</a>
+                </li>
+                <li>
+                    <a href="#" yop-popin="{{ path('tontine_visite_validate', { 'id': visite.id }) }}" yop-popin-size="medium" title="Validation de la visite N° {{visite.id}} de: {{visite.client.prenom}} {{visite.client.nom}}">Valider</a>
+                </li>                
+                {% endif %}
+                {% if visite.etat == 1 %}
+                <li>
+                    <a href="#" yop-popin="{{ path('tontine_visite_finaliser', { 'id': visite.id }) }}" yop-popin-size="medium" title="Clôture de la visite N° {{visite.id}} de: {{visite.client.prenom}} {{visite.client.nom}}">Finaliser</a>
+                </li>                
+                {% endif %}
+                {% if visite.etat <= 1 %}
+                <li>
+                    <a href="" yop-popin="{{ path('tontine_visite_ignorer', { 'id': visite.id }) }}" yop-popin-size="medium" title="Abandon de la visite N° {{visite.id}} de: {{visite.client.prenom}} {{visite.client.nom}}">Abandonner</a>
+                </li>                
+                {% endif %}                
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>    
+
+</tr>        

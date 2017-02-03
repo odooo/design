@@ -1,0 +1,47 @@
+<tr>    
+                        
+    <td>{{ client.id }}</td>    
+    
+    <td>{% if client.createdAt %}{{ client.createdAt|date('Y-m-d à H:i:s') }}{% endif %}</td>
+    
+    <td>{{ client.nom }}</td>    
+                        
+    <td>{{ client.prenom }}</td>        
+
+    <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_client_show', { 'id': client.id }) }}" data-rec = "{{client.id}}" >Détails</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_client_edit', { 'id': client.id }) }}" data-rec = "{{client.id}}" >Modifier</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_visite_index', { 'idc': client.id }) }}" data-rec = "{{client.id}}" >Les visites</a>
+                </li>
+                {% if client.condition %}
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_show', { 'id': client.condition.id }) }}" data-rec = "{{client.condition.id}}" >Afficher les CG</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_edit', { 'id': client.condition.id }) }}" data-rec = "{{client.condition.id}}" >Modifier les CG</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_new', { 'idc': client.id }) }}" data-rec = "{{client.id}}" >Ajouter la condition générale</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a data-toggle="modal" data-target="#newVisiteModal" href="#" onclick="ajouterVisite({{client.id}}, 0)" data-rec = "{{client.id}}" >Enrégistrer une visite</a>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>    
+
+</tr>        

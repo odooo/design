@@ -1,0 +1,18 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{#<button onclick="ajouterPiece();" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus"></span> Ajouter une piece</button>#}
+<div class="container-fluid container-small">
+    <div class='row'>
+        <div class="col-sm-offset-3 col-sm-6">
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% if isModal is not defined %}
+        {% block form_actions %}
+            <div class="record-actions pull-right">
+                                <a href="{{ path('tontine_contrat_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a><input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+            </div>
+        {% endblock %}
+    {% endif %}
+{{ form_end(form) }}
+        </div>
+    </div>
+</div>

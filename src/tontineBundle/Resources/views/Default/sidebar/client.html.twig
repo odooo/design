@@ -1,0 +1,30 @@
+{% if 'client' in app.request.requestUri  or 'visite' in app.request.requestUri or 'condition' in app.request.requestUri %}
+    <li class="header" style="text-transform: uppercase; color: #fff">
+        Gestion des Clients
+    </li>
+    <li>
+        <a href="{{ path('tontine_client_new') }}"><i class="fa fa-plus"></i> <span>Créer un client</span></a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_client_index') }}"><i class="fa fa-list"></i> <span>Liste des clients</span></a>
+    </li>
+    <li class="header" style="text-transform: uppercase; color: #fff">
+        Gestion des visites
+    </li>
+    <li>
+        <a href="{{ path('tontine_visite_etatlist', {'etat': 0}) }}"><i class="fa fa-list"></i> <span>Visites non validées</span> 
+            <span class="label label-primary">{{menuCounters.countEtatVisite(0)}}</span></a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_visite_etatlist', {'etat': 1}) }}"><i class="fa fa-list"></i> <span>Visites non effectives</span> 
+        <span class="label label-warning">{{menuCounters.countEtatVisite(1)}}</span></a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_visite_etatlist', {'etat': 3}) }}"><i class="fa fa-list"></i> <span>Visites annulées</span> 
+        <span class="label label-danger">{{menuCounters.countEtatVisite(3)}}</span></a>
+    </li>
+    <li>
+        <a href="{{ path('tontine_visite_etatlist', {'etat': 2}) }}"><i class="fa fa-list"></i> <span>Visites effectives</span> 
+        <span class="label label-success">{{menuCounters.countEtatVisite(2)}}</span></a>
+    </li>
+{% endif %}

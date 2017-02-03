@@ -1,0 +1,35 @@
+<table class="table table-bordered table-stripped">
+    <thead>
+        <tr>
+            <th>Client</th>
+            <th>Tontine</th>
+            <th>Mise</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for mise in mises %}
+        <tr>
+            <td>{% if mise.client %}{{ mise.client.name }}{% endif %}</td>
+            <td>{{ mise.tontine.mode.libelle }}</td>
+            <td><strong>{{ mise.montant |  number_format(0, ',', ' ') }} Fcfa</strong></td>
+            <td>{{ mise.createdAt | date('d/m/Y')}}</td>
+        </tr>
+    {% endfor %}
+        <tr>
+            <td colspan="4">
+                <h3 style="margin:0;">Total: <strong>{{ amount  | number_format(0, ',', ' ') }} Fcfa</strong></h3>                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <h3 style="margin:0;">Commissions: <strong>{{ commissions  | number_format(0, ',', ' ') }} Fcfa</strong></h3>                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <h3 style="margin:0;">Net à transférer: <strong>{{ net  | number_format(0, ',', ' ') }} Fcfa</strong></h3>
+            </td>
+        </tr>
+    </tbody>
+</table>

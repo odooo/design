@@ -1,0 +1,35 @@
+tontine_api_homepage:
+    path:     /tontineapi
+    defaults: { _controller: tontineApiBundle:Default:index }
+    
+tontine_api_client:
+    type: rest
+    resource: tontineApiBundle\Controller\ClientController
+
+tontine_api_security:
+    type: rest
+    resource: tontineApiBundle\Controller\SecurityController    
+
+tontine_api_visite:
+    type: rest
+    resource: tontineApiBundle\Controller\VisiteController
+    
+tontine_api_bien:
+    type: rest
+    resource: tontineApiBundle\Controller\RechercheBienController
+    
+tontine_api_mise:
+    type: rest
+    resource: tontineApiBundle\Controller\RechercheMiseController
+tontine_api_contrat:
+    type: rest
+    resource: tontineApiBundle\Controller\ContratController
+tontine_api_tontine:
+    type: rest
+    resource: tontineApiBundle\Controller\TontineController    
+tontine_api_depotmise:
+    type: rest
+    resource: tontineApiBundle\Controller\DepotMiseController
+tontine_api_conditiongenerale:
+    type: rest
+    resource: tontineApiBundle\Controller\ConditionGeneraleController

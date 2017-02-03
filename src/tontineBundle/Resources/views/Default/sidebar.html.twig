@@ -1,0 +1,126 @@
+<div class="user-panel">
+    <div class="pull-left image">
+        {% if app.user.photo %}
+            <img src="{{ asset((['uploads/pieces', app.user.photo] | join('/'))) }}" widht="48" height="48" class="img-circle" alt="User Image">
+        {% else %}        
+            <img src="{{ asset('bundles/images/avatar04.png') }}" widht="48" class="img-circle" alt="User Image">
+        {% endif %}
+    </div>
+    <div class="pull-left info">
+        <p>{{ app.user.name }}</p>
+        {{ app.user.profilName }}
+    </div>
+</div>
+
+<ul class="sidebar-menu">
+    <li>
+        <a href="{{ path('tontine_dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tableau de bord</span></a>
+    </li>
+
+    {% if is_granted('ROLE_BIEN_SEARCH') %}
+        <li>
+            <a href="{{ path('tontine_tontinecriteria_search') }}"><i class="fa fa-search"></i> <span>Rechercher un bien</span></a>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
+        <li>
+            <a href="{{ path('tontine_bien_fiche_preview') }}"><i class="fa fa-check-square-o"></i> <span>Feuille de Choix </span></a>
+        </li>
+    {% endif %}
+        
+    {% if is_granted('ROLE_CLIENT_VIEW') %}
+        <li>
+            <a href="{{ path('tontine_client_index') }}">
+                <i class="fa fa-user"></i> 
+                <span>Clients</span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_TONTINE_VALIDATE_MISE') %}
+        <li>
+            <a href="{{ path('tontine_caisse_home') }}">
+                <i class="fa fa-money"></i> 
+                <span>Caisse Mises</span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_TRANSFER_CREATE') %}
+        <li>
+            <a href="{{ path('tontine_transfert_fonds_new') }}">
+                <i class="fa fa-plus"></i> 
+                <span>Transfert de fonds</span>
+            </a>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Agents</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_AGENT_VIEW') %}                
+                    <li><a href="{{ path('tontine_agent') }}"><i class="fa fa-angle-right"></i> Liste des agents</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_AGENT_CREATE') %}
+                    <li><a href="{{ path('tontine_agent_new') }}"><i class="fa fa-angle-right"></i> Enregistrer un agent</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_AGENCY_VIEW') or is_granted('ROLE_AGENCY_CREATE') %}
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-institution"></i>
+                <span>Agences d'APHEDD</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_AGENCY_VIEW') %}                
+                    <li><a href="{{ path('tontine_agencies_index') }}"><i class="fa fa-angle-right"></i> Liste des agences</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_AGENCY_CREATE') %}
+                    <li><a href="{{ path('tontine_agencies_create') }}"><i class="fa fa-angle-right"></i> Ajouter une agence</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
+    {% include 'tontineBundle:Default:sidebar/etat.html.twig' %}
+    
+    {% if is_granted('ROLE_GROUP_VIEW') or is_granted('ROLE_SETTING_EDIT') %}
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-cogs"></i>
+                <span>Configuration</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_GROUP_VIEW') %}
+                    <li><a href="{{ path('tontine_agents_groups_index') }}"><i class="fa fa-angle-right"></i> Liste des profils d'agent</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_SETTING_EDIT') %}
+                    <li><a href="{{ path('tontine_parameters_edit') }}"><i class="fa fa-angle-right"></i> Modifier les paramètres</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}        
+
+    {#{% include 'tontineBundle:Default:sidebar/agents.html.twig' %}
+    {% include 'tontineBundle:Default:sidebar/tontine.html.twig' %}
+    {% include 'tontineBundle:Default:sidebar/client.html.twig' %}
+    {% include 'tontineBundle:Default:sidebar/etat.html.twig' %}    
+    {% include 'tontineBundle:Default:sidebar/transfert.html.twig' %}#}   
+</ul>

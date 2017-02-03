@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Liste des depotMises enrégistrés</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            .header { position: absolute; top: -7mm; margin-bottom: 5mm; }
+           
+            .logo { height: 20mm; margin-left: 20mm; }
+            .header-content { margin-top: -10mm; margin-right: 10mm;margin-bottom: 10mm; margin-left: 30mm; font-size: 4mm; text-align: center }
+            .pagenum:before { content: counter(page); }  
+
+            .fiche-content { 
+            	margin-top: 50mm;
+            	text-align: center;
+            	font-family: 'Times New Roman', serif;
+            }
+            
+            table {
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="footer">
+                      
+        </div>
+
+        <div class="header">            
+            <p class="header-content">
+                <h2 style="text-align: center">Global Service Plus || APHEDD</h2>
+            </p>
+            <u><h3 style='width: 100%; text-align: center; font-weight: bold;'>Liste des clients</h3></u>
+            <p><u>Date</u>: {{ "now"|date("m/d/Y") }} |  <u>Nombre de client(s)</u>:  {{clients | length}}</p>
+            <p style='font-weight: bold'><u>CRITERES</u>:</p>
+            <p> 
+                {% if criteres.ville %}<u>Ville</u>: {{ criteres.ville}}; {% endif %} 
+                {% if criteres.quartier %}<u>Quartier</u>: {{ criteres.quartier}}; {% endif %} 
+                {% if criteres.typeMise %}<u>Mode de Tontine</u>: {{ criteres.typeMise.libelle}} {% endif %} 
+            </p>
+        </div>  
+
+        <div class="fiche-content">
+            <div align="center">
+                <table style='width: 100%'>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date de céation</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Contact</th>
+                            <th>Adresse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cmp = 0 %}
+                    {% for client in clients %} 
+                        <tr>
+                            <td>{{ client.id }}</td>
+                            <td>{% if client.createdAt %}{{ client.createdAt|date('Y-m-d à H:i:s') }}{% endif %}</td>
+                            <td>{{ client.nom }}</td>    
+                            <td>{{ client.prenom }}</td>
+                            <td>{{ client.contacts | phone_number_format('INTERNATIONAL') }}</td>
+                            <td>{{ client.adresse }}</td>
+                        </tr>
+                    {% endfor %}
+                    
+                    </tbody>
+                </table>
+            </div>            
+        </div>              
+        
+        
+    </body>
+</html>

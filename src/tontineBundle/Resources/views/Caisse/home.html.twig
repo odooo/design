@@ -1,0 +1,42 @@
+{% extends 'default/index.html.twig' %}
+
+{% block title %}Encaisser les mises{% endblock %}
+
+{% block content_header %}
+    <h1>{{ block('title') }}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Détails des mises collectées</h3>
+        </div>
+        <div class="box-body">
+            <div class="container" style="margin: 20px auto; max-width: 700px;">
+                <div class="form-group">
+                    <label for="agent-list" class="control-label text-center">Sélectionnez un agent</label>
+                    <select id="agent-list" class="form-control select2">
+                    {% for agent in agents%}
+                        <option value="{{ agent.id }}">{{ agent.name }} ({{ agent.profilName }})</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>        
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    <script>
+        $(function() {
+            $('#agent-list').on('change', function() {
+                var value = $(this).val();
+
+                if (value) {
+                    window.location.href = "{{ path('tontine_caisse_home') }}?agent=" + value;
+                }
+            });
+        });
+    </script>
+{% endblock %}

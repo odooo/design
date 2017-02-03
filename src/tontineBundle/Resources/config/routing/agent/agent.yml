@@ -1,0 +1,33 @@
+tontine_agent:
+    path:     /
+    defaults: { _controller: "tontineBundle:Agent/Agent:index" }
+
+tontine_agent_new:
+    path:     /new
+    defaults: { _controller: "tontineBundle:Agent/Agent:new" }
+
+tontine_agent_update:
+    path:     /{id}/update/
+    defaults: { _controller: "tontineBundle:Agent/Agent:update" }
+    
+tontine_agent_show:
+    path:     /{id}/show/
+    defaults: { _controller: "tontineBundle:Agent/Agent:show" }
+    
+tontine_agent_enabledeseable:
+    path:     /enabledeseable
+    defaults: { _controller: "tontineBundle:Agent/Agent:enabledeseable" }
+    options:
+        expose: true
+        
+tontine_agent_preview:
+    path: /{id}/preview
+    defaults: { _controller: "tontineBundle:Agent/Agent:preview" }
+    options:
+        expose: true
+        
+tontine_agent_edit:
+    path: /{id}/edit
+    defaults: { _controller: "tontineBundle:Agent/Agent:edit" }
+    options:
+        expose: true

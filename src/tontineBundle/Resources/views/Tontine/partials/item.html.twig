@@ -1,0 +1,26 @@
+<tr>    
+    <td>{% if tontine.client %}{{ tontine.client.name }}{% endif %}</td>
+    <td>{{ tontine.mode.libelle }}</td>                            
+    <td>{{ tontine.montant }}</td>                            
+    <td>{{ tontine.duree }}</td>
+    <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_tontines_show', { 'id': tontine.id }) }}"  class = "tontine_show" data-rec = "{{tontine.id}}" >Détails</a>
+                </li>
+                {# <li>
+                    <a href="{{ path('tontine_tontines_edit', { 'id': tontine.id }) }}"  class = "tontine_edit" data-rec = "{{tontine.id}}" >edit</a>
+                </li> #}
+                <li class="divider"></li>
+                <li>
+                    <a href="{{ path('tontine_depotmise_new', { 'tontine': tontine.id }) }}"  class = "tontine_edit" data-rec = "{{tontine.id}}" >Déposer une mise</a>
+                </li>
+            </ul>
+        </div>
+    </td>
+</tr>        

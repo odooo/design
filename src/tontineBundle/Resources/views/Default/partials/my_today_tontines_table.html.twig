@@ -1,0 +1,36 @@
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th style="width: 50px;">#</th>
+            <th>Client</th>
+            <th>Mode</th>
+            <th>Mise</th>
+            <th>Durée</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for tontine in tontines %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ tontine.client.name }}</td>
+            <td>{{ tontine.mode.libelle }}</td>
+            <td><strong>{{ tontine.montant | number_format(0, ',', ' ') }} Fcfa</strong></td>            
+            <td>
+            {%if tontine.duree == 0 %}
+                Non défini.
+            {% else %}
+                {{ tontine.duree }} an{% if tontine.duree > 1 %}s{% endif %}
+            {% endif %}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">
+                <p style="text-align: center">
+                    Vous n'avez démarré aucune tontine aujourd'hui.
+                </p>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

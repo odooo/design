@@ -1,0 +1,23 @@
+<tr>    
+                        
+    <td>{{ conditionGenerale.id }}</td>        
+
+    <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_show', { 'id': conditionGenerale.id }) }}"  class = "conditiongenerale_show" data-rec = "{{conditionGenerale.id}}" >show</a>
+                </li>
+                <li>
+                    <a href="{{ path('tontine_conditiongenerale_edit', { 'id': conditionGenerale.id }) }}"  class = "conditiongenerale_edit" data-rec = "{{conditionGenerale.id}}" >edit</a>
+                </li>
+                <li class="divider"></li>
+            </ul>
+        </div>
+    </td>    
+
+</tr>        

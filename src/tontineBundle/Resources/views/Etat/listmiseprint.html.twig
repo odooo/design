@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Liste des depotMises enrégistrés</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            .header { position: absolute; top: -7mm; margin-bottom: 5mm; }
+           
+            .logo { height: 20mm; margin-left: 20mm; }
+            .header-content { margin-top: -10mm; margin-right: 10mm;margin-bottom: 10mm; margin-left: 30mm; font-size: 4mm; text-align: center }
+            .pagenum:before { content: counter(page); }  
+
+            .fiche-content { 
+            	margin-top: 50mm;
+            	text-align: center;
+            	font-family: 'Times New Roman', serif;
+            }
+            
+            table {
+                border-collapse: collapse;
+            }
+
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="footer">
+                      
+        </div>
+
+        <div class="header">            
+            <p class="header-content">
+                <h2 style="text-align: center">Global Service Plus || APHEDD</h2>
+            </p>
+            <u><h3 style='width: 100%; text-align: center; font-weight: bold;'>Liste des mises collectées</h3></u>
+            <p><u>Date</u>: {{ "now"|date("m/d/Y") }} |  <u>Nombre de mise(s)</u>:  {{depotsMises | length}}</p>
+            <p style='font-weight: bold'><u>CRITERRES</u>:</p>
+            <p>
+                {% if criteres.periode %}
+                <u>Début</u>: {{ criteres.periode.dateDebut|date("m/d/Y") }}; 
+                <u>Fin</u>: {{ criteres.periode.dateFin|date("m/d/Y") }} |
+                {% endif %} 
+                {% if criteres.ville %}<u>Ville</u>: {{ criteres.ville}}; {% endif %} 
+                {% if criteres.quartier %}<u>Quartier</u>: {{ criteres.quartier}}; {% endif %} 
+                {% if criteres.client %}<u>Client</u>: {{ criteres.client.name}} {% endif %} 
+            </p>
+        </div>  
+
+        <div class="fiche-content">
+            <div align="center">
+                <table style='width: 100%'>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Date de céation</th>
+                            <th>Montant</th>
+                            <th>Client</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% set cmp = 0 %}
+                    {% for depotMise in depotsMises %} 
+                        {% set cmp = cmp + depotMise.montant %}
+                        <tr>
+                            <td>{{ depotMise.id }}</td>
+                            <td>{% if depotMise.date %}le {{ depotMise.date|date('d/m/Y') }}{% endif %}</td>
+                            <td><strong>{{ depotMise.montant | number_format(0, ',', ' ') }} Fcfa</strong></td>
+                            <td>{{ depotMise.client.name }} Fcfa</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>Total</td>
+                        <td style='text-align: center' colspan="3"><strong>{{ cmp | number_format(0, ',', ' ') }} F CFA</strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>            
+        </div>              
+        
+        
+    </body>
+</html>

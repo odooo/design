@@ -1,0 +1,36 @@
+<div {% if modalId is defined %}id='{{ modalId }}'{% endif %} class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog {% if modalSize is defined %}{{ modalSize }}{% endif %} {% if modalClass is defined %}{{ modalClass }}{% endif %}" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">{% block title %}{% if modalTitle is defined %}{{ modalTitle }}{% endif %}{% endblock %}</h4>
+            </div>
+            <div class="modal-body">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                {% block footer %}
+                {% endblock %}
+            </div>
+        </div><!-- /.modal-content -->
+    </div>    
+</div>
+
+<!-- If to bock screen waiting for ajax response -->
+<div class="modal hide" id="pleaseWaitDialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-body" style="position:absolute;
+                                    left: 50%;
+                                    top: 50%;
+                                    width: 200px;
+                                    margin-left: -100px;
+                                    margin-top: -100px;
+                                    background-color: rgba(0, 0, 0, 0);
+                                    ">
+        <div class="progress progress-striped active" style="text-align: center; height: 100px; background-color: rgba(0, 0, 0, 0);">
+            <div class="bar">
+                <i class="fa fa-circle-o-notch fa-spin fa-5x fa-fw" style="color: #f5f5f5;"></i>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{{ form_start(form) }}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Création de tontine</h3>
+    </div>
+    <div class="box-body">        
+        {{ form_widget(form) }}
+        <div id="user-list">
+            {% for user in clients %}
+            <div class="list-item" data-value="{{ user.id }}" data-search="{{ user.name }} {{ user.contacts }}">
+                <div class="user-photo">
+                    <img src="{{ asset('bundles/images/avatar04.png') }}" alt="Photo de profil de {{ user.name }}">
+                </div>                                                  
+                <div class="user-description">
+                    <div class="user-name">{{ user.name }}</div>
+                    <div class="user-phone">
+                        <span class="fa fa-phone"></span>
+                        {{ user.contacts }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>   
+        <div id="bien-list">
+            <div class="list-item bien-selector-item" data-value="" data-search="">
+                <p>Cliquez pour sélectionner un bien</p>
+            </div>
+            {% for bien in biens %}
+            <div class="list-item bien-selector-item" data-value="{{ bien.id }}" data-search="{{ bien.code }} {{ bien.zone }}">
+                <strong>{{ bien.code }}</strong> ({{ bien.zone }})
+                <p>{{ bien.description }}</p>
+            </div>
+            {% endfor %}
+        </div>     
+    </div>
+    <div class="box-footer">
+        {% if isModal is not defined %}
+            {% block form_actions %}
+                <a href="{{ path('tontine_tontines_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a>
+                <div class="record-actions pull-right">
+                    <input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+                </div>
+            {% endblock %}
+        {% endif %}
+    </div>
+</div>
+{{ form_end(form) }}      

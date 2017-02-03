@@ -1,0 +1,17 @@
+<div style="display: none" id="validerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Validation Resiliation Contrat</h4>
+      </div>
+      <div class="modal-body">
+        {{ render(controller('tontineBundle:ResiliationContrat:ajaxAddForm')) }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button onclick="Valider()" type="button" class="btn btn-primary" >Valider</button>
+      </div>
+    </div>
+  </div>
+</div>
