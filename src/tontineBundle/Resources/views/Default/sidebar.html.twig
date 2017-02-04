@@ -17,17 +17,17 @@
         <a href="{{ path('tontine_dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tableau de bord</span></a>
     </li>
 
-    {% if is_granted('ROLE_BIEN_SEARCH') %}
+    {# {% if is_granted('ROLE_BIEN_SEARCH') %}
         <li>
             <a href="{{ path('tontine_tontinecriteria_search') }}"><i class="fa fa-search"></i> <span>Rechercher un bien</span></a>
         </li>
-    {% endif %}
+    {% endif %} #}
 
-    {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
+    {# {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
         <li>
             <a href="{{ path('tontine_bien_fiche_preview') }}"><i class="fa fa-check-square-o"></i> <span>Feuille de Choix </span></a>
         </li>
-    {% endif %}
+    {% endif %} #}
         
     {% if is_granted('ROLE_CLIENT_VIEW') %}
         <li>
@@ -47,14 +47,14 @@
         </li>
     {% endif %}
 
-    {% if is_granted('ROLE_TRANSFER_CREATE') %}
+    {# {% if is_granted('ROLE_TRANSFER_CREATE') %}
         <li>
             <a href="{{ path('tontine_transfert_fonds_new') }}">
                 <i class="fa fa-plus"></i> 
                 <span>Transfert de fonds</span>
             </a>
         </li>
-    {% endif %}
+    {% endif %} #}
 
     {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
         <li class="treeview">

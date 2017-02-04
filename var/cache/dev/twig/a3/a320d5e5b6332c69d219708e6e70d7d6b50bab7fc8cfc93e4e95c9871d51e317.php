@@ -22,34 +22,34 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_29ee81802279bbd2a18d9d80ccd5f3beb15015077c4bf366902375d1937de150 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_29ee81802279bbd2a18d9d80ccd5f3beb15015077c4bf366902375d1937de150->enter($__internal_29ee81802279bbd2a18d9d80ccd5f3beb15015077c4bf366902375d1937de150_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Default:dashboard.html.twig"));
+        $__internal_675e2dd33687341f8509b874360e78e29ec10bc7630cfc4081d949ab6dcdc893 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_675e2dd33687341f8509b874360e78e29ec10bc7630cfc4081d949ab6dcdc893->enter($__internal_675e2dd33687341f8509b874360e78e29ec10bc7630cfc4081d949ab6dcdc893_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Default:dashboard.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_29ee81802279bbd2a18d9d80ccd5f3beb15015077c4bf366902375d1937de150->leave($__internal_29ee81802279bbd2a18d9d80ccd5f3beb15015077c4bf366902375d1937de150_prof);
+        $__internal_675e2dd33687341f8509b874360e78e29ec10bc7630cfc4081d949ab6dcdc893->leave($__internal_675e2dd33687341f8509b874360e78e29ec10bc7630cfc4081d949ab6dcdc893_prof);
 
     }
 
     // line 3
     public function block_content_header($context, array $blocks = array())
     {
-        $__internal_33003b1ee629021159f92a67a5d5cb0049b2916f88b46db12bae80cdf623156e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_33003b1ee629021159f92a67a5d5cb0049b2916f88b46db12bae80cdf623156e->enter($__internal_33003b1ee629021159f92a67a5d5cb0049b2916f88b46db12bae80cdf623156e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
+        $__internal_664f13cbc547227cb5c3dd00153de177ff30bb0326d439fc2ba4e1b297c2d21a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_664f13cbc547227cb5c3dd00153de177ff30bb0326d439fc2ba4e1b297c2d21a->enter($__internal_664f13cbc547227cb5c3dd00153de177ff30bb0326d439fc2ba4e1b297c2d21a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
 
         // line 4
         echo "    <h1>Tableau de bord</h1>
 ";
         
-        $__internal_33003b1ee629021159f92a67a5d5cb0049b2916f88b46db12bae80cdf623156e->leave($__internal_33003b1ee629021159f92a67a5d5cb0049b2916f88b46db12bae80cdf623156e_prof);
+        $__internal_664f13cbc547227cb5c3dd00153de177ff30bb0326d439fc2ba4e1b297c2d21a->leave($__internal_664f13cbc547227cb5c3dd00153de177ff30bb0326d439fc2ba4e1b297c2d21a_prof);
 
     }
 
     // line 7
     public function block_content($context, array $blocks = array())
     {
-        $__internal_07a57013af57e60f45026729acbc394f1c410ed4c1d999415d012783771b3e91 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_07a57013af57e60f45026729acbc394f1c410ed4c1d999415d012783771b3e91->enter($__internal_07a57013af57e60f45026729acbc394f1c410ed4c1d999415d012783771b3e91_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_ee7ae841269ae3c5244ff0cf477b8642dfc44e07fa86e0e9e64613afb0a6f578 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_ee7ae841269ae3c5244ff0cf477b8642dfc44e07fa86e0e9e64613afb0a6f578->enter($__internal_ee7ae841269ae3c5244ff0cf477b8642dfc44e07fa86e0e9e64613afb0a6f578_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 8
         echo "    <div class=\"row\">                        
@@ -69,13 +69,9 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                         <div class=\"progress\">
                           <div class=\"progress-bar\" style=\"width: 100%\"></div>
                         </div>
-                        <span class=\"progress-description\">
-                            <a href=\"";
-            // line 20
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_etat_client_enregistrer_journalier");
-            echo "\"> >> Voir la liste</a>
-                        </span>
-                    </div>
+                        ";
+            // line 22
+            echo "                    </div>
                 </div>
             </div>                        
         ";
@@ -91,18 +87,13 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                     <span class=\"info-box-icon bg-blue\"><i class=\"fa fa-user\"></i></span>
                     <div class=\"info-box-content\">
                         <span class=\"info-box-text\">Tontines démarrées aujourd'hui</span>
-                        <span class=\"info-box-number\">";
-            // line 33
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["dashboardDatas"]) || array_key_exists("dashboardDatas", $context) ? $context["dashboardDatas"] : (function () { throw new Twig_Error_Runtime('Variable "dashboardDatas" does not exist.', 33, $this->getSourceContext()); })()), "newTontineStarted", array()), "html", null, true);
-            echo "</span>
-                        <div class=\"progress\">
+                        ";
+            // line 34
+            echo "                        <div class=\"progress\">
                             <div class=\"progress-bar\" style=\"width: 100%\"></div>
                         </div>
                         <span class=\"progress-description\">
-                            <a href=\"";
-            // line 38
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_dashboard_my_today_tontines");
-            echo "\"> >> Voir la liste</a>
+                            <a href=\"\"> >> Voir la liste</a>
                         </span>
                     </div>
                 </div>
@@ -121,30 +112,20 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                     <div class=\"info-box-content\">
                         <span class=\"info-box-text\">Mise collectées aujourd'hui</span>
                         <span class=\"info-box-number\">
-                            ";
-            // line 52
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["dashboardDatas"]) || array_key_exists("dashboardDatas", $context) ? $context["dashboardDatas"] : (function () { throw new Twig_Error_Runtime('Variable "dashboardDatas" does not exist.', 52, $this->getSourceContext()); })()), "newMiseCollected", array()), "html", null, true);
-            echo "
-                            (";
-            // line 53
-            echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["dashboardDatas"]) || array_key_exists("dashboardDatas", $context) ? $context["dashboardDatas"] : (function () { throw new Twig_Error_Runtime('Variable "dashboardDatas" does not exist.', 53, $this->getSourceContext()); })()), "newMiseAmount", array()), 0, ",", " "), "html", null, true);
-            echo " Fcfa)
+                            nnn
                         </span>
                         <div class=\"progress\">
                             <div class=\"progress-bar\" style=\"width: 100%\"></div>
                         </div>
                         <span class=\"progress-description\">
-                            <a href=\"";
-            // line 59
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_dashboard_my_today_collected_mises");
-            echo "\"> >> Voir la liste</a>
+                            <a href=\"\"> >> Voir la liste</a>
                         </span>
                     </div>
                 </div>
             </div>
         ";
         }
-        // line 65
+        // line 64
         echo "    </div>
     <div class=\"row\">
         <div class=\"col-sm-6\">
@@ -164,7 +145,7 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                     <ul class=\"users-list clearfix\">
                         <li>
                             <img src=\"";
-        // line 83
+        // line 82
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/images/avatar04.png"), "html", null, true);
         echo "\" alt=\"User Image\">
                             <a class=\"users-list-name\" href=\"#\">Alexander Pierce</a>
@@ -172,7 +153,7 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                         </li>
                         <li>
                             <img src=\"";
-        // line 88
+        // line 87
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/images/avatar04.png"), "html", null, true);
         echo "\" alt=\"User Image\">
                             <a class=\"users-list-name\" href=\"#\">Alexander Pierce</a>
@@ -180,7 +161,7 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                         </li>
                         <li>
                             <img src=\"";
-        // line 93
+        // line 92
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/images/avatar04.png"), "html", null, true);
         echo "\" alt=\"User Image\">
                             <a class=\"users-list-name\" href=\"#\">Alexander Pierce</a>
@@ -190,11 +171,11 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                 </div>
                 <div class=\"box-footer text-center\">
                     <a href=\"";
-        // line 100
+        // line 99
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_client_new");
         echo "\" class=\"btn btn-sm btn-primary btn-flat pull-left\">Enregistrer un client</a>
                     <a href=\"";
-        // line 101
+        // line 100
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_client_index");
         echo "\" class=\"btn btn-sm btn-default btn-flat pull-right\">Voir la liste des clients</a>
                 </div>
@@ -223,7 +204,7 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
     </div>
 ";
         
-        $__internal_07a57013af57e60f45026729acbc394f1c410ed4c1d999415d012783771b3e91->leave($__internal_07a57013af57e60f45026729acbc394f1c410ed4c1d999415d012783771b3e91_prof);
+        $__internal_ee7ae841269ae3c5244ff0cf477b8642dfc44e07fa86e0e9e64613afb0a6f578->leave($__internal_ee7ae841269ae3c5244ff0cf477b8642dfc44e07fa86e0e9e64613afb0a6f578_prof);
 
     }
 
@@ -239,7 +220,7 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
 
     public function getDebugInfo()
     {
-        return array (  198 => 101,  194 => 100,  184 => 93,  176 => 88,  168 => 83,  148 => 65,  139 => 59,  130 => 53,  126 => 52,  118 => 46,  116 => 45,  113 => 44,  104 => 38,  96 => 33,  89 => 28,  87 => 27,  84 => 26,  75 => 20,  67 => 15,  60 => 10,  58 => 9,  55 => 8,  49 => 7,  41 => 4,  35 => 3,  11 => 1,);
+        return array (  179 => 100,  175 => 99,  165 => 92,  157 => 87,  149 => 82,  129 => 64,  109 => 46,  107 => 45,  104 => 44,  92 => 34,  85 => 28,  83 => 27,  80 => 26,  74 => 22,  67 => 15,  60 => 10,  58 => 9,  55 => 8,  49 => 7,  41 => 4,  35 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
@@ -262,9 +243,9 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                         <div class=\"progress\">
                           <div class=\"progress-bar\" style=\"width: 100%\"></div>
                         </div>
-                        <span class=\"progress-description\">
+                        {# <span class=\"progress-description\">
                             <a href=\"{{ path('tontine_etat_client_enregistrer_journalier')}}\"> >> Voir la liste</a>
-                        </span>
+                        </span> #}
                     </div>
                 </div>
             </div>                        
@@ -276,12 +257,12 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                     <span class=\"info-box-icon bg-blue\"><i class=\"fa fa-user\"></i></span>
                     <div class=\"info-box-content\">
                         <span class=\"info-box-text\">Tontines démarrées aujourd'hui</span>
-                        <span class=\"info-box-number\">{{ dashboardDatas.newTontineStarted }}</span>
+                        {# <span class=\"info-box-number\">{{ dashboardDatas.newTontineStarted }}</span> #}
                         <div class=\"progress\">
                             <div class=\"progress-bar\" style=\"width: 100%\"></div>
                         </div>
                         <span class=\"progress-description\">
-                            <a href=\"{{ path('tontine_dashboard_my_today_tontines')}}\"> >> Voir la liste</a>
+                            <a href=\"\"> >> Voir la liste</a>
                         </span>
                     </div>
                 </div>
@@ -295,14 +276,13 @@ class __TwigTemplate_abd1e96e3e7334463ac72f40c306b760154005c347e9642aaa33c364298
                     <div class=\"info-box-content\">
                         <span class=\"info-box-text\">Mise collectées aujourd'hui</span>
                         <span class=\"info-box-number\">
-                            {{ dashboardDatas.newMiseCollected }}
-                            ({{ dashboardDatas.newMiseAmount | number_format(0, ',', ' ') }} Fcfa)
+                            nnn
                         </span>
                         <div class=\"progress\">
                             <div class=\"progress-bar\" style=\"width: 100%\"></div>
                         </div>
                         <span class=\"progress-description\">
-                            <a href=\"{{ path('tontine_dashboard_my_today_collected_mises')}}\"> >> Voir la liste</a>
+                            <a href=\"\"> >> Voir la liste</a>
                         </span>
                     </div>
                 </div>

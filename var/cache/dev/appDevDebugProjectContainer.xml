@@ -168,7 +168,7 @@
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="pieces_path">/var/www/html/tontine/app/../web/uploads/pieces</parameter>
     <parameter key="api_server_name">http://localhost</parameter>
-    <parameter key="api_gspmanager_endpoint">http://localhost/manager/web/design/</parameter>
+    <parameter key="api_gspmanager_endpoint">http://localhost/manager/web/tontine/</parameter>
     <parameter key="default_roles" type="collection">
       <parameter>ROLE_CLIENT_VIEW</parameter>
       <parameter>ROLE_CLIENT_CREATE</parameter>
@@ -1089,7 +1089,7 @@
                   <tag name="cache.pool"/>
                   <argument>vm0jATTIfw</argument>
                   <argument>0</argument>
-                  <argument>VMQNRR+ed2Y0mCZGh3ABtK</argument>
+                  <argument>kTwurDDQb1WcTBW+nvWHHb</argument>
                   <argument>/var/www/html/tontine/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1102,7 +1102,7 @@
                   <tag name="cache.pool"/>
                   <argument>OK9If19S9S</argument>
                   <argument>0</argument>
-                  <argument>VMQNRR+ed2Y0mCZGh3ABtK</argument>
+                  <argument>kTwurDDQb1WcTBW+nvWHHb</argument>
                   <argument>/var/www/html/tontine/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1810,7 +1810,7 @@
       <tag name="cache.pool"/>
       <argument>InJC1xGFxj</argument>
       <argument>0</argument>
-      <argument>VMQNRR+ed2Y0mCZGh3ABtK</argument>
+      <argument>kTwurDDQb1WcTBW+nvWHHb</argument>
       <argument>/var/www/html/tontine/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2737,7 +2737,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5893c3e4d60a67.72410719</argument>
+            <argument>58959a1b2b7d33.27875276</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2751,7 +2751,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>5893c3e4d60a67.72410719</argument>
+            <argument>58959a1b2b7d33.27875276</argument>
           </service>
         </argument>
       </argument>
@@ -3014,7 +3014,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5893c3e4d60a67.72410719</argument>
+            <argument>58959a1b2b7d33.27875276</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3133,7 +3133,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>5893c3e4d60a67.72410719</argument>
+            <argument>58959a1b2b7d33.27875276</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -5032,7 +5032,7 @@
     </service>
     <service id="guzzle.client.api_gspmanager" class="GuzzleHttp\Client">
       <argument type="collection">
-        <argument key="base_uri">http://localhost/manager/web/design/</argument>
+        <argument key="base_uri">http://localhost/manager/web/tontine/</argument>
         <argument key="handler" type="service">
           <service class="GuzzleHttp\HandlerStack">
             <call method="push">

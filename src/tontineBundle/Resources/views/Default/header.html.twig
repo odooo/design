@@ -31,7 +31,7 @@
         {% endif %}
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                {% set cgnu = menuCounters.countMiseAjourCG()%}
+                {# {% set cgnu = menuCounters.countMiseAjourCG()%} #}
                 {% block userProfil %}
                     {% if (is_granted('ROLE_GSP_TONTINE_ADMIN') and (cgnu != 0)) %}
                         <li class="dropdown" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<b>{{cgnu}} Condition(s) générales non à jour!</b>">

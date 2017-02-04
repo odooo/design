@@ -17,4 +17,4 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
     pieces_path: '%kernel.root_dir%/../web/uploads/pieces'
     api_server_name: 'http://localhost'
-    api_gspmanager_endpoint: 'http://localhost/manager/web/design/'
+    api_gspmanager_endpoint: 'http://localhost/manager/web/tontine/'

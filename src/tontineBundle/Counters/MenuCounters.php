@@ -33,23 +33,5 @@ class MenuCounters
         $this->container = $container;
     }
 
-    public function countEtatVisite($etat)
-    {
-        return $this->entityManager
-            ->getRepository('tontineBundle:Visite')
-            ->count(array(
-                'etat' => $etat,
-            ))
-        ;
-    }
-    
-    public function  countMiseAjourCG(){
-        return 1;
-        $condition = $this->entityManager
-            ->getRepository('tontineBundle:ConditionGenerale')
-            ->findNotUpdate($this->container->getParameter('version_cg'));
-        ;
-        return count($condition);
-    }
 }
 

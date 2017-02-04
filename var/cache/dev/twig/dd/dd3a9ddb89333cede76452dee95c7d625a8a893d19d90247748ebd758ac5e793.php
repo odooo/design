@@ -17,8 +17,8 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_8f84ba0d68b4c1af28bc9e74bd9c961d3b6d002868422681eb46c7200361c7e0 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_8f84ba0d68b4c1af28bc9e74bd9c961d3b6d002868422681eb46c7200361c7e0->enter($__internal_8f84ba0d68b4c1af28bc9e74bd9c961d3b6d002868422681eb46c7200361c7e0_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/header.html.twig"));
+        $__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4->enter($__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/header.html.twig"));
 
         // line 1
         echo "<header class=\"main-header\">
@@ -73,8 +73,6 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
         echo "        <div class=\"navbar-custom-menu\">
             <ul class=\"nav navbar-nav\">
                 ";
-        // line 34
-        $context["cgnu"] = twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["menuCounters"]) || array_key_exists("menuCounters", $context) ? $context["menuCounters"] : (function () { throw new Twig_Error_Runtime('Variable "menuCounters" does not exist.', 34, $this->getSourceContext()); })()), "countMiseAjourCG", array(), "method");
         // line 35
         echo "                ";
         $this->displayBlock('userProfil', $context, $blocks);
@@ -84,15 +82,15 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
     </nav>
 </header>";
         
-        $__internal_8f84ba0d68b4c1af28bc9e74bd9c961d3b6d002868422681eb46c7200361c7e0->leave($__internal_8f84ba0d68b4c1af28bc9e74bd9c961d3b6d002868422681eb46c7200361c7e0_prof);
+        $__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4->leave($__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4_prof);
 
     }
 
     // line 14
     public function block_button_menu($context, array $blocks = array())
     {
-        $__internal_471225cf7d05d1dd109282d2756db13aed4f92a3429f6adc936a8b830621fd1c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_471225cf7d05d1dd109282d2756db13aed4f92a3429f6adc936a8b830621fd1c->enter($__internal_471225cf7d05d1dd109282d2756db13aed4f92a3429f6adc936a8b830621fd1c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "button_menu"));
+        $__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111->enter($__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "button_menu"));
 
         // line 15
         echo "            <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"offcanvas\" role=\"button\">
@@ -100,15 +98,15 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
             </a>
         ";
         
-        $__internal_471225cf7d05d1dd109282d2756db13aed4f92a3429f6adc936a8b830621fd1c->leave($__internal_471225cf7d05d1dd109282d2756db13aed4f92a3429f6adc936a8b830621fd1c_prof);
+        $__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111->leave($__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111_prof);
 
     }
 
     // line 35
     public function block_userProfil($context, array $blocks = array())
     {
-        $__internal_ce600e89134f2bf0006de062d335a1fbb5cd1ee2bd76f7661e2d0b759aadde34 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_ce600e89134f2bf0006de062d335a1fbb5cd1ee2bd76f7661e2d0b759aadde34->enter($__internal_ce600e89134f2bf0006de062d335a1fbb5cd1ee2bd76f7661e2d0b759aadde34_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "userProfil"));
+        $__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d->enter($__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "userProfil"));
 
         // line 36
         echo "                    ";
@@ -183,7 +181,7 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
                     </li>
                 ";
         
-        $__internal_ce600e89134f2bf0006de062d335a1fbb5cd1ee2bd76f7661e2d0b759aadde34->leave($__internal_ce600e89134f2bf0006de062d335a1fbb5cd1ee2bd76f7661e2d0b759aadde34_prof);
+        $__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d->leave($__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d_prof);
 
     }
 
@@ -199,7 +197,7 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
 
     public function getDebugInfo()
     {
-        return array (  176 => 67,  166 => 60,  160 => 56,  152 => 54,  146 => 52,  139 => 50,  136 => 49,  134 => 48,  129 => 45,  117 => 37,  114 => 36,  108 => 35,  98 => 15,  92 => 14,  82 => 75,  79 => 35,  77 => 34,  73 => 32,  65 => 27,  58 => 23,  50 => 19,  48 => 14,  38 => 7,  32 => 4,  27 => 2,  24 => 1,);
+        return array (  174 => 67,  164 => 60,  158 => 56,  150 => 54,  144 => 52,  137 => 50,  134 => 49,  132 => 48,  127 => 45,  115 => 37,  112 => 36,  106 => 35,  96 => 15,  90 => 14,  80 => 75,  77 => 35,  73 => 32,  65 => 27,  58 => 23,  50 => 19,  48 => 14,  38 => 7,  32 => 4,  27 => 2,  24 => 1,);
     }
 
     public function getSourceContext()
@@ -237,7 +235,7 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
         {% endif %}
         <div class=\"navbar-custom-menu\">
             <ul class=\"nav navbar-nav\">
-                {% set cgnu = menuCounters.countMiseAjourCG()%}
+                {# {% set cgnu = menuCounters.countMiseAjourCG()%} #}
                 {% block userProfil %}
                     {% if (is_granted('ROLE_GSP_TONTINE_ADMIN') and (cgnu != 0)) %}
                         <li class=\"dropdown\" data-toggle=\"tooltip\" data-html=\"true\" data-placement=\"bottom\" title=\"<b>{{cgnu}} Condition(s) générales non à jour!</b>\">

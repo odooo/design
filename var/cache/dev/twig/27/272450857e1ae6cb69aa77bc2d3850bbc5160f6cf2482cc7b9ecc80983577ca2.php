@@ -15,8 +15,8 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d7ba68fc0c2a3ca0f83d5090a7f94e18b816b7ec71d4d7218e0bafd574036c94 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_d7ba68fc0c2a3ca0f83d5090a7f94e18b816b7ec71d4d7218e0bafd574036c94->enter($__internal_d7ba68fc0c2a3ca0f83d5090a7f94e18b816b7ec71d4d7218e0bafd574036c94_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/sidebar.html.twig"));
+        $__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475->enter($__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/sidebar.html.twig"));
 
         // line 1
         echo "<div class=\"user-panel\">
@@ -61,31 +61,9 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
     </li>
 
     ";
-        // line 20
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_BIEN_SEARCH")) {
-            // line 21
-            echo "        <li>
-            <a href=\"";
-            // line 22
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_tontinecriteria_search");
-            echo "\"><i class=\"fa fa-search\"></i> <span>Rechercher un bien</span></a>
-        </li>
-    ";
-        }
         // line 25
         echo "
     ";
-        // line 26
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_BIEN_CREATE_OPTIONS")) {
-            // line 27
-            echo "        <li>
-            <a href=\"";
-            // line 28
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_bien_fiche_preview");
-            echo "\"><i class=\"fa fa-check-square-o\"></i> <span>Feuille de Choix </span></a>
-        </li>
-    ";
-        }
         // line 31
         echo "        
     ";
@@ -123,20 +101,6 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         // line 49
         echo "
     ";
-        // line 50
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_TRANSFER_CREATE")) {
-            // line 51
-            echo "        <li>
-            <a href=\"";
-            // line 52
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_transfert_fonds_new");
-            echo "\">
-                <i class=\"fa fa-plus\"></i> 
-                <span>Transfert de fonds</span>
-            </a>
-        </li>
-    ";
-        }
         // line 58
         echo "
     ";
@@ -270,7 +234,7 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         echo "   
 </ul>";
         
-        $__internal_d7ba68fc0c2a3ca0f83d5090a7f94e18b816b7ec71d4d7218e0bafd574036c94->leave($__internal_d7ba68fc0c2a3ca0f83d5090a7f94e18b816b7ec71d4d7218e0bafd574036c94_prof);
+        $__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475->leave($__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475_prof);
 
     }
 
@@ -286,7 +250,7 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
 
     public function getDebugInfo()
     {
-        return array (  270 => 125,  266 => 119,  261 => 117,  255 => 115,  252 => 114,  246 => 112,  244 => 111,  233 => 102,  231 => 101,  228 => 100,  226 => 99,  223 => 98,  218 => 95,  212 => 93,  210 => 92,  207 => 91,  202 => 90,  198 => 89,  187 => 80,  185 => 79,  182 => 78,  177 => 75,  171 => 73,  169 => 72,  166 => 71,  161 => 70,  157 => 69,  146 => 60,  144 => 59,  141 => 58,  132 => 52,  129 => 51,  127 => 50,  124 => 49,  115 => 43,  112 => 42,  110 => 41,  107 => 40,  98 => 34,  95 => 33,  93 => 32,  90 => 31,  84 => 28,  81 => 27,  79 => 26,  76 => 25,  70 => 22,  67 => 21,  65 => 20,  59 => 17,  50 => 11,  46 => 10,  42 => 8,  37 => 6,  34 => 5,  28 => 4,  26 => 3,  22 => 1,);
+        return array (  234 => 125,  230 => 119,  225 => 117,  219 => 115,  216 => 114,  210 => 112,  208 => 111,  197 => 102,  195 => 101,  192 => 100,  190 => 99,  187 => 98,  182 => 95,  176 => 93,  174 => 92,  171 => 91,  166 => 90,  162 => 89,  151 => 80,  149 => 79,  146 => 78,  141 => 75,  135 => 73,  133 => 72,  130 => 71,  125 => 70,  121 => 69,  110 => 60,  108 => 59,  105 => 58,  102 => 49,  93 => 43,  90 => 42,  88 => 41,  85 => 40,  76 => 34,  73 => 33,  71 => 32,  68 => 31,  65 => 25,  59 => 17,  50 => 11,  46 => 10,  42 => 8,  37 => 6,  34 => 5,  28 => 4,  26 => 3,  22 => 1,);
     }
 
     public function getSourceContext()
@@ -310,17 +274,17 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         <a href=\"{{ path('tontine_dashboard') }}\"><i class=\"fa fa-dashboard\"></i> <span>Tableau de bord</span></a>
     </li>
 
-    {% if is_granted('ROLE_BIEN_SEARCH') %}
+    {# {% if is_granted('ROLE_BIEN_SEARCH') %}
         <li>
             <a href=\"{{ path('tontine_tontinecriteria_search') }}\"><i class=\"fa fa-search\"></i> <span>Rechercher un bien</span></a>
         </li>
-    {% endif %}
+    {% endif %} #}
 
-    {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
+    {# {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
         <li>
             <a href=\"{{ path('tontine_bien_fiche_preview') }}\"><i class=\"fa fa-check-square-o\"></i> <span>Feuille de Choix </span></a>
         </li>
-    {% endif %}
+    {% endif %} #}
         
     {% if is_granted('ROLE_CLIENT_VIEW') %}
         <li>
@@ -340,14 +304,14 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         </li>
     {% endif %}
 
-    {% if is_granted('ROLE_TRANSFER_CREATE') %}
+    {# {% if is_granted('ROLE_TRANSFER_CREATE') %}
         <li>
             <a href=\"{{ path('tontine_transfert_fonds_new') }}\">
                 <i class=\"fa fa-plus\"></i> 
                 <span>Transfert de fonds</span>
             </a>
         </li>
-    {% endif %}
+    {% endif %} #}
 
     {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
         <li class=\"treeview\">

@@ -71,11 +71,6 @@ class Agent extends BaseUser
     public $filePhoto;
 
     /**
-     * @ORM\Column(name="cumul_collecte", type="integer", nullable=true, options={"default"=0})
-     */
-    private $cumulCollecte;
-
-    /**
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\AgentGroup")
      */
     protected $profil;
@@ -237,30 +232,6 @@ class Agent extends BaseUser
     function getFilePhoto() 
     {
         return $this->filePhoto;
-    }
-
-    /**
-     * Set cumulCollecte
-     *
-     * @param integer $cumulCollecte
-     *
-     * @return Agent
-     */
-    public function setCumulCollecte($cumulCollecte)
-    {
-        $this->cumulCollecte = $cumulCollecte;
-
-        return $this;
-    }
-
-    /**
-     * Get cumulCollecte
-     *
-     * @return integer
-     */
-    public function getCumulCollecte()
-    {
-        return $this->cumulCollecte;
     }
 
     /**

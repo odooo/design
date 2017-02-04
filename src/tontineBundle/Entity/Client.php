@@ -30,42 +30,7 @@ class Client
      * @ORM\GeneratedValue(strategy="IDENTITY")
      * 
      */
-    private $id;
-
-    /**
-     * @var boolean
-     * @ORM\Column(name="photoPrise", type="boolean", nullable=true, options={"default"=false})
-     * 
-     * @Assert\IsTrue(message = "Cochez cette case pour confirmer que la photo du client est reçue")
-     */    
-    private $photoPrise;
-    
-    /**
-     * @var boolean
-     * @ORM\Column(name="piecePrise", type="boolean", nullable=true, options={"default"=false})
-     * 
-     * @Assert\IsTrue(message = "Cochez cette case pour confirmer que la pièce d'identité ou l'acte de naissance du client est reçu")
-     */    
-    private $piecePrise;
-    
-    /**
-     * @var boolean
-     * @ORM\Column(name="conditionsSignee", type="boolean", nullable=true, options={"default"=false})
-     * 
-     * @Assert\IsTrue(message = "Cochez cette case pour confirmer que les conditions générales ont été signées par le client")
-     * 
-     */    
-    private $conditionSignee;
-    
-    /**
-     * @var boolean
-     * @ORM\Column(name="feuille", type="boolean", nullable=true, options={"default"=false})
-     * 
-     * @Assert\IsTrue(message = "Cochez cette case pour confirmer que la feuille de choix a été reçue par le client")
-     * 
-     */    
-    private $feuilleChoixRecue;
-    
+    private $id;    
     
     /**
      * @var string
@@ -101,8 +66,8 @@ class Client
     /**
      * @var string
      * @ORM\Column(name="pieceidentite", type="string", length=255, nullable=true)
-     */    
-    private $pieceidentite;
+     
+    private $pieceidentite; */
 
     /**
      *
@@ -137,41 +102,6 @@ class Client
     }
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="date_naissance", type="datetime", nullable=true)
-     * 
-     * @Assert\NotBlank(message="invalide")
-     * @Assert\NotNull(message="invalide")
-     *  
-     */
-    private $dateNaissance;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="ville", type="string", length=100, nullable=true)
-     * 
-     * @Assert\NotBlank(message="invalide")
-     * @Assert\NotNull(message="invalide")
-     * 
-     *  
-     */
-    private $ville;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="quartier", type="string", length=255, nullable=true)
-     * 
-     * @Assert\NotBlank(message="invalide")
-     * @Assert\NotNull(message="invalide")
-     * 
-     *  
-     */
-    private $quartier;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="adresse", type="text", nullable=true)
@@ -183,30 +113,6 @@ class Client
      */
     private $adresse;
     
-    
-    /**
-     * @var \tontineBundle\Entity\Tontine
-     * @ORM\OneToMany(targetEntity="\tontineBundle\Entity\Tontine", mappedBy="client",cascade={"persist"})
-     */
-    private $tontines;
-    
-    /**
-     * @var \tontineBundle\Entity\ConditionGenerales
-     *
-     * @ORM\OneToOne(targetEntity="tontineBundle\Entity\ConditionGenerale", inversedBy="client", cascade={"persist"})
-     */
-    private $condition;
-    
-    /**
-     * @var \tontineBundle\Entity\Visite
-     *
-     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\Visite", mappedBy="client", cascade={"persist"})
-     */
-    private $visites;
-    
-    public function __construct() {
-        $this->tontines = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
  /**
      * @var \DateTime
@@ -302,78 +208,6 @@ class Client
     public function getPrenom()
     {
         return $this->prenom;
-    }
-
-    /**
-     * Set dateNaissance
-     *
-     * @param \DateTime $dateNaissance
-     *
-     * @return Client
-     */
-    public function setDateNaissance($dateNaissance)
-    {
-        $this->dateNaissance = $dateNaissance;
-
-        return $this;
-    }
-
-    /**
-     * Get dateNaissance
-     *
-     * @return \DateTime
-     */
-    public function getDateNaissance()
-    {
-        return $this->dateNaissance;
-    }
-
-    /**
-     * Set ville
-     *
-     * @param string $ville
-     *
-     * @return Client
-     */
-    public function setVille($ville)
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    /**
-     * Get ville
-     *
-     * @return string
-     */
-    public function getVille()
-    {
-        return $this->ville;
-    }
-
-    /**
-     * Set quartier
-     *
-     * @param string $quartier
-     *
-     * @return Client
-     */
-    public function setQuartier($quartier)
-    {
-        $this->quartier = $quartier;
-
-        return $this;
-    }
-
-    /**
-     * Get quartier
-     *
-     * @return string
-     */
-    public function getQuartier()
-    {
-        return $this->quartier;
     }
 
     /**
@@ -497,40 +331,6 @@ class Client
     }
 
     /**
-     * Add tontine
-     *
-     * @param \tontineBundle\Entity\Tontine $tontine
-     *
-     * @return Client
-     */
-    public function addTontine(\tontineBundle\Entity\Tontine $tontine)
-    {
-        $this->tontines[] = $tontine;
-
-        return $this;
-    }
-
-    /**
-     * Remove tontine
-     *
-     * @param \tontineBundle\Entity\Tontine $tontine
-     */
-    public function removeTontine(\tontineBundle\Entity\Tontine $tontine)
-    {
-        $this->tontines->removeElement($tontine);
-    }
-
-    /**
-     * Get tontines
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTontines()
-    {
-        return $this->tontines;
-    }
-
-    /**
      * Set contacts
      *
      * @param string $contacts
@@ -558,91 +358,15 @@ class Client
    
     public function __toString()
     {
-    return $this->getPrenom() .' '. $this->getNom();}
-
-    /**
-     * Set condition
-     *
-     * @param \tontineBundle\Entity\ConditionGenerale $condition
-     *
-     * @return Client
-     */
-    public function setCondition(\tontineBundle\Entity\ConditionGenerale $condition = null)
-    {
-        $this->condition = $condition;
-
-        return $this;
-    }
-
-    /**
-     * Get condition
-     *
-     * @return \tontineBundle\Entity\ConditionGenerale
-     */
-    public function getCondition()
-    {
-        return $this->condition;
-
+        return $this->getPrenom() .' '. $this->getNom();
     }
 
     public function name()
     {
         return $this->prenom . ' ' . $this->nom;
     }
-    
-    
-
-    /**
-     * Add visite
-     *
-     * @param \tontineBundle\Entity\Visite $visite
-     *
-     * @return Client
-     */
-    public function addVisite(\tontineBundle\Entity\Visite $visite)
-    {
-        $this->visites[] = $visite;
-
-        return $this;
-    }
-    
-    
-    public function setVisites($visites)
-    {
-        $this->visites = $visites;
-
-        return $this;
-    }
-
-    /**
-     * Remove visite
-     *
-     * @param \tontineBundle\Entity\Visite $visite
-     */
-    public function removeVisite(\tontineBundle\Entity\Visite $visite)
-    {
-        $this->visites->removeElement($visite);
-    }
-
-    /**
-     * Get visites
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getVisites()
-    {
-        return $this->visites;
-    }
-    
-    
-     public function conditionAccept(){
         
-        if ($this->condition) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
 
     /**
      * Set photo
@@ -667,30 +391,6 @@ class Client
     {
         return $this->photo;
     }
-
-    /**
-     * Set pieceidentite
-     *
-     * @param string $pieceidentite
-     *
-     * @return Client
-     */
-    public function setPieceidentite($pieceidentite)
-    {
-        $this->pieceidentite = $pieceidentite;
-
-        return $this;
-    }
-
-    /**
-     * Get pieceidentite
-     *
-     * @return string
-     */
-    public function getPieceidentite()
-    {
-        return $this->pieceidentite;
-    }
     
     /**
      * @var Symfony\Component\HttpFoundation\File\File
@@ -706,118 +406,5 @@ class Client
     function setFilePhoto(\Symfony\Component\HttpFoundation\File\File $filePhoto) {
         $this->filePhoto = $filePhoto;
     }
-    
-    /**
-     * @var Symfony\Component\HttpFoundation\File\File
-     * 
-     */
-    
-    private $filePieceidentite;
-    
-    function getFilePieceidentite() {
-        return $this->filePieceidentite;
-    }
 
-    function setFilePieceidentite(\Symfony\Component\HttpFoundation\File\File $filePieceidentite) {
-        $this->filePieceidentite = $filePieceidentite;
-    }
-
-
-    
-
-    /**
-     * Set photoPrise
-     *
-     * @param boolean $photoPrise
-     *
-     * @return Client
-     */
-    public function setPhotoPrise($photoPrise)
-    {
-        $this->photoPrise = $photoPrise;
-
-        return $this;
-    }
-
-    /**
-     * Get photoPrise
-     *
-     * @return boolean
-     */
-    public function getPhotoPrise()
-    {
-        return $this->photoPrise;
-    }
-
-    /**
-     * Set piecePrise
-     *
-     * @param boolean $piecePrise
-     *
-     * @return Client
-     */
-    public function setPiecePrise($piecePrise)
-    {
-        $this->piecePrise = $piecePrise;
-
-        return $this;
-    }
-
-    /**
-     * Get piecePrise
-     *
-     * @return boolean
-     */
-    public function getPiecePrise()
-    {
-        return $this->piecePrise;
-    }
-
-    /**
-     * Set conditionSignee
-     *
-     * @param boolean $conditionSignee
-     *
-     * @return Client
-     */
-    public function setConditionSignee($conditionSignee)
-    {
-        $this->conditionSignee = $conditionSignee;
-
-        return $this;
-    }
-
-    /**
-     * Get conditionSignee
-     *
-     * @return boolean
-     */
-    public function getConditionSignee()
-    {
-        return $this->conditionSignee;
-    }
-
-    /**
-     * Set feuilleChoixRecue
-     *
-     * @param boolean $feuilleChoixRecue
-     *
-     * @return Client
-     */
-    public function setFeuilleChoixRecue($feuilleChoixRecue)
-    {
-        $this->feuilleChoixRecue = $feuilleChoixRecue;
-
-        return $this;
-    }
-
-    /**
-     * Get feuilleChoixRecue
-     *
-     * @return boolean
-     */
-    public function getFeuilleChoixRecue()
-    {
-        return $this->feuilleChoixRecue;
-    }
 }

@@ -64,10 +64,10 @@ class Agent extends \tontineBundle\Entity\Agent implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'cumulCollecte', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
+            return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
         }
 
-        return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'cumulCollecte', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
+        return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
     }
 
     /**
@@ -281,28 +281,6 @@ class Agent extends \tontineBundle\Entity\Agent implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFilePhoto', []);
 
         return parent::getFilePhoto();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setCumulCollecte($cumulCollecte)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCumulCollecte', [$cumulCollecte]);
-
-        return parent::setCumulCollecte($cumulCollecte);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getCumulCollecte()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCumulCollecte', []);
-
-        return parent::getCumulCollecte();
     }
 
     /**
