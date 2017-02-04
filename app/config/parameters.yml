@@ -2,14 +2,14 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: design
+    database_name: shop_dressmaking
     database_user: root
-    database_password: mysqlconnect
+    database_password: 1234
     gspmanager_database_host: 127.0.0.1
     gspmanager_database_port: null
-    gspmanager_database_name: manager
+    gspmanager_database_name: database
     gspmanager_database_user: root
-    gspmanager_database_password: null
+    gspmanager_database_password: 1234
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
