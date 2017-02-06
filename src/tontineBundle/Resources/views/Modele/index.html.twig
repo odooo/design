@@ -1,0 +1,66 @@
+{% extends "default/index.html.twig" %}
+
+{% block title %}Liste des modèles{% endblock %}
+
+{% block content_header %}
+    <h3>Liste des modèles</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des modèles</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Libellé</th>
+                            <th>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                            </div>
+                            <th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for modele in modeles %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ modele.libelle }}</td>
+                            <td>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    
+                                    {% if  is_granted('ROLE_MODELE_EDIT') %}
+                                            <li>
+                                                <a onclick="getEditModeleForm({{modele.id}})" href="{{ path('tontine_modele_edit', { 'id': modele.id }) }}" data-rec = "{{modele.id}}" >Modifier</a>
+                                            </li>
+                                    {% endif  %}
+                                    
+                                </ul>
+                            </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('tontine_modele_new') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>                
+                Ajouter un modèle
+            </a>
+        </div>
+    </div>
+{% endblock %}

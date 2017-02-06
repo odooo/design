@@ -337,3 +337,11 @@ a4d300,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/agents/groups/,148
 721f8c,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486209293,,200
 e0f745,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/agents/groups/create,1486209353,,200
 2dbd87,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486209357,,200
+125076,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/pagnes/,1486393654,,302
+46f744,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/login,1486393655,,200
+b125b7,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/login_check,1486393671,e2253d,500
+e2253d,127.0.0.1,POST,http://localhost/tontine/web/app_dev.php/login_check,1486393671,,500
+637a73,127.0.0.1,POST,http://localhost/tontine/web/app_dev.php/login_check,1486393690,,302
+873658,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/pagnes/,1486393691,,200
+7204dd,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486393697,,200
+ddfbb5,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/pagnes/3/preview,1486393708,,200

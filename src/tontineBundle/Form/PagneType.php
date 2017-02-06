@@ -33,6 +33,14 @@ class PagneType extends AbstractType
                 'label' => "Désignation : * ",
                 'required' => true)
             )
+            ->add('categorie', null, [
+                'label' => 'Catégorie du tissu',
+                'placeholder' => 'Choisissez une categorie',
+            ])
+            ->add('fournisseur', null, [
+                'label' => 'Fournisseur du tissu',
+                'placeholder' => 'Choisissez le fournisseur',
+            ])
             ->add('mesure', null, array(
                 'label' => "Mesure (en m): * ",
                 'required' => true)
@@ -59,6 +67,14 @@ class PagneType extends AbstractType
             'option' => "",
             'new' => true,
         ));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix()
+    {
+        return 'tontinebundle_pagne';
     }
 
 }

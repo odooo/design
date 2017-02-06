@@ -13,16 +13,15 @@ use \Symfony\Component\HttpFoundation\File\File;
  * @ORM\Table(name="pagne")
  * @ORM\EntityListeners("tontineBundle\EntityListener\TontineEntityListener")
  * @ORM\Entity(repositoryClass="tontineBundle\Repository\PagneRepository")
- * 
+ *
  * @AjaxifySearch(
  *     alias = "pagne",
  *     itemTemplate = "tontineBundle:Pagne:partials/item.html.twig",
  *     searchables = {"reference", "designation", "prix", "categorie"},
  *     orderBy = { "id": "DESC" }
  * )
- * 
+ *
  */
-
 class Pagne
 {
     /**
@@ -38,7 +37,7 @@ class Pagne
      * @var string
      *
      * @ORM\Column(name="reference", type="string", length=100, nullable=true)
-     * 
+     *
      */
     private $reference;
 
@@ -46,7 +45,7 @@ class Pagne
      * @var string
      *
      * @ORM\Column(name="designation", type="string", length=100, nullable=true)
-     * 
+     *
      */
     private $designation;
 
@@ -67,7 +66,7 @@ class Pagne
     /**
      * @var string
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     */    
+     */
     private $photo;
 
     /**
@@ -88,23 +87,29 @@ class Pagne
      *
      */
     protected $categorie;
-    
-    
+
+    /**
+     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Fournisseur")
+     *
+     */
+    protected $fournisseur;
+
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
-    
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
-    
-    
+
+
     /**
      * @var \tontineBundle\Entity\Agent
      *
@@ -114,8 +119,8 @@ class Pagne
      * })
      */
     private $createdBy;
-    
-   /**
+
+    /**
      * @var \tontineBundle\Entity\Agent
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Agent", cascade={"persist"})
@@ -253,7 +258,7 @@ class Pagne
     public function getPhoto()
     {
         return $this->photo;
-    }    
+    }
 
     /**
      * Set createdAt
@@ -375,15 +380,17 @@ class Pagne
         return $this->updatedBy;
     }
 
-    
-    function getFilePhoto() {
+
+    function getFilePhoto()
+    {
         return $this->filePhoto;
     }
 
-    function setFilePhoto(\Symfony\Component\HttpFoundation\File\File $filePhoto) {
+    function setFilePhoto(\Symfony\Component\HttpFoundation\File\File $filePhoto)
+    {
         $this->filePhoto = $filePhoto;
     }
-   
+
 
     /**
      * Get id
@@ -429,6 +436,18 @@ class Pagne
     public function setCommande(\tontineBundle\Entity\Commande $commande = null)
     {
         $this->commande = $commande;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \tontineBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Pagne
+     */
+    public function setFournisseur(\tontineBundle\Entity\Fournisseur $fournisseur = null)
+    {
+        $this->fournisseur = $fournisseur;
 
         return $this;
     }
@@ -447,5 +466,15 @@ class Pagne
     {
         // TODO: Implement __toString() method.
         return $this->designation;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \tontineBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
     }
 }

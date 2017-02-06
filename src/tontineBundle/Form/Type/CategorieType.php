@@ -5,10 +5,6 @@ namespace tontineBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\CallbackValidator;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormError;
 
 class CategorieType extends AbstractType
 {

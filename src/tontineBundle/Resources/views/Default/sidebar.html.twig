@@ -77,21 +77,21 @@
         </li>
     {% endif %}
 
-    {% if is_granted('ROLE_CATEGORIE_VIEW') or is_granted('ROLE_CATEGORIE_CREATE') %}
+    {% if is_granted('ROLE_AGENCY_VIEW') or is_granted('ROLE_AGENCY_CREATE') %}
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-users"></i>
-                <span>Catégorie de Tissus</span>
+                <i class="fa fa-institution"></i>
+                <span>Agences</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                {% if is_granted('ROLE_CATEGORIE_VIEW') %}                
-                    <li><a href="{{ path('tontine_categorie_index') }}"><i class="fa fa-angle-right"></i> Liste des catégories</a></li>
+                {% if is_granted('ROLE_AGENCY_VIEW') %}                
+                    <li><a href="{{ path('tontine_agencies_index') }}"><i class="fa fa-angle-right"></i> Liste des agences</a></li>
                 {% endif %}    
-                {% if is_granted('ROLE_CATEGORIE_CREATE') %}
-                    <li><a href="{{ path('tontine_categorie_new') }}"><i class="fa fa-angle-right"></i> Enregistrer une catégorie</a></li>
+                {% if is_granted('ROLE_AGENCY_CREATE') %}
+                    <li><a href="{{ path('tontine_agencies_create') }}"><i class="fa fa-angle-right"></i> Ajouter une agence</a></li>
                 {% endif %}
             </ul>
         </li>
@@ -117,25 +117,31 @@
         </li>
     {% endif %}
 
-    {% if is_granted('ROLE_AGENCY_VIEW') or is_granted('ROLE_AGENCY_CREATE') %}
+    {% if is_granted('ROLE_GROUP_VIEW') or is_granted('ROLE_SETTING_EDIT') %}
         <li class="treeview">
             <a href="#">
-                <i class="fa fa-institution"></i>
-                <span>Agences</span>
+                <i class="fa fa-cogs"></i>
+                <span>Paramétrage</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                {% if is_granted('ROLE_AGENCY_VIEW') %}                
-                    <li><a href="{{ path('tontine_agencies_index') }}"><i class="fa fa-angle-right"></i> Liste des agences</a></li>
+                {% if is_granted('ROLE_CATEGORIE_VIEW') %}                
+                    <li><a href="{{ path('tontine_categorie_index') }}"><i class="fa fa-angle-right"></i> Liste des catégories</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_FOURNISSEUR_VIEW') %}                
+                    <li><a href="{{ path('tontine_fournisseur_index') }}"><i class="fa fa-angle-right"></i> Liste des fournisseurs</a></li>
                 {% endif %}    
-                {% if is_granted('ROLE_AGENCY_CREATE') %}
-                    <li><a href="{{ path('tontine_agencies_create') }}"><i class="fa fa-angle-right"></i> Ajouter une agence</a></li>
+                {% if is_granted('ROLE_FOURNISSEUR_CREATE') %}
+                    <li><a href="{{ path('tontine_fournisseur_new') }}"><i class="fa fa-angle-right"></i> Enregistrer un fournisseur</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_MODELE_VIEW') %}                
+                    <li><a href="{{ path('tontine_modele_index') }}"><i class="fa fa-angle-right"></i> Liste des modèles</a></li>
                 {% endif %}
             </ul>
         </li>
-    {% endif %}
+    {% endif %} 
     
     {% if is_granted('ROLE_GROUP_VIEW') or is_granted('ROLE_SETTING_EDIT') %}
         <li class="treeview">

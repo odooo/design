@@ -64,7 +64,7 @@ class CategorieController extends BaseController
 
         return $this->render('tontineBundle:Categorie:show.html.twig', array(
             'categorie' => $categorie,
-            'idc' => $Categorie->getId(),
+            'idc' => $categorie->getId(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

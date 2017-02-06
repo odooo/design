@@ -15,7 +15,7 @@
                     {% for user in clients %}
                     <div class="list-item" data-search="{{ user.name }} {{ user.contacts | phone_number_format('INTERNATIONAL') }}" data-href="{{ path('tontine_client_preview', { 'id': user.id }) }}" data-name="{{ user.name }}">
                         <div class="user-photo">
-                            <img src="{% if user.photo %}{{ asset('uploads/pieces/') }}{{user.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" alt="Photo du clent {{ user.name }}">
+                            <img src="{% if user.photo %}{{ asset('uploads/pieces/') }}{{user.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" alt="Photo du client {{ user.name }}">
                         </div>                                                  
                         <div class="user-description">
                             <div class="user-name">{{ user.name }}</div>

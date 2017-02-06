@@ -1,0 +1,39 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+<div class="container-fluid container-small">
+    <div class='row'>
+        <div class="col-sm-12">
+            {{ form_start(form) }}
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Fournisseur : </h3>
+                    <div class="row">
+                        <div class="col-sm-offset-6 col-sm-6" style="text-align: center">
+                            {% if fournisseur.photo %}
+                                <img  src="{{asset('uploads/pieces/')}}{{fournisseur.photo}}" id="profile-img-tag" class="btn img-circle img-responsive" />
+                            {% else %}
+                                <img  src="{{asset('bundles/images/profil.png')}}" id="profile-img-tag" class="btn img-circle img-responsive" />
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">            
+                    {{ form_rest(form) }}
+                </div>
+                <div class="box-footer">        
+                    {% if isModal is not defined %}
+                        {% block form_actions %}
+                            <div class="record-actions pull-left">
+                                <a href="{{ path('tontine_fournisseur_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a>
+                            </div>
+                            <div class="record-actions pull-right">
+                                <input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                </div>
+            </div>            
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

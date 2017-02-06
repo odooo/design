@@ -28,10 +28,6 @@ class TontineEntityListener {
     {
         if (method_exists($entity, 'setCreatedAt')) {
             $entity->setCreatedAt(new \DateTime());
-        }
-        
-        if ($entity instanceof \tontineBundle\Entity\Visite) {
-            $entity->setEtat( \tontineBundle\Entity\Visite::NEW_VISITE);
         } 
 
         if (method_exists($entity, 'setCreatedBy')) {

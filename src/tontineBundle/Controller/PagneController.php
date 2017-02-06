@@ -111,7 +111,7 @@ class PagneController extends BaseController
                     'success' => true,
                 ));
             } else {
-                return $this->redirectToRoute('tontine_pagne_show', array('id' => $pagne->getId()));
+                return $this->redirectToRoute('tontine_pagne', array());
                 //return $this->redirect($this->generateUrl('tontine_agent',array()));
             }
         }

@@ -1,0 +1,22 @@
+{% extends 'default/index.html.twig' %}
+
+{% block content_header %}
+    <h1>Fournisseur</h1>
+{% endblock %}
+
+{% block content %}
+
+    {% include 'tontineBundle:Fournisseur:partials/item-details.html.twig' %}
+
+    <a href="{{ path('tontine_fournisseur_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {#{% javascripts '@tontineBundle/Resources/public/js/client.js' %}
+        <script src='{{ asset_url }}'></script>
+    {% endjavascripts %}#}
+    {% javascripts '@tontineBundle/Resources/public/js/visite.js' %}
+        <script src='{{ asset_url }}'></script>
+    {% endjavascripts %}
+{% endblock %}

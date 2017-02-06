@@ -1,0 +1,36 @@
+<div style="padding: 10px;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Informations de l'utilisateur</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{% if fournisseur.photo %}{{ asset('uploads/pieces/') }}{{fournisseur.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" style="border-radius: 50%; width: 200px;">
+                </div>
+                <div class="col-sm-8">
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                            Actions
+                            <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            
+                            {% if  is_granted('ROLE_FOURNISSEUR_EDIT') %}
+                                    <li>
+                                        <a onclick="getEditFournisseurForm({{fournisseur.id}})" href="{{ path('tontine_fournisseur_edit', { 'id': fournisseur.id }) }}" data-rec = "{{fournisseur.id}}" >Modifier</a>
+                                    </li>
+                            {% endif  %}
+                            
+                        </ul>
+                    </div>
+                    <div><strong>Nom: </strong><strong>{{ fournisseur.name }}</strong></div>
+                    <div><strong>Contact: </strong>{{ fournisseur.contacts | phone_number_format('INTERNATIONAL')}}</div>
+                    <div><strong>Adresse: </strong>{{ fournisseur.adresse }}</div>
+                </div>        
+            </div>
+        </div>
+    </div>            
+
+</div>    
+
