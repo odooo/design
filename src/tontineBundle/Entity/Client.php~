@@ -413,45 +413,4 @@ class Client
         $this->filePhoto = $filePhoto;
     }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->commandes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add commande
-     *
-     * @param \tontineBundle\Entity\Commande $commande
-     *
-     * @return Client
-     */
-    public function addCommande(\tontineBundle\Entity\Commande $commande)
-    {
-        $this->commandes[] = $commande;
-
-        return $this;
-    }
-
-    /**
-     * Remove commande
-     *
-     * @param \tontineBundle\Entity\Commande $commande
-     */
-    public function removeCommande(\tontineBundle\Entity\Commande $commande)
-    {
-        $this->commandes->removeElement($commande);
-    }
-
-    /**
-     * Get commandes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCommandes()
-    {
-        return $this->commandes;
-    }
 }

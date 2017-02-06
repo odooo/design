@@ -97,6 +97,26 @@
         </li>
     {% endif %}
 
+    {% if is_granted('ROLE_COMMANDE_VIEW') or is_granted('ROLE_COMMANDE_CREATE') %}
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Commande des clients</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_COMMANDE_VIEW') %}
+                    <li><a href="{{ path('shop_command_index') }}"><i class="fa fa-angle-right"></i> Liste des commandes</a></li>
+                {% endif %}
+                {% if is_granted('ROLE_COMMANDE_CREATE') %}
+                    <li><a href="{{ path('shop_command_new') }}"><i class="fa fa-angle-right"></i> Enregistrer une commande</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
     {% if is_granted('ROLE_AGENCY_VIEW') or is_granted('ROLE_AGENCY_CREATE') %}
         <li class="treeview">
             <a href="#">

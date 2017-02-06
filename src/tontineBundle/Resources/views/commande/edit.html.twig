@@ -1,21 +1,36 @@
-{% extends 'base.html.twig' %}
+{% extends 'default/index.html.twig' %}
 
-{% block body %}
-    <h1>Commande edit</h1>
+{% block content_header %}
+    <h1>Nouvelle commande</h1>
+{% endblock %}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6 well">
+            {% include 'tontineBundle:commande/partials:form.html.twig' with { submit: 'Valider' } %}
+        </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('shop_command_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% endblock %}
+
+{% block javascript %}
+    {{parent()}}
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#profile-img-tag').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(".fselect").change(function(){
+            readURL(this);
+        });
+        $("#profile-img-tag").on('click', function(){
+            $(".fselect").click();
+        })
+    </script>
 {% endblock %}

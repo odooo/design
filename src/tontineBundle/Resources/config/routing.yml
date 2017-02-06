@@ -13,3 +13,7 @@ tontine_agent:
 tontine_pagne:
     resource: "@tontineBundle/Resources/config/routing/pagne/pagne.yml"
     prefix:   /pagnes
+
+tontine_commande:
+    resource: "@tontineBundle/Resources/config/routing/commande/commande.yml"
+    prefix:   /commandes

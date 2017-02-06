@@ -1,20 +1,20 @@
 {% extends 'default/index.html.twig' %}
 
 {% block content_header %}
-    <h1>Creation d'un client</h1>
+    <h1>Nouvelle commande</h1>
 {% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-sm-offset-3 col-sm-6 well">
-            {% include 'tontineBundle::partials/form.html.twig' with { submit: 'Valider' } %}
+            {% include 'tontineBundle:commande/partials:form.html.twig' with { submit: 'Valider' } %}
         </div>
     </div>
 
 {% endblock %}
 
 {% block javascript %}
-    {{parent()}}
+    {{ parent() }}
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -26,30 +26,34 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $(".fselect").change(function(){
+        $(".fselect").change(function () {
             readURL(this);
         });
-        $("#profile-img-tag").on('click', function(){
+        $("#profile-img-tag").on('click', function () {
             $(".fselect").click();
-        })
+        });
+
+
+        // keep track of how many email fields have been rendered
+        {#var pagneCount = '{{ form.pagnes|length }}';#}
+
+        {#$('#add-another-email').click(function (e) {#}
+            {#alert('ok');#}
+            {#e.preventDefault();#}
+
+            {#var $pagneList = $('#email-fields-list');#}
+
+            {#// grab the prototype template#}
+            {#var newWidget = $pagneList.attr('data-prototype');#}
+            {#// replace the "__name__" used in the id and name of the prototype#}
+            {#// with a number that's unique to your emails#}
+            {#// end name attribute looks like name="contact[emails][2]"#}
+            {#newWidget = newWidget.replace(/__name__/g, pagneCount);#}
+            {#pagneCount++;#}
+
+            {#// create a new list element and add it to the list#}
+            {#var $newLi = $('<li></li>').html(newWidget);#}
+            {#$newLi.appendTo($pagneList);#}
+        {#});#}
     </script>
-{% endblock %}
-
-
-
-{% extends 'base.html.twig' %}
-
-{% block body %}
-    <h1>Commande creation</h1>
-
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('shop_command_index') }}">Back to the list</a>
-        </li>
-    </ul>
 {% endblock %}

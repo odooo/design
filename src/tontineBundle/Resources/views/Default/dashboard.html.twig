@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">                        
+    <div class="row">
         {% if is_granted('ROLE_CLIENT_CREATE') %}
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="info-box">
@@ -14,14 +14,14 @@
                         <span class="info-box-text">Clients enregistrés aujourd'hui</span>
                         <span class="info-box-number">{{ dashboardDatas.newClientRegistered }}</span>
                         <div class="progress">
-                          <div class="progress-bar" style="width: 100%"></div>
+                            <div class="progress-bar" style="width: 100%"></div>
                         </div>
                         {# <span class="progress-description">
                             <a href="{{ path('tontine_etat_client_enregistrer_journalier')}}"> >> Voir la liste</a>
                         </span> #}
                     </div>
                 </div>
-            </div>                        
+            </div>
         {% endif %}
 
         {% if is_granted('ROLE_TONTINE_CREATE') %}
@@ -30,7 +30,7 @@
                     <span class="info-box-icon bg-blue"><i class="fa fa-user"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text">Commandes effectuées aujourd'hui</span>
-                        <span class="info-box-number">0</span> 
+                        <span class="info-box-number">0</span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 100%"></div>
                         </div>
@@ -78,18 +78,25 @@
                 </div>
                 <div class="box-body">
                     <ul class="users-list clearfix">
-                    {% for client in dashClientDatas.clientList %}
-                        <li>
-                            <img src="{% if client.photo %}{{ asset('uploads/pieces/') }}{{client.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" alt="Photo du client">
-                            <a class="users-list-name" href="#">{{ client.name }} </a>
-                            <span class="users-list-date">Depuis le {{ client.createdAt|date('d/m/Y h:i:s') }}</span>
-                        </li>
-                    {% endfor %}
+                        {% if dashClientDatas is defined %}
+                            {% if dashClientDatas.clientList is defined and dashClientDatas.clientList is not null and dashClientDatas.clientList is not empty %}
+                                {% for client in dashClientDatas.clientList %}
+                                    <li>
+                                        <img src="{% if client.photo %}{{ asset('uploads/pieces/') }}{{ client.photo }}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}"
+                                             alt="Photo du client">
+                                        <a class="users-list-name" href="#">{{ client.name }} </a>
+                                        <span class="users-list-date">Depuis le {{ client.createdAt|date('d/m/Y h:i:s') }}</span>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
                     </ul>
                 </div>
                 <div class="box-footer text-center">
-                    <a href="{{ path('tontine_client_new') }}" class="btn btn-sm btn-primary btn-flat pull-left">Enregistrer un client</a>
-                    <a href="{{ path('tontine_client_index') }}" class="btn btn-sm btn-default btn-flat pull-right">Voir la liste de tous les clients</a>
+                    <a href="{{ path('tontine_client_new') }}" class="btn btn-sm btn-primary btn-flat pull-left">Enregistrer
+                        un client</a>
+                    <a href="{{ path('tontine_client_index') }}" class="btn btn-sm btn-default btn-flat pull-right">Voir
+                        la liste de tous les clients</a>
                 </div>
             </div>
         </div>
@@ -103,29 +110,29 @@
                         </button>
                         <button type="button" class="btn btn-box-tool" data-widget="remove">
                             <i class="fa fa-times"></i>
-                        </button> 
+                        </button>
                     </div>
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-body">
-                nnnnnnnnnnnnnnnnnnnnnnnnn
+                    nnnnnnnnnnnnnnnnnnnnnnnnn
                 </div>
                 <div class="box-footer text-center">
                     <a href="#" class="uppercase">Liste de toutes les mains d'oeuvres</a>

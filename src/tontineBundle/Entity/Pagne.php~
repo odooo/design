@@ -442,10 +442,4 @@ class Pagne
     {
         return $this->commande;
     }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->designation;
-    }
 }
