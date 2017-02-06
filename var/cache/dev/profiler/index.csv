@@ -345,3 +345,4 @@ e2253d,127.0.0.1,POST,http://localhost/tontine/web/app_dev.php/login_check,14863
 873658,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/pagnes/,1486393691,,200
 7204dd,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486393697,,200
 ddfbb5,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/pagnes/3/preview,1486393708,,200
+99849a,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/pagnes/2/preview,1486394530,,200
