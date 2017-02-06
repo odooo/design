@@ -1,0 +1,34 @@
+{% extends ":default:index.html.twig" %}
+
+{% block content %}
+    <h3>Enregistrement d'un tissu</h3>
+    {% include 'tontineBundle:Pagne:partials/form.html.twig' 
+        with { 
+                form: form,
+                action: path('tontine_pagne_new'),
+                submit: "Ajouter un tissu"
+            }
+    %}
+{% endblock %}
+
+{% block javascript %}
+    {{parent()}}
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#profile-img-tag').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $(".fselect").change(function(){
+            readURL(this);
+        });
+        $("#profile-img-tag").on('click', function(){
+            $(".fselect").click();
+        })
+    </script>
+{% endblock %}

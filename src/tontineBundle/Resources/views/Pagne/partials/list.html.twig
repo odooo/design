@@ -1,0 +1,19 @@
+<div>
+    <table id="pagnes" class="table table-bordered table-striped responsive-table" data-request="ajaxify-search" data-entity="tontineBundle\Entity\Pagne" data-perpage="10">
+        <thead>
+            <tr>
+                <th>N°</th>
+                <th>Référence</th>
+                <th>Désignation</th>                       
+                <th>Mesure</th>                                                          
+                <th>Prix d'achat</th>                                                          
+                <th>Actions</th>                                                          
+            </tr>
+        </thead>
+        <tbody>
+            {% for pagne in pagnes %}
+                {% include 'tontineBundle:Pagne:partials/item.html.twig' with { pagne: pagne } %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

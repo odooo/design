@@ -12,16 +12,6 @@ class DashboardManager
      */
     private $clientRepository;
 
-    /**
-     * @var tontineBundle\Entity\TontineRepository
-     */
-    private $tontineRepository;
-
-    /**
-     * @var tontineBundle\Entity\DepotMiseRepository
-     */
-    private $miseRepository;
-
     private $tokenStorage;
 
     private $authorizationChecker;
@@ -49,6 +39,19 @@ class DashboardManager
         }
 
         return $data;
+    }
+
+    public function getDashClientDatas()
+    {        
+        $data1 = [];
+        $user = $this->tokenStorage->getToken()->getUser();
+
+        if ($this->authorizationChecker->isGranted('ROLE_CLIENT_CREATE')) {
+            $data1['clientList'] = $this->clientRepository
+            ->findBy(array(), array('createdAt'  => 'DESC'),4);
+        }
+
+        return $data1;
     }
 
     public function getAgentTodayRegisteredClients()

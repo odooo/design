@@ -1,0 +1,50 @@
+{% extends 'default/yop-layout.html.twig' %}
+
+{% block title %}Gestion des tissus{% endblock %}
+
+{% block content %}
+    <div class="yop-app two-pane">
+        <div class="pane pane-one" id="user-list" data-title="Tissu : ">
+            <div class="pane-header">
+                <div class="user-search-bar">
+                    <input type="text" name="search" class="form-control search-form" placeholder="Recherchez un tissu..." />                
+                </div>
+            </div>
+            <div class="pane-body">
+                <div class="infinite-list">
+                    {% for tissu in pagnes %}
+                    <div class="list-item" data-search="{{ tissu.reference }} {{ tissu.designation }} {{ tissu.mesure }}" data-href="{{ path('tontine_pagne_preview', { 'id': tissu.id }) }}" data-name="{{ tissu.reference }}">
+                        <div class="user-photo">
+                            <img src="{{ asset('uploads/pieces/') }}{{tissu.photo}}" alt="Coupon du tissu {{ tissu.reference }}">
+                        </div>                                                  
+                        <div class="user-description">
+                            <div class="user-name">{{ tissu.reference }}</div>
+                            <div class="user-phone">
+                                <span class="user-name"></span>
+                                {{ tissu.designation }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>             
+        </div>
+        <div class="pane pane-two" id="user-pagelet" yop-with-toolbar>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% if agt is defined %}
+        <script>
+            $(function(){
+                Yop.Pagelet({            
+                   url: "{{ path('tontine_pagne_preview', {'id':pgn.id }) }}",
+                   pagelet: '#user-pagelet',
+                   title: '{{ pgn.reference }}'
+               });
+            });
+        </script>
+    {% endif %}
+{% endblock %}

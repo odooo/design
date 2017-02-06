@@ -33,11 +33,6 @@ class ClientType extends AbstractType
                 'attr' => array(
                    'accept'=>'image/*',
                     'class' => 'fselect'
-                )])
-            ->add('FilePieceidentite', FileType::class, [
-                'label' => "Choisissez la piece d'identité (Optionnelle: elle peut être renseignée plus tard): ",
-                'required' => false,
-                'attr' => array(                 
                 )]);
             }else{
                 $builder->add('filePhoto', FileType::class, [
@@ -46,30 +41,9 @@ class ClientType extends AbstractType
                 'attr' => array(
                    'accept'=>'image/*',
                     'class' => 'fselect'
-                )])
-            ->add('FilePieceidentite', FileType::class, [
-                'label' => "Choisissez la piece d'identité (Optionnelle: elle peut être renseignée plus tard) : ",
-                'required' => false,
-                'attr' => array(                 
                 )]);
             }
         $builder
-            ->add('photoPrise', null, [
-                'label' => "J'ai reçu la photo du clent.",
-                'required' => true,
-            ])
-            ->add('piecePrise', null, [
-                'label' => "J'ai reçu une copie de l'acte de naissance ou de la carte d'identité du client.",
-                'required' => true,
-            ])
-            ->add('feuilleChoixRecue', null, [
-                'label' => 'Le client a reçu la feuille de choix.',
-                'required' => true,
-            ])
-            ->add('conditionSignee', null, [
-                'label' => 'Le client a signé les conditions générales.',
-                'required' => true,
-            ])
             ->add('nom', null, [
                 'label' => 'Nom * : ',
                 'required' => true,
@@ -78,16 +52,6 @@ class ClientType extends AbstractType
                 'label' => 'Prénoms * : ',
                 'required' => true,
             ])
-            ->add('dateNaissance', null,array(
-                'widget' => "single_text",
-                'format' => "dd/MM/yyyy",
-                'label' => "Date de naissance * ",
-               'required' => true,
-                "attr" => array(
-                            "placeholder" => "Ex: 02/15/2017",
-                            "class" => "datepicker"
-                          )
-                ))
             ->add('contacts', PhoneNumberType::class, array(
                 'label' => 'Contact * : ',
                 'required' => true,
@@ -102,14 +66,6 @@ class ClientType extends AbstractType
                 'country_choices' => $countries,
                 'preferred_country_choices' => array('BJ'),
                 ))
-            ->add('ville', null, [
-                'label' => 'Ville * :',
-                'required' => true,
-            ])
-            ->add('quartier', null, [
-                'label' => 'Quartier * :',
-                'required' => true,
-            ])
             ->add('adresse', null, [
                 'label' => 'Adresse précise * :',
                 'required' => true,

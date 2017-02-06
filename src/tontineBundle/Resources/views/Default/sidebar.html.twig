@@ -16,45 +16,26 @@
     <li>
         <a href="{{ path('tontine_dashboard') }}"><i class="fa fa-dashboard"></i> <span>Tableau de bord</span></a>
     </li>
-
-    {# {% if is_granted('ROLE_BIEN_SEARCH') %}
-        <li>
-            <a href="{{ path('tontine_tontinecriteria_search') }}"><i class="fa fa-search"></i> <span>Rechercher un bien</span></a>
-        </li>
-    {% endif %} #}
-
-    {# {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
-        <li>
-            <a href="{{ path('tontine_bien_fiche_preview') }}"><i class="fa fa-check-square-o"></i> <span>Feuille de Choix </span></a>
-        </li>
-    {% endif %} #}
         
     {% if is_granted('ROLE_CLIENT_VIEW') %}
-        <li>
-            <a href="{{ path('tontine_client_index') }}">
-                <i class="fa fa-user"></i> 
-                <span>Clients</span>
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Client</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
             </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_CLIENT_VIEW') %}                
+                    <li><a href="{{ path('tontine_client_index') }}"><i class="fa fa-angle-right"></i> Liste des client</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_CLIENT_CREATE') %}
+                    <li><a href="{{ path('tontine_client_new') }}"><i class="fa fa-angle-right"></i> Enregistrer un client</a></li>
+                {% endif %}
+            </ul>
         </li>
     {% endif %}
-
-    {% if is_granted('ROLE_TONTINE_VALIDATE_MISE') %}
-        <li>
-            <a href="{{ path('tontine_caisse_home') }}">
-                <i class="fa fa-money"></i> 
-                <span>Caisse Mises</span>
-            </a>
-        </li>
-    {% endif %}
-
-    {# {% if is_granted('ROLE_TRANSFER_CREATE') %}
-        <li>
-            <a href="{{ path('tontine_transfert_fonds_new') }}">
-                <i class="fa fa-plus"></i> 
-                <span>Transfert de fonds</span>
-            </a>
-        </li>
-    {% endif %} #}
 
     {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
         <li class="treeview">
@@ -76,11 +57,51 @@
         </li>
     {% endif %}
 
+    {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Tissus</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_AGENT_VIEW') %}                
+                    <li><a href="{{ path('tontine_pagne') }}"><i class="fa fa-angle-right"></i> Liste des tissus</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_AGENT_CREATE') %}
+                    <li><a href="{{ path('tontine_pagne_new') }}"><i class="fa fa-angle-right"></i> Enregistrer un tissu</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_CATEGORIE_VIEW') or is_granted('ROLE_CATEGORIE_CREATE') %}
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-users"></i>
+                <span>Catégorie de Tissus</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                {% if is_granted('ROLE_CATEGORIE_VIEW') %}                
+                    <li><a href="{{ path('tontine_categorie_index') }}"><i class="fa fa-angle-right"></i> Liste des catégories</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_CATEGORIE_CREATE') %}
+                    <li><a href="{{ path('tontine_categorie_new') }}"><i class="fa fa-angle-right"></i> Enregistrer une catégorie</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
     {% if is_granted('ROLE_AGENCY_VIEW') or is_granted('ROLE_AGENCY_CREATE') %}
         <li class="treeview">
             <a href="#">
                 <i class="fa fa-institution"></i>
-                <span>Agences d'APHEDD</span>
+                <span>Agences</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
@@ -95,8 +116,6 @@
             </ul>
         </li>
     {% endif %}
-
-    {% include 'tontineBundle:Default:sidebar/etat.html.twig' %}
     
     {% if is_granted('ROLE_GROUP_VIEW') or is_granted('ROLE_SETTING_EDIT') %}
         <li class="treeview">

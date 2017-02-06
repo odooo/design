@@ -28,6 +28,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         $request = $this->request;
 
         if (0 === strpos($pathinfo, '/js')) {
+            if (0 === strpos($pathinfo, '/js/6d2b2d6')) {
+                // _assetic_6d2b2d6
+                if ($pathinfo === '/js/6d2b2d6.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '6d2b2d6',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_6d2b2d6',);
+                }
+
+                // _assetic_6d2b2d6_0
+                if ($pathinfo === '/js/6d2b2d6_conditiongenerale_1.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '6d2b2d6',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_6d2b2d6_0',);
+                }
+
+            }
+
             if (0 === strpos($pathinfo, '/js/48887b7')) {
                 // _assetic_48887b7
                 if ($pathinfo === '/js/48887b7.js') {
@@ -37,6 +50,19 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 // _assetic_48887b7_0
                 if ($pathinfo === '/js/48887b7_visite_1.js') {
                     return array (  '_controller' => 'assetic.controller:render',  'name' => '48887b7',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_48887b7_0',);
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/js/020da92')) {
+                // _assetic_020da92
+                if ($pathinfo === '/js/020da92.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_020da92',);
+                }
+
+                // _assetic_020da92_0
+                if ($pathinfo === '/js/020da92_resiliationcontrat_1.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_020da92_0',);
                 }
 
             }

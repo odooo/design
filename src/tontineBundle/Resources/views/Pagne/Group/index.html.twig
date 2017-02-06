@@ -1,0 +1,49 @@
+{% extends 'default/index.html.twig' %}
+
+{% block title %}Liste des groupes d'agents{% endblock %}
+
+{% block content_header %}
+    <h1>Liste des groupes d'agents</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des groupes d'agents</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom du groupe</th>
+                            <th>Actions</th>
+                        </tr>                        
+                    </thead>
+                    <tbody>
+                    {% for group in groups %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ group.name }}</td>
+                            <td class="text-center">
+                                {% if is_granted('ROLE_GROUP_EDIT') %}
+                                    <a href="{{ path('tontine_agents_groups_edit', {id: group.id}) }}" class="btn btn-primary btn-xs">Modifier</a>
+                                {% endif %}
+                                {% if is_granted('ROLE_GROUP_CREATE') %}
+                                    <a href="{{ path('tontine_agents_groups_create', {group: group.id}) }}" class="btn btn-primary btn-xs">Copier</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('tontine_agents_groups_create') }}" class="btn btn-primary">
+                Créer un nouveau groupe
+            </a>
+        </div>
+    </div>
+{% endblock %}

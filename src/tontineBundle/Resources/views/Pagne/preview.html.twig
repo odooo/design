@@ -1,0 +1,48 @@
+<div style="padding: 10px;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Informations sur le tissu : {{ pagne.reference }}</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-4">
+                    <img src="{{ asset('uploads/pieces/') }}{{pagne.photo}}" style="border-radius: 50%; width: 200px;">
+                </div>
+                <div class="col-sm-8">
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                            Actions
+                            <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a onclick="getEditPagneForm({{pagne.id}})" href="{{ path('tontine_pagne_edit', { 'id': pagne.id }) }}" data-rec = "{{pagne.id}}" >Modifier</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div><strong>Référence : </strong><strong>{{ pagne.reference }}</strong></div>
+                    <div><strong>Désignation : </strong>{{ pagne.designation }}</div>
+                    <div><strong>Mesure : </strong>{{ pagne.mesure }} mètres</div>
+                    <div><strong>Prix : </strong>{{ pagne.prix|number_format(0,',','.') }} F CFA</div>
+                    <div><strong>Catégorie : </strong></div>
+                    <div><strong>Fournisseur : </strong></div>
+                    <div class="btn-group" style="margin-top: 20px">
+                        
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </div>            
+    
+    <div class="box box-primary" style="margin-top: 20px">
+        <div class="box-header with-border">
+            <h3 class="box-title">...</h3>
+        </div>
+        <div class="box-body no-padding">
+            <p class="text-center">
+               
+            </p>            
+        </div>
+    </div>
+</div>    
+

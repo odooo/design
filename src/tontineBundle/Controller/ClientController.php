@@ -76,13 +76,10 @@ class ClientController extends BaseController
      */
     public function previewAction($id)
     {
-        $client = $this->getRepository('tontineBundle:Client')
-            ->with('tontines', 'mode')
-            ->find($id);
+        $client = $this->getRepository('tontineBundle:Client')->find($id);
             
         return $this->render('tontineBundle:Client:preview.html.twig', array(
-            'client' => $client,
-            'version_cg' => $this->getParameter('version_cg')
+            'client' => $client
         ));
     }
    
@@ -150,11 +147,6 @@ class ClientController extends BaseController
                 $filename = 'CPRO-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$client->getFilePhoto()->getClientOriginalName();
                 $client->getFilePhoto()->move($this->getParameter('pieces_path'), $filename);
                 $client->setPhoto($filename);
-            }
-            if($client->getFilePieceidentite() != null){
-                $filename = 'CID-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$client->getFilePieceidentite()->getClientOriginalName();
-                $client->getFilePieceidentite()->move($this->getParameter('pieces_path'), $filename);
-                $client->setPieceidentite($filename);
             }
             
             $em->persist($client);

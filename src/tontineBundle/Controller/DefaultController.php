@@ -15,7 +15,10 @@ class DefaultController extends Controller
         $dashboardDatas = $this->get('tontine.manager.dashboard')
             ->getDashboardDatas();
 
-        return $this->render('tontineBundle:Default:dashboard.html.twig', compact('dashboardDatas'));
+        $dashClientDatas = $this->get('tontine.manager.dashboard')
+            ->getDashClientDatas();
+
+        return $this->render('tontineBundle:Default:dashboard.html.twig', compact('dashboardDatas', 'dashClientDatas'));
     }
 
     /**

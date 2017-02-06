@@ -80,33 +80,7 @@ class AgentType extends AbstractType
                 'placeholder' => 'Choisissez le profil de l\'agent',
             ])
         ;
-        /*if($options['option'] != "self"){
-            if($new){
-                $builder->add('typeUtilisateur', ChoiceType::class, array(
-                'required' => true,
-                'choices' => array(
-                    'Administrateur' => 'Administrateur',
-                    'Agent collecteur' => 'Agent collecteur',
-                    'Agent de transfert' => "Agent de transfert",
-                    'Caissière' => "Caissière",
-                    'Super Administrateur' => "Super Administrateur",),
-                    'label' => "Type d'agent: * ",
-                    'placeholder' => "Choisissez le type d'agent"
-                ));
-            }else{
-                $builder->add('typeUtilisateur', ChoiceType::class, array(
-                'required' => false,
-                'choices' => array(
-                    'Administrateur' => 'Administrateur',
-                    'Agent collecteur' => 'Agent collecteur',
-                    'Agent de transfert' => "Agent de transfert",
-                    'Caissière' => "Caissière",
-                    'Super Administrateur' => "Super Administrateur",),
-                    'label' => "Type d'agent: * ",
-                    'placeholder' => "Choisissez le type d'agent"
-                ));
-            }
-        }*/
+
     }
     
     /**
