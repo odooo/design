@@ -6,3 +6,14 @@ f34776,::1,POST,http://localhost/tontine2/web/app_dev.php/login_check,1486217318
 3cd249,::1,GET,http://localhost/tontine2/web/app_dev.php/js/routing?callback=fos.Router.setData,1486217321,,200
 242a17,::1,GET,http://localhost/tontine2/web/app_dev.php/client/new,1486217323,f147f1,500
 f147f1,::1,GET,http://localhost/tontine2/web/app_dev.php/client/new,1486217323,,500
+671821,::1,GET,http://localhost/tontine2/web/app_dev.php/client/new,1486217451,5f3618,500
+5f3618,::1,GET,http://localhost/tontine2/web/app_dev.php/client/new,1486217451,,500
+ba0120,::1,GET,http://localhost/tontine2/web/app_dev.php/,1486377017,,302
+2503ae,::1,GET,http://localhost/tontine2/web/app_dev.php/login,1486377018,,200
+8ef051,::1,POST,http://localhost/tontine2/web/app_dev.php/login_check,1486377048,,302
+3027e0,::1,GET,http://localhost/tontine2/web/app_dev.php/,1486377048,,200
+198e8e,::1,GET,http://localhost/tontine2/web/app_dev.php/js/routing?callback=fos.Router.setData,1486377049,,200
+970cec,::1,GET,http://localhost/tontine2/web/app_dev.php/client/new,1486377055,bf08af,500
+bf08af,::1,GET,http://localhost/tontine2/web/app_dev.php/client/new,1486377055,,500
+ac09b3,::1,GET,http://localhost/tontine2/web/app_dev.php/client/,1486377254,,200
+e3b4cc,::1,GET,http://localhost/tontine2/web/app_dev.php/js/routing?callback=fos.Router.setData,1486377255,,200
