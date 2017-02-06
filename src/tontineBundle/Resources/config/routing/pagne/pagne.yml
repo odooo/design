@@ -1,0 +1,27 @@
+tontine_pagne:
+    path:     /
+    defaults: { _controller: "tontineBundle:Pagne:index" }
+
+tontine_pagne_new:
+    path:     /new
+    defaults: { _controller: "tontineBundle:Pagne:new" }
+
+tontine_pagne_update:
+    path:     /{id}/update/
+    defaults: { _controller: "tontineBundle:Pagne:update" }
+    
+tontine_pagne_show:
+    path:     /{id}/show/
+    defaults: { _controller: "tontineBundle:Pagne:show" }
+        
+tontine_pagne_preview:
+    path: /{id}/preview
+    defaults: { _controller: "tontineBundle:Pagne:preview" }
+    options:
+        expose: true
+        
+tontine_pagne_edit:
+    path: /{id}/edit
+    defaults: { _controller: "tontineBundle:Pagne:edit" }
+    options:
+        expose: true

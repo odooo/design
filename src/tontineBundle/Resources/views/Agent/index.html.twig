@@ -48,33 +48,3 @@
         </script>
     {% endif %}
 {% endblock %}
-
-
-{#% block content %}
-    <h1>Listes Des Agents</h1>
-    <section class="content">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <div class="box-tools pull-right">
-                    <button class="btn btn-box-tool" data-widget="collapse">
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body">
-                {% include 'tontineBundle:Agent:partials/list.html.twig' with { agents: agents } %}
-            </div>
-        </div>
-    </section>
-   
-
-{% block javascripts %}
-   {{parent()}}
-   <script>
-       /* $(function () {
-            GpDataTable("#agents");
-        });*/
-    </script>
-{% endblock %}
-{% endblock %#}
-

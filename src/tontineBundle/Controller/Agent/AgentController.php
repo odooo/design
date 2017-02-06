@@ -41,11 +41,6 @@ class AgentController extends \tontineBundle\Controller\BaseController
                 $agent->getFilePhoto()->move($this->getParameter('pieces_path'), $filename);
                 $agent->setPhoto($filename);
                 
-                /*if ($agent->getTypeUtilisateur() === "Administrateur") $agent->setRole('ROLE_GSP_TONTINE_ADMIN');
-                if($agent->getTypeUtilisateur() === "Caissière") $agent->setRole ('ROLE_GSP_TONTINE_CAISSIERE');
-                if($agent->getTypeUtilisateur() == "Agent de transfert") $agent->setRole ('ROLE_GSP_TONTINE_AGENT_DE_TRANSFERT');
-                if($agent->getTypeUtilisateur() == "Agent collecteur") $agent->setRole ('ROLE_GSP_TONTINE_COLLECTEUR');
-                if($agent->getTypeUtilisateur() == "Super Administrateur") $agent->setRole ('ROLE_GSP_TONTINE_SUPER_ADMIN');*/
                 $em->persist($agent);
                 $em->flush();
                 return $this->redirect($this->generateUrl('tontine_agent',array()));

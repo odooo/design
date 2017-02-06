@@ -15,8 +15,8 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475->enter($__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/sidebar.html.twig"));
+        $__internal_a81d7e732f79feaceb32f7946e4751be95f3d6e268f5142b76eb9f1543a26d4d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_a81d7e732f79feaceb32f7946e4751be95f3d6e268f5142b76eb9f1543a26d4d->enter($__internal_a81d7e732f79feaceb32f7946e4751be95f3d6e268f5142b76eb9f1543a26d4d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/sidebar.html.twig"));
 
         // line 1
         echo "<div class=\"user-panel\">
@@ -59,54 +59,52 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_dashboard");
         echo "\"><i class=\"fa fa-dashboard\"></i> <span>Tableau de bord</span></a>
     </li>
-
+        
     ";
-        // line 25
-        echo "
-    ";
-        // line 31
-        echo "        
-    ";
-        // line 32
+        // line 20
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CLIENT_VIEW")) {
+            // line 21
+            echo "        <li class=\"treeview\">
+            <a href=\"#\">
+                <i class=\"fa fa-users\"></i>
+                <span>Client</span>
+                <span class=\"pull-right-container\">
+                    <i class=\"fa fa-angle-left pull-right\"></i>
+                </span>
+            </a>
+            <ul class=\"treeview-menu\">
+                ";
+            // line 30
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CLIENT_VIEW")) {
+                echo "                
+                    <li><a href=\"";
+                // line 31
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_client_index");
+                echo "\"><i class=\"fa fa-angle-right\"></i> Liste des client</a></li>
+                ";
+            }
+            // line 32
+            echo "    
+                ";
             // line 33
-            echo "        <li>
-            <a href=\"";
-            // line 34
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_client_index");
-            echo "\">
-                <i class=\"fa fa-user\"></i> 
-                <span>Clients</span>
-            </a>
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CLIENT_CREATE")) {
+                // line 34
+                echo "                    <li><a href=\"";
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_client_new");
+                echo "\"><i class=\"fa fa-angle-right\"></i> Enregistrer un client</a></li>
+                ";
+            }
+            // line 36
+            echo "            </ul>
         </li>
     ";
         }
+        // line 39
+        echo "
+    ";
         // line 40
-        echo "
-    ";
-        // line 41
-        if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_TONTINE_VALIDATE_MISE")) {
-            // line 42
-            echo "        <li>
-            <a href=\"";
-            // line 43
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_caisse_home");
-            echo "\">
-                <i class=\"fa fa-money\"></i> 
-                <span>Caisse Mises</span>
-            </a>
-        </li>
-    ";
-        }
-        // line 49
-        echo "
-    ";
-        // line 58
-        echo "
-    ";
-        // line 59
         if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_VIEW") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_CREATE"))) {
-            // line 60
+            // line 41
             echo "        <li class=\"treeview\">
             <a href=\"#\">
                 <i class=\"fa fa-users\"></i>
@@ -117,83 +115,160 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
             </a>
             <ul class=\"treeview-menu\">
                 ";
-            // line 69
+            // line 50
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_VIEW")) {
                 echo "                
                     <li><a href=\"";
-                // line 70
+                // line 51
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_agent");
                 echo "\"><i class=\"fa fa-angle-right\"></i> Liste des agents</a></li>
                 ";
             }
-            // line 71
+            // line 52
             echo "    
                 ";
-            // line 72
+            // line 53
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_CREATE")) {
-                // line 73
+                // line 54
                 echo "                    <li><a href=\"";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_agent_new");
                 echo "\"><i class=\"fa fa-angle-right\"></i> Enregistrer un agent</a></li>
                 ";
             }
-            // line 75
+            // line 56
             echo "            </ul>
         </li>
     ";
         }
-        // line 78
+        // line 59
         echo "
     ";
-        // line 79
-        if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENCY_VIEW") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENCY_CREATE"))) {
-            // line 80
+        // line 60
+        if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_VIEW") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_CREATE"))) {
+            // line 61
             echo "        <li class=\"treeview\">
             <a href=\"#\">
-                <i class=\"fa fa-institution\"></i>
-                <span>Agences d'APHEDD</span>
+                <i class=\"fa fa-users\"></i>
+                <span>Tissus</span>
                 <span class=\"pull-right-container\">
                     <i class=\"fa fa-angle-left pull-right\"></i>
                 </span>
             </a>
             <ul class=\"treeview-menu\">
                 ";
-            // line 89
+            // line 70
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_VIEW")) {
+                echo "                
+                    <li><a href=\"";
+                // line 71
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_pagne");
+                echo "\"><i class=\"fa fa-angle-right\"></i> Liste des tissus</a></li>
+                ";
+            }
+            // line 72
+            echo "    
+                ";
+            // line 73
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENT_CREATE")) {
+                // line 74
+                echo "                    <li><a href=\"";
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_pagne_new");
+                echo "\"><i class=\"fa fa-angle-right\"></i> Enregistrer un tissu</a></li>
+                ";
+            }
+            // line 76
+            echo "            </ul>
+        </li>
+    ";
+        }
+        // line 79
+        echo "
+    ";
+        // line 80
+        if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CATEGORIE_VIEW") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CATEGORIE_CREATE"))) {
+            // line 81
+            echo "        <li class=\"treeview\">
+            <a href=\"#\">
+                <i class=\"fa fa-users\"></i>
+                <span>Catégorie de Tissus</span>
+                <span class=\"pull-right-container\">
+                    <i class=\"fa fa-angle-left pull-right\"></i>
+                </span>
+            </a>
+            <ul class=\"treeview-menu\">
+                ";
+            // line 90
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CATEGORIE_VIEW")) {
+                echo "                
+                    <li><a href=\"";
+                // line 91
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_categorie_index");
+                echo "\"><i class=\"fa fa-angle-right\"></i> Liste des catégories</a></li>
+                ";
+            }
+            // line 92
+            echo "    
+                ";
+            // line 93
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CATEGORIE_CREATE")) {
+                // line 94
+                echo "                    <li><a href=\"";
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_categorie_new");
+                echo "\"><i class=\"fa fa-angle-right\"></i> Enregistrer une catégorie</a></li>
+                ";
+            }
+            // line 96
+            echo "            </ul>
+        </li>
+    ";
+        }
+        // line 99
+        echo "
+    ";
+        // line 100
+        if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENCY_VIEW") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENCY_CREATE"))) {
+            // line 101
+            echo "        <li class=\"treeview\">
+            <a href=\"#\">
+                <i class=\"fa fa-institution\"></i>
+                <span>Agences</span>
+                <span class=\"pull-right-container\">
+                    <i class=\"fa fa-angle-left pull-right\"></i>
+                </span>
+            </a>
+            <ul class=\"treeview-menu\">
+                ";
+            // line 110
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENCY_VIEW")) {
                 echo "                
                     <li><a href=\"";
-                // line 90
+                // line 111
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_agencies_index");
                 echo "\"><i class=\"fa fa-angle-right\"></i> Liste des agences</a></li>
                 ";
             }
-            // line 91
+            // line 112
             echo "    
                 ";
-            // line 92
+            // line 113
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_AGENCY_CREATE")) {
-                // line 93
+                // line 114
                 echo "                    <li><a href=\"";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_agencies_create");
                 echo "\"><i class=\"fa fa-angle-right\"></i> Ajouter une agence</a></li>
                 ";
             }
-            // line 95
+            // line 116
             echo "            </ul>
         </li>
     ";
         }
-        // line 98
-        echo "
-    ";
-        // line 99
-        $this->loadTemplate("tontineBundle:Default:sidebar/etat.html.twig", "@tontine/Default/sidebar.html.twig", 99)->display($context);
-        // line 100
+        // line 119
         echo "    
     ";
-        // line 101
+        // line 120
         if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_GROUP_VIEW") || $this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_SETTING_EDIT"))) {
-            // line 102
+            // line 121
             echo "        <li class=\"treeview\">
             <a href=\"#\">
                 <i class=\"fa fa-cogs\"></i>
@@ -204,37 +279,37 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
             </a>
             <ul class=\"treeview-menu\">
                 ";
-            // line 111
+            // line 130
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_GROUP_VIEW")) {
-                // line 112
+                // line 131
                 echo "                    <li><a href=\"";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_agents_groups_index");
                 echo "\"><i class=\"fa fa-angle-right\"></i> Liste des profils d'agent</a></li>
                 ";
             }
-            // line 114
+            // line 133
             echo "                ";
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_SETTING_EDIT")) {
-                // line 115
+                // line 134
                 echo "                    <li><a href=\"";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_parameters_edit");
                 echo "\"><i class=\"fa fa-angle-right\"></i> Modifier les paramètres</a></li>
                 ";
             }
-            // line 117
+            // line 136
             echo "            </ul>
         </li>
     ";
         }
-        // line 119
+        // line 138
         echo "        
 
     ";
-        // line 125
+        // line 144
         echo "   
 </ul>";
         
-        $__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475->leave($__internal_dc2f226b4dc839ed60aeb0dec0b6597c9cacb34f2038ce4f2758e379353ff475_prof);
+        $__internal_a81d7e732f79feaceb32f7946e4751be95f3d6e268f5142b76eb9f1543a26d4d->leave($__internal_a81d7e732f79feaceb32f7946e4751be95f3d6e268f5142b76eb9f1543a26d4d_prof);
 
     }
 
@@ -250,7 +325,7 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
 
     public function getDebugInfo()
     {
-        return array (  234 => 125,  230 => 119,  225 => 117,  219 => 115,  216 => 114,  210 => 112,  208 => 111,  197 => 102,  195 => 101,  192 => 100,  190 => 99,  187 => 98,  182 => 95,  176 => 93,  174 => 92,  171 => 91,  166 => 90,  162 => 89,  151 => 80,  149 => 79,  146 => 78,  141 => 75,  135 => 73,  133 => 72,  130 => 71,  125 => 70,  121 => 69,  110 => 60,  108 => 59,  105 => 58,  102 => 49,  93 => 43,  90 => 42,  88 => 41,  85 => 40,  76 => 34,  73 => 33,  71 => 32,  68 => 31,  65 => 25,  59 => 17,  50 => 11,  46 => 10,  42 => 8,  37 => 6,  34 => 5,  28 => 4,  26 => 3,  22 => 1,);
+        return array (  309 => 144,  305 => 138,  300 => 136,  294 => 134,  291 => 133,  285 => 131,  283 => 130,  272 => 121,  270 => 120,  267 => 119,  262 => 116,  256 => 114,  254 => 113,  251 => 112,  246 => 111,  242 => 110,  231 => 101,  229 => 100,  226 => 99,  221 => 96,  215 => 94,  213 => 93,  210 => 92,  205 => 91,  201 => 90,  190 => 81,  188 => 80,  185 => 79,  180 => 76,  174 => 74,  172 => 73,  169 => 72,  164 => 71,  160 => 70,  149 => 61,  147 => 60,  144 => 59,  139 => 56,  133 => 54,  131 => 53,  128 => 52,  123 => 51,  119 => 50,  108 => 41,  106 => 40,  103 => 39,  98 => 36,  92 => 34,  90 => 33,  87 => 32,  82 => 31,  78 => 30,  67 => 21,  65 => 20,  59 => 17,  50 => 11,  46 => 10,  42 => 8,  37 => 6,  34 => 5,  28 => 4,  26 => 3,  22 => 1,);
     }
 
     public function getSourceContext()
@@ -273,45 +348,26 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
     <li>
         <a href=\"{{ path('tontine_dashboard') }}\"><i class=\"fa fa-dashboard\"></i> <span>Tableau de bord</span></a>
     </li>
-
-    {# {% if is_granted('ROLE_BIEN_SEARCH') %}
-        <li>
-            <a href=\"{{ path('tontine_tontinecriteria_search') }}\"><i class=\"fa fa-search\"></i> <span>Rechercher un bien</span></a>
-        </li>
-    {% endif %} #}
-
-    {# {% if is_granted('ROLE_BIEN_CREATE_OPTIONS') %}
-        <li>
-            <a href=\"{{ path('tontine_bien_fiche_preview') }}\"><i class=\"fa fa-check-square-o\"></i> <span>Feuille de Choix </span></a>
-        </li>
-    {% endif %} #}
         
     {% if is_granted('ROLE_CLIENT_VIEW') %}
-        <li>
-            <a href=\"{{ path('tontine_client_index') }}\">
-                <i class=\"fa fa-user\"></i> 
-                <span>Clients</span>
+        <li class=\"treeview\">
+            <a href=\"#\">
+                <i class=\"fa fa-users\"></i>
+                <span>Client</span>
+                <span class=\"pull-right-container\">
+                    <i class=\"fa fa-angle-left pull-right\"></i>
+                </span>
             </a>
+            <ul class=\"treeview-menu\">
+                {% if is_granted('ROLE_CLIENT_VIEW') %}                
+                    <li><a href=\"{{ path('tontine_client_index') }}\"><i class=\"fa fa-angle-right\"></i> Liste des client</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_CLIENT_CREATE') %}
+                    <li><a href=\"{{ path('tontine_client_new') }}\"><i class=\"fa fa-angle-right\"></i> Enregistrer un client</a></li>
+                {% endif %}
+            </ul>
         </li>
     {% endif %}
-
-    {% if is_granted('ROLE_TONTINE_VALIDATE_MISE') %}
-        <li>
-            <a href=\"{{ path('tontine_caisse_home') }}\">
-                <i class=\"fa fa-money\"></i> 
-                <span>Caisse Mises</span>
-            </a>
-        </li>
-    {% endif %}
-
-    {# {% if is_granted('ROLE_TRANSFER_CREATE') %}
-        <li>
-            <a href=\"{{ path('tontine_transfert_fonds_new') }}\">
-                <i class=\"fa fa-plus\"></i> 
-                <span>Transfert de fonds</span>
-            </a>
-        </li>
-    {% endif %} #}
 
     {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
         <li class=\"treeview\">
@@ -333,11 +389,51 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         </li>
     {% endif %}
 
+    {% if is_granted('ROLE_AGENT_VIEW') or is_granted('ROLE_AGENT_CREATE') %}
+        <li class=\"treeview\">
+            <a href=\"#\">
+                <i class=\"fa fa-users\"></i>
+                <span>Tissus</span>
+                <span class=\"pull-right-container\">
+                    <i class=\"fa fa-angle-left pull-right\"></i>
+                </span>
+            </a>
+            <ul class=\"treeview-menu\">
+                {% if is_granted('ROLE_AGENT_VIEW') %}                
+                    <li><a href=\"{{ path('tontine_pagne') }}\"><i class=\"fa fa-angle-right\"></i> Liste des tissus</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_AGENT_CREATE') %}
+                    <li><a href=\"{{ path('tontine_pagne_new') }}\"><i class=\"fa fa-angle-right\"></i> Enregistrer un tissu</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
+    {% if is_granted('ROLE_CATEGORIE_VIEW') or is_granted('ROLE_CATEGORIE_CREATE') %}
+        <li class=\"treeview\">
+            <a href=\"#\">
+                <i class=\"fa fa-users\"></i>
+                <span>Catégorie de Tissus</span>
+                <span class=\"pull-right-container\">
+                    <i class=\"fa fa-angle-left pull-right\"></i>
+                </span>
+            </a>
+            <ul class=\"treeview-menu\">
+                {% if is_granted('ROLE_CATEGORIE_VIEW') %}                
+                    <li><a href=\"{{ path('tontine_categorie_index') }}\"><i class=\"fa fa-angle-right\"></i> Liste des catégories</a></li>
+                {% endif %}    
+                {% if is_granted('ROLE_CATEGORIE_CREATE') %}
+                    <li><a href=\"{{ path('tontine_categorie_new') }}\"><i class=\"fa fa-angle-right\"></i> Enregistrer une catégorie</a></li>
+                {% endif %}
+            </ul>
+        </li>
+    {% endif %}
+
     {% if is_granted('ROLE_AGENCY_VIEW') or is_granted('ROLE_AGENCY_CREATE') %}
         <li class=\"treeview\">
             <a href=\"#\">
                 <i class=\"fa fa-institution\"></i>
-                <span>Agences d'APHEDD</span>
+                <span>Agences</span>
                 <span class=\"pull-right-container\">
                     <i class=\"fa fa-angle-left pull-right\"></i>
                 </span>
@@ -352,8 +448,6 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
             </ul>
         </li>
     {% endif %}
-
-    {% include 'tontineBundle:Default:sidebar/etat.html.twig' %}
     
     {% if is_granted('ROLE_GROUP_VIEW') or is_granted('ROLE_SETTING_EDIT') %}
         <li class=\"treeview\">

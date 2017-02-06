@@ -7,18 +7,7 @@ tontineBundle\Entity\Client:
             expose: true
         prenom:
             expose: true
-        dateNaissance:
-            expose: true
-            serialized_name: dateNaissance
         contacts:
             expose: true
         adresse:
             expose: true
-        quartier:
-            expose: true
-        ville:
-            expose: true
-    virtual_properties:
-        conditionAccept:
-            serialized_name: cg
-            type: boolean

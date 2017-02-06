@@ -1,0 +1,13 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Libellé</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for client in clients %}        
+        {% include "tontineBundle:Categorie:partials/item.html.twig" %}
+    {% endfor %}
+    </tbody>
+</table>

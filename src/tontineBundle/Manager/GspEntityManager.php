@@ -38,15 +38,4 @@ class GspEntityManager
         return $ary;
     }
 
-
-    public function findAllQuartier()
-    {
-        return $this->createEntities($this->dbConnection->fetchAll('SELECT DISTINCT *, code_quartier as id FROM quartier'),'Quartier');
-    }
-
-    public function findAllZone()
-    {
-        return $this->createEntities($this->dbConnection->fetchAll('SELECT DISTINCT *, code_zone as id FROM zone'),'Zone');
-    }
-
 }

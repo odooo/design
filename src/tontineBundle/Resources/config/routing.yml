@@ -9,3 +9,7 @@ tontine_user_profile:
 tontine_agent:
     resource: "@tontineBundle/Resources/config/routing/agent/agent.yml"
     prefix:   /agents
+
+tontine_pagne:
+    resource: "@tontineBundle/Resources/config/routing/pagne/pagne.yml"
+    prefix:   /pagnes

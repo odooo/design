@@ -1,0 +1,22 @@
+<tr scope="row">  
+    <td>{{ pagne.id}}</td>
+    <td>{{ pagne.reference}}</td>
+    <td>{{ pagne.designation}}</td>
+    <td>{{ pagne.mesure}}</td>
+    <td>{{ pagne.prix}}</td>
+    <td>
+        <div class="input-group btn">
+            <button type="button" class="btn btn-success  dropdown-toggle pull-right" data-toggle="dropdown">
+                Actions  <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{{path("tontine_pagne_show",{'id':pagne.id })}}">Voir</a>
+                </li>
+                <li>
+                    <a href="{{path('tontine_pagne_update', {'id': pagne.id } )}}">Modifier</a> 
+                </li>
+            </ul>
+        </div>
+    </td>
+</tr>

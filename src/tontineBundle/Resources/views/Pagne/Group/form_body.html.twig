@@ -1,0 +1,17 @@
+{{ form_row(form.name) }}
+<div class="form-group">
+    {#{{ form_label(form.roles)}}    #}
+    {% set index = 0 %}
+    {% for group in form.roles.vars.choices %}
+        {% set length = group.choices | length + index - 1 %}        
+        <div class="row">            
+            <h3 class="role-group">{{ group.label }}</h3>
+            {% for i in index..length %}
+                <div class="col-md-6">
+                {{ form_widget(form.roles[i]) }}
+                </div>                
+            {% endfor %}
+        </div>
+        {% set index = index + group.choices | length %}
+    {% endfor %}
+</div>

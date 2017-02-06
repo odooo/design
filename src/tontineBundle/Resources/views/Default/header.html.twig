@@ -31,17 +31,14 @@
         {% endif %}
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                {# {% set cgnu = menuCounters.countMiseAjourCG()%} #}
                 {% block userProfil %}
-                    {% if (is_granted('ROLE_GSP_TONTINE_ADMIN') and (cgnu != 0)) %}
-                        <li class="dropdown" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<b>{{cgnu}} Condition(s) générales non à jour!</b>">
-                            <!-- Menu Toggle Button -->
-                            <a href="#" class="yop-blink btn-danger" data-toggle="dropdown">
-                                Conditions Génerales
-                                <span class="fa fa-bell"></span>
-                            </a>
-                        </li>
-                    {% endif %}
+                    <li class="dropdown" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<b>Condition(s) générales non à jour!</b>">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="yop-blink btn-danger" data-toggle="dropdown">
+                            Express Couture
+                            <span class="fa fa-bell"></span>
+                        </a>
+                    </li>
                     <li class="dropdown">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">                            

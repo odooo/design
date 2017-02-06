@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="yop-app two-pane">
-        <div class="pane pane-one" id="user-list">
+        <div class="pane pane-one" id="user-list" data-title="Client : ">
             <div class="pane-header">
                 <div class="user-search-bar">
                     <input type="text" name="search" class="form-control search-form" placeholder="Recherchez un client..." />                
@@ -15,7 +15,7 @@
                     {% for user in clients %}
                     <div class="list-item" data-search="{{ user.name }} {{ user.contacts | phone_number_format('INTERNATIONAL') }}" data-href="{{ path('tontine_client_preview', { 'id': user.id }) }}" data-name="{{ user.name }}">
                         <div class="user-photo">
-                            <img src="{% if user.photo %}{{ asset('uploads/pieces/') }}{{user.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" alt="Photo de profil de {{ user.name }}">
+                            <img src="{% if user.photo %}{{ asset('uploads/pieces/') }}{{user.photo}}{% else %}{{ asset('bundles/images/avatar04.png') }}{% endif %}" alt="Photo du clent {{ user.name }}">
                         </div>                                                  
                         <div class="user-description">
                             <div class="user-name">{{ user.name }}</div>

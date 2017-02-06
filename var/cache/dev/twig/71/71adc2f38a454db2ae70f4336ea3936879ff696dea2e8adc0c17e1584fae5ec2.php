@@ -23,36 +23,36 @@ class __TwigTemplate_306d4816a02fc8d57830d3931a2c161d13f17d1a7645411e2b4466a7fae
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_c6abc202c5f394719fea3f04b3fef0b7a47fcf013994dd315781ddadfa44bbe5 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c6abc202c5f394719fea3f04b3fef0b7a47fcf013994dd315781ddadfa44bbe5->enter($__internal_c6abc202c5f394719fea3f04b3fef0b7a47fcf013994dd315781ddadfa44bbe5_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Client:index.html.twig"));
+        $__internal_1ff36f67cec8c3bf9af18c5cb9160ae27afceceb5e30ab0a8cdedfc4d802278c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_1ff36f67cec8c3bf9af18c5cb9160ae27afceceb5e30ab0a8cdedfc4d802278c->enter($__internal_1ff36f67cec8c3bf9af18c5cb9160ae27afceceb5e30ab0a8cdedfc4d802278c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Client:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_c6abc202c5f394719fea3f04b3fef0b7a47fcf013994dd315781ddadfa44bbe5->leave($__internal_c6abc202c5f394719fea3f04b3fef0b7a47fcf013994dd315781ddadfa44bbe5_prof);
+        $__internal_1ff36f67cec8c3bf9af18c5cb9160ae27afceceb5e30ab0a8cdedfc4d802278c->leave($__internal_1ff36f67cec8c3bf9af18c5cb9160ae27afceceb5e30ab0a8cdedfc4d802278c_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_7cc50a68515d4447c027652afdf628e9576c43fc58d9e6998cc7904cc3a1d175 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7cc50a68515d4447c027652afdf628e9576c43fc58d9e6998cc7904cc3a1d175->enter($__internal_7cc50a68515d4447c027652afdf628e9576c43fc58d9e6998cc7904cc3a1d175_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_5887b383b00725fc8fe38a394f76216cebd96d52240adfa85e91324d19435c14 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_5887b383b00725fc8fe38a394f76216cebd96d52240adfa85e91324d19435c14->enter($__internal_5887b383b00725fc8fe38a394f76216cebd96d52240adfa85e91324d19435c14_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
         echo "Gestion des clients";
         
-        $__internal_7cc50a68515d4447c027652afdf628e9576c43fc58d9e6998cc7904cc3a1d175->leave($__internal_7cc50a68515d4447c027652afdf628e9576c43fc58d9e6998cc7904cc3a1d175_prof);
+        $__internal_5887b383b00725fc8fe38a394f76216cebd96d52240adfa85e91324d19435c14->leave($__internal_5887b383b00725fc8fe38a394f76216cebd96d52240adfa85e91324d19435c14_prof);
 
     }
 
     // line 5
     public function block_content($context, array $blocks = array())
     {
-        $__internal_8b7153f1198957028b8bdcd8232f09874d8ec303857bbbf8e7bee91f0eb4f14e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_8b7153f1198957028b8bdcd8232f09874d8ec303857bbbf8e7bee91f0eb4f14e->enter($__internal_8b7153f1198957028b8bdcd8232f09874d8ec303857bbbf8e7bee91f0eb4f14e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_8f00d4f278e02dd8dc651ffea9c25160100880eb123a4959e986e6e2a49da55a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8f00d4f278e02dd8dc651ffea9c25160100880eb123a4959e986e6e2a49da55a->enter($__internal_8f00d4f278e02dd8dc651ffea9c25160100880eb123a4959e986e6e2a49da55a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 6
         echo "    <div class=\"yop-app two-pane\">
-        <div class=\"pane pane-one\" id=\"user-list\">
+        <div class=\"pane pane-one\" id=\"user-list\" data-title=\"Client : \">
             <div class=\"pane-header\">
                 <div class=\"user-search-bar\">
                     <input type=\"text\" name=\"search\" class=\"form-control search-form\" placeholder=\"Recherchez un client...\" />                
@@ -116,15 +116,15 @@ class __TwigTemplate_306d4816a02fc8d57830d3931a2c161d13f17d1a7645411e2b4466a7fae
     </div>
 ";
         
-        $__internal_8b7153f1198957028b8bdcd8232f09874d8ec303857bbbf8e7bee91f0eb4f14e->leave($__internal_8b7153f1198957028b8bdcd8232f09874d8ec303857bbbf8e7bee91f0eb4f14e_prof);
+        $__internal_8f00d4f278e02dd8dc651ffea9c25160100880eb123a4959e986e6e2a49da55a->leave($__internal_8f00d4f278e02dd8dc651ffea9c25160100880eb123a4959e986e6e2a49da55a_prof);
 
     }
 
     // line 37
     public function block_javascript($context, array $blocks = array())
     {
-        $__internal_ea773d7ffe1f8aacb282aa88eacd2d1d5073fa705c1913bb0289013d3fab65de = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_ea773d7ffe1f8aacb282aa88eacd2d1d5073fa705c1913bb0289013d3fab65de->enter($__internal_ea773d7ffe1f8aacb282aa88eacd2d1d5073fa705c1913bb0289013d3fab65de_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
+        $__internal_4f609cf05f2f27e9db9544e9bc7d97b02978b5cdaaff784238a6fd652543c2a6 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4f609cf05f2f27e9db9544e9bc7d97b02978b5cdaaff784238a6fd652543c2a6->enter($__internal_4f609cf05f2f27e9db9544e9bc7d97b02978b5cdaaff784238a6fd652543c2a6_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
 
         // line 38
         echo "    ";
@@ -154,7 +154,7 @@ class __TwigTemplate_306d4816a02fc8d57830d3931a2c161d13f17d1a7645411e2b4466a7fae
     ";
         }
         
-        $__internal_ea773d7ffe1f8aacb282aa88eacd2d1d5073fa705c1913bb0289013d3fab65de->leave($__internal_ea773d7ffe1f8aacb282aa88eacd2d1d5073fa705c1913bb0289013d3fab65de_prof);
+        $__internal_4f609cf05f2f27e9db9544e9bc7d97b02978b5cdaaff784238a6fd652543c2a6->leave($__internal_4f609cf05f2f27e9db9544e9bc7d97b02978b5cdaaff784238a6fd652543c2a6_prof);
 
     }
 
@@ -181,7 +181,7 @@ class __TwigTemplate_306d4816a02fc8d57830d3931a2c161d13f17d1a7645411e2b4466a7fae
 
 {% block content %}
     <div class=\"yop-app two-pane\">
-        <div class=\"pane pane-one\" id=\"user-list\">
+        <div class=\"pane pane-one\" id=\"user-list\" data-title=\"Client : \">
             <div class=\"pane-header\">
                 <div class=\"user-search-bar\">
                     <input type=\"text\" name=\"search\" class=\"form-control search-form\" placeholder=\"Recherchez un client...\" />                

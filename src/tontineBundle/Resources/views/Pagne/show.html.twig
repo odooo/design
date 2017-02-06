@@ -1,0 +1,54 @@
+{% extends ":default:index.html.twig" %}
+{% block content %}    
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h1 class="box-title"> Details des informations des tissus </h1>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                </button>
+            </div>
+        </div>            
+
+        <div class="box-body">
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>N° Pagne</th>
+                        <td>{{ pagne.id }}</td>
+                    </tr>                        
+                    <tr>
+                        <th>Coupon</th>
+                        <td> 
+                            <div style="max-width: 400px">
+                                <img class="img-circle img-responsive" src="{{ asset('uploads/pieces/')}}{{pagne.photo}}"/>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Référence</th>
+                        <td>  {{ pagne.reference }} </td>
+                    </tr>
+                    <tr>
+                        <th>Désignation</th>
+                        <td>{{ pagne.designation }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mesure</th>
+                        <td>{{ pagne.mesure}}</td>
+                    </tr>
+                    <tr>
+                        <th>Prix d'achat</th>
+                        <td>{{ pagne.prix }}</td>
+                    </tr>                                              
+                </tbody>
+            </table>
+
+            <div class="box-footer">
+                <a href="{{ path('tontine_pagne') }}">
+                <button type="button" class="btn btn-warning">Retour à la liste</button></a>                
+            </div>
+        </div>
+    </div>
+{% endblock %}

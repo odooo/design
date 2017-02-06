@@ -17,8 +17,8 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4->enter($__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/header.html.twig"));
+        $__internal_80519f3a4a3fd1fd365e0942677d7767ba1b8ace0e20bbd7b03aa0fc445c4876 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_80519f3a4a3fd1fd365e0942677d7767ba1b8ace0e20bbd7b03aa0fc445c4876->enter($__internal_80519f3a4a3fd1fd365e0942677d7767ba1b8ace0e20bbd7b03aa0fc445c4876_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/header.html.twig"));
 
         // line 1
         echo "<header class=\"main-header\">
@@ -73,24 +73,23 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
         echo "        <div class=\"navbar-custom-menu\">
             <ul class=\"nav navbar-nav\">
                 ";
-        // line 35
-        echo "                ";
+        // line 34
         $this->displayBlock('userProfil', $context, $blocks);
-        // line 75
+        // line 72
         echo "            </ul>
         </div>
     </nav>
 </header>";
         
-        $__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4->leave($__internal_cb05f6209d62ca85aa8394a2e5c61fdbae52c61a7d603e1e8296c6ded1959cf4_prof);
+        $__internal_80519f3a4a3fd1fd365e0942677d7767ba1b8ace0e20bbd7b03aa0fc445c4876->leave($__internal_80519f3a4a3fd1fd365e0942677d7767ba1b8ace0e20bbd7b03aa0fc445c4876_prof);
 
     }
 
     // line 14
     public function block_button_menu($context, array $blocks = array())
     {
-        $__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111->enter($__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "button_menu"));
+        $__internal_d4a0f51e187b241d9c1f31d705c85d85446cb86fca061a4e4f3cd1bb62f39121 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d4a0f51e187b241d9c1f31d705c85d85446cb86fca061a4e4f3cd1bb62f39121->enter($__internal_d4a0f51e187b241d9c1f31d705c85d85446cb86fca061a4e4f3cd1bb62f39121_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "button_menu"));
 
         // line 15
         echo "            <a href=\"#\" class=\"sidebar-toggle\" data-toggle=\"offcanvas\" role=\"button\">
@@ -98,70 +97,62 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
             </a>
         ";
         
-        $__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111->leave($__internal_58812fd0081268c739736a41309cba96a723306c6e797197a7caf2c6ce8fd111_prof);
+        $__internal_d4a0f51e187b241d9c1f31d705c85d85446cb86fca061a4e4f3cd1bb62f39121->leave($__internal_d4a0f51e187b241d9c1f31d705c85d85446cb86fca061a4e4f3cd1bb62f39121_prof);
 
     }
 
-    // line 35
+    // line 34
     public function block_userProfil($context, array $blocks = array())
     {
-        $__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d->enter($__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "userProfil"));
+        $__internal_7171bd284366a7e8818acbe17bbdaea4fa5caea0991cfd8ed4127d36378acfa8 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7171bd284366a7e8818acbe17bbdaea4fa5caea0991cfd8ed4127d36378acfa8->enter($__internal_7171bd284366a7e8818acbe17bbdaea4fa5caea0991cfd8ed4127d36378acfa8_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "userProfil"));
 
-        // line 36
-        echo "                    ";
-        if (($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_GSP_TONTINE_ADMIN") && ((isset($context["cgnu"]) || array_key_exists("cgnu", $context) ? $context["cgnu"] : (function () { throw new Twig_Error_Runtime('Variable "cgnu" does not exist.', 36, $this->getSourceContext()); })()) != 0))) {
-            // line 37
-            echo "                        <li class=\"dropdown\" data-toggle=\"tooltip\" data-html=\"true\" data-placement=\"bottom\" title=\"<b>";
-            echo twig_escape_filter($this->env, (isset($context["cgnu"]) || array_key_exists("cgnu", $context) ? $context["cgnu"] : (function () { throw new Twig_Error_Runtime('Variable "cgnu" does not exist.', 37, $this->getSourceContext()); })()), "html", null, true);
-            echo " Condition(s) générales non à jour!</b>\">
-                            <!-- Menu Toggle Button -->
-                            <a href=\"#\" class=\"yop-blink btn-danger\" data-toggle=\"dropdown\">
-                                Conditions Génerales
-                                <span class=\"fa fa-bell\"></span>
-                            </a>
-                        </li>
-                    ";
-        }
-        // line 45
-        echo "                    <li class=\"dropdown\">
+        // line 35
+        echo "                    <li class=\"dropdown\" data-toggle=\"tooltip\" data-html=\"true\" data-placement=\"bottom\" title=\"<b>Condition(s) générales non à jour!</b>\">
+                        <!-- Menu Toggle Button -->
+                        <a href=\"#\" class=\"yop-blink btn-danger\" data-toggle=\"dropdown\">
+                            Express Couture
+                            <span class=\"fa fa-bell\"></span>
+                        </a>
+                    </li>
+                    <li class=\"dropdown\">
                         <!-- Menu Toggle Button -->
                         <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">                            
                                 ";
-        // line 48
-        if (twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 48, $this->getSourceContext()); })()), "user", array())) {
-            // line 49
+        // line 45
+        if (twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 45, $this->getSourceContext()); })()), "user", array())) {
+            // line 46
             echo "                                    ";
-            if ( !(null === twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 49, $this->getSourceContext()); })()), "user", array()), "photo", array()))) {
-                // line 50
+            if ( !(null === twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 46, $this->getSourceContext()); })()), "user", array()), "photo", array()))) {
+                // line 47
                 echo "                                    <span><img  src=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("uploads/pieces/"), "html", null, true);
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 50, $this->getSourceContext()); })()), "user", array()), "photo", array()), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 47, $this->getSourceContext()); })()), "user", array()), "photo", array()), "html", null, true);
                 echo "\"  class=\"img-circle\" style=\"display: inline; width: 40px; margin-top: -15px; margin-bottom: -15px\"/></span>
                                 ";
             } else {
-                // line 52
+                // line 49
                 echo "                                    <span><img  src=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/images/profil.png"), "html", null, true);
                 echo "\"  class=\"img-circle\" style=\"display: inline; width: 40px\"/></span>
                                 ";
             }
-            // line 54
+            // line 51
             echo "                                ";
-            echo twig_escape_filter($this->env, twig_upper_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 54, $this->getSourceContext()); })()), "user", array()), "nom", array())), "html", null, true);
+            echo twig_escape_filter($this->env, twig_upper_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 51, $this->getSourceContext()); })()), "user", array()), "nom", array())), "html", null, true);
             echo "  ";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 54, $this->getSourceContext()); })()), "user", array()), "prenom", array()), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 51, $this->getSourceContext()); })()), "user", array()), "prenom", array()), "html", null, true);
             echo "
                             ";
         }
-        // line 56
+        // line 53
         echo "                            <span class=\"fa fa-gears\"></span>
                         </a>
                         <ul class=\"dropdown-menu\" role=\"menu\">
                             <li role=\"presentation\">
                                 <a href=\"";
-        // line 60
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_user_profile", array("id" => twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 60, $this->getSourceContext()); })()), "user", array()), "id", array()))), "html", null, true);
+        // line 57
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_user_profile", array("id" => twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new Twig_Error_Runtime('Variable "app" does not exist.', 57, $this->getSourceContext()); })()), "user", array()), "id", array()))), "html", null, true);
         echo "\">
                                     <i class=\"fa fa-user\" aria-hidden=\"true\"></i>
                                     Profile
@@ -170,7 +161,7 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
                             <li class=\"divider\" role=\"presentation\"></li>
                             <li role=\"presentation\">
                                 <a href=\"";
-        // line 67
+        // line 64
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
         echo "\">
                                     <i class=\"fa fa-power-off\" aria-hidden=\"true\"></i>
@@ -181,7 +172,7 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
                     </li>
                 ";
         
-        $__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d->leave($__internal_c72780561ce922e4808a5a9849f82da8d7352a1c147b7ebf307807d408777c3d_prof);
+        $__internal_7171bd284366a7e8818acbe17bbdaea4fa5caea0991cfd8ed4127d36378acfa8->leave($__internal_7171bd284366a7e8818acbe17bbdaea4fa5caea0991cfd8ed4127d36378acfa8_prof);
 
     }
 
@@ -197,7 +188,7 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
 
     public function getDebugInfo()
     {
-        return array (  174 => 67,  164 => 60,  158 => 56,  150 => 54,  144 => 52,  137 => 50,  134 => 49,  132 => 48,  127 => 45,  115 => 37,  112 => 36,  106 => 35,  96 => 15,  90 => 14,  80 => 75,  77 => 35,  73 => 32,  65 => 27,  58 => 23,  50 => 19,  48 => 14,  38 => 7,  32 => 4,  27 => 2,  24 => 1,);
+        return array (  165 => 64,  155 => 57,  149 => 53,  141 => 51,  135 => 49,  128 => 47,  125 => 46,  123 => 45,  111 => 35,  105 => 34,  95 => 15,  89 => 14,  79 => 72,  77 => 34,  73 => 32,  65 => 27,  58 => 23,  50 => 19,  48 => 14,  38 => 7,  32 => 4,  27 => 2,  24 => 1,);
     }
 
     public function getSourceContext()
@@ -235,17 +226,14 @@ class __TwigTemplate_90ee969ecb3f8b5ddf1848487dafa9f29a93ada3da955279fcd69ab4b42
         {% endif %}
         <div class=\"navbar-custom-menu\">
             <ul class=\"nav navbar-nav\">
-                {# {% set cgnu = menuCounters.countMiseAjourCG()%} #}
                 {% block userProfil %}
-                    {% if (is_granted('ROLE_GSP_TONTINE_ADMIN') and (cgnu != 0)) %}
-                        <li class=\"dropdown\" data-toggle=\"tooltip\" data-html=\"true\" data-placement=\"bottom\" title=\"<b>{{cgnu}} Condition(s) générales non à jour!</b>\">
-                            <!-- Menu Toggle Button -->
-                            <a href=\"#\" class=\"yop-blink btn-danger\" data-toggle=\"dropdown\">
-                                Conditions Génerales
-                                <span class=\"fa fa-bell\"></span>
-                            </a>
-                        </li>
-                    {% endif %}
+                    <li class=\"dropdown\" data-toggle=\"tooltip\" data-html=\"true\" data-placement=\"bottom\" title=\"<b>Condition(s) générales non à jour!</b>\">
+                        <!-- Menu Toggle Button -->
+                        <a href=\"#\" class=\"yop-blink btn-danger\" data-toggle=\"dropdown\">
+                            Express Couture
+                            <span class=\"fa fa-bell\"></span>
+                        </a>
+                    </li>
                     <li class=\"dropdown\">
                         <!-- Menu Toggle Button -->
                         <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">                            

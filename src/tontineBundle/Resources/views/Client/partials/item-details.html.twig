@@ -31,21 +31,6 @@
         </tr> 
         
         <tr>
-            <th>Date de naissance</th>    
-            <td>{% if client.dateNaissance %}{{ client.dateNaissance|date('d/m/Y') }}{% endif %}</td>            
-        </tr>
-        
-        <tr>
-            <th>Quartie</th>
-            <td>{{ client.quartier }}</td>            
-        </tr>
-        
-        <tr>
-            <th>Ville</th>
-            <td>{{ client.ville }}</td>            
-        </tr>
-        
-        <tr>
             <th>Contacts</th>
             <td>{{ client.contacts | phone_number_format('INTERNATIONAL')}}</td>            
         </tr>
@@ -81,24 +66,6 @@
             <ul class="dropdown-menu dropdown-menu-right">
                 <li>
                     <a href="{{ path('tontine_client_edit', { 'id': client.id }) }}"  class = "client_edit" data-rec = "{{client.id}}" >Modifier</a>
-                </li>
-                <li>
-                    <a href="{{ path('tontine_visite_index', { 'idc': client.id }) }}" data-rec = "{{client.id}}" >Afficher les visites</a>
-                </li>
-                {% if client.condition %}
-                <li>
-                    <a href="{{ path('tontine_conditiongenerale_show', { 'id': client.condition.id }) }}"  class = "client_show" data-rec = "{{client.condition.id}}" >Afficher les CG</a>
-                </li>
-                <li>
-                    <a href="{{ path('tontine_conditiongenerale_edit', { 'id': client.condition.id }) }}"  class = "client_show" data-rec = "{{client.condition.id}}" >Modifier les CG</a>
-                </li>
-                {% else %}
-                <li>
-                    <a href="{{ path('tontine_conditiongenerale_new', { 'idc': client.id }) }}"  class = "client_edit" data-rec = "{{client.id}}" >Ajouter la condition générale</a>
-                </li>
-                {% endif %}
-                <li>
-                    <a data-toggle="modal" data-target="#newVisiteModal" href="#" onclick="ajouterVisite({{client.id}}, 0)" data-rec = "{{client.id}}" >Enrégistrer une visite</a>
                 </li>
                 <li class="divider"></li>
             </ul>
