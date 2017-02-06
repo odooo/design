@@ -1,0 +1,17 @@
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date de céation</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Contact</th>
+            <th>Adresse</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for fournisseur in fournisseurs %}        
+        {% include "tontineBundle:Fournisseur:partials/item.html.twig" %}
+    {% endfor %}
+    </tbody>
+</table>

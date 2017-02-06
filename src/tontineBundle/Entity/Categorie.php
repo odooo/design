@@ -1,15 +1,8 @@
 <?php
 
 namespace tontineBundle\Entity;
-use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
-use EldoMagan\Bundle\CrudGeneratorBundle\Annotation\Lists;
-use EldoMagan\Bundle\CrudGeneratorBundle\Annotation\Details;
-use EldoMagan\Bundle\CrudGeneratorBundle\Annotation\Form;
-use EldoMagan\Bundle\CrudGeneratorBundle\Annotation\Action;
-use EldoMagan\Bundle\CrudGeneratorBundle\Annotation\Code;
-use Symfony\Component\HttpFoundation\File\File;
-use Misd\PhoneNumberBundle\Validator\Constraints\PhoneNumber as AssertPhoneNumber;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -18,7 +11,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="categorie")
  * @ORM\Entity(repositoryClass="tontineBundle\Repository\CategorieRepository")
- * @ORM\EntityListeners("tontineBundle\EntityListener\TontineEntityListener")
  */
 class Categorie
 {
@@ -35,10 +27,7 @@ class Categorie
     /**
      * @var string
      *
-     * @ORM\Column(name="libelle", type="string", length=255, nullable=true)
-     * 
-     * @Assert\NotBlank(message="invalide")
-     * @Assert\NotNull(message="invalide")
+     * @ORM\Column(name="libelle", type="text", nullable=true)
      * 
      *  
      */
@@ -78,6 +67,21 @@ class Categorie
     public function getLibelle()
     {
         return $this->libelle;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->libelle;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
     }
 
 }

@@ -28,6 +28,35 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         $request = $this->request;
 
         if (0 === strpos($pathinfo, '/js')) {
+            if (0 === strpos($pathinfo, '/js/4')) {
+                if (0 === strpos($pathinfo, '/js/48887b7')) {
+                    // _assetic_48887b7
+                    if ($pathinfo === '/js/48887b7.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => '48887b7',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_48887b7',);
+                    }
+
+                    // _assetic_48887b7_0
+                    if ($pathinfo === '/js/48887b7_visite_1.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => '48887b7',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_48887b7_0',);
+                    }
+
+                }
+
+                if (0 === strpos($pathinfo, '/js/45fe74c')) {
+                    // _assetic_45fe74c
+                    if ($pathinfo === '/js/45fe74c.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => '45fe74c',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_45fe74c',);
+                    }
+
+                    // _assetic_45fe74c_0
+                    if ($pathinfo === '/js/45fe74c_client_1.js') {
+                        return array (  '_controller' => 'assetic.controller:render',  'name' => '45fe74c',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_45fe74c_0',);
+                    }
+
+                }
+
+            }
+
             if (0 === strpos($pathinfo, '/js/6d2b2d6')) {
                 // _assetic_6d2b2d6
                 if ($pathinfo === '/js/6d2b2d6.js') {
@@ -41,19 +70,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            if (0 === strpos($pathinfo, '/js/48887b7')) {
-                // _assetic_48887b7
-                if ($pathinfo === '/js/48887b7.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '48887b7',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_48887b7',);
-                }
-
-                // _assetic_48887b7_0
-                if ($pathinfo === '/js/48887b7_visite_1.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '48887b7',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_48887b7_0',);
-                }
-
-            }
-
             if (0 === strpos($pathinfo, '/js/020da92')) {
                 // _assetic_020da92
                 if ($pathinfo === '/js/020da92.js') {
@@ -63,19 +79,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 // _assetic_020da92_0
                 if ($pathinfo === '/js/020da92_resiliationcontrat_1.js') {
                     return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_020da92_0',);
-                }
-
-            }
-
-            if (0 === strpos($pathinfo, '/js/45fe74c')) {
-                // _assetic_45fe74c
-                if ($pathinfo === '/js/45fe74c.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '45fe74c',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_45fe74c',);
-                }
-
-                // _assetic_45fe74c_0
-                if ($pathinfo === '/js/45fe74c_client_1.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '45fe74c',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_45fe74c_0',);
                 }
 
             }
@@ -1097,6 +1100,218 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 }
 
             }
+
+        }
+
+        if (0 === strpos($pathinfo, '/fournisseur')) {
+            // tontine_fournisseur_index
+            if (rtrim($pathinfo, '/') === '/fournisseur') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_fournisseur_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'tontine_fournisseur_index');
+                }
+
+                return array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::indexAction',  '_route' => 'tontine_fournisseur_index',);
+            }
+            not_tontine_fournisseur_index:
+
+            // tontine_fournisseur_index_new
+            if (preg_match('#^/fournisseur/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_fournisseur_index_new;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_index_new')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::indexNewAction',));
+            }
+            not_tontine_fournisseur_index_new:
+
+            // tontine_fournisseur_show
+            if (preg_match('#^/fournisseur/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_fournisseur_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_show')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::showAction',));
+            }
+            not_tontine_fournisseur_show:
+
+            // tontine_fournisseur_preview
+            if (preg_match('#^/fournisseur/(?P<id>\\d+)/preview$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_fournisseur_preview;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_preview')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::previewAction',));
+            }
+            not_tontine_fournisseur_preview:
+
+            // tontine_fournisseur_new
+            if ($pathinfo === '/fournisseur/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_tontine_fournisseur_new;
+                }
+
+                return array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::newAction',  '_route' => 'tontine_fournisseur_new',);
+            }
+            not_tontine_fournisseur_new:
+
+            // tontine_fournisseur_new_form
+            if (preg_match('#^/fournisseur/(?P<id>[^/]++)/new\\-form$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_fournisseur_new_form;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_new_form')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::ajaxNewFormAction',));
+            }
+            not_tontine_fournisseur_new_form:
+
+            // tontine_fournisseur_edit
+            if (preg_match('#^/fournisseur/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_tontine_fournisseur_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_edit')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::editAction',));
+            }
+            not_tontine_fournisseur_edit:
+
+            // tontine_fournisseur_edit_form
+            if (preg_match('#^/fournisseur/(?P<id>[^/]++)/edit\\-form$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_fournisseur_edit_form;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_edit_form')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::ajaxEditFormAction',));
+            }
+            not_tontine_fournisseur_edit_form:
+
+            // tontine_fournisseur_delete
+            if (preg_match('#^/fournisseur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('DELETE', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('DELETE', 'GET', 'HEAD'));
+                    goto not_tontine_fournisseur_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_fournisseur_delete')), array (  '_controller' => 'tontineBundle\\Controller\\FournisseurController::deleteAction',));
+            }
+            not_tontine_fournisseur_delete:
+
+        }
+
+        if (0 === strpos($pathinfo, '/modele')) {
+            // tontine_modele_index
+            if (rtrim($pathinfo, '/') === '/modele') {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_modele_index;
+                }
+
+                if (substr($pathinfo, -1) !== '/') {
+                    return $this->redirect($pathinfo.'/', 'tontine_modele_index');
+                }
+
+                return array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::indexAction',  '_route' => 'tontine_modele_index',);
+            }
+            not_tontine_modele_index:
+
+            // tontine_modele_index_new
+            if (preg_match('#^/modele/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_modele_index_new;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_index_new')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::indexNewAction',));
+            }
+            not_tontine_modele_index_new:
+
+            // tontine_modele_show
+            if (preg_match('#^/modele/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_modele_show;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_show')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::showAction',));
+            }
+            not_tontine_modele_show:
+
+            // tontine_modele_preview
+            if (preg_match('#^/modele/(?P<id>\\d+)/preview$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_modele_preview;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_preview')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::previewAction',));
+            }
+            not_tontine_modele_preview:
+
+            // tontine_modele_new
+            if ($pathinfo === '/modele/new') {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_tontine_modele_new;
+                }
+
+                return array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::newAction',  '_route' => 'tontine_modele_new',);
+            }
+            not_tontine_modele_new:
+
+            // tontine_modele_new_form
+            if (preg_match('#^/modele/(?P<id>[^/]++)/new\\-form$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_modele_new_form;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_new_form')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::ajaxNewFormAction',));
+            }
+            not_tontine_modele_new_form:
+
+            // tontine_modele_edit
+            if (preg_match('#^/modele/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_tontine_modele_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_edit')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::editAction',));
+            }
+            not_tontine_modele_edit:
+
+            // tontine_modele_edit_form
+            if (preg_match('#^/modele/(?P<id>[^/]++)/edit\\-form$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_tontine_modele_edit_form;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_edit_form')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::ajaxEditFormAction',));
+            }
+            not_tontine_modele_edit_form:
+
+            // tontine_modele_delete
+            if (preg_match('#^/modele/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('DELETE', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('DELETE', 'GET', 'HEAD'));
+                    goto not_tontine_modele_delete;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'tontine_modele_delete')), array (  '_controller' => 'tontineBundle\\Controller\\ModeleController::deleteAction',));
+            }
+            not_tontine_modele_delete:
 
         }
 

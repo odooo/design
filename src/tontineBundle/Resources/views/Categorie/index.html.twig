@@ -1,43 +1,66 @@
-{% extends 'default/yop-layout.html.twig' %}
+{% extends "default/index.html.twig" %}
 
-{% block title %}Gestion des catégories{% endblock %}
+{% block title %}Liste des catégories de tissu{% endblock %}
 
-{% block content %}
-    <div class="yop-app two-pane">
-        <div class="pane pane-one" id="user-list" data-title="Catégorie : ">
-            <div class="pane-header">
-                <div class="user-search-bar">
-                    <input type="text" name="search" class="form-control search-form" placeholder="Recherchez une catégorie..." />                
-                </div>
-            </div>
-            <div class="pane-body">
-                <div class="infinite-list">
-                    {% for categorie in categories %}
-                        <div class="list-item" data-search="{{ categorie.libelle }}" data-href="{{ path('tontine_categorie_preview', { 'id': categorie.id }) }}" data-name="{{ categorie.libelle }}">                                                  
-                            <div class="user-description">
-                                <div class="user-name">{{ categorie.libelle }}</div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>             
-        </div>
-        <div class="pane pane-two" id="user-pagelet" yop-with-toolbar>
-        </div>
-    </div>
+{% block content_header %}
+    <h3>Liste des catégories</h3>
 {% endblock %}
 
-{% block javascript %}
-    {{ parent() }}
-    {% if cli is defined %}
-        <script>
-            $(function(){
-                Yop.Pagelet({            
-                   url: "{{ path('tontine_categorie_preview', {'id':cat.id }) }}",
-                   pagelet: '#user-pagelet',
-                   title: '{{cat.libelle}}'
-               });
-            });
-        </script>
-    {% endif %}
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des catégories de tissus</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Libellé</th>
+                            <th>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                            </div>
+                            <th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for categorie in categories %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ categorie.libelle }}</td>
+                            <td>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    
+                                    {% if  is_granted('ROLE_CATEGORIE_EDIT') %}
+                                            <li>
+                                                <a onclick="getEditCategorieForm({{categorie.id}})" href="{{ path('tontine_categorie_edit', { 'id': categorie.id }) }}" data-rec = "{{categorie.id}}" >Modifier</a>
+                                            </li>
+                                    {% endif  %}
+                                    
+                                </ul>
+                            </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('tontine_categorie_new') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>                
+                Ajouter une catégorie
+            </a>
+        </div>
+    </div>
 {% endblock %}

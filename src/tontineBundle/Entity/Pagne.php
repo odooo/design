@@ -88,6 +88,12 @@ class Pagne
      *
      */
     protected $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Fournisseur")
+     *
+     */
+    protected $fournisseur;
     
     
     /**
@@ -407,5 +413,29 @@ class Pagne
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    /**
+     * Set fournisseur
+     *
+     * @param \tontineBundle\Entity\Fournisseur $fournisseur
+     *
+     * @return Pagne
+     */
+    public function setFournisseur(\tontineBundle\Entity\Fournisseur $fournisseur = null)
+    {
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \tontineBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
     }
 }

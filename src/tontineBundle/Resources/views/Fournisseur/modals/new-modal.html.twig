@@ -1,0 +1,16 @@
+{% set modalId = 'new-fournisseur-modal' %}
+
+{% extends 'default/modal.html.twig' %}
+
+{% block title %}
+    New fournisseur
+{% endblock %}
+
+{% block body %}
+    {{ render(controller('tontineBundle:Fournisseur:ajaxNewForm')) }}
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+    <input type="button" class ='fournisseur_new_popup_submit btn btn-primary' value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+{% endblock %}

@@ -1,0 +1,35 @@
+<table class="table table-striped table-bordered">
+    <tbody>    
+                                                
+        <tr>
+            <th>Id</th>
+            <td>{{ modele.id }}</td>            
+        </tr>
+        
+                                                
+        <tr>
+            <th>Libellé</th>
+            <td>{{ modele.libelle }}</td>            
+        </tr>    
+       
+        
+        <tr>
+            <th>Actions</th>
+            <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_modele_edit', { 'id': modele.id }) }}"  class = "modele_edit" data-rec = "{{modele.id}}" >Modifier</a>
+                </li>
+            </ul>
+        </div>
+    </td>
+        </tr>
+        
+  
+    </tbody>
+</table>

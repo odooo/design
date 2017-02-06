@@ -101,7 +101,6 @@ class ClientController extends BaseController
                     'success' => true,
                 ));
             } else {
-                //return $this->redirectToRoute('tontine_client_show', array('id' => $client->getId()));
                 return $this->redirectToRoute('tontine_client_index');
             }            
         }
@@ -144,7 +143,7 @@ class ClientController extends BaseController
             $client = $form->getData();
             
             if($client->getFilePhoto() != null){
-                $filename = 'CPRO-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$client->getFilePhoto()->getClientOriginalName();
+                $filename = 'CLI-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$client->getFilePhoto()->getClientOriginalName();
                 $client->getFilePhoto()->move($this->getParameter('pieces_path'), $filename);
                 $client->setPhoto($filename);
             }

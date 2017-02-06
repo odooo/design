@@ -15,8 +15,8 @@ class __TwigTemplate_a0cca388fd5156851f58a2a2ce03df62454800d40987e5810bf243c0312
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7bed81aaf21d4110de228d62ce0ca438b9c605c3bcc8cb33e90c647df9130d57 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7bed81aaf21d4110de228d62ce0ca438b9c605c3bcc8cb33e90c647df9130d57->enter($__internal_7bed81aaf21d4110de228d62ce0ca438b9c605c3bcc8cb33e90c647df9130d57_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Pagne:preview.html.twig"));
+        $__internal_8da6e40224bf73f4b81c99981a564995404564f883992675923378e03a0e766c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8da6e40224bf73f4b81c99981a564995404564f883992675923378e03a0e766c->enter($__internal_8da6e40224bf73f4b81c99981a564995404564f883992675923378e03a0e766c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Pagne:preview.html.twig"));
 
         // line 1
         echo "<div style=\"padding: 10px;\">
@@ -71,8 +71,20 @@ class __TwigTemplate_a0cca388fd5156851f58a2a2ce03df62454800d40987e5810bf243c0312
         // line 26
         echo twig_escape_filter($this->env, twig_number_format_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["pagne"]) || array_key_exists("pagne", $context) ? $context["pagne"] : (function () { throw new Twig_Error_Runtime('Variable "pagne" does not exist.', 26, $this->getSourceContext()); })()), "prix", array()), 0, ",", "."), "html", null, true);
         echo " F CFA</div>
-                    <div><strong>Catégorie : </strong></div>
-                    <div><strong>Fournisseur : </strong></div>
+                    <div><strong>Catégorie : </strong>";
+        // line 27
+        if (twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["pagne"]) || array_key_exists("pagne", $context) ? $context["pagne"] : (function () { throw new Twig_Error_Runtime('Variable "pagne" does not exist.', 27, $this->getSourceContext()); })()), "categorie", array())) {
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["pagne"]) || array_key_exists("pagne", $context) ? $context["pagne"] : (function () { throw new Twig_Error_Runtime('Variable "pagne" does not exist.', 27, $this->getSourceContext()); })()), "categorie", array()), "libelle", array()), "html", null, true);
+        }
+        echo " </div>
+                    <div><strong>Fournisseur : </strong>";
+        // line 28
+        if (twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["pagne"]) || array_key_exists("pagne", $context) ? $context["pagne"] : (function () { throw new Twig_Error_Runtime('Variable "pagne" does not exist.', 28, $this->getSourceContext()); })()), "fournisseur", array())) {
+            echo " ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["pagne"]) || array_key_exists("pagne", $context) ? $context["pagne"] : (function () { throw new Twig_Error_Runtime('Variable "pagne" does not exist.', 28, $this->getSourceContext()); })()), "fournisseur", array()), "name", array()), "html", null, true);
+        }
+        echo " </div>
                     <div class=\"btn-group\" style=\"margin-top: 20px\">
                         
                     </div>
@@ -95,7 +107,7 @@ class __TwigTemplate_a0cca388fd5156851f58a2a2ce03df62454800d40987e5810bf243c0312
 
 ";
         
-        $__internal_7bed81aaf21d4110de228d62ce0ca438b9c605c3bcc8cb33e90c647df9130d57->leave($__internal_7bed81aaf21d4110de228d62ce0ca438b9c605c3bcc8cb33e90c647df9130d57_prof);
+        $__internal_8da6e40224bf73f4b81c99981a564995404564f883992675923378e03a0e766c->leave($__internal_8da6e40224bf73f4b81c99981a564995404564f883992675923378e03a0e766c_prof);
 
     }
 
@@ -111,7 +123,7 @@ class __TwigTemplate_a0cca388fd5156851f58a2a2ce03df62454800d40987e5810bf243c0312
 
     public function getDebugInfo()
     {
-        return array (  72 => 26,  68 => 25,  64 => 24,  60 => 23,  49 => 19,  35 => 9,  27 => 4,  22 => 1,);
+        return array (  83 => 28,  76 => 27,  72 => 26,  68 => 25,  64 => 24,  60 => 23,  49 => 19,  35 => 9,  27 => 4,  22 => 1,);
     }
 
     public function getSourceContext()
@@ -142,8 +154,8 @@ class __TwigTemplate_a0cca388fd5156851f58a2a2ce03df62454800d40987e5810bf243c0312
                     <div><strong>Désignation : </strong>{{ pagne.designation }}</div>
                     <div><strong>Mesure : </strong>{{ pagne.mesure }} mètres</div>
                     <div><strong>Prix : </strong>{{ pagne.prix|number_format(0,',','.') }} F CFA</div>
-                    <div><strong>Catégorie : </strong></div>
-                    <div><strong>Fournisseur : </strong></div>
+                    <div><strong>Catégorie : </strong>{% if pagne.categorie %} {{ pagne.categorie.libelle }}{% endif %} </div>
+                    <div><strong>Fournisseur : </strong>{% if pagne.fournisseur %} {{ pagne.fournisseur.name }}{% endif %} </div>
                     <div class=\"btn-group\" style=\"margin-top: 20px\">
                         
                     </div>

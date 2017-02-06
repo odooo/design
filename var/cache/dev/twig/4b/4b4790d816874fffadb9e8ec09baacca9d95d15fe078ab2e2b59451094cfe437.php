@@ -8,129 +8,174 @@ class __TwigTemplate_26053ae7f43acfc61d2bcb9e5da9b7138d5adb302002ae3bd6a2a5611be
         parent::__construct($env);
 
         // line 1
-        $this->parent = $this->loadTemplate("default/yop-layout.html.twig", "tontineBundle:Categorie:index.html.twig", 1);
+        $this->parent = $this->loadTemplate("default/index.html.twig", "tontineBundle:Categorie:index.html.twig", 1);
         $this->blocks = array(
             'title' => array($this, 'block_title'),
+            'content_header' => array($this, 'block_content_header'),
             'content' => array($this, 'block_content'),
-            'javascript' => array($this, 'block_javascript'),
         );
     }
 
     protected function doGetParent(array $context)
     {
-        return "default/yop-layout.html.twig";
+        return "default/index.html.twig";
     }
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_7b9a3ec454454be752f92c7e8b62bb2e27573321a51866aa879000f5700f511b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_7b9a3ec454454be752f92c7e8b62bb2e27573321a51866aa879000f5700f511b->enter($__internal_7b9a3ec454454be752f92c7e8b62bb2e27573321a51866aa879000f5700f511b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Categorie:index.html.twig"));
+        $__internal_55700a55097401c40c9994ab67260c1d7287b7219b6c01ff4756dc7db931904e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_55700a55097401c40c9994ab67260c1d7287b7219b6c01ff4756dc7db931904e->enter($__internal_55700a55097401c40c9994ab67260c1d7287b7219b6c01ff4756dc7db931904e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Categorie:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_7b9a3ec454454be752f92c7e8b62bb2e27573321a51866aa879000f5700f511b->leave($__internal_7b9a3ec454454be752f92c7e8b62bb2e27573321a51866aa879000f5700f511b_prof);
+        $__internal_55700a55097401c40c9994ab67260c1d7287b7219b6c01ff4756dc7db931904e->leave($__internal_55700a55097401c40c9994ab67260c1d7287b7219b6c01ff4756dc7db931904e_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_a9c2b555cdc1266ca733a20eff699ca35497450663392bc1ef67cc038a7d2914 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a9c2b555cdc1266ca733a20eff699ca35497450663392bc1ef67cc038a7d2914->enter($__internal_a9c2b555cdc1266ca733a20eff699ca35497450663392bc1ef67cc038a7d2914_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_4e77aded6966114d45e922171a5dc88dd7c0b26b60f5083c755244bd972f0bdf = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_4e77aded6966114d45e922171a5dc88dd7c0b26b60f5083c755244bd972f0bdf->enter($__internal_4e77aded6966114d45e922171a5dc88dd7c0b26b60f5083c755244bd972f0bdf_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Gestion des catégories";
+        echo "Liste des catégories de tissu";
         
-        $__internal_a9c2b555cdc1266ca733a20eff699ca35497450663392bc1ef67cc038a7d2914->leave($__internal_a9c2b555cdc1266ca733a20eff699ca35497450663392bc1ef67cc038a7d2914_prof);
+        $__internal_4e77aded6966114d45e922171a5dc88dd7c0b26b60f5083c755244bd972f0bdf->leave($__internal_4e77aded6966114d45e922171a5dc88dd7c0b26b60f5083c755244bd972f0bdf_prof);
 
     }
 
     // line 5
-    public function block_content($context, array $blocks = array())
+    public function block_content_header($context, array $blocks = array())
     {
-        $__internal_105daeb6bdffae4c80c1cc78346be66b2624df963749ad9a7582d8ce3f86c5cc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_105daeb6bdffae4c80c1cc78346be66b2624df963749ad9a7582d8ce3f86c5cc->enter($__internal_105daeb6bdffae4c80c1cc78346be66b2624df963749ad9a7582d8ce3f86c5cc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_e09955d122d93dac51657fc476838e32ea3827896f995d6ddfca81f65144a319 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e09955d122d93dac51657fc476838e32ea3827896f995d6ddfca81f65144a319->enter($__internal_e09955d122d93dac51657fc476838e32ea3827896f995d6ddfca81f65144a319_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
 
         // line 6
-        echo "    <div class=\"yop-app two-pane\">
-        <div class=\"pane pane-one\" id=\"user-list\" data-title=\"Catégorie : \">
-            <div class=\"pane-header\">
-                <div class=\"user-search-bar\">
-                    <input type=\"text\" name=\"search\" class=\"form-control search-form\" placeholder=\"Recherchez une catégorie...\" />                
-                </div>
-            </div>
-            <div class=\"pane-body\">
-                <div class=\"infinite-list\">
-                    ";
-        // line 15
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new Twig_Error_Runtime('Variable "categories" does not exist.', 15, $this->getSourceContext()); })()));
-        foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
-            // line 16
-            echo "                        <div class=\"list-item\" data-search=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "libelle", array()), "html", null, true);
-            echo "\" data-href=\"";
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_categorie_preview", array("id" => twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "id", array()))), "html", null, true);
-            echo "\" data-name=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "libelle", array()), "html", null, true);
-            echo "\">                                                  
-                            <div class=\"user-description\">
-                                <div class=\"user-name\">";
-            // line 18
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "libelle", array()), "html", null, true);
-            echo "</div>
+        echo "    <h3>Liste des catégories</h3>
+";
+        
+        $__internal_e09955d122d93dac51657fc476838e32ea3827896f995d6ddfca81f65144a319->leave($__internal_e09955d122d93dac51657fc476838e32ea3827896f995d6ddfca81f65144a319_prof);
+
+    }
+
+    // line 9
+    public function block_content($context, array $blocks = array())
+    {
+        $__internal_c161066dd5ecc7a5ac79094de8f4da81c42e8656e4256801f6d37f1266fc4a56 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c161066dd5ecc7a5ac79094de8f4da81c42e8656e4256801f6d37f1266fc4a56->enter($__internal_c161066dd5ecc7a5ac79094de8f4da81c42e8656e4256801f6d37f1266fc4a56_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+
+        // line 10
+        echo "    <div class=\"box box-primary\">
+        <div class=\"box-header with-border\">
+            <h3 class=\"box-title\">Liste des catégories de tissus</h3>
+        </div>
+        <div class=\"box-body\">
+            <div class=\"table-responsive\">
+                <table class=\"table table-bordered table-striped\">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Libellé</th>
+                            <th>
+                            <div class=\"btn-group pull-right\">
+                                <button type=\"button\" class=\"btn btn-primary btn-xs dropdown-toggle\" data-toggle=\"dropdown\">
+                                    Actions
+                                    <span class=\"fa fa-caret-down\"></span>
+                                </button>
                             </div>
-                        </div>
+                            <th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     ";
+        // line 32
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["categories"]) || array_key_exists("categories", $context) ? $context["categories"] : (function () { throw new Twig_Error_Runtime('Variable "categories" does not exist.', 32, $this->getSourceContext()); })()));
+        $context['loop'] = array(
+          'parent' => $context['_parent'],
+          'index0' => 0,
+          'index'  => 1,
+          'first'  => true,
+        );
+        if (is_array($context['_seq']) || (is_object($context['_seq']) && $context['_seq'] instanceof Countable)) {
+            $length = count($context['_seq']);
+            $context['loop']['revindex0'] = $length - 1;
+            $context['loop']['revindex'] = $length;
+            $context['loop']['length'] = $length;
+            $context['loop']['last'] = 1 === $length;
+        }
+        foreach ($context['_seq'] as $context["_key"] => $context["categorie"]) {
+            // line 33
+            echo "                        <tr>
+                            <td>";
+            // line 34
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["loop"], "index", array()), "html", null, true);
+            echo "</td>
+                            <td>";
+            // line 35
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "libelle", array()), "html", null, true);
+            echo "</td>
+                            <td>
+                            <div class=\"btn-group pull-right\">
+                                <button type=\"button\" class=\"btn btn-primary btn-xs dropdown-toggle\" data-toggle=\"dropdown\">
+                                    Actions
+                                    <span class=\"fa fa-caret-down\"></span>
+                                </button>
+                                <ul class=\"dropdown-menu dropdown-menu-right\">
+                                    
+                                    ";
+            // line 44
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_CATEGORIE_EDIT")) {
+                // line 45
+                echo "                                            <li>
+                                                <a onclick=\"getEditCategorieForm(";
+                // line 46
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "id", array()), "html", null, true);
+                echo ")\" href=\"";
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_categorie_edit", array("id" => twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "id", array()))), "html", null, true);
+                echo "\" data-rec = \"";
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["categorie"], "id", array()), "html", null, true);
+                echo "\" >Modifier</a>
+                                            </li>
+                                    ";
+            }
+            // line 49
+            echo "                                    
+                                </ul>
+                            </div>
+                            </td>
+                        </tr>
+                    ";
+            ++$context['loop']['index0'];
+            ++$context['loop']['index'];
+            $context['loop']['first'] = false;
+            if (isset($context['loop']['length'])) {
+                --$context['loop']['revindex0'];
+                --$context['loop']['revindex'];
+                $context['loop']['last'] = 0 === $context['loop']['revindex0'];
+            }
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['categorie'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
-        echo "                </div>
-            </div>             
+        // line 55
+        echo "                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class=\"pane pane-two\" id=\"user-pagelet\" yop-with-toolbar>
+        <div class=\"box-footer\">
+            <a href=\"";
+        // line 60
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_categorie_new");
+        echo "\" class=\"btn btn-primary\">
+                <i class=\"fa fa-plus\"></i>                
+                Ajouter une catégorie
+            </a>
         </div>
     </div>
 ";
         
-        $__internal_105daeb6bdffae4c80c1cc78346be66b2624df963749ad9a7582d8ce3f86c5cc->leave($__internal_105daeb6bdffae4c80c1cc78346be66b2624df963749ad9a7582d8ce3f86c5cc_prof);
-
-    }
-
-    // line 30
-    public function block_javascript($context, array $blocks = array())
-    {
-        $__internal_1bef01c0de5dcc57ca06da78c4235b034ac2e119fa8c3b3d82689866e4da5b35 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1bef01c0de5dcc57ca06da78c4235b034ac2e119fa8c3b3d82689866e4da5b35->enter($__internal_1bef01c0de5dcc57ca06da78c4235b034ac2e119fa8c3b3d82689866e4da5b35_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "javascript"));
-
-        // line 31
-        echo "    ";
-        $this->displayParentBlock("javascript", $context, $blocks);
-        echo "
-    ";
-        // line 32
-        if (array_key_exists("cli", $context)) {
-            // line 33
-            echo "        <script>
-            \$(function(){
-                Yop.Pagelet({            
-                   url: \"";
-            // line 36
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_categorie_preview", array("id" => twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["cat"]) || array_key_exists("cat", $context) ? $context["cat"] : (function () { throw new Twig_Error_Runtime('Variable "cat" does not exist.', 36, $this->getSourceContext()); })()), "id", array()))), "html", null, true);
-            echo "\",
-                   pagelet: '#user-pagelet',
-                   title: '";
-            // line 38
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), (isset($context["cat"]) || array_key_exists("cat", $context) ? $context["cat"] : (function () { throw new Twig_Error_Runtime('Variable "cat" does not exist.', 38, $this->getSourceContext()); })()), "libelle", array()), "html", null, true);
-            echo "'
-               });
-            });
-        </script>
-    ";
-        }
-        
-        $__internal_1bef01c0de5dcc57ca06da78c4235b034ac2e119fa8c3b3d82689866e4da5b35->leave($__internal_1bef01c0de5dcc57ca06da78c4235b034ac2e119fa8c3b3d82689866e4da5b35_prof);
+        $__internal_c161066dd5ecc7a5ac79094de8f4da81c42e8656e4256801f6d37f1266fc4a56->leave($__internal_c161066dd5ecc7a5ac79094de8f4da81c42e8656e4256801f6d37f1266fc4a56_prof);
 
     }
 
@@ -146,53 +191,77 @@ class __TwigTemplate_26053ae7f43acfc61d2bcb9e5da9b7138d5adb302002ae3bd6a2a5611be
 
     public function getDebugInfo()
     {
-        return array (  125 => 38,  120 => 36,  115 => 33,  113 => 32,  108 => 31,  102 => 30,  89 => 22,  79 => 18,  69 => 16,  65 => 15,  54 => 6,  48 => 5,  36 => 3,  11 => 1,);
+        return array (  169 => 60,  162 => 55,  143 => 49,  133 => 46,  130 => 45,  128 => 44,  116 => 35,  112 => 34,  109 => 33,  92 => 32,  68 => 10,  62 => 9,  54 => 6,  48 => 5,  36 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
     {
-        return new Twig_Source("{% extends 'default/yop-layout.html.twig' %}
+        return new Twig_Source("{% extends \"default/index.html.twig\" %}
 
-{% block title %}Gestion des catégories{% endblock %}
+{% block title %}Liste des catégories de tissu{% endblock %}
+
+{% block content_header %}
+    <h3>Liste des catégories</h3>
+{% endblock %}
 
 {% block content %}
-    <div class=\"yop-app two-pane\">
-        <div class=\"pane pane-one\" id=\"user-list\" data-title=\"Catégorie : \">
-            <div class=\"pane-header\">
-                <div class=\"user-search-bar\">
-                    <input type=\"text\" name=\"search\" class=\"form-control search-form\" placeholder=\"Recherchez une catégorie...\" />                
-                </div>
-            </div>
-            <div class=\"pane-body\">
-                <div class=\"infinite-list\">
-                    {% for categorie in categories %}
-                        <div class=\"list-item\" data-search=\"{{ categorie.libelle }}\" data-href=\"{{ path('tontine_categorie_preview', { 'id': categorie.id }) }}\" data-name=\"{{ categorie.libelle }}\">                                                  
-                            <div class=\"user-description\">
-                                <div class=\"user-name\">{{ categorie.libelle }}</div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>             
+    <div class=\"box box-primary\">
+        <div class=\"box-header with-border\">
+            <h3 class=\"box-title\">Liste des catégories de tissus</h3>
         </div>
-        <div class=\"pane pane-two\" id=\"user-pagelet\" yop-with-toolbar>
+        <div class=\"box-body\">
+            <div class=\"table-responsive\">
+                <table class=\"table table-bordered table-striped\">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Libellé</th>
+                            <th>
+                            <div class=\"btn-group pull-right\">
+                                <button type=\"button\" class=\"btn btn-primary btn-xs dropdown-toggle\" data-toggle=\"dropdown\">
+                                    Actions
+                                    <span class=\"fa fa-caret-down\"></span>
+                                </button>
+                            </div>
+                            <th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for categorie in categories %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ categorie.libelle }}</td>
+                            <td>
+                            <div class=\"btn-group pull-right\">
+                                <button type=\"button\" class=\"btn btn-primary btn-xs dropdown-toggle\" data-toggle=\"dropdown\">
+                                    Actions
+                                    <span class=\"fa fa-caret-down\"></span>
+                                </button>
+                                <ul class=\"dropdown-menu dropdown-menu-right\">
+                                    
+                                    {% if  is_granted('ROLE_CATEGORIE_EDIT') %}
+                                            <li>
+                                                <a onclick=\"getEditCategorieForm({{categorie.id}})\" href=\"{{ path('tontine_categorie_edit', { 'id': categorie.id }) }}\" data-rec = \"{{categorie.id}}\" >Modifier</a>
+                                            </li>
+                                    {% endif  %}
+                                    
+                                </ul>
+                            </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class=\"box-footer\">
+            <a href=\"{{ path('tontine_categorie_new') }}\" class=\"btn btn-primary\">
+                <i class=\"fa fa-plus\"></i>                
+                Ajouter une catégorie
+            </a>
         </div>
     </div>
 {% endblock %}
-
-{% block javascript %}
-    {{ parent() }}
-    {% if cli is defined %}
-        <script>
-            \$(function(){
-                Yop.Pagelet({            
-                   url: \"{{ path('tontine_categorie_preview', {'id':cat.id }) }}\",
-                   pagelet: '#user-pagelet',
-                   title: '{{cat.libelle}}'
-               });
-            });
-        </script>
-    {% endif %}
-{% endblock %}", "tontineBundle:Categorie:index.html.twig", "/var/www/html/tontine/src/tontineBundle/Resources/views/Categorie/index.html.twig");
+", "tontineBundle:Categorie:index.html.twig", "/var/www/html/tontine/src/tontineBundle/Resources/views/Categorie/index.html.twig");
     }
 }

@@ -37,7 +37,7 @@ class AgentController extends \tontineBundle\Controller\BaseController
             $form->handleRequest($request);            
             if($form->isSubmitted() && $form->isValid())
             {
-                $filename = 'PI-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$agent->getFilePhoto()->getClientOriginalName();
+                $filename = 'AGT-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$agent->getFilePhoto()->getClientOriginalName();
                 $agent->getFilePhoto()->move($this->getParameter('pieces_path'), $filename);
                 $agent->setPhoto($filename);
                 
@@ -182,7 +182,7 @@ class AgentController extends \tontineBundle\Controller\BaseController
             $agent = $form->getData();
             
             if($agent->getFilePhoto() != null){
-                $filename = 'PI-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$agent->getFilePhoto()->getClientOriginalName();
+                $filename = 'AGT-'. strtoupper(substr(sha1(uniqid(mt_rand(), true)), 0, 10)).$agent->getFilePhoto()->getClientOriginalName();
                 $agent->getFilePhoto()->move($this->getParameter('pieces_path'), $filename);
                 $agent->setPhoto($filename);
             }

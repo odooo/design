@@ -1,0 +1,15 @@
+<tr>    
+                        
+    <td>{{ fournisseur.id }}</td>    
+    
+    <td>{% if fournisseur.createdAt %}{{ fournisseur.createdAt|date('Y-m-d à H:i:s') }}{% endif %}</td>
+    
+    <td>{{ fournisseur.nom }}</td>    
+                        
+    <td>{{ fournisseur.prenom }}</td>
+    
+    <td>{{ fournisseur.contacts | phone_number_format('INTERNATIONAL') }}</td>
+    
+    <td>{{ fournisseur.adresse }}</td>   
+
+</tr>        
