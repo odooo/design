@@ -2,19 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62510cf8-ff03-470c-979e-b6aede1a0aa7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tontineBundle/Entity/FicheTravail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/8e/5b746f6e74696e6542756e646c655c456e746974795c5061676e655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/8e/5b746f6e74696e6542756e646c655c456e746974795c5061676e655d5b315d.doctrinecache.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php.meta" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php.meta" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/sessions/dev/sess_3evo3kjqqo844qelvajdf4v9e0" afterPath="$PROJECT_DIR$/var/sessions/dev/sess_3evo3kjqqo844qelvajdf4v9e0" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/uploads/pieces/CPRO-0ABA16EF42LOGO_MS.png" afterPath="$PROJECT_DIR$/web/uploads/pieces/CPRO-0ABA16EF42LOGO_MS.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/uploads/pieces/CPRO-582FAC59A2yayi_terminale_1973.jpg" afterPath="$PROJECT_DIR$/web/uploads/pieces/CPRO-582FAC59A2yayi_terminale_1973.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/uploads/pieces/PI-9B8421B31FDSC_0157.JPG" afterPath="$PROJECT_DIR$/web/uploads/pieces/PI-9B8421B31FDSC_0157.JPG" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Controller/CommandeController.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Controller/CommandeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Entity/Agent.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Entity/Agent.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Entity/Client.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Entity/Client.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Entity/Commande.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Entity/Commande.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Entity/Pagne.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Entity/Pagne.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Form/CommandeType.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Form/CommandeType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Form/ReferencePagneType.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Form/ReferencePagneType.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Repository/CommandeRepository.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Repository/CommandeRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tontineBundle/Tests/Controller/CommandeControllerTest.php" afterPath="$PROJECT_DIR$/src/tontineBundle/Tests/Controller/CommandeControllerTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/17/5b5b435d746f6e74696e6542756e646c655c456e746974795c4d6f64656c655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/17/5b5b435d746f6e74696e6542756e646c655c456e746974795c4d6f64656c655d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/3c/5b746f6e74696e6542756e646c655c456e746974795c506172616d65746572735d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/3c/5b746f6e74696e6542756e646c655c456e746974795c506172616d65746572735d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/3f/5b5b435d746f6e74696e6542756e646c655c456e746974795c4167656e63795d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/3f/5b5b435d746f6e74696e6542756e646c655c456e746974795c4167656e63795d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/3f/5b5b435d746f6e74696e6542756e646c655c456e746974795c466f75726e6973736575725d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/3f/5b5b435d746f6e74696e6542756e646c655c456e746974795c466f75726e6973736575725d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/41/5b746f6e74696e6542756e646c655c456e746974795c41757468546f6b656e5d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/41/5b746f6e74696e6542756e646c655c456e746974795c41757468546f6b656e5d5b315d.doctrinecache.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/58/5b5b435d746f6e74696e6542756e646c655c456e746974795c436f6d6d616e64655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/58/5b5b435d746f6e74696e6542756e646c655c456e746974795c436f6d6d616e64655d5b315d.doctrinecache.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/63/5b5b435d746f6e74696e6542756e646c655c456e746974795c436c69656e7424636f6d6d616e6465735d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/63/5b5b435d746f6e74696e6542756e646c655c456e746974795c436c69656e7424636f6d6d616e6465735d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/65/5b746f6e74696e6542756e646c655c456e746974795c466f75726e6973736575725d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/65/5b746f6e74696e6542756e646c655c456e746974795c466f75726e6973736575725d5b315d.doctrinecache.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/66/5b746f6e74696e6542756e646c655c456e746974795c436c69656e7424636f6d6d616e6465735d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/66/5b746f6e74696e6542756e646c655c456e746974795c436c69656e7424636f6d6d616e6465735d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/76/5b746f6e74696e6542756e646c655c456e746974795c50696563655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/76/5b746f6e74696e6542756e646c655c456e746974795c50696563655d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/7a/5b746f6e74696e6542756e646c655c456e746974795c4167656e7447726f75705d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/7a/5b746f6e74696e6542756e646c655c456e746974795c4167656e7447726f75705d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/7e/5b5b435d746f6e74696e6542756e646c655c456e746974795c5061676e655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/7e/5b5b435d746f6e74696e6542756e646c655c456e746974795c5061676e655d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/80/5b5b435d746f6e74696e6542756e646c655c456e746974795c41757468546f6b656e5d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/80/5b5b435d746f6e74696e6542756e646c655c456e746974795c41757468546f6b656e5d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/80/5b746f6e74696e6542756e646c655c456e746974795c4167656e63795d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/80/5b746f6e74696e6542756e646c655c456e746974795c4167656e63795d5b315d.doctrinecache.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/83/5b746f6e74696e6542756e646c655c456e746974795c436f6d6d616e64655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/83/5b746f6e74696e6542756e646c655c456e746974795c436f6d6d616e64655d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/95/5b5b435d746f6e74696e6542756e646c655c456e746974795c506172616d657465725d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/95/5b5b435d746f6e74696e6542756e646c655c456e746974795c506172616d657465725d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/af/5b746f6e74696e6542756e646c655c456e746974795c506172616d657465725d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/af/5b746f6e74696e6542756e646c655c456e746974795c506172616d657465725d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/b5/5b5b435d746f6e74696e6542756e646c655c456e746974795c4167656e7447726f75705d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/b5/5b5b435d746f6e74696e6542756e646c655c456e746974795c4167656e7447726f75705d5b315d.doctrinecache.data" />
@@ -23,6 +44,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/e7/5b5b435d746f6e74696e6542756e646c655c456e746974795c506172616d65746572735d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/e7/5b5b435d746f6e74696e6542756e646c655c456e746974795c506172616d65746572735d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/e7/5b746f6e74696e6542756e646c655c456e746974795c43617465676f7269655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/e7/5b746f6e74696e6542756e646c655c456e746974795c43617465676f7269655d5b315d.doctrinecache.data" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/annotations/ea/5b746f6e74696e6542756e646c655c456e746974795c4d6f64656c655d5b315d.doctrinecache.data" afterPath="$PROJECT_DIR$/var/cache/dev/annotations/ea/5b746f6e74696e6542756e646c655c456e746974795c4d6f64656c655d5b315d.doctrinecache.data" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerCompiler.log" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerCompiler.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlGenerator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainerUrlMatcher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__tontineBundleEntityAgency.php" afterPath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__tontineBundleEntityAgency.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__tontineBundleEntityAgentGroup.php" afterPath="$PROJECT_DIR$/var/cache/dev/doctrine/orm/Proxies/__CG__tontineBundleEntityAgentGroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/logs/dev.log" afterPath="$PROJECT_DIR$/var/logs/dev.log" />
     </list>
     <ignored path="tontine2.iws" />
@@ -102,7 +132,7 @@
       <file leaf-file-name="sidebar.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tontineBundle/Resources/views/Default/sidebar.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1908">
+            <state relative-caret-position="217">
               <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
               <folding />
             </state>
@@ -112,8 +142,18 @@
       <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+            <state relative-caret-position="198">
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -449,12 +489,12 @@
       <option name="presentableId" value="Default" />
       <updated>1486377101662</updated>
       <workItem from="1486377103563" duration="17188000" />
-      <workItem from="1486396901152" duration="487000" />
+      <workItem from="1486396901152" duration="700000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17675000" />
+    <option name="totallyTimeSpent" value="17888000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="53" y="24" width="1313" height="744" extended-state="6" />
@@ -861,14 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tontineBundle/Resources/views/Default/sidebar.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1908">
-          <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml.dist">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -885,10 +917,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/tontineBundle/Resources/views/Default/sidebar.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="106" column="23" selection-start-line="106" selection-start-column="23" selection-end-line="106" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+        <state relative-caret-position="198">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding />
         </state>
       </provider>
