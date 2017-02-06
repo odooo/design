@@ -1,0 +1,24 @@
+shop_command_index:
+    path:     /
+    defaults: { _controller: "tontineBundle:Commande:index" }
+    methods:  GET
+
+shop_command_show:
+    path:     /{id}/show
+    defaults: { _controller: "tontineBundle:Commande:show" }
+    methods:  GET
+
+shop_command_new:
+    path:     /new
+    defaults: { _controller: "tontineBundle:Commande:new" }
+    methods:  [GET, POST]
+
+shop_command_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "tontineBundle:Commande:edit" }
+    methods:  [GET, POST]
+
+shop_command_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "tontineBundle:Commande:delete" }
+    methods:  DELETE
