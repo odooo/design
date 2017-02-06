@@ -23,51 +23,51 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_dffd8b606ea18413c3fd0c29ddca82f26203af59f9c04a35f1fd9f84052fac7e = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_dffd8b606ea18413c3fd0c29ddca82f26203af59f9c04a35f1fd9f84052fac7e->enter($__internal_dffd8b606ea18413c3fd0c29ddca82f26203af59f9c04a35f1fd9f84052fac7e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Agency:index.html.twig"));
+        $__internal_e4a506f027e89b5c08b37893364b26aa85cdd6ef28f77fdcf0183eadd93781fc = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_e4a506f027e89b5c08b37893364b26aa85cdd6ef28f77fdcf0183eadd93781fc->enter($__internal_e4a506f027e89b5c08b37893364b26aa85cdd6ef28f77fdcf0183eadd93781fc_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "tontineBundle:Agency:index.html.twig"));
 
         $this->parent->display($context, array_merge($this->blocks, $blocks));
         
-        $__internal_dffd8b606ea18413c3fd0c29ddca82f26203af59f9c04a35f1fd9f84052fac7e->leave($__internal_dffd8b606ea18413c3fd0c29ddca82f26203af59f9c04a35f1fd9f84052fac7e_prof);
+        $__internal_e4a506f027e89b5c08b37893364b26aa85cdd6ef28f77fdcf0183eadd93781fc->leave($__internal_e4a506f027e89b5c08b37893364b26aa85cdd6ef28f77fdcf0183eadd93781fc_prof);
 
     }
 
     // line 3
     public function block_title($context, array $blocks = array())
     {
-        $__internal_b321eff8e7686c81ad13e54e1b2747999e11aec7282deb3f2f84a85b3dd9cf1d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_b321eff8e7686c81ad13e54e1b2747999e11aec7282deb3f2f84a85b3dd9cf1d->enter($__internal_b321eff8e7686c81ad13e54e1b2747999e11aec7282deb3f2f84a85b3dd9cf1d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
+        $__internal_565eacaf8c6ee0dec79873ebee3f966f3c3b21253648771cf2b30203aedec54a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_565eacaf8c6ee0dec79873ebee3f966f3c3b21253648771cf2b30203aedec54a->enter($__internal_565eacaf8c6ee0dec79873ebee3f966f3c3b21253648771cf2b30203aedec54a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Liste des agences de Global Design";
+        echo "Liste des agences de APHEDD Finance";
         
-        $__internal_b321eff8e7686c81ad13e54e1b2747999e11aec7282deb3f2f84a85b3dd9cf1d->leave($__internal_b321eff8e7686c81ad13e54e1b2747999e11aec7282deb3f2f84a85b3dd9cf1d_prof);
+        $__internal_565eacaf8c6ee0dec79873ebee3f966f3c3b21253648771cf2b30203aedec54a->leave($__internal_565eacaf8c6ee0dec79873ebee3f966f3c3b21253648771cf2b30203aedec54a_prof);
 
     }
 
     // line 5
     public function block_content_header($context, array $blocks = array())
     {
-        $__internal_8983dfd4d3efc588684e359f36d2b1a7269d22e7c2336e9af2114b2d3aa0a3eb = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_8983dfd4d3efc588684e359f36d2b1a7269d22e7c2336e9af2114b2d3aa0a3eb->enter($__internal_8983dfd4d3efc588684e359f36d2b1a7269d22e7c2336e9af2114b2d3aa0a3eb_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
+        $__internal_6618867fc3efbb405786f740505be35c2c89ec725f49f26eeaf6883a185c7c13 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_6618867fc3efbb405786f740505be35c2c89ec725f49f26eeaf6883a185c7c13->enter($__internal_6618867fc3efbb405786f740505be35c2c89ec725f49f26eeaf6883a185c7c13_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content_header"));
 
         // line 6
-        echo "    <h3>Liste des agences de Global Design</h3>
+        echo "    <h3>Liste des agences de APHEDD Finance</h3>
 ";
         
-        $__internal_8983dfd4d3efc588684e359f36d2b1a7269d22e7c2336e9af2114b2d3aa0a3eb->leave($__internal_8983dfd4d3efc588684e359f36d2b1a7269d22e7c2336e9af2114b2d3aa0a3eb_prof);
+        $__internal_6618867fc3efbb405786f740505be35c2c89ec725f49f26eeaf6883a185c7c13->leave($__internal_6618867fc3efbb405786f740505be35c2c89ec725f49f26eeaf6883a185c7c13_prof);
 
     }
 
     // line 9
     public function block_content($context, array $blocks = array())
     {
-        $__internal_a88852b8ad8b40c32c39b2be7e7b03cdbcf31c9d30a9cfd12e4446740bf7ae93 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_a88852b8ad8b40c32c39b2be7e7b03cdbcf31c9d30a9cfd12e4446740bf7ae93->enter($__internal_a88852b8ad8b40c32c39b2be7e7b03cdbcf31c9d30a9cfd12e4446740bf7ae93_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
+        $__internal_74018372283dc2c5166b369f4bfc7afe085cd055239218c047a75a25a2f14e30 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_74018372283dc2c5166b369f4bfc7afe085cd055239218c047a75a25a2f14e30->enter($__internal_74018372283dc2c5166b369f4bfc7afe085cd055239218c047a75a25a2f14e30_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "content"));
 
         // line 10
         echo "    <div class=\"box box-primary\">
         <div class=\"box-header with-border\">
-            <h3 class=\"box-title\">Liste des agences de Global Design</h3>
+            <h3 class=\"box-title\">Liste des agences de APHEDD Finance</h3>
         </div>
         <div class=\"box-body\">
             <div class=\"table-responsive\">
@@ -78,13 +78,15 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
                             <th>Nom de l'agence</th>
                             <th>Contact de l'agence</th>
                             <th>Adresse de l'agence</th>
-                        </tr>
+                            ";
+        // line 24
+        echo "                        </tr>
                     </thead>
                     <tbody>
                     ";
-        // line 26
+        // line 27
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["agencies"]) || array_key_exists("agencies", $context) ? $context["agencies"] : (function () { throw new Twig_Error_Runtime('Variable "agencies" does not exist.', 26, $this->getSourceContext()); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["agencies"]) || array_key_exists("agencies", $context) ? $context["agencies"] : (function () { throw new Twig_Error_Runtime('Variable "agencies" does not exist.', 27, $this->getSourceContext()); })()));
         $context['loop'] = array(
           'parent' => $context['_parent'],
           'index0' => 0,
@@ -99,22 +101,22 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
             $context['loop']['last'] = 1 === $length;
         }
         foreach ($context['_seq'] as $context["_key"] => $context["agency"]) {
-            // line 27
+            // line 28
             echo "                        <tr>
                             <td>";
-            // line 28
+            // line 29
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["loop"], "index", array()), "html", null, true);
             echo "</td>
                             <td>";
-            // line 29
+            // line 30
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["agency"], "name", array()), "html", null, true);
             echo "</td>
                             <td>";
-            // line 30
+            // line 31
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["agency"], "contact", array()), "html", null, true);
             echo "</td>
                             <td>";
-            // line 31
+            // line 32
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->getSourceContext(), $context["agency"], "address", array()), "html", null, true);
             echo "</td>
                         </tr>
@@ -131,14 +133,14 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['agency'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
+        // line 35
         echo "                    </tbody>
                 </table>
             </div>
         </div>
         <div class=\"box-footer\">
             <a href=\"";
-        // line 39
+        // line 40
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("tontine_agencies_create");
         echo "\" class=\"btn btn-primary\">
                 <i class=\"fa fa-plus\"></i>                
@@ -148,7 +150,7 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
     </div>
 ";
         
-        $__internal_a88852b8ad8b40c32c39b2be7e7b03cdbcf31c9d30a9cfd12e4446740bf7ae93->leave($__internal_a88852b8ad8b40c32c39b2be7e7b03cdbcf31c9d30a9cfd12e4446740bf7ae93_prof);
+        $__internal_74018372283dc2c5166b369f4bfc7afe085cd055239218c047a75a25a2f14e30->leave($__internal_74018372283dc2c5166b369f4bfc7afe085cd055239218c047a75a25a2f14e30_prof);
 
     }
 
@@ -164,23 +166,23 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
 
     public function getDebugInfo()
     {
-        return array (  142 => 39,  135 => 34,  118 => 31,  114 => 30,  110 => 29,  106 => 28,  103 => 27,  86 => 26,  68 => 10,  62 => 9,  54 => 6,  48 => 5,  36 => 3,  11 => 1,);
+        return array (  144 => 40,  137 => 35,  120 => 32,  116 => 31,  112 => 30,  108 => 29,  105 => 28,  88 => 27,  83 => 24,  68 => 10,  62 => 9,  54 => 6,  48 => 5,  36 => 3,  11 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Twig_Source("{% extends \"default/index.html.twig\" %}
 
-{% block title %}Liste des agences de Global Design{% endblock %}
+{% block title %}Liste des agences de APHEDD Finance{% endblock %}
 
 {% block content_header %}
-    <h3>Liste des agences de Global Design</h3>
+    <h3>Liste des agences de APHEDD Finance</h3>
 {% endblock %}
 
 {% block content %}
     <div class=\"box box-primary\">
         <div class=\"box-header with-border\">
-            <h3 class=\"box-title\">Liste des agences de Global Design</h3>
+            <h3 class=\"box-title\">Liste des agences de APHEDD Finance</h3>
         </div>
         <div class=\"box-body\">
             <div class=\"table-responsive\">
@@ -191,6 +193,7 @@ class __TwigTemplate_2d785514220344d7f238d3730bc9d706ac8b792cc72a6498309f22fa5c5
                             <th>Nom de l'agence</th>
                             <th>Contact de l'agence</th>
                             <th>Adresse de l'agence</th>
+                            {#<th>Actions</th>#}
                         </tr>
                     </thead>
                     <tbody>

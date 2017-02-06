@@ -1,0 +1,71 @@
+{% extends "default/index.html.twig" %}
+
+{% block title %}Liste des commandes de Global Design{% endblock %}
+
+{% block content_header %}
+    <h3>Liste des commandes de Global Design</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des commandes de Global Design</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Reference</th>
+                        <th>Designation</th>
+                        <th>Mesure</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for commande in commandes %}
+                        <tr>
+                            <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+                            <td>{{ commande.reference }}</td>
+                            <td>{{ commande.designation }}</td>
+                            <td>{{ commande.mesure }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('shop_command_show', { 'id': commande.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('shop_command_new') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+                Ajouter une nouvelle commande
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {#{% if cli is defined %}#}
+        {#<script>#}
+            {#$(function(){#}
+                {#Yop.Pagelet({#}
+                    {#url: "{{ path('tontine_client_preview', {'id':cli.id }) }}",#}
+                    {#pagelet: '#user-pagelet',#}
+                    {#title: '{{cli.prenom}} {{cli.nom}}'#}
+                {#});#}
+            {#});#}
+        {#</script>#}
+    {#{% endif %}#}
+{% endblock %}

@@ -15,8 +15,8 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_5b1d2c616c571cf0ed5c0da5a85c647e713ccdb8a71abb875dd66eb36a4721cd = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_5b1d2c616c571cf0ed5c0da5a85c647e713ccdb8a71abb875dd66eb36a4721cd->enter($__internal_5b1d2c616c571cf0ed5c0da5a85c647e713ccdb8a71abb875dd66eb36a4721cd_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/sidebar.html.twig"));
+        $__internal_03d14b04c11d870b2cbca16aa679032222a8e52636185b69c4dc181b0928ea13 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_03d14b04c11d870b2cbca16aa679032222a8e52636185b69c4dc181b0928ea13->enter($__internal_03d14b04c11d870b2cbca16aa679032222a8e52636185b69c4dc181b0928ea13_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "@tontine/Default/sidebar.html.twig"));
 
         // line 1
         echo "<div class=\"user-panel\">
@@ -330,7 +330,7 @@ class __TwigTemplate_a3042f903645d1aad4def66114d6fa5e14c8c9f08d57aa206b68fe05e54
         echo "   
 </ul>";
         
-        $__internal_5b1d2c616c571cf0ed5c0da5a85c647e713ccdb8a71abb875dd66eb36a4721cd->leave($__internal_5b1d2c616c571cf0ed5c0da5a85c647e713ccdb8a71abb875dd66eb36a4721cd_prof);
+        $__internal_03d14b04c11d870b2cbca16aa679032222a8e52636185b69c4dc181b0928ea13->leave($__internal_03d14b04c11d870b2cbca16aa679032222a8e52636185b69c4dc181b0928ea13_prof);
 
     }
 
