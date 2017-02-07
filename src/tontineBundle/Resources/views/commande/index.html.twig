@@ -44,11 +44,11 @@
                                             </li>
                                         {% endif  %}
 
-                                        {% if  is_granted('ROLE_COMMANDE_EDIT') %}
-                                            <li>
-                                                <a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">Modifier</a>
-                                            </li>
-                                        {% endif  %}
+                                        {#{% if  is_granted('ROLE_COMMANDE_EDIT') %}#}
+                                            {#<li>#}
+                                                {#<a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">Modifier</a>#}
+                                            {#</li>#}
+                                        {#{% endif  %}#}
 
                                         {% if  is_granted('ROLE_FICHE_EDIT') %}
                                             <li>

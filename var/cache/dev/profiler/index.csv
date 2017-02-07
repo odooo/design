@@ -930,3 +930,10 @@ b8a739,::1,POST,http://localhost/tontine2/web/app_dev.php/commandes/23/edit,1486
 66459a,::1,POST,http://localhost/tontine2/web/app_dev.php/commandes/23/edit,1486486406,,302
 6d860c,::1,GET,http://localhost/tontine2/web/app_dev.php/commandes/23/edit,1486486406,,200
 dcdd5a,::1,GET,http://localhost/tontine2/web/app_dev.php/js/routing?callback=fos.Router.setData,1486486409,,200
+b06bcc,::1,GET,http://localhost/tontine2/web/app_dev.php/commandes/,1486488071,,302
+6fef7a,::1,GET,http://localhost/tontine2/web/app_dev.php/login,1486488072,,200
+9ebdce,::1,POST,http://localhost/tontine2/web/app_dev.php/login_check,1486488080,,302
+07241b,::1,GET,http://localhost/tontine2/web/app_dev.php/commandes/,1486488081,,200
+7de255,::1,GET,http://localhost/tontine2/web/app_dev.php/js/routing?callback=fos.Router.setData,1486488082,,200
+13b352,::1,GET,http://localhost/tontine2/web/app_dev.php/commandes/,1486488135,,200
+878c8c,::1,GET,http://localhost/tontine2/web/app_dev.php/js/routing?callback=fos.Router.setData,1486488136,,200
