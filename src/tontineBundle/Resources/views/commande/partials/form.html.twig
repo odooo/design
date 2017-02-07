@@ -18,14 +18,70 @@
                     {#</div>#}
                 </div>
                 <div class="box-body">
-                    {{ form_errors(form.designation) }}
-                    <div class="form-group">
-                        {{ form_label(form.designation, 'Désignation'|trans) }}
-                        <div class="form-group">
-                            {{ form_widget(form.designation) }}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            {{ form_errors(form.designation) }}
+                            <div class="form-group">
+                                {{ form_label(form.designation, 'Désignation'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.designation) }}
+                                </div>
+
+                            </div>
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            {{ form_errors(form.reference) }}
+                            <div class="form-group">
+                                {{ form_label(form.reference, 'Référence'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.reference) }}
+                                </div>
+
+                            </div>
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            {{ form_errors(form.client) }}
+                            <div class="form-group">
+                                {{ form_label(form.client, 'Client'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.client) }}
+                                </div>
+
+                            </div>
                         </div>
 
+                        <div class="col-sm-6">
+                            {{ form_errors(form.typeCommande) }}
+                            <div class="form-group">
+                                {{ form_label(form.typeCommande, 'Type de commande'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.typeCommande) }}
+                                </div>
+
+                            </div>
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            <div id="pagne">
+                                {{ form_errors(form.pagne) }}
+                                <div class="form-group">
+                                    {{ form_label(form.pagne, 'Pagnes'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.pagne) }}
+                                    </div>
+
+                                </div>
+                            </div>
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            <div id="modele">
+                                {{ form_errors(form.modele) }}
+                                <div class="form-group">
+                                    {{ form_label(form.modele, 'Modèle'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.modele) }}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
                     {{ form_rest(form) }}
                 </div>
                 <div class="box-footer">

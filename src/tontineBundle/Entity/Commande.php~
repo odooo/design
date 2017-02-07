@@ -2,6 +2,7 @@
 
 namespace tontineBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 use Symfony\Component\Validator\Constraints as Assert;
@@ -49,7 +50,7 @@ class Commande
     /**
      * @var string
      *
-     * @ORM\Column(name="mesure", type="string", length=255)
+     * @ORM\Column(name="mesure", type="string", length=255, nullable=true)
      */
     private $mesure;
 
@@ -86,10 +87,25 @@ class Commande
 
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     * 
      * One Commande can contain Many Pagnes.
-     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\Pagne", mappedBy="commande")
+     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandePagne", mappedBy="commande")
      */
-    private $pagnes;
+    private $cmdPagne;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * One Commande can contain Many Modele.
+     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandeModele", mappedBy="commande")
+     */
+    private $cmdModele;
+
+    protected $pagnes;
+
+    protected $modeles;
+
 
     /**
      * Get id
@@ -225,41 +241,10 @@ class Commande
      */
     public function __construct()
     {
+        $this->cmdPagne = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cmdModele = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pagnes = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add pagne
-     *
-     * @param \tontineBundle\Entity\Pagne $pagne
-     *
-     * @return Commande
-     */
-    public function addPagne(\tontineBundle\Entity\Pagne $pagne)
-    {
-        $this->pagnes[] = $pagne;
-
-        return $this;
-    }
-
-    /**
-     * Remove pagne
-     *
-     * @param \tontineBundle\Entity\Pagne $pagne
-     */
-    public function removePagne(\tontineBundle\Entity\Pagne $pagne)
-    {
-        $this->pagnes->removeElement($pagne);
-    }
-
-    /**
-     * Get pagnes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPagnes()
-    {
-        return $this->pagnes;
+        $this->modeles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -284,5 +269,159 @@ class Commande
     public function getClient()
     {
         return $this->client;
+    }
+
+    /**
+     * Set typeCommande
+     *
+     * @param string $typeCommande
+     *
+     * @return Commande
+     */
+    public function setTypeCommande($typeCommande)
+    {
+        $this->typeCommande = $typeCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get typeCommande
+     *
+     * @return string
+     */
+    public function getTypeCommande()
+    {
+        return $this->typeCommande;
+    }
+
+    /**
+     * Add cmdPagne
+     *
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
+     *
+     * @return Commande
+     */
+    public function addCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne)
+    {
+        $this->cmdPagne[] = $cmdPagne;
+
+        return $this;
+    }
+
+    /**
+     * Remove cmdPagne
+     *
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
+     */
+    public function removeCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne)
+    {
+        $this->cmdPagne->removeElement($cmdPagne);
+    }
+
+    /**
+     * Get cmdPagne
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCmdPagne()
+    {
+        return $this->cmdPagne;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->reference;
+    }
+
+    // Important
+    public function getPagne()
+    {
+        $pagnes = new ArrayCollection();
+
+        foreach($this->cmdPagne as $p)
+        {
+            $this->pagnes[] = $p->getPagne();
+        }
+
+        return $this->pagnes;
+    }
+    // Important
+    public function setPagne($pagnes)
+    {
+        foreach($pagnes as $p)
+        {
+            $cmdPagne = new CommandePagne();
+
+            $cmdPagne->setCommande($this);
+            $cmdPagne->setPagne($p);
+
+            $this->addCmdPagne($cmdPagne);
+        }
+
+    }
+
+    /**
+     * Add cmdModele
+     *
+     * @param \tontineBundle\Entity\CommandeModele $cmdModele
+     *
+     * @return Commande
+     */
+    public function addCmdModele(\tontineBundle\Entity\CommandeModele $cmdModele)
+    {
+        $this->cmdModele[] = $cmdModele;
+
+        return $this;
+    }
+
+    /**
+     * Remove cmdModele
+     *
+     * @param \tontineBundle\Entity\CommandeModele $cmdModele
+     */
+    public function removeCmdModele(\tontineBundle\Entity\CommandeModele $cmdModele)
+    {
+        $this->cmdModele->removeElement($cmdModele);
+    }
+
+    /**
+     * Get cmdModele
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCmdModele()
+    {
+        return $this->cmdModele;
+    }
+
+    public function getModele()
+    {
+        $modeles = new ArrayCollection();
+
+        if(!empty($this->cmdModele))
+        {
+            foreach($this->cmdModele as $c)
+            {
+                $this->modeles[] = $c->getModele();
+            }
+        }
+
+        return $this->modeles;
+    }
+    // Important
+    public function setModele($modeles)
+    {
+        foreach($modeles as $m)
+        {
+            $cmdModele = new CommandeModele();
+
+            $cmdModele->setCommande($this);
+            $cmdModele->setModele($m);
+
+            $this->addCmdModele($cmdModele);
+        }
+
     }
 }

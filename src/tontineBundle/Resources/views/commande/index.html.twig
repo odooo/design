@@ -16,29 +16,48 @@
                 <table class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>#</th>
                         <th>Reference</th>
                         <th>Designation</th>
-                        <th>Mesure</th>
-                        <th>Actions</th>
+                        {#<th>Mesure</th>#}
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for commande in commandes %}
                         <tr>
-                            <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>
+                            <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ loop.index }}</a></td>
                             <td>{{ commande.reference }}</td>
                             <td>{{ commande.designation }}</td>
-                            <td>{{ commande.mesure }}</td>
+                            {#<td>{{ commande.mesure }}</td>#}
                             <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('shop_command_show', { 'id': commande.id }) }}">show</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">edit</a>
-                                    </li>
-                                </ul>
+                                <div class="btn-group pull-right">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Actions
+                                        <span class="fa fa-caret-down"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+
+                                        {% if  is_granted('ROLE_COMMANDE_SHOW') %}
+                                            <li>
+                                                <a href="{{ path('shop_command_show', { 'id': commande.id }) }}">Afficher</a>
+                                            </li>
+                                        {% endif  %}
+
+                                        {% if  is_granted('ROLE_COMMANDE_EDIT') %}
+                                            <li>
+                                                <a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">Modifier</a>
+                                            </li>
+                                        {% endif  %}
+
+                                        {% if  is_granted('ROLE_FICHE_EDIT') %}
+                                            <li>
+                                                <a href="{{ path('shop_command_show', { 'id': commande.id }) }}">Editer la fiche de travail</a>
+                                            </li>
+                                        {% endif  %}
+
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}

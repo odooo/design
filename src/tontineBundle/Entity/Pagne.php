@@ -94,7 +94,6 @@ class Pagne
      */
     protected $fournisseur;
 
-
     /**
      * @var \DateTime
      *
@@ -108,7 +107,6 @@ class Pagne
      * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
-
 
     /**
      * @var \tontineBundle\Entity\Agent
@@ -131,14 +129,12 @@ class Pagne
     private $updatedBy;
 
     /**
-     * @var \tontineBundle\Entity\Commande
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Commande", cascade={"persist"}, inversedBy="pagnes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cmd_id", referencedColumnName="id", nullable=true)
-     * })
+     * One Commande can contain Many Pagnes.
+     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandePagne", mappedBy="pagne")
      */
-    private $commande;
+    private $cmdPagne;
 
     /**
      * Set reference
@@ -427,18 +423,6 @@ class Pagne
     }
 
     /**
-     * Set commande
-     *
-     * @param \tontineBundle\Entity\Commande $commande
-     *
-     * @return Pagne
-     */
-    public function setCommande(\tontineBundle\Entity\Commande $commande = null)
-    {
-        $this->commande = $commande;
-    }
-
-    /**
      * Set fournisseur
      *
      * @param \tontineBundle\Entity\Fournisseur $fournisseur
@@ -450,16 +434,6 @@ class Pagne
         $this->fournisseur = $fournisseur;
 
         return $this;
-    }
-
-    /**
-     * Get commande
-     *
-     * @return \tontineBundle\Entity\Commande
-     */
-    public function getCommande()
-    {
-        return $this->commande;
     }
 
     public function __toString()
@@ -476,5 +450,70 @@ class Pagne
     public function getFournisseur()
     {
         return $this->fournisseur;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cmdPagne = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cmdPagne
+     *
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
+     *
+     * @return Pagne
+     */
+    public function addCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne)
+    {
+        $this->cmdPagne[] = $cmdPagne;
+
+        return $this;
+    }
+
+    /**
+     * Remove cmdPagne
+     *
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
+     */
+    public function removeCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne)
+    {
+        $this->cmdPagne->removeElement($cmdPagne);
+    }
+
+    /**
+     * Get cmdPagne
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCmdPagne()
+    {
+        return $this->cmdPagne;
+    }
+
+    /**
+     * Set fiche
+     *
+     * @param \tontineBundle\Entity\FicheTravail $fiche
+     *
+     * @return Pagne
+     */
+    public function setFiche(\tontineBundle\Entity\FicheTravail $fiche = null)
+    {
+        $this->fiche = $fiche;
+
+        return $this;
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \tontineBundle\Entity\FicheTravail
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
     }
 }

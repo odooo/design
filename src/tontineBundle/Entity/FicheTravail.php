@@ -38,6 +38,13 @@ class FicheTravail
      */
     private $dateLivraison;
 
+    /**
+     * One Cart has One Customer.
+     * @ORM\OneToOne(targetEntity="tontineBundle\Entity\CommandePagne", mappedBy="fiche")
+     */
+    private $cmdPagne;
+
+
 
     /**
      * Get id
@@ -95,5 +102,29 @@ class FicheTravail
     public function getDateLivraison()
     {
         return $this->dateLivraison;
+    }
+
+    /**
+     * Set cmdPagne
+     *
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
+     *
+     * @return FicheTravail
+     */
+    public function setCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne = null)
+    {
+        $this->cmdPagne = $cmdPagne;
+
+        return $this;
+    }
+
+    /**
+     * Get cmdPagne
+     *
+     * @return \tontineBundle\Entity\CommandePagne
+     */
+    public function getCmdPagne()
+    {
+        return $this->cmdPagne;
     }
 }

@@ -33,6 +33,14 @@ class Modele
      */
     
     private $libelle;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * One Commande can contain Many Pagnes.
+     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandeModele", mappedBy="modele")
+     */
+    private $cmdModele;
     
 
     /**
@@ -84,4 +92,45 @@ class Modele
         return $this->getName();
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cmdModele = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cmdModele
+     *
+     * @param \tontineBundle\Entity\CommandeModele $cmdModele
+     *
+     * @return Modele
+     */
+    public function addCmdModele(\tontineBundle\Entity\CommandeModele $cmdModele)
+    {
+        $this->cmdModele[] = $cmdModele;
+
+        return $this;
+    }
+
+    /**
+     * Remove cmdModele
+     *
+     * @param \tontineBundle\Entity\CommandeModele $cmdModele
+     */
+    public function removeCmdModele(\tontineBundle\Entity\CommandeModele $cmdModele)
+    {
+        $this->cmdModele->removeElement($cmdModele);
+    }
+
+    /**
+     * Get cmdModele
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCmdModele()
+    {
+        return $this->cmdModele;
+    }
 }

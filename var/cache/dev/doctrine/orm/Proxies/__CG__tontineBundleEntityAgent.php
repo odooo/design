@@ -64,10 +64,10 @@ class Agent extends \tontineBundle\Entity\Agent implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
+            return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdCommande', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedCommande', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
         }
 
-        return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
+        return ['__isInitialized__', 'id', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'nom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'prenom', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'contact', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'photo', 'filePhoto', 'profil', 'agence', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedAt', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdCommande', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedCommande', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'createdBy', '' . "\0" . 'tontineBundle\\Entity\\Agent' . "\0" . 'updatedBy', 'username', 'usernameCanonical', 'email', 'emailCanonical', 'enabled', 'salt', 'password', 'plainPassword', 'lastLogin', 'confirmationToken', 'passwordRequestedAt', 'groups', 'roles'];
     }
 
     /**
@@ -457,6 +457,72 @@ class Agent extends \tontineBundle\Entity\Agent implements \Doctrine\ORM\Proxy\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getProfilName', []);
 
         return parent::getProfilName();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addCreatedCommande(\tontineBundle\Entity\Commande $createdCommande)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addCreatedCommande', [$createdCommande]);
+
+        return parent::addCreatedCommande($createdCommande);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeCreatedCommande(\tontineBundle\Entity\Commande $createdCommande)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeCreatedCommande', [$createdCommande]);
+
+        return parent::removeCreatedCommande($createdCommande);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCreatedCommande()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedCommande', []);
+
+        return parent::getCreatedCommande();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addUpdatedCommande(\tontineBundle\Entity\Commande $updatedCommande)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addUpdatedCommande', [$updatedCommande]);
+
+        return parent::addUpdatedCommande($updatedCommande);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeUpdatedCommande(\tontineBundle\Entity\Commande $updatedCommande)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeUpdatedCommande', [$updatedCommande]);
+
+        return parent::removeUpdatedCommande($updatedCommande);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUpdatedCommande()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedCommande', []);
+
+        return parent::getUpdatedCommande();
     }
 
     /**

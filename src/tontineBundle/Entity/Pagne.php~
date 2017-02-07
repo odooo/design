@@ -13,16 +13,15 @@ use \Symfony\Component\HttpFoundation\File\File;
  * @ORM\Table(name="pagne")
  * @ORM\EntityListeners("tontineBundle\EntityListener\TontineEntityListener")
  * @ORM\Entity(repositoryClass="tontineBundle\Repository\PagneRepository")
- * 
+ *
  * @AjaxifySearch(
  *     alias = "pagne",
  *     itemTemplate = "tontineBundle:Pagne:partials/item.html.twig",
  *     searchables = {"reference", "designation", "prix", "categorie"},
  *     orderBy = { "id": "DESC" }
  * )
- * 
+ *
  */
-
 class Pagne
 {
     /**
@@ -38,7 +37,7 @@ class Pagne
      * @var string
      *
      * @ORM\Column(name="reference", type="string", length=100, nullable=true)
-     * 
+     *
      */
     private $reference;
 
@@ -46,7 +45,7 @@ class Pagne
      * @var string
      *
      * @ORM\Column(name="designation", type="string", length=100, nullable=true)
-     * 
+     *
      */
     private $designation;
 
@@ -67,7 +66,7 @@ class Pagne
     /**
      * @var string
      * @ORM\Column(name="photo", type="string", length=255, nullable=true)
-     */    
+     */
     private $photo;
 
     /**
@@ -88,23 +87,27 @@ class Pagne
      *
      */
     protected $categorie;
-    
-    
+
+    /**
+     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Fournisseur")
+     *
+     */
+    protected $fournisseur;
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
     private $createdAt;
-    
+
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="updatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
-    
-    
+
     /**
      * @var \tontineBundle\Entity\Agent
      *
@@ -114,8 +117,8 @@ class Pagne
      * })
      */
     private $createdBy;
-    
-   /**
+
+    /**
      * @var \tontineBundle\Entity\Agent
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Agent", cascade={"persist"})
@@ -126,14 +129,12 @@ class Pagne
     private $updatedBy;
 
     /**
-     * @var \tontineBundle\Entity\Commande
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Commande", cascade={"persist"}, inversedBy="pagnes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cmd_id", referencedColumnName="id", nullable=true)
-     * })
+     * One Commande can contain Many Pagnes.
+     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandePagne", mappedBy="pagne")
      */
-    private $commande;
+    private $cmdPagne;
 
     /**
      * Set reference
@@ -253,7 +254,7 @@ class Pagne
     public function getPhoto()
     {
         return $this->photo;
-    }    
+    }
 
     /**
      * Set createdAt
@@ -375,15 +376,17 @@ class Pagne
         return $this->updatedBy;
     }
 
-    
-    function getFilePhoto() {
+
+    function getFilePhoto()
+    {
         return $this->filePhoto;
     }
 
-    function setFilePhoto(\Symfony\Component\HttpFoundation\File\File $filePhoto) {
+    function setFilePhoto(\Symfony\Component\HttpFoundation\File\File $filePhoto)
+    {
         $this->filePhoto = $filePhoto;
     }
-   
+
 
     /**
      * Get id
@@ -420,26 +423,97 @@ class Pagne
     }
 
     /**
-     * Set commande
+     * Set fournisseur
      *
-     * @param \tontineBundle\Entity\Commande $commande
+     * @param \tontineBundle\Entity\Fournisseur $fournisseur
      *
      * @return Pagne
      */
-    public function setCommande(\tontineBundle\Entity\Commande $commande = null)
+    public function setFournisseur(\tontineBundle\Entity\Fournisseur $fournisseur = null)
     {
-        $this->commande = $commande;
+        $this->fournisseur = $fournisseur;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->designation;
+    }
+
+    /**
+     * Get fournisseur
+     *
+     * @return \tontineBundle\Entity\Fournisseur
+     */
+    public function getFournisseur()
+    {
+        return $this->fournisseur;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cmdPagne = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add cmdPagne
+     *
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
+     *
+     * @return Pagne
+     */
+    public function addCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne)
+    {
+        $this->cmdPagne[] = $cmdPagne;
 
         return $this;
     }
 
     /**
-     * Get commande
+     * Remove cmdPagne
      *
-     * @return \tontineBundle\Entity\Commande
+     * @param \tontineBundle\Entity\CommandePagne $cmdPagne
      */
-    public function getCommande()
+    public function removeCmdPagne(\tontineBundle\Entity\CommandePagne $cmdPagne)
     {
-        return $this->commande;
+        $this->cmdPagne->removeElement($cmdPagne);
+    }
+
+    /**
+     * Get cmdPagne
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCmdPagne()
+    {
+        return $this->cmdPagne;
+    }
+
+    /**
+     * Set fiche
+     *
+     * @param \tontineBundle\Entity\FicheTravail $fiche
+     *
+     * @return Pagne
+     */
+    public function setFiche(\tontineBundle\Entity\FicheTravail $fiche = null)
+    {
+        $this->fiche = $fiche;
+
+        return $this;
+    }
+
+    /**
+     * Get fiche
+     *
+     * @return \tontineBundle\Entity\FicheTravail
+     */
+    public function getFiche()
+    {
+        return $this->fiche;
     }
 }
