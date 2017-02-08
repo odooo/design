@@ -23,6 +23,10 @@ shop_command_delete:
     defaults: { _controller: "tontineBundle:Commande:delete" }
     methods:  DELETE
 
+shop_command_facture_edit:
+    path:     /{id}/commande/facture
+    defaults: { _controller: "tontineBundle:Commande:printBill" }
+    methods:  GET
 
 # fiche de travail
 

@@ -22,6 +22,13 @@ class CommandePagne
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hasFiche", type="boolean", nullable=true)
+     */
+    private $hasFiche;
+
+    /**
      * @var \tontineBundle\Entity\Commande
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Commande", cascade={"persist", "remove"}, inversedBy="cmdPagne")
@@ -135,5 +142,29 @@ class CommandePagne
     public function getFiche()
     {
         return $this->fiche;
+    }
+
+    /**
+     * Set hasFiche
+     *
+     * @param boolean $hasFiche
+     *
+     * @return CommandePagne
+     */
+    public function setHasFiche($hasFiche)
+    {
+        $this->hasFiche = $hasFiche;
+
+        return $this;
+    }
+
+    /**
+     * Get hasFiche
+     *
+     * @return boolean
+     */
+    public function getHasFiche()
+    {
+        return $this->hasFiche;
     }
 }

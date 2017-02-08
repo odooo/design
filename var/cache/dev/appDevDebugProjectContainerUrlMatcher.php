@@ -57,32 +57,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
-            if (0 === strpos($pathinfo, '/js/6d2b2d6')) {
-                // _assetic_6d2b2d6
-                if ($pathinfo === '/js/6d2b2d6.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '6d2b2d6',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_6d2b2d6',);
-                }
-
-                // _assetic_6d2b2d6_0
-                if ($pathinfo === '/js/6d2b2d6_conditiongenerale_1.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '6d2b2d6',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_6d2b2d6_0',);
-                }
-
-            }
-
-            if (0 === strpos($pathinfo, '/js/020da92')) {
-                // _assetic_020da92
-                if ($pathinfo === '/js/020da92.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_020da92',);
-                }
-
-                // _assetic_020da92_0
-                if ($pathinfo === '/js/020da92_resiliationcontrat_1.js') {
-                    return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_020da92_0',);
-                }
-
-            }
-
             if (0 === strpos($pathinfo, '/js/836d2fd')) {
                 // _assetic_836d2fd
                 if ($pathinfo === '/js/836d2fd.js') {
@@ -590,6 +564,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_command_delete')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::deleteAction',));
             }
             not_shop_command_delete:
+
+            // shop_command_facture_edit
+            if (preg_match('#^/commandes/(?P<id>[^/]++)/commande/facture$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_shop_command_facture_edit;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_command_facture_edit')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::printBillAction',));
+            }
+            not_shop_command_facture_edit:
 
             // shop_fiche_travail_new
             if (preg_match('#^/commandes/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {

@@ -447,6 +447,16 @@ Client roma Mise-A-Jour 2017-Feb-07:17:53:25
 Pagne roma Mise-A-Jour 2017-Feb-07:17:53:25
 Pagne roma Mise-A-Jour 2017-Feb-07:17:53:25
 Agent roma Mise-A-Jour 2017-Feb-07:18:21:20
+<<<<<<< HEAD
+Agent roma Mise-A-Jour 2017-Feb-07:18:59:07
+FicheTravail roma Enregistrement 2017-Feb-07:19:15:13
+Commande roma Enregistrement 2017-Feb-07:19:15:13
+CommandePagne roma Enregistrement 2017-Feb-07:19:15:14
+Agent roma Mise-A-Jour 2017-Feb-07:19:15:14
+Client roma Mise-A-Jour 2017-Feb-07:19:15:14
+Pagne roma Mise-A-Jour 2017-Feb-07:19:15:14
+=======
 Agent Edgar Mise-A-Jour 2017-Feb-07:19:32:26
 Agent Unknow Mise-A-Jour 2017-Feb-07:19:34:28
 Agent Edgar Mise-A-Jour 2017-Feb-07:19:34:55
+>>>>>>> 98b2c5f8696a04fd29d8da15541c98568e6aa835

@@ -9,6 +9,8 @@ use tontineBundle\Entity\CommandeModele;
 use tontineBundle\Entity\CommandePagne;
 use tontineBundle\Entity\FicheTravail;
 
+use Dompdf\Dompdf;
+
 /**
  * Commande controller.
  *
@@ -53,6 +55,7 @@ class CommandeController extends Controller
 
             $commande->setCreatedBy($user);
             $commande->setCreatedAt(new \DateTime());
+            $commande->setMontant(0);
 
             $em->persist($commande);
             $i = 0;
@@ -66,6 +69,7 @@ class CommandeController extends Controller
                 $cmdPagne->setPagne($pagne);
                 $cmdPagne->setCommande($commande);
                 $cmdPagne->setFiche(null);
+                $cmdPagne->setHasFiche(0);
                 $em->persist($cmdPagne);
             }
 
@@ -78,6 +82,7 @@ class CommandeController extends Controller
 //                    $fiche->setPagne($pagne);
                     $cmdModele->setModele($modele);
                     $cmdModele->setCommande($commande);
+                    $cmdModele->setHasFiche(0);
                     $em->persist($cmdModele);
 //                    $em->persist($fiche);
                 }
@@ -131,16 +136,12 @@ class CommandeController extends Controller
                 if ($cmdPagne) {
                     $array_id = array();
                     foreach ($pagnes as $pagne) {
-                        var_dump($pagne->getId());
                         $i = 0;
-                        foreach ( $cmdPagne as $cmd_p)
-                        {
-                            var_dump($cmd_p->getPagne()->getId());
+                        foreach ($cmdPagne as $cmd_p) {
                             $array_id[$i] = $cmd_p->getPagne()->getId();
                             $i++;
                         }
-                        if(in_array($pagne->getId(),$array_id))
-                        {
+                        if (in_array($pagne->getId(), $array_id)) {
                             $cmd_p = $this->getDoctrine()->getManager()->getRepository('tontineBundle:CommandePagne')->findByCommande(array(
                                 'commande' => $commande,
                                 'pagne' => $pagne,
@@ -148,9 +149,7 @@ class CommandeController extends Controller
 //                            var_dump($cmd_p);
 //                            die();
 //                            $cmd_p->setPagne($pagne);
-                        }
-                        else
-                        {
+                        } else {
                             $cmdPagne = new CommandePagne();
                             $fiche = new FicheTravail();
                             $fiche->setDateCommande(new \DateTime());
@@ -164,8 +163,7 @@ class CommandeController extends Controller
                 }
             }
 
-            if(isset($modeles) && !empty($modeles))
-            {
+            if (isset($modeles) && !empty($modeles)) {
                 $cmdModele = $this->getDoctrine()->getManager()->getRepository('tontineBundle:CommandeModele')->findBy(array(
                     'commande' => $commande,
                 ));
@@ -223,12 +221,41 @@ class CommandeController extends Controller
             ->getForm();
     }
 
-    public function setFicheAction(Request $request, $id){
+    public function printBillAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(array(
+            'commande' => $commande,
+        ));
+
+        
+
+        $html = $this->render('tontineBundle:commande:facture.html.twig', [
+            'commande' => $commande,
+            'fiches' => $fiches,
+        ])->getContent();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('facture_' . (new \DateTime())->format("d-m-Y"));
+    }
+
+    public function setFicheAction(Request $request, $id)
+    {
 
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('tontineBundle:Commande')->find($id);
         $pagnes = $commande->getCmdPagne();
-
+        
         $fiche = new FicheTravail();
 
         $form = $this->createForm('tontineBundle\Form\FicheTravailType', $fiche);
@@ -236,13 +263,19 @@ class CommandeController extends Controller
 
         $user = $this->getUser();
 
-         if ($form->isSubmitted() && $form->isValid()) {
+        $date = $request->request->get('dateLivraison');
+
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $fiche->setCommande($commande);
             $fiche->setDateCommande($commande->getCreatedAt());
             $fiche->setCreatedBy($user);
 
             $em->persist($fiche);
+
+            $montant = $commande->getMontant() + $fiche->getMontant();
+
+            $commande->setMontant($montant);
 
             $em->flush();
 
@@ -258,10 +291,10 @@ class CommandeController extends Controller
 
     }
 
-    public function indexFicheAction($id){
-
+    public function indexFicheAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
-        
+
         $commande = $em->getRepository('tontineBundle:Commande')->find($id);
         $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(
             array('commande' => $commande));
@@ -270,6 +303,5 @@ class CommandeController extends Controller
             'fiches' => $fiches,
             'commande' => $commande,
         ));
-
     }
 }
