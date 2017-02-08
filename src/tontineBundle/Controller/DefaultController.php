@@ -18,47 +18,19 @@ class DefaultController extends Controller
         $dashClientDatas = $this->get('tontine.manager.dashboard')
             ->getDashClientDatas();
 
-        return $this->render('tontineBundle:Default:dashboard.html.twig', compact('dashboardDatas', 'dashClientDatas'));
-    }
+        $dashCommandeDatas = $this->get('tontine.manager.dashboard')
+            ->getDashCommandeDatas();
 
-    /**
-     * @Route("/etats/my-today-tontines", name="tontine_dashboard_my_today_tontines")
-     * @Security("has_role('ROLE_TONTINE_CREATE')")
-     */
-    public function agentTodayTontinesAction(Request $request)
-    {
-        $tontines = $this->get('tontine.manager.dashboard')->getAgentTodayCreatedTontines();
+        $dashVenteDatas = $this->get('tontine.manager.dashboard')
+            ->getDashVenteDatas();
 
-        if ($request->query->get('print', false)) {
-            return $this->renderPdf(
-                'tontineBundle:Default:my_today_tontines_pdf.html.twig',
-                ['tontines' => $tontines],
-                sprintf("Liste_des_tontines_demarrees_le_%s", date('d_m_Y'))
-            );
-        }
+        $dashMainDatas = $this->get('tontine.manager.dashboard')
+            ->getDashMainDatas();
 
-        return $this->render('tontineBundle:Default:my_today_tontines.html.twig', [
-            'tontines' => $tontines,
-        ]);
-    }
+        $dashModeleDatas = $this->get('tontine.manager.dashboard')
+            ->getDashModeleDatas();
 
-    /**
-     * @Route("/etats/my-today-collected-mises", name="tontine_dashboard_my_today_collected_mises")
-     * @Security("has_role('ROLE_TONTINE_ADD_MISE')")
-     */
-    public function agentTodayCollectedMisesAction(Request $request)
-    {
-        $data = $this->get('tontine.manager.dashboard')->getAgentTodayCollectedMises();
-
-        if ($request->query->get('print', false)) {
-            return $this->renderPdf(
-                'tontineBundle:Default:my_today_collected_mises_pdf.html.twig',
-                $data,
-                sprintf("Liste_des_mises_collectees_le_%s", date('d_m_Y'))
-            );
-        }
-
-        return $this->render('tontineBundle:Default:my_today_collected_mises.html.twig', $data);
+        return $this->render('tontineBundle:Default:dashboard.html.twig', compact('dashboardDatas', 'dashClientDatas', 'dashCommandeDatas', 'dashVenteDatas', 'dashMainDatas', 'dashModeleDatas'));
     }
 
     private function renderPdf($template, $data = array(), $fileName)

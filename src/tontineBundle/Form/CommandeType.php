@@ -3,6 +3,7 @@
 namespace tontineBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -13,6 +14,7 @@ use tontineBundle\Form\PagneType;
 
 use tontineBundle\Entity\Pagne;
 use tontineBundle\Form\Type\ReferencePagneType;
+use tontineBundle\Repository\ModeleRepository;
 use tontineBundle\Repository\PagneRepository;
 
 class CommandeType extends AbstractType
@@ -22,48 +24,48 @@ class CommandeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('reference')->add('designation')->add('mesure')->add('client')
+        $builder->add('reference')
+            ->add('designation', TextareaType::class, array(
+                    'attr' => array(
+                        'class' => 'c4')
+                )
+            )
+//            ->add('mesure')
+            ->add('client')
             ->add('typeCommande', ChoiceType::class, array(
                 'choices' => array(
                     'Main d\'oeuvre' => 'm',
-                    'Vente' => 'v'
+                    'Vente' => 'v',
+                    'Autres' => 'a'
                 ),
-                'required'    => false,
+                'required' => false,
                 'placeholder' => 'Choisissez le type de commande',
-                'empty_data'  => null
+                'empty_data' => null
             ))
-            ->add('pagnes', EntityType::class, [
+            ->add('pagne', EntityType::class, array(
                 'class' => 'tontineBundle\Entity\Pagne',
-                'choice_label' => function($pagnes, $key, $index) {
-                    /** @var Pagne $pagnes */
-                    return strtoupper($pagnes->getDesignation());
+                'query_builder' => function (PagneRepository $er) {
+                    return $er->createQueryBuilder('p')
+                        ->where('p.mesure > 0 ')
+                        ->orderBy('p.reference', 'ASC');
                 },
-//                'choice_label' => 'designation',
-                'choice_value' => function ($choice) {
-
-                    dump($choice); //  expect an entity with id from ids
-
-                    return $choice;
-                },
-                'label' => 'Pagnes',
+                'required' => false,
+//                'expanded' => true,
                 'multiple' => true,
-                'expanded' => true,
-                'query_builder' => function (PagneRepository $repository) {
-
-                    //dump($ids); // just to be sure,
-                    // and confirm they match the dumped choices
-
-                    return $repository->createQueryBuilder('e')
-//                        ->where('e.id IN(:ids)')
-//                        ->setParameter(':ids', array_values($ids))
-                        ->orderBy('e.designation', 'ASC');
-                }
-            ]);
-//            ->add('pagnes', EntityType::class, array(
-//                'class' => 'tontineBundle\Entity\Pagne',
-//                'choice_label' => 'username',
-//
-//            ));
+                'choice_label' => 'reference',
+            ))
+            ->add('modele', EntityType::class, array(
+                'class' => 'tontineBundle\Entity\Modele',
+                'query_builder' => function (ModeleRepository $er) {
+                    return $er->createQueryBuilder('m')
+                        ->where('p.quantite > 0 ')
+                        ->orderBy('m.libelle', 'ASC');
+                },
+                'required' => false,
+//                'expanded' => true,
+                'multiple' => true,
+                'choice_label' => 'libelle',
+            ));
     }
 
     /**

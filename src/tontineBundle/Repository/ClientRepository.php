@@ -21,48 +21,4 @@ class ClientRepository extends BaseRepository
         return $query->getResult();
     }
 
-        public function getByCriteria($critereEtat){
-        
-       $clients = $this->createQueryBuilder('d');
-           $controle=1;   
-           if( $critereEtat->getVille()){
-              
-                     $clients->where("d.ville = :ville ")
-                    ->setParameter('ville' , $critereEtat->getVille());
-                   $controle=0;  
-              
-               }
-           
-           
-                 if( $critereEtat->getQuartier()){
-                       if ($controle){
-                                 $clients->where("d.quartier = :quartier")
-                                    ->setParameter('quartier', $critereEtat->getQuartier());
-                                 $controle=0;  
-                       }
-                        else{
-                             $clients->andWhere("d.quartier = :quartier")
-                                    ->setParameter('quartier', $critereEtat->getQuartier());
-                                 $controle=0; 
-                            
-                        }
-               
-                       }
-                 
-                 
-                 if( $critereEtat->getTypeMise()){
-                      if ($controle){
-                                 $clients->leftJoin('d.tontines', 'tontine')->andWhere('tontine.mode = :mode')
-                                        ->setParameter('mode',$critereEtat->getTypeMise());
-                                  $controle=0;  
-                       }else{
-                           $clients->leftJoin('d.tontines', 'tontine')->where('tontine.mode = :mode')
-                                        ->setParameter('mode', $critereEtat->getTypeMise());
-                                  $controle=0; 
-                       }
-                 }
-                 
-                return $clients->getQuery()->getResult(); 
-        
-    }
 }

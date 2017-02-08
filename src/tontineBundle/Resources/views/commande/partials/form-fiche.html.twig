@@ -1,0 +1,241 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+<div class="container-fluid container-small">
+    <div class='row'>
+        <div class="col-sm-12">
+            {{ form_start(form) }}
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Fiche de travail : </h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-4">
+                                {{ form_errors(form.montant) }}
+                                <div class="form-group">
+                                    {{ form_label(form.montant, 'Prix de la commande (en fcfa)'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.montant) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <span>Client : {{ client.name }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                {{ form_errors(form.designation) }}
+                                <div class="form-group">
+                                    {{ form_label(form.designation, 'Désignation'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.designation) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                {{ form_errors(form.mesure) }}
+                                <div class="form-group">
+                                    {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.mesure) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if pagnes %}
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <span>Pagnes</span>
+                                        <div class="form-group">
+                                        <select>
+                                            {% for cmdpgn in pagnes %}
+                                                {% if cmdpgn.pagne %}
+                                                    {{ cmdpgn.pagne.reference }}
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-sm-3">
+                                    {{ form_errors(form.commande) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.commande, 'Commande'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.commande) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="col-sm-3">
+                                {{ form_errors(form.dateLivraison) }}
+                                <div class="form-group">
+                                    {{ form_label(form.dateLivraison, 'Date Livraison'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.dateLivraison) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                        <h3 class="box-title">MESURES CHEMISES : </h3>
+                            {{ form_errors(form.longGHChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.longGHChemise, 'LONG GH'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.longGHChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.dosChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.dosChemise, 'DOS'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.dosChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poitrineChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.poitrineChemise, 'POITRINE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poitrineChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.tailleChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.tailleChemise, 'TAILLE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.tailleChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.hancheChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.hancheChemise, 'HANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.hancheChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.tmancheChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.tmancheChemise, 'T.MANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.tmancheChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.colChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.colChemise, 'COL'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.colChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poignetChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.poignetChemise, 'POIGNET'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poignetChemise) }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                        <h3 class="box-title">MESURES PANTALON/JUPES : </h3>
+                            {{ form_errors(form.longGHPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.longGHPantalon, 'LONG GH'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.longGHPantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.dosPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.dosPantalon, 'DOS'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.dosPantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poitrinePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.poitrinePantalon, 'POITRINE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poitrinePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.taillePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.taillePantalon, 'TAILLE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.taillePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.hanchePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.hanchePantalon, 'HANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.hanchePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.tmanchePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.tmanchePantalon, 'T.MANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.tmanchePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.colPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.colPantalon, 'COL'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.colPantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poignetPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.poignetPantalon, 'POIGNET'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poignetPantalon) }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {{ form_rest(form) }}
+                </div>
+                <div class="box-footer">
+                    {% if isModal is not defined %}
+                        {% block form_actions %}
+                            <div class="record-actions pull-left">
+                                <a href="{{ path('shop_command_index') }}" class="btn btn-default" style="margin: 5px;">Retour</a>
+                            </div>
+                            <div class="record-actions pull-right">
+                                <input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

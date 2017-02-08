@@ -5,6 +5,9 @@ namespace tontineBundle\Controller;
 use tontineBundle\Entity\Commande;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use tontineBundle\Entity\CommandeModele;
+use tontineBundle\Entity\CommandePagne;
+use tontineBundle\Entity\FicheTravail;
 
 /**
  * Commande controller.
@@ -37,12 +40,46 @@ class CommandeController extends Controller
         $form = $this->createForm('tontineBundle\Form\CommandeType', $commande);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commande);
-            $em->flush($commande);
+        $user = $this->getUser();
 
-            return $this->redirectToRoute('shop_command_show', array('id' => $commande->getId()));
+        $em = $this->getDoctrine()->getManager();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $pagnes = $form['pagne']->getData();
+            $modeles = $form['modele']->getData();
+
+            $commande->setCreatedBy($user);
+            $commande->setCreatedAt(new \DateTime());
+
+            $em->persist($commande);
+            foreach ($pagnes as $pagne) {
+                $cmdPagne = new CommandePagne();
+                /*$fiche = new FicheTravail();
+                $fiche->setDateCommande($commande->getCreatedAt());
+                $fiche->setCommande($commande);
+                $em->persist($fiche);*/
+                $cmdPagne->setPagne($pagne);
+                $cmdPagne->setCommande($commande);
+                $cmdPagne->setFiche(null);
+                $em->persist($cmdPagne);
+            }
+
+            if ($modeles) {
+                foreach ($modeles as $modele) {
+                    $cmdModele = new CommandeModele();
+//                    $fiche = new FicheTravail();
+//                    $fiche->setPagne($pagne);
+                    $cmdModele->setModele($modele);
+                    $cmdModele->setCommande($commande);
+                    $em->persist($cmdModele);
+//                    $em->persist($fiche);
+                }
+            }
+
+            $em->flush();
+
+            return $this->redirectToRoute('shop_command_index');
         }
 
         return $this->render('tontineBundle:commande:new.html.twig', array(
@@ -76,7 +113,66 @@ class CommandeController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $pagnes = $form['pagne']->getData();
+            $modeles = $form['modele']->getData();
+
+            if (isset($pagnes) && !empty($pagnes)) {
+                $cmdPagne = $commande->getCmdPagne();
+
+                if ($cmdPagne) {
+                    $array_id = array();
+                    foreach ($pagnes as $pagne) {
+                        var_dump($pagne->getId());
+                        $i = 0;
+                        foreach ( $cmdPagne as $cmd_p)
+                        {
+                            var_dump($cmd_p->getPagne()->getId());
+                            $array_id[$i] = $cmd_p->getPagne()->getId();
+                            $i++;
+                        }
+                        if(in_array($pagne->getId(),$array_id))
+                        {
+                            $cmd_p = $this->getDoctrine()->getManager()->getRepository('tontineBundle:CommandePagne')->findByCommande(array(
+                                'commande' => $commande,
+                                'pagne' => $pagne,
+                            ));
+//                            var_dump($cmd_p);
+//                            die();
+//                            $cmd_p->setPagne($pagne);
+                        }
+                        else
+                        {
+                            $cmdPagne = new CommandePagne();
+                            $fiche = new FicheTravail();
+                            $fiche->setDateCommande(new \DateTime());
+                            $em->persist($fiche);
+                            $cmdPagne->setPagne($pagne);
+                            $cmdPagne->setCommande($commande);
+                            $cmdPagne->setFiche($fiche);
+                            $em->persist($cmdPagne);
+                        }
+                    }
+                }
+            }
+
+            if(isset($modeles) && !empty($modeles))
+            {
+                $cmdModele = $this->getDoctrine()->getManager()->getRepository('tontineBundle:CommandeModele')->findBy(array(
+                    'commande' => $commande,
+                ));
+
+                if ($cmdModele) {
+                    foreach ($cmdModele as $cmd_m) {
+                        $commande->removeCmdModele($cmd_m);
+                        $em->flush();
+                    }
+                }
+            }
+
+            $em->flush();
 
             return $this->redirectToRoute('shop_command_edit', array('id' => $commande->getId()));
         }
@@ -118,7 +214,41 @@ class CommandeController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('shop_command_delete', array('id' => $commande->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
+    }
+
+    public function setFicheAction(Request $request, $id){
+
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $pagnes = $commande->getCmdPagne();
+
+        $fiche = new FicheTravail();
+
+        $form = $this->createForm('tontineBundle\Form\FicheTravailType', $fiche);
+        $form->handleRequest($request);
+
+        $user = $this->getUser();
+
+         if ($form->isSubmitted() && $form->isValid()) {
+
+            $fiche->setCommande($commande);
+            $fiche->setDateCommande($commande->getCreatedAt());
+            $fiche->setCreatedBy($user);
+
+            $em->persist($fiche);
+
+            $em->flush();
+
+            return $this->redirectToRoute('shop_command_index');
+        }
+
+        return $this->render('tontineBundle:commande:fiche/new.html.twig', array(
+            'commande' => $commande,
+            'pagnes' => $pagnes,
+            'client' => $commande->getClient(),
+            'form' => $form->createView(),
+        ));
+
     }
 }

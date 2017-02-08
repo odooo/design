@@ -2,6 +2,10 @@
                         
     <td>{{ modele.id }}</td>    
     
-    <td>{{ modele.libelle }}</td>   
+    <td>{{ modele.libelle }}</td> 
+
+    <td>{{ modele.quantite }}</td> 
+
+    <td>{% if modele.pagne %} {{ modele.pagne.reference }}{% endif %} </td>   
 
 </tr>       

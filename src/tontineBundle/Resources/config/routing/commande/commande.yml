@@ -22,3 +22,11 @@ shop_command_delete:
     path:     /{id}/delete
     defaults: { _controller: "tontineBundle:Commande:delete" }
     methods:  DELETE
+
+
+# fiche de travail
+
+shop_fiche_travail_new:
+    path:     /{id}/new
+    defaults: { _controller: "tontineBundle:Commande:setFiche" }
+    methods:  [GET, POST]

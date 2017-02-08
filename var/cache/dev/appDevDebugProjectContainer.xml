@@ -160,7 +160,7 @@
     <parameter key="gspmanager_database_port">null</parameter>
     <parameter key="gspmanager_database_name">manager</parameter>
     <parameter key="gspmanager_database_user">root</parameter>
-    <parameter key="gspmanager_database_password">null</parameter>
+    <parameter key="gspmanager_database_password">mysqlconnect</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -601,6 +601,7 @@
     <parameter key="fos_user.resetting.email.from_email" type="collection">
       <parameter key="webmaster@example.com">webmaster</parameter>
     </parameter>
+    <parameter key="fos_user.resetting.retry_ttl">7200</parameter>
     <parameter key="fos_user.resetting.token_ttl">86400</parameter>
     <parameter key="fos_user.resetting.form.type">FOS\UserBundle\Form\Type\ResettingFormType</parameter>
     <parameter key="fos_user.resetting.form.name">fos_user_resetting_form</parameter>
@@ -1089,7 +1090,7 @@
                   <tag name="cache.pool"/>
                   <argument>vm0jATTIfw</argument>
                   <argument>0</argument>
-                  <argument>kTwurDDQb1WcTBW+nvWHHb</argument>
+                  <argument>CTksXepz8yOmmUBHy4OtD+</argument>
                   <argument>/var/www/html/tontine/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1102,7 +1103,7 @@
                   <tag name="cache.pool"/>
                   <argument>OK9If19S9S</argument>
                   <argument>0</argument>
-                  <argument>kTwurDDQb1WcTBW+nvWHHb</argument>
+                  <argument>CTksXepz8yOmmUBHy4OtD+</argument>
                   <argument>/var/www/html/tontine/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1810,7 +1811,7 @@
       <tag name="cache.pool"/>
       <argument>InJC1xGFxj</argument>
       <argument>0</argument>
-      <argument>kTwurDDQb1WcTBW+nvWHHb</argument>
+      <argument>CTksXepz8yOmmUBHy4OtD+</argument>
       <argument>/var/www/html/tontine/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2737,7 +2738,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>58959a1b2b7d33.27875276</argument>
+            <argument>589a1278acaff8.04856870</argument>
           </service>
         </argument>
         <argument type="service">
@@ -2751,7 +2752,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>58959a1b2b7d33.27875276</argument>
+            <argument>589a1278acaff8.04856870</argument>
           </service>
         </argument>
       </argument>
@@ -3014,7 +3015,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>58959a1b2b7d33.27875276</argument>
+            <argument>589a1278acaff8.04856870</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3133,7 +3134,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>58959a1b2b7d33.27875276</argument>
+            <argument>589a1278acaff8.04856870</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3576,7 +3577,7 @@
         <argument key="port">null</argument>
         <argument key="dbname">manager</argument>
         <argument key="user">root</argument>
-        <argument key="password">null</argument>
+        <argument key="password">mysqlconnect</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>

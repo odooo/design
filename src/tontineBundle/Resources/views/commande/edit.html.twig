@@ -1,12 +1,12 @@
 {% extends 'default/index.html.twig' %}
 
 {% block content_header %}
-    <h1>Nouvelle commande</h1>
+    <h1>Modification de la commande {{ commande.reference }}</h1>
 {% endblock %}
 
 {% block content %}
     <div class="row">
-        <div class="col-sm-offset-3 col-sm-6 well">
+        <div class="col-sm-12 well">
             {% include 'tontineBundle:commande/partials:form.html.twig' with { submit: 'Valider' } %}
         </div>
     </div>
@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block javascript %}
-    {{parent()}}
+    {{ parent() }}
     <script type="text/javascript">
         function readURL(input) {
             if (input.files && input.files[0]) {
@@ -26,11 +26,59 @@
                 reader.readAsDataURL(input.files[0]);
             }
         }
-        $(".fselect").change(function(){
+        $(".fselect").change(function () {
             readURL(this);
         });
-        $("#profile-img-tag").on('click', function(){
+        $("#profile-img-tag").on('click', function () {
             $(".fselect").click();
-        })
+        });
+
+        var $option = $('#tontinebundle_commande_typeCommande').find('option:selected');
+        if($option.val() == 'v')
+        {
+            $('#pagne').removeClass('hidden');
+            $('#modele').addClass('hidden');
+        }
+        else if ($option.val() == 'm')
+        {
+            $('#pagne').addClass('hidden');
+            $('#modele').addClass('hidden');
+        }
+        else if ($option.val() == 'a')
+        {
+            $('#pagne').addClass('hidden');
+            $('#modele').removeClass('hidden');
+        }
+        else
+        {
+            $('#pagne').addClass('hidden');
+            $('#modele').addClass('hidden');
+        }
+
+        $('#tontinebundle_commande_typeCommande').change(function () {
+            $option = $(this).find('option:selected');
+            if($option.val() == 'v')
+            {
+                $('#pagne').removeClass('hidden');
+                $('#modele').addClass('hidden');
+            }
+            else if ($option.val() == 'm')
+            {
+                $('#pagne').addClass('hidden');
+                $('#modele').addClass('hidden');
+            }
+            else if ($option.val() == 'a')
+            {
+                $('#pagne').addClass('hidden');
+                $('#modele').removeClass('hidden');
+            }
+            else
+            {
+                $('#pagne').addClass('hidden');
+                $('#modele').addClass('hidden');
+            }
+//            alert($option.val());
+        });
+
     </script>
 {% endblock %}

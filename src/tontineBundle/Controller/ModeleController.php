@@ -125,8 +125,7 @@ class ModeleController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $modele = $form->getData();
-                        
+            $modele = $form->getData();       
             $em->persist($modele);
             $em->flush();
 

@@ -6,7 +6,7 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-sm-offset-3 col-sm-6 well">
+        <div class="col-sm-12 well">
             {% include 'tontineBundle:commande/partials:form.html.twig' with { submit: 'Valider' } %}
         </div>
     </div>
@@ -33,27 +33,51 @@
             $(".fselect").click();
         });
 
+        var $option = $('#tontinebundle_commande_typeCommande').find('option:selected');
+        if($option.val() == 'v')
+        {
+            $('#pagne').removeClass('hidden');
+            $('#modele').addClass('hidden');
+        }
+        else if ($option.val() == 'm')
+        {
+            $('#pagne').addClass('hidden');
+            $('#modele').addClass('hidden');
+        }
+        else if ($option.val() == 'a')
+        {
+            $('#pagne').addClass('hidden');
+            $('#modele').removeClass('hidden');
+        }
+        else
+        {
+            $('#pagne').addClass('hidden');
+            $('#modele').addClass('hidden');
+        }
 
-        // keep track of how many email fields have been rendered
-        {#var pagneCount = '{{ form.pagnes|length }}';#}
-
-        {#$('#add-another-email').click(function (e) {#}
-            {#alert('ok');#}
-            {#e.preventDefault();#}
-
-            {#var $pagneList = $('#email-fields-list');#}
-
-            {#// grab the prototype template#}
-            {#var newWidget = $pagneList.attr('data-prototype');#}
-            {#// replace the "__name__" used in the id and name of the prototype#}
-            {#// with a number that's unique to your emails#}
-            {#// end name attribute looks like name="contact[emails][2]"#}
-            {#newWidget = newWidget.replace(/__name__/g, pagneCount);#}
-            {#pagneCount++;#}
-
-            {#// create a new list element and add it to the list#}
-            {#var $newLi = $('<li></li>').html(newWidget);#}
-            {#$newLi.appendTo($pagneList);#}
-        {#});#}
+        $('#tontinebundle_commande_typeCommande').change(function () {
+            $option = $(this).find('option:selected');
+            if($option.val() == 'v')
+            {
+                $('#pagne').removeClass('hidden');
+                $('#modele').addClass('hidden');
+            }
+            else if ($option.val() == 'm')
+            {
+                $('#pagne').addClass('hidden');
+                $('#modele').addClass('hidden');
+            }
+            else if ($option.val() == 'a')
+            {
+                $('#pagne').addClass('hidden');
+                $('#modele').removeClass('hidden');
+            }
+            else
+            {
+                $('#pagne').addClass('hidden');
+                $('#modele').addClass('hidden');
+            }
+//            alert($option.val());
+        });
     </script>
 {% endblock %}
