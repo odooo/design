@@ -109,7 +109,6 @@ class Agent extends BaseUser
      */
     private $updatedCommande;
     
-    
     /**
      * @var \tontineBundle\Entity\Agent
      *

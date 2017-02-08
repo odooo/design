@@ -57,6 +57,32 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
             }
 
+            if (0 === strpos($pathinfo, '/js/6d2b2d6')) {
+                // _assetic_6d2b2d6
+                if ($pathinfo === '/js/6d2b2d6.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '6d2b2d6',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_6d2b2d6',);
+                }
+
+                // _assetic_6d2b2d6_0
+                if ($pathinfo === '/js/6d2b2d6_conditiongenerale_1.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '6d2b2d6',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_6d2b2d6_0',);
+                }
+
+            }
+
+            if (0 === strpos($pathinfo, '/js/020da92')) {
+                // _assetic_020da92
+                if ($pathinfo === '/js/020da92.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => NULL,  '_format' => 'js',  '_route' => '_assetic_020da92',);
+                }
+
+                // _assetic_020da92_0
+                if ($pathinfo === '/js/020da92_resiliationcontrat_1.js') {
+                    return array (  '_controller' => 'assetic.controller:render',  'name' => '020da92',  'pos' => 0,  '_format' => 'js',  '_route' => '_assetic_020da92_0',);
+                }
+
+            }
+
             if (0 === strpos($pathinfo, '/js/836d2fd')) {
                 // _assetic_836d2fd
                 if ($pathinfo === '/js/836d2fd.js') {
@@ -565,6 +591,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
             not_shop_command_delete:
 
+<<<<<<< HEAD
             // shop_command_facture_edit
             if (preg_match('#^/commandes/(?P<id>[^/]++)/commande/facture$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
@@ -575,6 +602,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_command_facture_edit')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::printBillAction',));
             }
             not_shop_command_facture_edit:
+=======
+            // shop_fiche_travail_new
+            if (preg_match('#^/commandes/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_shop_fiche_travail_new;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_fiche_travail_new')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::setFicheAction',));
+            }
+            not_shop_fiche_travail_new:
+
+            // shop_fiche_travail_index
+            if (preg_match('#^/commandes/(?P<id>[^/]++)/fiche\\-de\\-travail$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_shop_fiche_travail_index;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_fiche_travail_index')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::indexFicheAction',));
+            }
+            not_shop_fiche_travail_index:
+>>>>>>> 98b2c5f8696a04fd29d8da15541c98568e6aa835
 
         }
 
@@ -1078,19 +1128,6 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
 
         if (0 === strpos($pathinfo, '/etat')) {
-            if (0 === strpos($pathinfo, '/etats/my-today-')) {
-                // tontine_dashboard_my_today_tontines
-                if ($pathinfo === '/etats/my-today-tontines') {
-                    return array (  '_controller' => 'tontineBundle\\Controller\\DefaultController::agentTodayTontinesAction',  '_route' => 'tontine_dashboard_my_today_tontines',);
-                }
-
-                // tontine_dashboard_my_today_collected_mises
-                if ($pathinfo === '/etats/my-today-collected-mises') {
-                    return array (  '_controller' => 'tontineBundle\\Controller\\DefaultController::agentTodayCollectedMisesAction',  '_route' => 'tontine_dashboard_my_today_collected_mises',);
-                }
-
-            }
-
             // tontine_etat
             if ($pathinfo === '/etat/index') {
                 return array (  '_controller' => 'tontineBundle\\Controller\\EtatController::indexAction',  '_route' => 'tontine_etat',);

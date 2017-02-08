@@ -1,16 +1,16 @@
-{% set modalId = 'new-categorie-modal' %}
+{% set modalId = 'new-modele-modal' %}
 
 {% extends 'default/modal.html.twig' %}
 
 {% block title %}
-    New Categorie
+    New Modèle
 {% endblock %}
 
 {% block body %}
-    {{ render(controller('tontineBundle:Categorie:ajaxNewForm')) }}
+    {{ render(controller('tontineBundle:Modele:ajaxNewForm')) }}
 {% endblock %}
 
 {% block footer %}
     {{ parent() }}
-    <input type="button" class ='categorie_new_popup_submit btn btn-primary' value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
+    <input type="button" class ='modele_new_popup_submit btn btn-primary' value="{% if submit is defined %}{{ submit }}{% else %}Valider{% endif %}" />
 {% endblock %}

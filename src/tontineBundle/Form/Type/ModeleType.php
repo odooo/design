@@ -19,7 +19,17 @@ class ModeleType extends AbstractType
             ->add('libelle', null, [
                 'label' => 'Libellé * : ',
                 'required' => true,
-            ]);
+            ])
+            ->add('quantite', null, [
+                'label' => 'Quantité * : ',
+                'required' => true,
+            ])
+            ->add('pagne', null, [
+                'label' => 'Tissu',
+                'placeholder' => 'Choisissez le pagne ayant servi à confectionner le modèle',
+                'choice_label' => 'reference',
+            ])
+            ;
     }
     
     /**

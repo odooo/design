@@ -48,11 +48,11 @@ class Commande
     private $typeCommande;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="mesure", type="string", length=255, nullable=true)
+     * @ORM\Column(name="nbrePagne", type="integer", nullable=true)
      */
-    private $mesure;
+    private $nbrePagne;
 
     /**
      * @var \tontineBundle\Entity\Agent
@@ -65,15 +65,11 @@ class Commande
     private $createdBy;
 
     /**
-     * @var \tontineBundle\Entity\Agent
+     * @var \DateTime
      *
-     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Agent", cascade={"persist", "remove"}, inversedBy="updatedCommande")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="updatedBy_id", referencedColumnName="id", nullable=true)
-     * })
+     * @ORM\Column(name="createdAt", type="datetime", nullable=true)
      */
-    private $updatedBy;
-
+    private $createdAt;
 
     /**
      * @var \tontineBundle\Entity\Client
@@ -166,30 +162,6 @@ class Commande
     }
 
     /**
-     * Set mesure
-     *
-     * @param string $mesure
-     *
-     * @return Commande
-     */
-    public function setMesure($mesure)
-    {
-        $this->mesure = $mesure;
-
-        return $this;
-    }
-
-    /**
-     * Get mesure
-     *
-     * @return string
-     */
-    public function getMesure()
-    {
-        return $this->mesure;
-    }
-
-    /**
      * Set createdBy
      *
      * @param \tontineBundle\Entity\Agent $createdBy
@@ -213,29 +185,6 @@ class Commande
         return $this->createdBy;
     }
 
-    /**
-     * Set updatedBy
-     *
-     * @param \tontineBundle\Entity\Agent $updatedBy
-     *
-     * @return Commande
-     */
-    public function setUpdatedBy(\tontineBundle\Entity\Agent $updatedBy = null)
-    {
-        $this->updatedBy = $updatedBy;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedBy
-     *
-     * @return \tontineBundle\Entity\Agent
-     */
-    public function getUpdatedBy()
-    {
-        return $this->updatedBy;
-    }
     /**
      * Constructor
      */
@@ -350,15 +299,6 @@ class Commande
     // Important
     public function setPagne($pagnes)
     {
-//        foreach($pagnes as $p)
-//        {
-//            $cmdPagne = new CommandePagne();
-//
-//            $cmdPagne->setCommande($this);
-//            $cmdPagne->setPagne($p);
-//
-//            $this->addCmdPagne($cmdPagne);
-//        }
 
     }
 
@@ -413,15 +353,54 @@ class Commande
     // Important
     public function setModele($modeles)
     {
-//        foreach($modeles as $m)
-//        {
-//            $cmdModele = new CommandeModele();
-//
-//            $cmdModele->setCommande($this);
-//            $cmdModele->setModele($m);
-//
-//            $this->addCmdModele($cmdModele);
-//        }
 
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Commande
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set nbrePagne
+     *
+     * @param integer $nbrePagne
+     *
+     * @return Commande
+     */
+    public function setNbrePagne($nbrePagne)
+    {
+        $this->nbrePagne = $nbrePagne;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrePagne
+     *
+     * @return integer
+     */
+    public function getNbrePagne()
+    {
+        return $this->nbrePagne;
     }
 }

@@ -35,12 +35,36 @@ class Modele
     private $libelle;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer", nullable=true)
+     * 
+     *  
+     */
+    
+    private $quantite;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * One Commande can contain Many Pagnes.
      * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandeModele", mappedBy="modele")
      */
     private $cmdModele;
+
+    /**
+     * @var \tontineBundle\Entity\Pagne
+     *
+     * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Pagne", cascade={"persist"})
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="pagne_id", referencedColumnName="id")
+     * })
+    * 
+     * 
+    * 
+     */
+    private $pagne;
+
     
 
     /**
@@ -132,5 +156,53 @@ class Modele
     public function getCmdModele()
     {
         return $this->cmdModele;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return Modele
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set pagne
+     *
+     * @param \tontineBundle\Entity\Pagne $pagne
+     *
+     * @return Modele
+     */
+    public function setPagne(\tontineBundle\Entity\Pagne $pagne = null)
+    {
+        $this->pagne = $pagne;
+
+        return $this;
+    }
+
+    /**
+     * Get pagne
+     *
+     * @return \tontineBundle\Entity\Pagne
+     */
+    public function getPagne()
+    {
+        return $this->pagne;
     }
 }

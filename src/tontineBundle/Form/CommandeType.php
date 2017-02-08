@@ -46,6 +46,7 @@ class CommandeType extends AbstractType
                 'class' => 'tontineBundle\Entity\Pagne',
                 'query_builder' => function (PagneRepository $er) {
                     return $er->createQueryBuilder('p')
+                        ->where('p.mesure > 0 ')
                         ->orderBy('p.reference', 'ASC');
                 },
                 'required' => false,
@@ -57,6 +58,7 @@ class CommandeType extends AbstractType
                 'class' => 'tontineBundle\Entity\Modele',
                 'query_builder' => function (ModeleRepository $er) {
                     return $er->createQueryBuilder('m')
+                        ->where('p.quantite > 0 ')
                         ->orderBy('m.libelle', 'ASC');
                 },
                 'required' => false,

@@ -19,17 +19,40 @@
                         <th>#</th>
                         <th>Reference</th>
                         <th>Designation</th>
-                        {#<th>Mesure</th>#}
+                        <th>Type de commande</th>
+                        <th>Date commande</th>
+                        <th>Client</th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
+
                     {% for commande in commandes %}
+                        {% set cpt = 0 %}
+                        {% for fiche in fiches %}
+                            {% if fiche.commande == commande  %}
+                                {% set cpt = cpt + 1 %}
+                            {% endif %}
+                        {% endfor %}
                         <tr>
                             <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ loop.index }}</a></td>
                             <td>{{ commande.reference }}</td>
                             <td>{{ commande.designation }}</td>
-                            {#<td>{{ commande.mesure }}</td>#}
+                            <td>{% if commande.typeCommande == 'v' %}
+                                    Vente
+                                {% elseif commande.typeCommande == 'm' %}
+                                    Main  d'oeuvre
+                                {% else %} 
+                                    Vente de modèle
+                                {% endif %} 
+                            </td>
+                            <td>
+                                {{ commande.createdAt|date('d/m/Y h:i:s') }}
+                            </td>
+                            <td>{% if commande.client %}
+                                    {{ commande.client.name }}
+                                {% endif %} 
+                            </td>
                             <td>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -51,9 +74,17 @@
                                         {#{% endif  %}#}
 
                                         {% if  is_granted('ROLE_FICHE_EDIT') %}
-                                            <li>
-                                                <a href="{{ path('shop_command_show', { 'id': commande.id }) }}">Editer la fiche de travail</a>
-                                            </li>
+                                            {% if  cpt < commande.nbrePagne or commande.nbrePagne == 0 %}
+                                                <li>
+                                                    <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer la fiche de travail</a>
+                                                </li>
+                                            {% endif  %}
+
+                                            {% if  cpt > 0 %}
+                                                <li>
+                                                    <a href="{{ path('shop_fiche_travail_index', { 'id': commande.id }) }}">Voir la fiche de travail</a>
+                                                </li>
+                                            {% endif  %}
                                         {% endif  %}
 
                                         <li>

@@ -26,9 +26,11 @@ class CommandeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $commandes = $em->getRepository('tontineBundle:Commande')->findAll();
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findAll();
 
         return $this->render('tontineBundle:commande:index.html.twig', array(
             'commandes' => $commandes,
+            'fiches' => $fiches,
         ));
     }
 
@@ -42,6 +44,8 @@ class CommandeController extends Controller
         $form = $this->createForm('tontineBundle\Form\CommandeType', $commande);
         $form->handleRequest($request);
 
+        $user = $this->getUser();
+
         $em = $this->getDoctrine()->getManager();
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,17 +53,25 @@ class CommandeController extends Controller
             $pagnes = $form['pagne']->getData();
             $modeles = $form['modele']->getData();
 
+            $commande->setCreatedBy($user);
+            $commande->setCreatedAt(new \DateTime());
+
             $em->persist($commande);
+            $i = 0;
             foreach ($pagnes as $pagne) {
+                $i++;
                 $cmdPagne = new CommandePagne();
-                $fiche = new FicheTravail();
-                $fiche->setDateCommande(new \DateTime());
-                $em->persist($fiche);
+                /*$fiche = new FicheTravail();
+                $fiche->setDateCommande($commande->getCreatedAt());
+                $fiche->setCommande($commande);
+                $em->persist($fiche);*/
                 $cmdPagne->setPagne($pagne);
                 $cmdPagne->setCommande($commande);
-                $cmdPagne->setFiche($fiche);
+                $cmdPagne->setFiche(null);
                 $em->persist($cmdPagne);
             }
+
+            $commande->setNbrePagne($i);
 
             if ($modeles) {
                 foreach ($modeles as $modele) {
@@ -75,7 +87,7 @@ class CommandeController extends Controller
 
             $em->flush();
 
-            return $this->redirectToRoute('shop_command_show', array('id' => $commande->getId()));
+            return $this->redirectToRoute('shop_command_index');
         }
 
         return $this->render('tontineBundle:commande:new.html.twig', array(
@@ -210,7 +222,7 @@ class CommandeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $commandes = $em->getRepository('tontineBundle:Commande')->findAll();
-        
+
         $html = $this->render('tontineBundle:commande:facture.html.twig', [
             'commandes' => $commandes,
         ])->getContent();
@@ -225,6 +237,56 @@ class CommandeController extends Controller
         $dompdf->render();
 
         // Output the generated PDF to Browser
-        $dompdf->stream('facture_'.(new \DateTime())->format("d-m-Y"));
+        $dompdf->stream('facture_' . (new \DateTime())->format("d-m-Y"));
+    }
+
+    public function setFicheAction(Request $request, $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $pagnes = $commande->getCmdPagne();
+
+        $fiche = new FicheTravail();
+
+        $form = $this->createForm('tontineBundle\Form\FicheTravailType', $fiche);
+        $form->handleRequest($request);
+
+        $user = $this->getUser();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $fiche->setCommande($commande);
+            $fiche->setDateCommande($commande->getCreatedAt());
+            $fiche->setCreatedBy($user);
+
+            $em->persist($fiche);
+
+            $em->flush();
+
+            return $this->redirectToRoute('shop_command_index');
+        }
+
+        return $this->render('tontineBundle:commande:fiche/new.html.twig', array(
+            'commande' => $commande,
+            'pagnes' => $pagnes,
+            'client' => $commande->getClient(),
+            'form' => $form->createView(),
+        ));
+
+    }
+
+    public function indexFicheAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(
+            array('commande' => $commande));
+
+        return $this->render('tontineBundle:commande:fiche/index.html.twig', array(
+            'fiches' => $fiches,
+            'commande' => $commande,
+        ));
     }
 }
