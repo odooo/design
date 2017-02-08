@@ -264,12 +264,16 @@ class CommandeController extends Controller
         $user = $this->getUser();
 
         $date = $request->request->get('dateLivraison');
+        $pagneId = $request->request->get('pagne');
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $fiche->setCommande($commande);
             $fiche->setDateCommande($commande->getCreatedAt());
             $fiche->setCreatedBy($user);
+
+            $pagne = $em->getRepository('tontineBundle:Pagne')->find($pagneId);
+            $fiche->setPagne($pagne);
 
             $em->persist($fiche);
 

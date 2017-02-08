@@ -49,7 +49,7 @@ class FicheTravailType extends AbstractType
             ->add('tmanchePantalon')
             ->add('colPantalon')
             ->add('poignetPantalon')
-            ->add('commande', EntityType::class, array(
+            /*->add('commande', EntityType::class, array(
                 'class' => 'tontineBundle\Entity\Commande',
                 'query_builder' => function (CommandeRepository $er) {
                     return $er->createQueryBuilder('c')
@@ -58,7 +58,7 @@ class FicheTravailType extends AbstractType
                 'required' => false,
                 //'multiple' => true,
                 'choice_label' => 'reference',
-            ));
+            ))*/;
     }
 
     /**

@@ -47,12 +47,12 @@
                                     </div>
                                 </div>
                             </div>
-                            {% if pagnes is defined %}
+                            {% if pagnes is not empty %}
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <span>Pagnes</span>
                                         <div class="form-group">
-                                        <select class="form-control">
+                                        <select class="form-control" name="pagne">
                                             {% for cmdpgn in pagnes %}
                                                 {% if cmdpgn.pagne %}
                                                     <option value="{{ cmdpgn.pagne.id }}">{{ cmdpgn.pagne.reference }}</option>
@@ -64,11 +64,10 @@
                                 </div>
                             {% else %}
                                 <div class="col-sm-3">
-                                    {{ form_errors(form.commande) }}
                                     <div class="form-group">
-                                        {{ form_label(form.commande, 'Commande'|trans) }}
+                                        <u>Référence Commande</u>
                                         <div class="form-group">
-                                            {{ form_widget(form.commande) }}
+                                            {{ commande.reference }}
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +84,7 @@
 
 
                         <div class="col-sm-6">
-                        <h3 class="box-title">MESURES CHEMISES : </h3>
+                        <h3 class="box-title"><u>MESURES CHEMISES</u> : </h3>
                             {{ form_errors(form.longGHChemise) }}
                             <div class="form-group">
                                 {{ form_label(form.longGHChemise, 'LONG GH'|trans) }}
@@ -152,7 +151,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                        <h3 class="box-title">MESURES PANTALON/JUPES : </h3>
+                        <h3 class="box-title"><u>MESURES PANTALON/JUPES</u> : </h3>
                             {{ form_errors(form.longGHPantalon) }}
                             <div class="form-group">
                                 {{ form_label(form.longGHPantalon, 'LONG GH'|trans) }}
