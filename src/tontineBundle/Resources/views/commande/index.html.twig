@@ -26,7 +26,14 @@
                     </tr>
                     </thead>
                     <tbody>
+
                     {% for commande in commandes %}
+                        {% set cpt = 0 %}
+                        {% for fiche in fiches %}
+                            {% if fiche.commande == commande  %}
+                                {% set cpt = cpt + 1 %}
+                            {% endif %}
+                        {% endfor %}
                         <tr>
                             <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ loop.index }}</a></td>
                             <td>{{ commande.reference }}</td>
@@ -67,9 +74,17 @@
                                         {#{% endif  %}#}
 
                                         {% if  is_granted('ROLE_FICHE_EDIT') %}
-                                            <li>
-                                                <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer la fiche de travail</a>
-                                            </li>
+                                            {% if  cpt < commande.nbrePagne %}
+                                                <li>
+                                                    <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer la fiche de travail</a>
+                                                </li>
+                                            {% endif  %}
+
+                                            {% if  cpt > 0 %}
+                                                <li>
+                                                    <a href="{{ path('shop_fiche_travail_index', { 'id': commande.id }) }}">Voir la fiche de travail</a>
+                                                </li>
+                                            {% endif  %}
                                         {% endif  %}
 
                                     </ul>

@@ -1,0 +1,67 @@
+{% extends "default/index.html.twig" %}
+
+{% block title %}Liste des fiches de travail{% endblock %}
+
+{% block content_header %}
+    <h3>Liste des commandes de Global Design</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des fiches de travail de la commande {{ commande.reference }}</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Date commande</th>
+                        <th>Date livraison</th>
+                        <th>Client</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for fiche in fiches %}
+                        <tr>
+                            <td><a href="#">{{ loop.index }}</a></td>
+                            <td>{{ fiche.dateCommande|date('d/m/Y h:i:s') }}</td>
+                            <td>{{ fiche.dateLivraison|date('d/m/Y h:i:s') }}</td>
+                            <td>
+                            	{% if fiche.commande %}
+	                            	{% if fiche.commande.client %}
+	                                    {{ fiche.commande.client.name }}
+	                                {% endif %} 
+                                {% endif %} 
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('shop_command_new') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+                Ajouter une nouvelle commande
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {#{% if cli is defined %}#}
+        {#<script>#}
+            {#$(function(){#}
+                {#Yop.Pagelet({#}
+                    {#url: "{{ path('tontine_client_preview', {'id':cli.id }) }}",#}
+                    {#pagelet: '#user-pagelet',#}
+                    {#title: '{{cli.prenom}} {{cli.nom}}'#}
+                {#});#}
+            {#});#}
+        {#</script>#}
+    {#{% endif %}#}
+{% endblock %}

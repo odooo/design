@@ -602,6 +602,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
             not_shop_fiche_travail_new:
 
+            // shop_fiche_travail_index
+            if (preg_match('#^/commandes/(?P<id>[^/]++)/fiche\\-de\\-travail$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'HEAD'));
+                    goto not_shop_fiche_travail_index;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_fiche_travail_index')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::indexFicheAction',));
+            }
+            not_shop_fiche_travail_index:
+
         }
 
         if (0 === strpos($pathinfo, '/log')) {

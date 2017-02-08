@@ -24,9 +24,11 @@ class CommandeController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $commandes = $em->getRepository('tontineBundle:Commande')->findAll();
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findAll();
 
         return $this->render('tontineBundle:commande:index.html.twig', array(
             'commandes' => $commandes,
+            'fiches' => $fiches,
         ));
     }
 
@@ -53,7 +55,9 @@ class CommandeController extends Controller
             $commande->setCreatedAt(new \DateTime());
 
             $em->persist($commande);
+            $i = 0;
             foreach ($pagnes as $pagne) {
+                $i++;
                 $cmdPagne = new CommandePagne();
                 /*$fiche = new FicheTravail();
                 $fiche->setDateCommande($commande->getCreatedAt());
@@ -64,6 +68,8 @@ class CommandeController extends Controller
                 $cmdPagne->setFiche(null);
                 $em->persist($cmdPagne);
             }
+
+            $commande->setNbrePagne($i);
 
             if ($modeles) {
                 foreach ($modeles as $modele) {
@@ -248,6 +254,21 @@ class CommandeController extends Controller
             'pagnes' => $pagnes,
             'client' => $commande->getClient(),
             'form' => $form->createView(),
+        ));
+
+    }
+
+    public function indexFicheAction($id){
+
+        $em = $this->getDoctrine()->getManager();
+        
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(
+            array('commande' => $commande));
+
+        return $this->render('tontineBundle:commande:fiche/index.html.twig', array(
+            'fiches' => $fiches,
+            'commande' => $commande,
         ));
 
     }

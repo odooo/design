@@ -48,6 +48,13 @@ class Commande
     private $typeCommande;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbrePagne", type="integer", nullable=true)
+     */
+    private $nbrePagne;
+
+    /**
      * @var \tontineBundle\Entity\Agent
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Agent", cascade={"persist"}, inversedBy="createdCommande")
@@ -371,5 +378,29 @@ class Commande
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set nbrePagne
+     *
+     * @param integer $nbrePagne
+     *
+     * @return Commande
+     */
+    public function setNbrePagne($nbrePagne)
+    {
+        $this->nbrePagne = $nbrePagne;
+
+        return $this;
+    }
+
+    /**
+     * Get nbrePagne
+     *
+     * @return integer
+     */
+    public function getNbrePagne()
+    {
+        return $this->nbrePagne;
     }
 }

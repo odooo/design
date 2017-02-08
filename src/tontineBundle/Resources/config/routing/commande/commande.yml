@@ -30,3 +30,8 @@ shop_fiche_travail_new:
     path:     /{id}/new
     defaults: { _controller: "tontineBundle:Commande:setFiche" }
     methods:  [GET, POST]
+
+shop_fiche_travail_index:
+    path:     /{id}/fiche-de-travail
+    defaults: { _controller: "tontineBundle:Commande:indexFiche" }
+    methods:  GET
