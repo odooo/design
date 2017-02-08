@@ -55,6 +55,13 @@ class Commande
     private $nbrePagne;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="montant", type="integer", nullable=true)
+     */
+    private $montant;
+
+    /**
      * @var \tontineBundle\Entity\Agent
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Agent", cascade={"persist"}, inversedBy="createdCommande")
@@ -402,5 +409,29 @@ class Commande
     public function getNbrePagne()
     {
         return $this->nbrePagne;
+    }
+
+    /**
+     * Set montant
+     *
+     * @param integer $montant
+     *
+     * @return Commande
+     */
+    public function setMontant($montant)
+    {
+        $this->montant = $montant;
+
+        return $this;
+    }
+
+    /**
+     * Get montant
+     *
+     * @return integer
+     */
+    public function getMontant()
+    {
+        return $this->montant;
     }
 }

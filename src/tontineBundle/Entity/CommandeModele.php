@@ -22,6 +22,13 @@ class CommandeModele
     private $id;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hasFiche", type="boolean", nullable=true)
+     */
+    private $hasFiche;
+
+    /**
      * @var \tontineBundle\Entity\Commande
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Commande", cascade={"persist", "remove"}, inversedBy="cmdModele")
@@ -104,5 +111,29 @@ class CommandeModele
     {
         // TODO: Implement __toString() method.
         return $this->getCommande()->getDesignation();
+    }
+
+    /**
+     * Set hasFiche
+     *
+     * @param boolean $hasFiche
+     *
+     * @return CommandeModele
+     */
+    public function setHasFiche($hasFiche)
+    {
+        $this->hasFiche = $hasFiche;
+
+        return $this;
+    }
+
+    /**
+     * Get hasFiche
+     *
+     * @return boolean
+     */
+    public function getHasFiche()
+    {
+        return $this->hasFiche;
     }
 }

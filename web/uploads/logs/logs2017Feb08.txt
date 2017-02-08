@@ -30,3 +30,12 @@ Modele Edgar Enregistrement 2017-Feb-08:10:25:07
 Agent Edgar Mise-A-Jour 2017-Feb-08:10:25:07
 Pagne Edgar Mise-A-Jour 2017-Feb-08:10:25:07
 >>>>>>> 98b2c5f8696a04fd29d8da15541c98568e6aa835
+
+Agent roma Mise-A-Jour 2017-Feb-08:12:37:16
+Commande roma Enregistrement 2017-Feb-08:12:54:13
+CommandePagne roma Enregistrement 2017-Feb-08:12:54:13
+CommandePagne roma Enregistrement 2017-Feb-08:12:54:13
+Agent roma Mise-A-Jour 2017-Feb-08:12:54:13
+Client roma Mise-A-Jour 2017-Feb-08:12:54:13
+Pagne roma Mise-A-Jour 2017-Feb-08:12:54:13
+Pagne roma Mise-A-Jour 2017-Feb-08:12:54:13

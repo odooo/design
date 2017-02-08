@@ -30,32 +30,34 @@
                     {% for commande in commandes %}
                         {% set cpt = 0 %}
                         {% for fiche in fiches %}
-                            {% if fiche.commande == commande  %}
+                            {% if fiche.commande == commande %}
                                 {% set cpt = cpt + 1 %}
                             {% endif %}
                         {% endfor %}
                         <tr>
-                            <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ loop.index }}</a></td>
+                            <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ loop.index }}</a>
+                            </td>
                             <td>{{ commande.reference }}</td>
                             <td>{{ commande.designation }}</td>
                             <td>{% if commande.typeCommande == 'v' %}
                                     Vente
                                 {% elseif commande.typeCommande == 'm' %}
                                     Main  d'oeuvre
-                                {% else %} 
+                                {% else %}
                                     Vente de modèle
-                                {% endif %} 
+                                {% endif %}
                             </td>
                             <td>
                                 {{ commande.createdAt|date('d/m/Y h:i:s') }}
                             </td>
                             <td>{% if commande.client %}
                                     {{ commande.client.name }}
-                                {% endif %} 
+                                {% endif %}
                             </td>
                             <td>
                                 <div class="btn-group pull-right">
-                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
+                                            data-toggle="dropdown">
                                         Actions
                                         <span class="fa fa-caret-down"></span>
                                     </button>
@@ -65,31 +67,36 @@
                                             <li>
                                                 <a href="{{ path('shop_command_show', { 'id': commande.id }) }}">Afficher</a>
                                             </li>
-                                        {% endif  %}
+                                        {% endif %}
 
                                         {#{% if  is_granted('ROLE_COMMANDE_EDIT') %}#}
-                                            {#<li>#}
-                                                {#<a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">Modifier</a>#}
-                                            {#</li>#}
+                                        {#<li>#}
+                                        {#<a href="{{ path('shop_command_edit', { 'id': commande.id }) }}">Modifier</a>#}
+                                        {#</li>#}
                                         {#{% endif  %}#}
 
                                         {% if  is_granted('ROLE_FICHE_EDIT') %}
                                             {% if  cpt < commande.nbrePagne or commande.nbrePagne == 0 %}
                                                 <li>
-                                                    <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer la fiche de travail</a>
+                                                    <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer
+                                                        la fiche de travail</a>
                                                 </li>
-                                            {% endif  %}
+                                            {% endif %}
 
                                             {% if  cpt > 0 %}
                                                 <li>
-                                                    <a href="{{ path('shop_fiche_travail_index', { 'id': commande.id }) }}">Voir la fiche de travail</a>
+                                                    <a href="{{ path('shop_fiche_travail_index', { 'id': commande.id }) }}">Voir
+                                                        la fiche de travail</a>
                                                 </li>
-                                            {% endif  %}
-                                        {% endif  %}
+                                            {% endif %}
+                                        {% endif %}
 
-                                        <li>
-                                            <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}">Editer la facture</a>
-                                        </li>
+                                        {% if  cpt == commande.nbrePagne or commande.nbrePagne == 0 %}
+                                            <li>
+                                                <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}">Editer
+                                                    la facture</a>
+                                            </li>
+                                        {% endif %}
 
                                     </ul>
                                 </div>
@@ -112,14 +119,14 @@
 {% block javascript %}
     {{ parent() }}
     {#{% if cli is defined %}#}
-        {#<script>#}
-            {#$(function(){#}
-                {#Yop.Pagelet({#}
-                    {#url: "{{ path('tontine_client_preview', {'id':cli.id }) }}",#}
-                    {#pagelet: '#user-pagelet',#}
-                    {#title: '{{cli.prenom}} {{cli.nom}}'#}
-                {#});#}
-            {#});#}
-        {#</script>#}
+    {#<script>#}
+    {#$(function(){#}
+    {#Yop.Pagelet({#}
+    {#url: "{{ path('tontine_client_preview', {'id':cli.id }) }}",#}
+    {#pagelet: '#user-pagelet',#}
+    {#title: '{{cli.prenom}} {{cli.nom}}'#}
+    {#});#}
+    {#});#}
+    {#</script>#}
     {#{% endif %}#}
 {% endblock %}

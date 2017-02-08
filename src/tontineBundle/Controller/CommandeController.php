@@ -55,6 +55,7 @@ class CommandeController extends Controller
 
             $commande->setCreatedBy($user);
             $commande->setCreatedAt(new \DateTime());
+            $commande->setMontant(0);
 
             $em->persist($commande);
             $i = 0;
@@ -68,6 +69,7 @@ class CommandeController extends Controller
                 $cmdPagne->setPagne($pagne);
                 $cmdPagne->setCommande($commande);
                 $cmdPagne->setFiche(null);
+                $cmdPagne->setHasFiche(0);
                 $em->persist($cmdPagne);
             }
 
@@ -80,6 +82,7 @@ class CommandeController extends Controller
 //                    $fiche->setPagne($pagne);
                     $cmdModele->setModele($modele);
                     $cmdModele->setCommande($commande);
+                    $cmdModele->setHasFiche(0);
                     $em->persist($cmdModele);
 //                    $em->persist($fiche);
                 }
@@ -221,10 +224,16 @@ class CommandeController extends Controller
     public function printBillAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $commandes = $em->getRepository('tontineBundle:Commande')->findAll();
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(array(
+            'commande' => $commande,
+        ));
+
+        
 
         $html = $this->render('tontineBundle:commande:facture.html.twig', [
-            'commandes' => $commandes,
+            'commande' => $commande,
+            'fiches' => $fiches,
         ])->getContent();
 
         $dompdf = new Dompdf();
@@ -246,7 +255,7 @@ class CommandeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('tontineBundle:Commande')->find($id);
         $pagnes = $commande->getCmdPagne();
-
+        
         $fiche = new FicheTravail();
 
         $form = $this->createForm('tontineBundle\Form\FicheTravailType', $fiche);
@@ -261,6 +270,10 @@ class CommandeController extends Controller
             $fiche->setCreatedBy($user);
 
             $em->persist($fiche);
+
+            $montant = $commande->getMontant() + $fiche->getMontant();
+
+            $commande->setMontant($montant);
 
             $em->flush();
 

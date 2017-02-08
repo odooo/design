@@ -58,7 +58,7 @@ class CommandeType extends AbstractType
                 'class' => 'tontineBundle\Entity\Modele',
                 'query_builder' => function (ModeleRepository $er) {
                     return $er->createQueryBuilder('m')
-                        ->where('p.quantite > 0 ')
+                        ->where('m.quantite > 0 ')
                         ->orderBy('m.libelle', 'ASC');
                 },
                 'required' => false,

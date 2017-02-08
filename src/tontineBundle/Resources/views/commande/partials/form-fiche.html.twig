@@ -46,15 +46,15 @@
                                     </div>
                                 </div>
                             </div>
-                            {% if pagnes %}
+                            {% if pagnes is defined %}
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <span>Pagnes</span>
                                         <div class="form-group">
-                                        <select>
+                                        <select class="form-control">
                                             {% for cmdpgn in pagnes %}
                                                 {% if cmdpgn.pagne %}
-                                                    {{ cmdpgn.pagne.reference }}
+                                                    <option value="{{ cmdpgn.pagne.id }}">{{ cmdpgn.pagne.reference }}</option>
                                                 {% endif %}
                                             {% endfor %}
                                         </select>
