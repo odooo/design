@@ -9,6 +9,8 @@ use tontineBundle\Entity\CommandeModele;
 use tontineBundle\Entity\CommandePagne;
 use tontineBundle\Entity\FicheTravail;
 
+use Dompdf\Dompdf;
+
 /**
  * Commande controller.
  *
@@ -119,16 +121,12 @@ class CommandeController extends Controller
                 if ($cmdPagne) {
                     $array_id = array();
                     foreach ($pagnes as $pagne) {
-                        var_dump($pagne->getId());
                         $i = 0;
-                        foreach ( $cmdPagne as $cmd_p)
-                        {
-                            var_dump($cmd_p->getPagne()->getId());
+                        foreach ($cmdPagne as $cmd_p) {
                             $array_id[$i] = $cmd_p->getPagne()->getId();
                             $i++;
                         }
-                        if(in_array($pagne->getId(),$array_id))
-                        {
+                        if (in_array($pagne->getId(), $array_id)) {
                             $cmd_p = $this->getDoctrine()->getManager()->getRepository('tontineBundle:CommandePagne')->findByCommande(array(
                                 'commande' => $commande,
                                 'pagne' => $pagne,
@@ -136,9 +134,7 @@ class CommandeController extends Controller
 //                            var_dump($cmd_p);
 //                            die();
 //                            $cmd_p->setPagne($pagne);
-                        }
-                        else
-                        {
+                        } else {
                             $cmdPagne = new CommandePagne();
                             $fiche = new FicheTravail();
                             $fiche->setDateCommande(new \DateTime());
@@ -152,8 +148,7 @@ class CommandeController extends Controller
                 }
             }
 
-            if(isset($modeles) && !empty($modeles))
-            {
+            if (isset($modeles) && !empty($modeles)) {
                 $cmdModele = $this->getDoctrine()->getManager()->getRepository('tontineBundle:CommandeModele')->findBy(array(
                     'commande' => $commande,
                 ));
@@ -209,5 +204,27 @@ class CommandeController extends Controller
             ->setAction($this->generateUrl('shop_command_delete', array('id' => $commande->getId())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+    public function printBillAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commandes = $em->getRepository('tontineBundle:Commande')->findAll();
+        
+        $html = $this->render('tontineBundle:commande:facture.html.twig', [
+            'commandes' => $commandes,
+        ])->getContent();
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream('facture_'.(new \DateTime())->format("d-m-Y"));
     }
 }

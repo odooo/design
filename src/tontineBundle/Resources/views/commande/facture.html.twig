@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Facture</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style>
+        .header {
+            position: absolute;
+            top: -7mm;
+            margin-bottom: 5mm;
+        }
+
+        .logo {
+            height: 20mm;
+            margin-left: 20mm;
+        }
+
+        .header-content {
+            margin-top: -10mm;
+            margin-right: 10mm;
+            margin-bottom: 10mm;
+            margin-left: 30mm;
+            font-size: 4mm;
+            text-align: center
+        }
+
+        .express-header, .date-header {
+            display: inline-block;
+        }
+
+        .express-footer, .date-footer {
+            display: inline-block;
+        }
+
+        .pagenum:before {
+            content: counter(page);
+        }
+
+        .fiche-content {
+            margin-top: 50mm;
+            text-align: center;
+            font-family: 'Times New Roman', serif;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div>
+        <p class="header-content">
+        <h2 style="margin-left: 25px; margin-bottom: 1px;">Global Design</h2>
+        <div style="margin-bottom: 0px;">
+            <div id="express-header" class="express-header">
+                <span>Express Couture & Prêt-à-Porter</span>
+            </div>
+            <div id="date-header" class="date-header" style="margin-left: -130px;">
+                <span><strong>Date</strong> {{ 'now'|date('d/m/Y') }}</span>
+            </div>
+        </div>
+        <div>
+            <span style="margin-left: -15px;">04 B.P C-l.: 65 02 97 97 Fixe : 21 30 76 83</span>
+        </div>
+        <div>
+            <span style="margin-left: 35px;">Cotonou Rép. du Bénin</span>
+        </div>
+        {#<br/>#}
+        </p>
+    </div>
+    <div align="right" style="">
+        <span><strong>FACTURE : </strong> N<sup>o</sup>. {{ '0000321' }}</span>
+    </div>
+</div>
+
+<div class="fiche-content">
+    <div align="left" style="margin-bottom: 15px;">
+        <span>Client : {{ 'AHOUANSOU Yacinthe' }}</span>
+    </div>
+    <div align="center">
+        <table style='width: 100%'>
+            <thead>
+            <tr>
+                <th>Qté</th>
+                <th>Désignation</th>
+                <th>Prix Unitaire</th>
+                <th>Montant total</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for commande in commandes %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ commande.reference }}</td>
+                    <td>{{ commande.designation }}</td>
+                    <td>{{ '50 000 FCFA' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="footer">
+    <div style="margin-top: 20px;">
+        <div class="express-footer" style="margin-bottom: 1px;">
+            <span>Merci pour votre Fidélité</span>
+        </div>
+        <div class="date-footer" style="margin-left: -130px;">
+            <span>Signature</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
