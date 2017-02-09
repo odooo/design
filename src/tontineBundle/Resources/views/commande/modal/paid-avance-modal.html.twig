@@ -1,0 +1,22 @@
+<link rel="stylesheet"
+      href="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+{#<div class="row">#}
+    {#<div class="col-sm-12 well">#}
+        {% include 'tontineBundle:commande/modal:form.html.twig' with { submit: 'Valider' } %}
+    {#</div>#}
+{#</div>#}
+
+<script type="text/javascript"
+        src="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script>
+    $('.datetimepicker').datetimepicker({
+        locale: 'fr',
+        format: 'DD/MM/YYYY HH:mm:s'
+    });
+
+    $('.datepicker').datetimepicker({
+        locale:'fr',
+        format:'DD/MM/YYYY'
+    });
+</script>

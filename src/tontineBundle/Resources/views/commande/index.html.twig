@@ -20,6 +20,8 @@
                         <th>Reference</th>
                         <th>Designation</th>
                         <th>Type de commande</th>
+                        <th>Etat avance</th>
+                        <th>Montant avance</th>
                         <th>Date commande</th>
                         <th>Client</th>
                         <th></th>
@@ -45,6 +47,20 @@
                                     Main  d'oeuvre
                                 {% else %}
                                     Vente de modèle
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if commande.status is null or commande.status == 0 %}
+                                    <span class="label label-warning">Non payé</span>
+                                {% elseif commande.status == 1 %}
+                                    <span class="label label-success">Payé</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if commande.status is null or commande.status == 0 %}
+                                    <span class="label label-warning">{{ '0'|number_format(0, ',', '.')~' FCFA' }}</span>
+                                {% elseif commande.status == 1 %}
+                                    <span class="label label-success">{{ commande.avance|number_format(0, ',', '.')~' FCFA' }}</span>
                                 {% endif %}
                             </td>
                             <td>
@@ -88,16 +104,23 @@
                                                     <a href="{{ path('shop_fiche_travail_index', { 'id': commande.id }) }}">Voir
                                                         la fiche de travail</a>
                                                 </li>
+                                                {% if commande.status is null or commande.status == 0 %}
+                                                    <li>
+                                                        <a href="{{ path('shop_command_avance_payement', { 'id': commande.id }) }}"
+                                                           onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id }) }}','GET', 'Paiement de l\'avance');">Payer
+                                                            de l'avance</a>
+                                                    </li>
+                                                {% endif %}
                                             {% endif %}
                                         {% endif %}
 
                                         {% if  cpt == commande.nbrePagne or commande.nbrePagne == 0 %}
                                             <li>
-                                                <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}">Editer
+                                                <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}"
+                                                   target="new">Editer
                                                     la facture</a>
                                             </li>
                                         {% endif %}
-
                                     </ul>
                                 </div>
                             </td>
@@ -114,19 +137,28 @@
             </a>
         </div>
     </div>
+    {% include 'tontineBundle:modal:popup.html.twig' %}
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
-    {#{% if cli is defined %}#}
-    {#<script>#}
-    {#$(function(){#}
-    {#Yop.Pagelet({#}
-    {#url: "{{ path('tontine_client_preview', {'id':cli.id }) }}",#}
-    {#pagelet: '#user-pagelet',#}
-    {#title: '{{cli.prenom}} {{cli.nom}}'#}
-    {#});#}
-    {#});#}
-    {#</script>#}
-    {#{% endif %}#}
+    <script>
+        //        $(function () {
+        //            Yop.createPopin();
+        //        });
+        function showModal(event, $this, url, method, title) {
+            $('#waitModal').modal('show');
+            $.ajax({
+                url: url,
+                type: method,
+                success: function (data) {
+                    $('#waitModal').modal('hide');
+                    $("#idModal .modal-content").html(data);
+                    $("#idModal .modal-title").html(title);
+                    $('#idModal').modal('show');
+                }
+            });
+            event.preventDefault();
+        }
+    </script>
 {% endblock %}

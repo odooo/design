@@ -576,6 +576,17 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
             not_shop_command_facture_edit:
 
+            // shop_command_avance_payement
+            if (preg_match('#^/commandes/(?P<id>[^/]++)/commande/payement/avance$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {
+                    $allow = array_merge($allow, array('GET', 'POST', 'HEAD'));
+                    goto not_shop_command_avance_payement;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'shop_command_avance_payement')), array (  '_controller' => 'tontineBundle\\Controller\\CommandeController::payerAvanceAction',));
+            }
+            not_shop_command_avance_payement:
+
             // shop_fiche_travail_new
             if (preg_match('#^/commandes/(?P<id>[^/]++)/new$#s', $pathinfo, $matches)) {
                 if (!in_array($this->context->getMethod(), array('GET', 'POST', 'HEAD'))) {

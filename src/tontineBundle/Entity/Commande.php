@@ -15,6 +15,9 @@ use \Symfony\Component\HttpFoundation\File\File;
  * @ORM\Table(name="commande")
  * @ORM\Entity(repositoryClass="tontineBundle\Repository\CommandeRepository")
  */
+
+// status = 1 => Avance payée par le client
+// status = 2 => Reste payé par le client
 class Commande
 {
     /**
@@ -62,6 +65,34 @@ class Commande
     private $montant;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="avance", type="integer", nullable=true)
+     */
+    private $avance;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_paid_avance", type="datetime", nullable=true)
+     */
+    private $datePaidAvance;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="hasBill", type="boolean", nullable=true)
+     */
+    private $hasBill;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=true)
+     */
+    private $status;
+
+    /**
      * @var \tontineBundle\Entity\Agent
      *
      * @ORM\ManyToOne(targetEntity="tontineBundle\Entity\Agent", cascade={"persist"}, inversedBy="createdCommande")
@@ -96,6 +127,14 @@ class Commande
      * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandePagne", mappedBy="commande", cascade={"persist", "remove"})
      */
     private $cmdPagne;
+
+    /**
+     *
+     * One Commande has One Bill.
+     * @ORM\OneToOne(targetEntity="tontineBundle\Entity\Facture", mappedBy="commande")
+     */
+
+    private $facture;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -433,5 +472,125 @@ class Commande
     public function getMontant()
     {
         return $this->montant;
+    }
+
+    /**
+     * Set hasBill
+     *
+     * @param boolean $hasBill
+     *
+     * @return Commande
+     */
+    public function setHasBill($hasBill)
+    {
+        $this->hasBill = $hasBill;
+
+        return $this;
+    }
+
+    /**
+     * Get hasBill
+     *
+     * @return boolean
+     */
+    public function getHasBill()
+    {
+        return $this->hasBill;
+    }
+
+    /**
+     * Set facture
+     *
+     * @param \tontineBundle\Entity\Facture $facture
+     *
+     * @return Commande
+     */
+    public function setFacture(\tontineBundle\Entity\Facture $facture = null)
+    {
+        $this->facture = $facture;
+
+        return $this;
+    }
+
+    /**
+     * Get facture
+     *
+     * @return \tontineBundle\Entity\Facture
+     */
+    public function getFacture()
+    {
+        return $this->facture;
+    }
+
+    /**
+     * Set avance
+     *
+     * @param integer $avance
+     *
+     * @return Commande
+     */
+    public function setAvance($avance)
+    {
+        $this->avance = $avance;
+
+        return $this;
+    }
+
+    /**
+     * Get avance
+     *
+     * @return integer
+     */
+    public function getAvance()
+    {
+        return $this->avance;
+    }
+
+    /**
+     * Set datePaidAvance
+     *
+     * @param \DateTime $datePaidAvance
+     *
+     * @return Commande
+     */
+    public function setDatePaidAvance($datePaidAvance)
+    {
+        $this->datePaidAvance = $datePaidAvance;
+
+        return $this;
+    }
+
+    /**
+     * Get datePaidAvance
+     *
+     * @return \DateTime
+     */
+    public function getDatePaidAvance()
+    {
+        return $this->datePaidAvance;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Commande
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

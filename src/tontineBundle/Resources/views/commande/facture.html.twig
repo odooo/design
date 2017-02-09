@@ -16,14 +16,14 @@
             margin-left: 20mm;
         }
 
-        .header-content {
-            margin-top: -10mm;
-            margin-right: 10mm;
-            margin-bottom: 10mm;
-            margin-left: 30mm;
-            font-size: 4mm;
-            text-align: center
-        }
+        /*.header-content {*/
+        /*margin-top: -10mm;*/
+        /*margin-right: 10mm;*/
+        /*margin-bottom: 10mm;*/
+        /*margin-left: 30mm;*/
+        /*font-size: 4mm;*/
+        /*text-align: center*/
+        /*}*/
 
         .express-header, .date-header {
             display: inline-block;
@@ -31,6 +31,10 @@
 
         .express-footer, .date-footer {
             display: inline-block;
+        }
+
+        .date-header {
+            float: right;
         }
 
         .pagenum:before {
@@ -56,33 +60,35 @@
 
 <div class="header">
     <div>
-        <p class="header-content">
-        <h2 style="margin-left: 25px; margin-bottom: 1px;">Global Design</h2>
-        <div style="margin-bottom: 0px;">
-            <div id="express-header" class="express-header">
-                <span>Express Couture & Prêt-à-Porter</span>
+        <div class="header-content">
+            <div>
+                <h2 style="margin-left: 25px; margin-bottom: 0px;">Global Design</h2>
             </div>
-            <div id="date-header" class="date-header" style="margin-left: -130px;">
-                <span><strong>Date</strong> {{ 'now'|date('d/m/Y') }}</span>
+            <div style="clear: both;">
+                <div id="express-header" class="express-header">
+                    <span>Express Couture & Prêt-à-Porter</span>
+                </div>
+                <div id="date-header" class="date-header" style="margin-left: 910px;">
+                    <span><u><strong>Date</strong></u>&nbsp;&nbsp; {{ 'now'|date('d/m/Y') }}</span>
+                </div>
             </div>
+            <div>
+                <span style="margin-left: -15px;">04 B.P C-l.: 65 02 97 97 Fixe : 21 30 76 83</span>
+            </div>
+            <div>
+                <span style="margin-left: 35px;">Cotonou Rép. du Bénin</span>
+            </div>
+            {#<br/>#}
         </div>
-        <div>
-            <span style="margin-left: -15px;">04 B.P C-l.: 65 02 97 97 Fixe : 21 30 76 83</span>
-        </div>
-        <div>
-            <span style="margin-left: 35px;">Cotonou Rép. du Bénin</span>
-        </div>
-        {#<br/>#}
-        </p>
     </div>
     <div align="right" style="">
-        <span><strong>FACTURE : </strong> N<sup>o</sup>. {{ '0000321' }}</span>
+        <span><u><strong>FACTURE : </strong></u><span style="color: red;">&nbsp; N<sup>o</sup>. {{ facture[0].numero }}</span></span>
     </div>
 </div>
 
 <div class="fiche-content">
     <div align="left" style="margin-bottom: 15px;">
-        <span>Client : {{ 'AHOUANSOU Yacinthe' }}</span>
+        <span>Client : {{ commande.client.name }}</span>
     </div>
     <div align="center">
         <table style='width: 100%'>
@@ -97,12 +103,27 @@
             <tbody>
             {% for fiche in fiches %}
                 <tr>
-                    <td>{{ '1' }}</td>
-                    <td>{{ commande.reference }}</td>
-                    <td>{{ commande.designation }}</td>
-                    <td>{{ '50 000 FCFA' }}</td>
+                    <td style="text-align: center;">{{ '1' }}</td>
+                    <td style="text-align: center;">{{ fiche.designation }}</td>
+                    <td style="text-align: center;">{{ fiche.montant|number_format(0, ',', ' ') }}</td>
+                    <td style="text-align: center;">{{ fiche.montant|number_format(0, ',', ' ') }}</td>
                 </tr>
             {% endfor %}
+            <tr>
+                <td style="text-align: left;" rowspan="3" colspan="2">
+                    <b>Arrêté la présente Facture à la somme de</b> : {{ facture[0].total|number_format(0, ',', ' ')~' FCFA' }}
+                </td>
+                <td style="text-align: center;"><b>{{ 'Montant HT' }}</b></td>
+                <td style="text-align: center;">{{ facture[0].total|number_format(0, ',', ' ') }}</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><b>{{ 'TVA' }}</b></td>
+                <td style="text-align: center;">{{ '------' }}</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;"><b>{{ 'Mntant TTC' }}</b></td>
+                <td style="text-align: center;">{{ facture[0].total|number_format(0, ',', ' ') }}</td>
+            </tr>
             </tbody>
         </table>
     </div>
@@ -113,8 +134,8 @@
         <div class="express-footer" style="margin-bottom: 1px;">
             <span>Merci pour votre Fidélité</span>
         </div>
-        <div class="date-footer" style="margin-left: -130px;">
-            <span>Signature</span>
+        <div class="date-footer" style="margin-left: -100px;">
+            <span><u>Signature</u></span>
         </div>
     </div>
 </div>
