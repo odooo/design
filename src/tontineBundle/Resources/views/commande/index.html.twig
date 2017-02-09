@@ -37,9 +37,9 @@
                             {% endif %}
                         {% endfor %}
                         <tr>
-                            <td><a href="{{ path('shop_command_show', { 'id': commande.id }) }}">{{ loop.index }}</a>
+                            <td><a href="#">{{ loop.index }}</a>
                             </td>
-                            <td>{{ commande.reference }}</td>
+                            <td><span class="btn-xs btn-info">{{ commande.reference }}</span></td>
                             <td>{{ commande.designation }}</td>
                             <td>{% if commande.typeCommande == 'v' %}
                                     Vente

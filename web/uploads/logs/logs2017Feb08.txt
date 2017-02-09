@@ -39,6 +39,7 @@ Agent roma Mise-A-Jour 2017-Feb-08:12:54:13
 Client roma Mise-A-Jour 2017-Feb-08:12:54:13
 Pagne roma Mise-A-Jour 2017-Feb-08:12:54:13
 Pagne roma Mise-A-Jour 2017-Feb-08:12:54:13
+<<<<<<< HEAD
 FicheTravail roma Enregistrement 2017-Feb-08:13:50:44
 Agent roma Mise-A-Jour 2017-Feb-08:13:50:45
 Commande roma Mise-A-Jour 2017-Feb-08:13:50:45
@@ -89,3 +90,6 @@ Commande roma Mise-A-Jour 2017-Feb-08:15:37:36
 Facture roma Enregistrement 2017-Feb-08:15:37:51
 Agent roma Mise-A-Jour 2017-Feb-08:15:37:51
 Commande roma Mise-A-Jour 2017-Feb-08:15:37:51
+=======
+Agent Edgar Mise-A-Jour 2017-Feb-08:13:44:32
+>>>>>>> 3e88abdbbfa0f574f0a5f6da81bcacb8c10e2dbf
