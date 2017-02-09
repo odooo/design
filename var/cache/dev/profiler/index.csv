@@ -117,3 +117,8 @@ c421fe,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/commandes/,1486586
 d00624,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486586032,,200
 125381,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/,1486632076,,302
 bd3006,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/login,1486632079,,200
+bed4fe,127.0.0.1,POST,http://localhost/tontine/web/app_dev.php/login_check,1486632951,,302
+609a27,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/,1486632953,,200
+96b976,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486632959,,200
+bb04a0,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/commandes/,1486633776,,200
+c7ee5b,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486633778,,200
