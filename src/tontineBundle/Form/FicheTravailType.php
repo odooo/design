@@ -26,12 +26,13 @@ class FicheTravailType extends AbstractType
         $builder
             ->add('designation', TextareaType::class, array(
                     'attr' => array(
-                        'class' => 'c4')
+                    'class' => 'c4'),
+                    'required' => true
                 )
             )
-            ->add('mesure')
-            ->add('montant')
-            ->add('dateLivraison')
+            ->add('mesure', null, array('required' => true))
+            ->add('montant', null, array('required' => true))
+            //->add('dateLivraison')
             ->add('longGHChemise')
             ->add('dosChemise')
             ->add('poitrineChemise')
@@ -48,16 +49,16 @@ class FicheTravailType extends AbstractType
             ->add('tmanchePantalon')
             ->add('colPantalon')
             ->add('poignetPantalon')
-            ->add('commande', EntityType::class, array(
+            /*->add('commande', EntityType::class, array(
                 'class' => 'tontineBundle\Entity\Commande',
                 'query_builder' => function (CommandeRepository $er) {
                     return $er->createQueryBuilder('c')
                         ->orderBy('c.reference', 'ASC');
                 },
-                'required' => true,
+                'required' => false,
                 //'multiple' => true,
                 'choice_label' => 'reference',
-            ));
+            ))*/;
     }
 
     /**

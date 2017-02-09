@@ -1,5 +1,6 @@
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
-
+<link rel="stylesheet"
+              href="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
 <div class="container-fluid container-small">
     <div class='row'>
         <div class="col-sm-12">
@@ -22,7 +23,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <span>Client : {{ client.name }}</span>
+                                    <span style="color: green"><u>Client</u> : <b>{{ client.name }}</b></span>
                                 </div>
                             </div>
                         </div>
@@ -46,12 +47,12 @@
                                     </div>
                                 </div>
                             </div>
-                            {% if pagnes is defined %}
+                            {% if pagnes is not empty %}
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <span>Pagnes</span>
                                         <div class="form-group">
-                                        <select class="form-control">
+                                        <select class="form-control" name="pagne">
                                             {% for cmdpgn in pagnes %}
                                                 {% if cmdpgn.pagne %}
                                                     <option value="{{ cmdpgn.pagne.id }}">{{ cmdpgn.pagne.reference }}</option>
@@ -63,21 +64,19 @@
                                 </div>
                             {% else %}
                                 <div class="col-sm-3">
-                                    {{ form_errors(form.commande) }}
                                     <div class="form-group">
-                                        {{ form_label(form.commande, 'Commande'|trans) }}
+                                        <u>Référence Commande</u>
                                         <div class="form-group">
-                                            {{ form_widget(form.commande) }}
+                                            {{ commande.reference }}
                                         </div>
                                     </div>
                                 </div>
                             {% endif %}
                             <div class="col-sm-3">
-                                {{ form_errors(form.dateLivraison) }}
                                 <div class="form-group">
-                                    {{ form_label(form.dateLivraison, 'Date Livraison'|trans) }}
-                                    <div class="form-group">
-                                        {{ form_widget(form.dateLivraison) }}
+                                <span>Date de livraison</span>
+                                    <div class="input-group">
+                                        <input type='text' id="dateLivraison" name="dateLivraison" class="form-control datetimepicker" value="{{ date()|date('d/m/Y h:i:s') }}"/>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +84,7 @@
 
 
                         <div class="col-sm-6">
-                        <h3 class="box-title">MESURES CHEMISES : </h3>
+                        <h3 class="box-title"><u>MESURES CHEMISES</u> : </h3>
                             {{ form_errors(form.longGHChemise) }}
                             <div class="form-group">
                                 {{ form_label(form.longGHChemise, 'LONG GH'|trans) }}
@@ -152,7 +151,7 @@
                         </div>
 
                         <div class="col-sm-6">
-                        <h3 class="box-title">MESURES PANTALON/JUPES : </h3>
+                        <h3 class="box-title"><u>MESURES PANTALON/JUPES</u> : </h3>
                             {{ form_errors(form.longGHPantalon) }}
                             <div class="form-group">
                                 {{ form_label(form.longGHPantalon, 'LONG GH'|trans) }}
@@ -239,3 +238,24 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript"
+                src="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script type="text/javascript">
+            $(function(){
+                
+                $('.datepicker').datetimepicker({
+                    locale:'fr',
+                    format:'DD/MM/YYYY'
+                });
+                
+                $('.datetimepicker').datetimepicker({
+                    locale:'fr',
+                    format:'DD/MM/YYYY HH:mm:s'
+                });
+
+                $('.select2').select2([{multiple: true}]);
+                
+            });
+        </script>

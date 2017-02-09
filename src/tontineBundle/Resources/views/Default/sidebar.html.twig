@@ -156,9 +156,9 @@
                 {% if is_granted('ROLE_GROUP_VIEW') %}
                     <li><a href="{{ path('tontine_agents_groups_index') }}"><i class="fa fa-angle-right"></i> Liste des profils d'agent</a></li>
                 {% endif %}
-                {% if is_granted('ROLE_SETTING_EDIT') %}
-                    <li><a href="{{ path('tontine_parameters_edit') }}"><i class="fa fa-angle-right"></i> Modifier les paramètres</a></li>
-                {% endif %}
+                {# {% if is_granted('ROLE_SETTING_EDIT') %}
+                    <li><a href="{{ path('tontine_parameters_edit') }}"><i class="fa fa-angle-right"></i> Modifier les paramètres</a></li> 
+                {% endif %} #}
             </ul>
         </li>
     {% endif %}        

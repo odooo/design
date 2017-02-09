@@ -19,7 +19,7 @@ class AgentGroupType extends AbstractType
 
         $builder
             ->add('name', null, [
-                'label' => 'Nom du groupe (Ex: Collecteur)'
+                'label' => 'Nom du groupe (Ex: Clientele)'
             ])
             ->add('roles', ChoiceType::class, [
                 'label' => 'Permissions du groupe',

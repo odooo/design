@@ -9,7 +9,7 @@
 {% block content %}
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Liste des fiches de travail de la commande {{ commande.reference }}</h3>
+            <h3 class="box-title">Liste des fiches de travail de la commande <span class="btn-xs btn-info">{{ commande.reference }}</span></h3>
         </div>
         <div class="box-body">
             <div class="table-responsive">
@@ -19,6 +19,9 @@
                         <th>#</th>
                         <th>Date commande</th>
                         <th>Date livraison</th>
+                        <th>Désignation</th>
+                        <th>Montant (en FCFA)</th>
+                        <th>Contact client</th>
                         <th>Client</th>
                     </tr>
                     </thead>
@@ -29,11 +32,20 @@
                             <td><a href="#">{{ loop.index }}</a></td>
                             <td>{{ fiche.dateCommande|date('d/m/Y h:i:s') }}</td>
                             <td>{{ fiche.dateLivraison|date('d/m/Y h:i:s') }}</td>
+                            <td>{{ fiche.designation }}</td>
+                            <td>{{ fiche.montant|number_format(0,',','.') }}</td>
                             <td>
                             	{% if fiche.commande %}
 	                            	{% if fiche.commande.client %}
 	                                    {{ fiche.commande.client.name }}
 	                                {% endif %} 
+                                {% endif %} 
+                            </td>
+                            <td>
+                                {% if fiche.commande %}
+                                    {% if fiche.commande.client %}
+                                        {{ fiche.commande.client.contacts | phone_number_format('INTERNATIONAL') }}
+                                    {% endif %} 
                                 {% endif %} 
                             </td>
                         </tr>
@@ -53,15 +65,4 @@
 
 {% block javascript %}
     {{ parent() }}
-    {#{% if cli is defined %}#}
-        {#<script>#}
-            {#$(function(){#}
-                {#Yop.Pagelet({#}
-                    {#url: "{{ path('tontine_client_preview', {'id':cli.id }) }}",#}
-                    {#pagelet: '#user-pagelet',#}
-                    {#title: '{{cli.prenom}} {{cli.nom}}'#}
-                {#});#}
-            {#});#}
-        {#</script>#}
-    {#{% endif %}#}
 {% endblock %}

@@ -1,6 +1,5 @@
 {{ form_row(form.name) }}
 <div class="form-group">
-    {#{{ form_label(form.roles)}}    #}
     {% set index = 0 %}
     {% for group in form.roles.vars.choices %}
         {% set length = group.choices | length + index - 1 %}        
