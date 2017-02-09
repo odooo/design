@@ -22,8 +22,12 @@
                         <th>Type de commande</th>
                         <th>Etat avance</th>
                         <th>Montant avance</th>
+                        <th>Montant total</th>
                         <th>Date commande</th>
                         <th>Client</th>
+                        <th>Montant payé</th>
+                        <th>Reliquat</th>
+                        <th>Etat de paiement</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -52,22 +56,51 @@
                             <td>
                                 {% if commande.status is null or commande.status == 0 %}
                                     <span class="label label-warning">Non payé</span>
-                                {% elseif commande.status == 1 %}
+                                {% elseif commande.status in [1,2,3] %}
+                                    {#<button type="button" class="btn {% if commande.relicat > 0 and commande.montant < commande.avance %}btn-warning{% else %}btn-success{% endif %} btn-xs">{% if commande.relicat > 0 and commande.montant < commande.avance %}Payer le reliquat{% else %}Payé{% endif %}</button>#}
                                     <span class="label label-success">Payé</span>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if commande.status is null or commande.status == 0 %}
                                     <span class="label label-warning">{{ '0'|number_format(0, ',', '.')~' FCFA' }}</span>
-                                {% elseif commande.status == 1 %}
+                                {% elseif commande.status in [1,2,3] %}
                                     <span class="label label-success">{{ commande.avance|number_format(0, ',', '.')~' FCFA' }}</span>
                                 {% endif %}
+                            </td>
+                            <td>
+                                {{ commande.montant|number_format(0, ',', '.')~' FCFA' }}
                             </td>
                             <td>
                                 {{ commande.createdAt|date('d/m/Y h:i:s') }}
                             </td>
                             <td>{% if commande.client %}
                                     {{ commande.client.name }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ commande.reteAPayer|number_format(0, ',', '.')~' FCFA' }}
+                            </td>
+                            <td>
+                                {{ commande.relicat|number_format(0, ',', '.')~' FCFA' }}
+                            </td>
+                            <td>
+                                {% if commande.status is null or commande.status == 0 %}
+                                    <button type="button" class="btn btn-danger btn-xs"
+                                            onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'avance' }) }}','GET', 'Paiement de l\'avance');">
+                                        Paiement de l'avance
+                                    </button>
+                                {% elseif commande.status == 1 %}
+                                    <button type="button" class="btn btn-warning btn-xs"
+                                            onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'reste' }) }}','GET', 'Paiement du reste');">
+                                        En cours de paiement
+                                    </button>
+                                {% elseif commande.status == 2 %}
+                                    <button type="button"
+                                            class="btn {% if commande.relicat > 0 %}btn-warning{% else %}btn-primary{% endif %} btn-xs"
+                                            {% if commande.relicat > 0 %}onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'reliquat' }) }}','GET', 'Remboursement du reliquat');"{% endif %}>{% if commande.relicat > 0 %}Remboursement du reliquat{% else %}Finalisé{% endif %}</button>
+                                {% elseif commande.status == 3 %}
+                                    <button type="button" class="btn btn-primary btn-xs">Finalisé</button>
                                 {% endif %}
                             </td>
                             <td>
@@ -115,11 +148,13 @@
                                         {% endif %}
 
                                         {% if  cpt == commande.nbrePagne or commande.nbrePagne == 0 %}
-                                            <li>
-                                                <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}"
-                                                   target="new">Editer
-                                                    la facture</a>
-                                            </li>
+                                            {% if (commande.status == 2 and commande.relicat == 0) or commande.status == 3 %}
+                                                <li>
+                                                    <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}"
+                                                       target="new">Editer
+                                                        la facture</a>
+                                                </li>
+                                            {% endif %}
                                         {% endif %}
                                     </ul>
                                 </div>

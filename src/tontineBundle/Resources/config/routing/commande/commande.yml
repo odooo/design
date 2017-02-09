@@ -29,8 +29,8 @@ shop_command_facture_edit:
     methods:  GET
 
 shop_command_avance_payement:
-    path:     /{id}/commande/payement/avance
-    defaults: { _controller: "tontineBundle:Commande:payerAvance" }
+    path:     /{id}/commande/payement/avance/{action}
+    defaults: { _controller: "tontineBundle:Commande:payerAvance", action = null }
     methods:  [GET, POST]
 
 # fiche de travail

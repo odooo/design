@@ -67,9 +67,23 @@ class Commande
     /**
      * @var integer
      *
+     * @ORM\Column(name="reste_a_payer", type="integer", nullable=true)
+     */
+    private $reteAPayer;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="avance", type="integer", nullable=true)
      */
     private $avance;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="relicat", type="integer", nullable=true)
+     */
+    private $relicat;
 
     /**
      * @var \DateTime
@@ -592,5 +606,53 @@ class Commande
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set reteAPayer
+     *
+     * @param integer $reteAPayer
+     *
+     * @return Commande
+     */
+    public function setReteAPayer($reteAPayer)
+    {
+        $this->reteAPayer = $reteAPayer;
+
+        return $this;
+    }
+
+    /**
+     * Get reteAPayer
+     *
+     * @return integer
+     */
+    public function getReteAPayer()
+    {
+        return $this->reteAPayer;
+    }
+
+    /**
+     * Set relicat
+     *
+     * @param integer $relicat
+     *
+     * @return Commande
+     */
+    public function setRelicat($relicat)
+    {
+        $this->relicat = $relicat;
+
+        return $this;
+    }
+
+    /**
+     * Get relicat
+     *
+     * @return integer
+     */
+    public function getRelicat()
+    {
+        return $this->relicat;
     }
 }

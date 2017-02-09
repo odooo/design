@@ -288,7 +288,7 @@ class CommandeController extends Controller
         }
     }
 
-    public function payerAvanceAction(Request $request, $id)
+    public function payerAvanceAction(Request $request, $id, $action)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -296,31 +296,74 @@ class CommandeController extends Controller
         $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(
             array('commande' => $commande));
 
-        if($request->getMethod() == 'POST')
-        {
+        if ($request->getMethod() == 'POST') {
             $form = $request->request->get('shop_paid_form');
 
-            if(isset($form['date']) && !empty($form['date']))
-            {
-                $date = new \DateTime($form['date'].' 00:00:00');
-                $commande->setDatePaidAvance($date);
+            switch ($action) {
+                case 'avance':
+                    if (isset($form['date']) && !empty($form['date'])) {
+                        $date = new \DateTime($form['date'] . ' 00:00:00');
+                        $commande->setDatePaidAvance($date);
+                    } else {
+                        return false;
+                    }
+                    if (isset($form['montant']) && !empty($form['montant'])) {
+                        $avance = $form['montant'];
+                        $commande->setAvance($avance);
+                        $commande->setReteAPayer(0);
+                        if ($avance > $commande->getMontant()) {
+                            $relicat = $avance - $commande->getMontant();
+                            $commande->setRelicat($relicat);
+                            $commande->setStatus(2);
+                        } else {
+                            $commande->setStatus(1);
+                        }
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 'reste':
+//                    if(isset($form['date']) && !empty($form['date']))
+//                    {
+//                        $date = new \DateTime($form['date'].' 00:00:00');
+//                        $commande->setDatePaidAvance($date);
+//                    }
+//                    else
+//                    {
+//                        return false;
+//                    }
+                    if (isset($form['montant']) && !empty($form['montant'])) {
+                        $reste = $form['montant'];
+                        $restePaye = $commande->getReteAPayer() + $reste;
+                        $totalPaye = $restePaye + $commande->getAvance();
+
+                        if ($commande->getMontant() <= $totalPaye) {
+                            $relicat = $commande->getMontant() - $totalPaye;
+                            if ($relicat <= 0) {
+                                $commande->setRelicat($relicat * (-1));
+                                $commande->setStatus(2);
+                            }
+                            $commande->setReteAPayer($restePaye);
+                        } else {
+                            $commande->setReteAPayer($restePaye);
+                            $commande->setStatus(1);
+                        }
+
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 'reliquat':
+                    if (isset($form['montant']) && !empty($form['montant'])) {
+                        $commande->setStatus(3);
+                    } else {
+                        return false;
+                    }
+                    break;
+                default:
+
             }
-            else
-            {
-                return false;
-            }
-            if(isset($form['montant']) && !empty($form['montant']))
-            {
-                $avance = $form['montant'];
-                $commande->setAvance($avance);
-            }
-            else
-            {
-                return false;
-            }
-            
-            $commande->setStatus(1);
-            
+
             $em->flush();
 
             return $this->redirectToRoute('shop_command_index');
@@ -329,6 +372,7 @@ class CommandeController extends Controller
         return new Response($this->renderView('tontineBundle:commande/modal:paid-avance-modal.html.twig', array(
             'fiches' => $fiches,
             'commande' => $commande,
+            'action' => $action,
         )));
     }
 

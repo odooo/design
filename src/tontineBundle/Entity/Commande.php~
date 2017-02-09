@@ -15,6 +15,9 @@ use \Symfony\Component\HttpFoundation\File\File;
  * @ORM\Table(name="commande")
  * @ORM\Entity(repositoryClass="tontineBundle\Repository\CommandeRepository")
  */
+
+// status = 1 => Avance payée par le client
+// status = 2 => Reste payé par le client
 class Commande
 {
     /**
@@ -64,9 +67,23 @@ class Commande
     /**
      * @var integer
      *
+     * @ORM\Column(name="reste_a_payer", type="integer", nullable=true)
+     */
+    private $reteAPayer;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="avance", type="integer", nullable=true)
      */
     private $avance;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="relicat", type="integer", nullable=true)
+     */
+    private $relicat;
 
     /**
      * @var \DateTime
@@ -517,5 +534,101 @@ class Commande
     public function getFacture()
     {
         return $this->facture;
+    }
+
+    /**
+     * Set avance
+     *
+     * @param integer $avance
+     *
+     * @return Commande
+     */
+    public function setAvance($avance)
+    {
+        $this->avance = $avance;
+
+        return $this;
+    }
+
+    /**
+     * Get avance
+     *
+     * @return integer
+     */
+    public function getAvance()
+    {
+        return $this->avance;
+    }
+
+    /**
+     * Set datePaidAvance
+     *
+     * @param \DateTime $datePaidAvance
+     *
+     * @return Commande
+     */
+    public function setDatePaidAvance($datePaidAvance)
+    {
+        $this->datePaidAvance = $datePaidAvance;
+
+        return $this;
+    }
+
+    /**
+     * Get datePaidAvance
+     *
+     * @return \DateTime
+     */
+    public function getDatePaidAvance()
+    {
+        return $this->datePaidAvance;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Commande
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set reteAPayer
+     *
+     * @param integer $reteAPayer
+     *
+     * @return Commande
+     */
+    public function setReteAPayer($reteAPayer)
+    {
+        $this->reteAPayer = $reteAPayer;
+
+        return $this;
+    }
+
+    /**
+     * Get reteAPayer
+     *
+     * @return integer
+     */
+    public function getReteAPayer()
+    {
+        return $this->reteAPayer;
     }
 }

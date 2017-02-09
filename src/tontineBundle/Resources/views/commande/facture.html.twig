@@ -110,9 +110,19 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td style="text-align: left;" rowspan="3" colspan="2">
+                <td style="text-align: left;" rowspan="{% if commande.relicat > 0 %}5{% else %}4{% endif %}" colspan="2">
                     <b>Arrêté la présente Facture à la somme de</b> : {{ facture[0].total|number_format(0, ',', ' ')~' FCFA' }}
                 </td>
+                <td style="text-align: center;"><b>{{ 'Avance' }}</b></td>
+                <td style="text-align: center;">{{ commande.avance|number_format(0, ',', ' ') }}</td>
+            </tr>
+            {% if commande.relicat > 0 %}
+                <tr>
+                    <td style="text-align: center;"><b>{{ 'Reliquat' }}</b></td>
+                    <td style="text-align: center;">{{ commande.relicat|number_format(0, ',', ' ') }}</td>
+                </tr>
+            {% endif %}
+            <tr>
                 <td style="text-align: center;"><b>{{ 'Montant HT' }}</b></td>
                 <td style="text-align: center;">{{ facture[0].total|number_format(0, ',', ' ') }}</td>
             </tr>

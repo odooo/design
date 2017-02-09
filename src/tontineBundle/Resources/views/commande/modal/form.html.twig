@@ -1,7 +1,13 @@
+{% if commande is defined %}
+{% set reste = 0 %}
+    {% if commande.status == 1 %}
+        {% set reste = commande.montant - commande.avance  %}
+    {% endif %}
+{% endif %}
 <div class="container-fluid">
     <div role="form">
         <form name="shop_paid_form" method="post"
-              action="{{ path('shop_command_avance_payement', { 'id': commande.id }) }}" enctype="multipart/form-data">
+              action="{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':action }) }}" enctype="multipart/form-data">
 
             <div class="modal-header">
                 <h3 class="modal-title" id="exempleModalLabel">Modal title</h3>
@@ -18,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label for="message-text" class="form-control-label">Montant:</label>
-                    <input name="shop_paid_form[montant]" type="number" class="form-control"/>
+                    <input name="shop_paid_form[montant]" value="{% if action == 'reliquat' %}{{ commande.relicat }}{% else %}0{% endif %}" type="number" class="form-control"/>
                 </div>
             </div>
             <div class="modal-footer">
