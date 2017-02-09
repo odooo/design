@@ -1,2 +1,14 @@
 
+<<<<<<< HEAD
 Edgar Edgar Mise-A-Jour 2017-Feb-09:10:35:50 1
+=======
+roma roma Mise-A-Jour 2017-Feb-09:11:55:33 2
+Commande roma Mise-A-Jour 2017-Feb-09:11:55:33
+Agent roma Mise-A-Jour 2017-Feb-09:11:57:14
+Commande roma Mise-A-Jour 2017-Feb-09:11:57:14
+>>>>>>> 5efba407a967b199592246e49e8f26734eb2f7e6
+
+Agent Edgar Mise-A-Jour 2017-Feb-09:12:20:50
+Facture Edgar Enregistrement 2017-Feb-09:12:22:52
+Agent Edgar Mise-A-Jour 2017-Feb-09:12:22:52
+Commande Edgar Mise-A-Jour 2017-Feb-09:12:22:52

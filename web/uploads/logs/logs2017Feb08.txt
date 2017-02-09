@@ -39,5 +39,62 @@ Agent roma Mise-A-Jour 2017-Feb-08:12:54:13
 Client roma Mise-A-Jour 2017-Feb-08:12:54:13
 Pagne roma Mise-A-Jour 2017-Feb-08:12:54:13
 Pagne roma Mise-A-Jour 2017-Feb-08:12:54:13
+<<<<<<< HEAD
 Agent Edgar Mise-A-Jour 2017-Feb-08:13:44:32
 Agent Edgar Mise-A-Jour 2017-Feb-08:21:33:26
+=======
+<<<<<<< HEAD
+FicheTravail roma Enregistrement 2017-Feb-08:13:50:44
+Agent roma Mise-A-Jour 2017-Feb-08:13:50:45
+Commande roma Mise-A-Jour 2017-Feb-08:13:50:45
+FicheTravail roma Enregistrement 2017-Feb-08:13:52:00
+Agent roma Mise-A-Jour 2017-Feb-08:13:52:00
+Commande roma Mise-A-Jour 2017-Feb-08:13:52:00
+Facture roma Enregistrement 2017-Feb-08:13:52:10
+Agent roma Mise-A-Jour 2017-Feb-08:13:52:10
+Facture roma Enregistrement 2017-Feb-08:14:17:50
+Agent roma Mise-A-Jour 2017-Feb-08:14:17:50
+Commande roma Mise-A-Jour 2017-Feb-08:14:17:50
+Facture roma Enregistrement 2017-Feb-08:14:20:44
+Agent roma Mise-A-Jour 2017-Feb-08:14:20:44
+Commande roma Mise-A-Jour 2017-Feb-08:14:20:44
+Facture roma Enregistrement 2017-Feb-08:14:23:03
+Agent roma Mise-A-Jour 2017-Feb-08:14:23:03
+Commande roma Mise-A-Jour 2017-Feb-08:14:23:03
+Facture roma Enregistrement 2017-Feb-08:14:28:37
+Agent roma Mise-A-Jour 2017-Feb-08:14:28:37
+Commande roma Mise-A-Jour 2017-Feb-08:14:28:37
+Commande roma Enregistrement 2017-Feb-08:14:32:01
+CommandePagne roma Enregistrement 2017-Feb-08:14:32:01
+CommandePagne roma Enregistrement 2017-Feb-08:14:32:01
+Agent roma Mise-A-Jour 2017-Feb-08:14:32:02
+Client roma Mise-A-Jour 2017-Feb-08:14:32:02
+Pagne roma Mise-A-Jour 2017-Feb-08:14:32:02
+Pagne roma Mise-A-Jour 2017-Feb-08:14:32:02
+FicheTravail roma Enregistrement 2017-Feb-08:14:34:01
+Agent roma Mise-A-Jour 2017-Feb-08:14:34:01
+Commande roma Mise-A-Jour 2017-Feb-08:14:34:01
+FicheTravail roma Enregistrement 2017-Feb-08:14:35:35
+Agent roma Mise-A-Jour 2017-Feb-08:14:35:35
+Commande roma Mise-A-Jour 2017-Feb-08:14:35:35
+Facture roma Enregistrement 2017-Feb-08:14:35:40
+Agent roma Mise-A-Jour 2017-Feb-08:14:35:40
+Commande roma Mise-A-Jour 2017-Feb-08:14:35:40
+Facture roma Enregistrement 2017-Feb-08:14:38:18
+Agent roma Mise-A-Jour 2017-Feb-08:14:38:18
+Commande roma Mise-A-Jour 2017-Feb-08:14:38:18
+Commande roma Enregistrement 2017-Feb-08:15:36:11
+CommandePagne roma Enregistrement 2017-Feb-08:15:36:11
+Agent roma Mise-A-Jour 2017-Feb-08:15:36:11
+Client roma Mise-A-Jour 2017-Feb-08:15:36:11
+Pagne roma Mise-A-Jour 2017-Feb-08:15:36:11
+FicheTravail roma Enregistrement 2017-Feb-08:15:37:35
+Agent roma Mise-A-Jour 2017-Feb-08:15:37:35
+Commande roma Mise-A-Jour 2017-Feb-08:15:37:36
+Facture roma Enregistrement 2017-Feb-08:15:37:51
+Agent roma Mise-A-Jour 2017-Feb-08:15:37:51
+Commande roma Mise-A-Jour 2017-Feb-08:15:37:51
+=======
+Agent Edgar Mise-A-Jour 2017-Feb-08:13:44:32
+>>>>>>> 3e88abdbbfa0f574f0a5f6da81bcacb8c10e2dbf
+>>>>>>> 5efba407a967b199592246e49e8f26734eb2f7e6

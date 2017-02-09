@@ -20,11 +20,11 @@ class FicheTravail
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
-     * 
+     *
      */
-    private $id;    
-    
-   /**
+    private $id;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="dateCommande", type="datetime", nullable=true)
@@ -82,8 +82,8 @@ class FicheTravail
      */
     private $pagne;
 
-    /*
-    *
+    /**
+     *
      * One Cart has One Customer.
      * @ORM\OneToOne(targetEntity="tontineBundle\Entity\CommandePagne", mappedBy="fiche")
      */
@@ -138,7 +138,7 @@ class FicheTravail
      */
     private $tailleChemise;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="taille_pantalon", type="string", length=255, nullable=true)
@@ -152,7 +152,7 @@ class FicheTravail
      */
     private $hancheChemise;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="hanche_pantalon", type="string", length=255, nullable=true)
@@ -166,7 +166,7 @@ class FicheTravail
      */
     private $tmancheChemise;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="tmanche_pantalon", type="string", length=255, nullable=true)
@@ -180,7 +180,7 @@ class FicheTravail
      */
     private $colChemise;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="col_pantalon", type="string", length=255, nullable=true)
@@ -194,12 +194,12 @@ class FicheTravail
      */
     private $poignetChemise;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="poignet_pantalon", type="string", length=255, nullable=true)
      */
-    private $poignetPantalon; 
+    private $poignetPantalon;
 
     /**
      * @var integer
@@ -207,7 +207,6 @@ class FicheTravail
      * @ORM\Column(name="montant", type="integer", nullable=true)
      */
     private $montant;
-
 
 
     /**
@@ -269,7 +268,7 @@ class FicheTravail
     }
 
     /**
-    *
+     *
      * Set createdBy
      *
      * @param \tontineBundle\Entity\Agent $createdBy
@@ -282,7 +281,7 @@ class FicheTravail
     }
 
     /**
-    *
+     *
      * Set cmdPagne
      *
      * @param \tontineBundle\Entity\CommandePagne $cmdPagne
@@ -297,7 +296,7 @@ class FicheTravail
     }
 
     /**
-    *
+     *
      * Get createdBy
      *
      * @return \tontineBundle\Entity\Agent
@@ -308,7 +307,7 @@ class FicheTravail
     }
 
     /**
-    *
+     *
      * Get cmdPagne
      *
      * @return \tontineBundle\Entity\CommandePagne

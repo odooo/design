@@ -2,11 +2,15 @@
 
 namespace tontineBundle\Controller;
 
+//use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Validator\Constraints\DateTime;
 use tontineBundle\Entity\Commande;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use tontineBundle\Entity\CommandeModele;
 use tontineBundle\Entity\CommandePagne;
+use tontineBundle\Entity\Facture;
 use tontineBundle\Entity\FicheTravail;
 
 use Dompdf\Dompdf;
@@ -56,6 +60,7 @@ class CommandeController extends Controller
             $commande->setCreatedBy($user);
             $commande->setCreatedAt(new \DateTime());
             $commande->setMontant(0);
+            $commande->setHasBill(0);
 
             $em->persist($commande);
             $i = 0;
@@ -229,24 +234,102 @@ class CommandeController extends Controller
             'commande' => $commande,
         ));
 
-        
+        if ($commande->getHasBill() == 0) {
+            $facture = $em->getRepository('tontineBundle:Facture')->findAll();
 
-        $html = $this->render('tontineBundle:commande:facture.html.twig', [
+            $fact_index = 0;
+
+            if (count($facture) > 0) {
+                $count = count($facture);
+                $countlength = strlen((string)$count) + 4;
+                $fact_index = str_pad($count + 1, $countlength, "0", STR_PAD_LEFT);
+            } else {
+                $fact_index = str_pad(1, 5, "0", STR_PAD_LEFT);
+            }
+
+            $facture = new Facture();
+
+            $facture->setTotal($commande->getMontant());
+            $facture->setCommande($commande);
+            $facture->setNumero($fact_index);
+
+            $em->persist($facture);
+
+            $commande->setHasBill(1);
+
+            $em->flush();
+        }
+
+        $facture = $em->getRepository('tontineBundle:Facture')->findBy(array(
             'commande' => $commande,
+        ));
+
+        if ($facture) {
+//            $new_index = str_pad(123, 8, "0", STR_PAD_LEFT);
+//            var_dump($new_index);
+//            die();
+            $html = $this->render('tontineBundle:commande:facture.html.twig', [
+                'commande' => $commande,
+                'fiches' => $fiches,
+                'facture' => $facture,
+            ])->getContent();
+
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            $dompdf->setPaper('A4', 'landscape');
+
+            // Render the HTML as PDF
+            $dompdf->render();
+
+            // Output the generated PDF to Browser
+            $dompdf->stream('facture_' . $facture[0]->getNumero(), array('Attachment' => 0));
+        }
+    }
+
+    public function payerAvanceAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(
+            array('commande' => $commande));
+
+        if($request->getMethod() == 'POST')
+        {
+            $form = $request->request->get('shop_paid_form');
+
+            if(isset($form['date']) && !empty($form['date']))
+            {
+                $date = new \DateTime($form['date'].' 00:00:00');
+                $commande->setDatePaidAvance($date);
+            }
+            else
+            {
+                return false;
+            }
+            if(isset($form['montant']) && !empty($form['montant']))
+            {
+                $avance = $form['montant'];
+                $commande->setAvance($avance);
+            }
+            else
+            {
+                return false;
+            }
+            
+            $commande->setStatus(1);
+            
+            $em->flush();
+
+            return $this->redirectToRoute('shop_command_index');
+        }
+
+        return new Response($this->renderView('tontineBundle:commande/modal:paid-avance-modal.html.twig', array(
             'fiches' => $fiches,
-        ])->getContent();
-
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser
-        $dompdf->stream('facture_' . (new \DateTime())->format("d-m-Y"));
+            'commande' => $commande,
+        )));
     }
 
     public function setFicheAction(Request $request, $id)
@@ -255,7 +338,7 @@ class CommandeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('tontineBundle:Commande')->find($id);
         $pagnes = $commande->getCmdPagne();
-        
+
         $fiche = new FicheTravail();
 
         $form = $this->createForm('tontineBundle\Form\FicheTravailType', $fiche);
