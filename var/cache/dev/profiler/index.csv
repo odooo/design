@@ -108,3 +108,12 @@ aabb82,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callbac
 d1f3de,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/logout,1486575802,,302
 1e4b15,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/,1486575803,,302
 721ef3,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/login,1486575803,,200
+76fa68,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/,1486585976,,302
+713631,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/login,1486585977,,200
+c1645f,127.0.0.1,POST,http://localhost/tontine/web/app_dev.php/login_check,1486586006,,302
+144734,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/,1486586008,,200
+e5634f,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486586012,,200
+c421fe,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/commandes/,1486586030,,200
+d00624,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/js/routing?callback=fos.Router.setData,1486586032,,200
+125381,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/,1486632076,,302
+bd3006,127.0.0.1,GET,http://localhost/tontine/web/app_dev.php/login,1486632079,,200
