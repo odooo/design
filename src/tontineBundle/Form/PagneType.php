@@ -46,7 +46,7 @@ class PagneType extends AbstractType
                 'required' => true)
             )
             ->add('prix', null, array(
-                'label' => "Prix achat (en F CFA) : * ",
+                'label' => "Prix d'achat du mètre (en F CFA) : * ",
                 'required' => true)
             )
             ->add('agence', null, [

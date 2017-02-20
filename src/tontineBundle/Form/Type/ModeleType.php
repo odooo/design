@@ -24,8 +24,13 @@ class ModeleType extends AbstractType
                 'label' => 'Quantité * : ',
                 'required' => true,
             ])
+            ->add('mesure', null, [
+                'label' => 'Mesure unitaire (en m) * : ',
+                'required' => true,
+            ])
             ->add('pagne', null, [
-                'label' => 'Tissu',
+                'label' => 'Tissu *',
+                'required' => true,
                 'placeholder' => 'Choisissez le pagne ayant servi à confectionner le modèle',
                 'choice_label' => 'reference',
             ])

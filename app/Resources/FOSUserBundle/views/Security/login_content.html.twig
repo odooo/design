@@ -37,7 +37,8 @@
                 <div class="form-group text-center">
                     <input type="checkbox" id="remember_me" name="_remember_me" value="on" form-control />
                     <label for="remember_me">Rester connecté</label>
-                </div>                
+                </div>   
+              
 
                 <div class="form-group text-center">
                     <button type="submit" id="btn-submit" class="btn btn-primary btn-md">Connexion <i class="fa fa-sign-in"></i></button>
@@ -45,7 +46,14 @@
 
                 <div class="text-center">
                     <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié ?</a>
-                </div>               
+                </div> 
+
+                <br/>  
+
+                <div class="text-center" style="color: red;">
+                    <label for="author">ONG TIC 4 ALL<br/><a href="mail-to:tic4allbenin@gmail.com" class="">tic4allbenin@gmail.com</a><br/><a href="tel:96055506" class="btn btn-block btn-xs btn-success">
+                    <span class="fa fa-phone" style="margin-right: 5px;"></span>96 055 506</a></label>
+                </div>              
             </div>
         </form>
     </div>

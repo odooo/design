@@ -13,55 +13,62 @@
         </div>
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table id="listeCommandes" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Reference</th>
-                        <th>Designation</th>
+                        <th>Date commande</th>
+                        <th>Référence</th>
+                        <th>Désignation</th>
                         <th>Type de commande</th>
-                        <th>Etat avance</th>
                         <th>Montant avance</th>
+                        <th>Montant commande</th>
                         <th>Date commande</th>
                         <th>Client</th>
-                        <th></th>
+                        <th>Etat de paiement</th>
+                        {% if is_granted('ROLE_BENEFICE_VIEW') %} <th>Bénéfice</th>{% endif %}
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
 
                     {% for commande in commandes %}
                         {% set cpt = 0 %}
+                        {% set cptm = 0 %}
                         {% for fiche in fiches %}
                             {% if fiche.commande == commande %}
                                 {% set cpt = cpt + 1 %}
                             {% endif %}
+
+                            {% if fiche.commande == commande and commande.typeCommande == 'm' %}
+                                {% set cptm = 1 %}
+                            {% endif %}
                         {% endfor %}
+
                         <tr>
-                            <td><a href="#">{{ loop.index }}</a>
-                            </td>
+                            <td><a href="#">{{ loop.index }}</a></td>
+                            <td>{{ commande.createdAt|date('d/m/Y h:i:s') }}</td>
                             <td><span class="btn-xs btn-info">{{ commande.reference }}</span></td>
                             <td>{{ commande.designation }}</td>
                             <td>{% if commande.typeCommande == 'v' %}
                                     Vente
                                 {% elseif commande.typeCommande == 'm' %}
                                     Main  d'oeuvre
-                                {% else %}
+                                {% elseif commande.typeCommande == 'a' %}
                                     Vente de modèle
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if commande.status is null or commande.status == 0 %}
-                                    <span class="label label-warning">Non payé</span>
-                                {% elseif commande.status == 1 %}
-                                    <span class="label label-success">Payé</span>
+                                {% else %}
+                                    Autres
                                 {% endif %}
                             </td>
                             <td>
                                 {% if commande.status is null or commande.status == 0 %}
                                     <span class="label label-warning">{{ '0'|number_format(0, ',', '.')~' FCFA' }}</span>
-                                {% elseif commande.status == 1 %}
+                                {% elseif commande.status in [1,2,3] %}
                                     <span class="label label-success">{{ commande.avance|number_format(0, ',', '.')~' FCFA' }}</span>
                                 {% endif %}
+                            </td>
+                            <td>
+                                {{ commande.montant|number_format(0, ',', '.')~' FCFA' }}
                             </td>
                             <td>
                                 {{ commande.createdAt|date('d/m/Y h:i:s') }}
@@ -70,6 +77,28 @@
                                     {{ commande.client.name }}
                                 {% endif %}
                             </td>
+                            <td>
+                                {% if commande.status is null or commande.status == 0 %}
+                                    <button type="button" class="btn btn-info btn-xs"
+                                            onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'avance' }) }}','GET', 'Paiement de l\'avance');">
+                                        Payer l'avance
+                                    </button>
+                                {% elseif commande.status == 1 %}
+                                    {% if commande.reteAPayer > 0 %}
+                                        <button type="button" class="btn btn-warning btn-xs"
+                                                onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'reste' }) }}','GET', 'Paiement du reste');"> En cours
+                                        </button>
+                                    {% endif %}
+                                    {% if commande.reteAPayer < 0 %}
+                                        <button type="button" class="btn btn-danger btn-xs" onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'reliquat' }) }}','GET', 'Paiement du reliquat');">Relicat</button>
+                                    {% endif %}
+                                {% elseif commande.status == 3 %}
+                                    <button type="button" class="btn btn-success btn-xs">Soldé</button>
+                                {% endif %}
+                            </td>
+                            {% if is_granted('ROLE_BENEFICE_VIEW') %}<td>
+                                {{ commande.benefice|number_format(0, ',', '.')~' FCFA' }}
+                            </td>{% endif %}
                             <td>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
@@ -92,33 +121,31 @@
                                         {#{% endif  %}#}
 
                                         {% if  is_granted('ROLE_FICHE_EDIT') %}
-                                            {% if  cpt < commande.nbrePagne or commande.nbrePagne == 0 %}
+                                            {% if  (cpt < commande.nbrePagne or commande.nbrePagne == 0 and commande.typeCommande == 'v') or (cpt < commande.nbreModele or commande.nbreModele == 0 and commande.typeCommande == 'a') or (cptm == 0 and commande.typeCommande == 'm') or (commande.typeCommande == 'o' and commande.prixAchat == 0 ) %}
                                                 <li>
                                                     <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer
                                                         la fiche de travail</a>
                                                 </li>
                                             {% endif %}
 
-                                            {% if  cpt > 0 %}
+                                            {% if  cpt > 0 or cptm == 1 %}
                                                 <li>
                                                     <a href="{{ path('shop_fiche_travail_index', { 'id': commande.id }) }}">Voir
                                                         la fiche de travail</a>
                                                 </li>
-                                                {% if commande.status is null or commande.status == 0 %}
+                                                {# {% if commande.status is null or commande.status == 0 %}
                                                     <li>
                                                         <a href="{{ path('shop_command_avance_payement', { 'id': commande.id }) }}"
-                                                           onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id }) }}','GET', 'Paiement de l\'avance');">Payer
-                                                            de l'avance</a>
+                                                           onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id }) }}','GET', 'Payer l\'avance');">Payer l'avance</a>
                                                     </li>
-                                                {% endif %}
+                                                {% endif %} #}
                                             {% endif %}
                                         {% endif %}
 
-                                        {% if  cpt == commande.nbrePagne or commande.nbrePagne == 0 %}
+                                        {% if ((commande.typeCommande == 'm' and cptm == 1) or (cpt == commande.nbrePagne or cpt == commande.nbreModele) ) and (commande.status == 1 or commande.status == 3) %}
                                             <li>
                                                 <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}"
-                                                   target="new">Editer
-                                                    la facture</a>
+                                                   target="new">Editer la facture</a>
                                             </li>
                                         {% endif %}
                                     </ul>
@@ -138,14 +165,15 @@
         </div>
     </div>
     {% include 'tontineBundle:modal:popup.html.twig' %}
+
+<script src="{{ asset('bundles/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bundles/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
     <script>
-        //        $(function () {
-        //            Yop.createPopin();
-        //        });
         function showModal(event, $this, url, method, title) {
             $('#waitModal').modal('show');
             $.ajax({
@@ -160,5 +188,25 @@
             });
             event.preventDefault();
         }
+    </script>
+
+    <script>
+        $(function () {
+
+            $('#listeCommandes').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": true,
+                "language": {
+                    "paginate": {"previous": "Précédent", "next": "Suivant"},
+                    "search": "<i class='fa fa-search'></i> Rechercher: ",
+                    "emptyTable": "Aucune commande enregistrée pour le moment",
+                    "zeroRecords": "Aucune commande enregistrée pour le moment"
+                }
+            });
+        });
     </script>
 {% endblock %}

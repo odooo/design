@@ -30,7 +30,9 @@ class FicheTravailType extends AbstractType
                     'required' => true
                 )
             )
-            ->add('mesure', null, array('required' => true))
+            ->add('quantite', null, array('required' => false))
+            ->add('charges', null, array('required' => false))
+            ->add('mesure', null, array('required' => false))
             ->add('montant', null, array('required' => true))
             //->add('dateLivraison')
             ->add('longGHChemise')

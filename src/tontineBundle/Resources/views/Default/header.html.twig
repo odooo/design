@@ -20,19 +20,19 @@
             <p style="color: white; font-weight: bold" class="navbar-text" >
                 Gestion des agents
             </p>
-        {% elseif 'client' in app.request.requestUri or 'visite' in app.request.requestUri %}           
+        {% elseif 'client' in app.request.requestUri %}           
             <p style="color: white; font-weight: bold" class="navbar-text" >
                 Gestion des clients
             </p>
-        {% elseif 'tontines' in app.request.requestUri %}           
+        {% elseif 'commandes' in app.request.requestUri %} 
             <p style="color: white; font-weight: bold" class="navbar-text" >
-                Gestion des tontines
+                Gestion des commandes
             </p>
         {% endif %}
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 {% block userProfil %}
-                    <li class="dropdown" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<b>Condition(s) générales non à jour!</b>">
+                    <li class="dropdown" data-toggle="tooltip" data-html="true" data-placement="bottom" title="<b>Express Couture & Prèt à Porter</b>">
                         <!-- Menu Toggle Button -->
                         <a href="#" class="yop-blink btn-danger" data-toggle="dropdown">
                             Express Couture

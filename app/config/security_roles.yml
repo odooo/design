@@ -1,11 +1,9 @@
 parameters:
     default_roles:
         - ROLE_CLIENT_VIEW
+        - ROLE_AGENT_VIEW
         - ROLE_CLIENT_CREATE
-        - ROLE_TONTINE_VIEW
-        - ROLE_TONTINE_CREATE
-        - ROLE_BIEN_SEARCH
-        - ROLE_BIEN_VIEW_OPTIONS
+        - ROLE_PAGNE_VIEW
         
     roles_sections:
         - 
@@ -14,12 +12,7 @@ parameters:
                 ROLE_CLIENT_VIEW: Voir la liste des clients
                 ROLE_CLIENT_CREATE: Enregistrer un nouveau client
                 ROLE_CLIENT_EDIT: Modifier les informations d'un client
-                ROLE_CLIENT_ADD_CG: Faire signer les condition générales au client
                 ROLE_CLIENT_DELETE: Supprimer un client
-                # ROLE_CLIENT_ENABLE: Activer un client
-                # ROLE_CLIENT_DISABLE: Désactiver un client
-                ROLE_CLIENT_UPDATE_CG: Mettre à jour  les conditions générales 
-                ROLE_CLIENT_VISITE_VIEW: Voir la liste des vistes du client
                 
 
         - 
@@ -32,39 +25,22 @@ parameters:
                 ROLE_AGENT_DISABLE: Désactiver un agent
 
         - 
-            label: Opérations sur les agences d'APHEDD Finance
+            label: Opérations sur les agences de Global Design
             roles:    
                 ROLE_AGENCY_VIEW: Voir la liste des agences
                 ROLE_AGENCY_CREATE: Ajouter une nouvelle agence
                 ROLE_AGENCY_EDIT: Modifier les informations d'une agence
+                ROLE_AGENCY_DELETE: Supprimer une agence
 
-        -
-            label: Opérations sur les tontines
-            roles:
-                ROLE_TONTINE_VIEW: Voir la liste des tontines
-                ROLE_TONTINE_CREATE: Créer une nouvelle tontine
-                ROLE_TONTINE_EDIT: Modifier les informations d'une tontine
-                ROLE_TONTINE_ADD_MISE: Déposer une mise sur une tontine
-                ROLE_TONTINE_VALIDATE_MISE: Encaisser les mises (Validation)
-                ROLE_TONTINE_CONTRAT: Etablir le contrat d'une tontine
-                ROLE_TONTINE_FINALIZE: Cloturer une tontine
-                ROLE_TONTINE_CANCEL: Résilier une tontine
+        - 
+            label: Opérations sur les commandes des clients
+            roles:    
+                ROLE_COMMANDE_VIEW: Voir la liste des commandes
+                ROLE_COMMANDE_CREATE: Enregistrer une nouvelle commande
+                ROLE_COMMANDE_EDIT: Modifier les informations d'une commande
+                ROLE_BENEFICE_VIEW: Voir les bénéfices
+                ROLE_COMMANDE_DELETE: Supprimer une commande
 
-        -
-            label: Opérations sur les biens
-            roles:
-                ROLE_BIEN_SEARCH: Faire une recherche de biens
-                ROLE_BIEN_CREATE_OPTIONS: Établir la feuille de choix
-                ROLE_BIEN_VIEW_OPTIONS: Voir la feuille de choix
-                ROLE_BIEN_PRINT_OPTIONS: Télécharger la feuille de choix
-                ROLE_BIEN_VISITE: Enregistrer  la date de visite du bien 
-
-
-        -
-            label: Opérations sur les transferts de fonds
-            roles:
-                ROLE_TRANSFER_VIEW: Voir la liste des transferts de fonds
-                ROLE_TRANSFER_CREATE: Faire un transfert de fonds
 
         -
             label: Paramètres de l'application
@@ -74,10 +50,3 @@ parameters:
                 ROLE_GROUP_CREATE: Créer un profil d'agent
                 ROLE_GROUP_EDIT: Modifier les droits d'un profil
                 ROLE_GROUP_DELETE: Modifier un profil d'agent
-                
-        -
-            label: Les états
-            roles:
-                ROLE_ETAT_VIEW: Consulter les états selon des critères
-                ROLE_ETAT_BIEN_VIEW: Consulter les états des biens selon des critères
-

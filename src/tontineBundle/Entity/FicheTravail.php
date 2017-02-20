@@ -32,6 +32,13 @@ class FicheTravail
     private $dateCommande;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="benefice", type="integer", nullable=true)
+     */
+    private $benefice;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="designation", type="text", nullable=true)
@@ -46,11 +53,32 @@ class FicheTravail
     private $dateLivraison;
 
     /**
-     * @var integer
+     * @var float
      *
-     * @ORM\Column(name="mesure", type="integer", nullable=true)
+     * @ORM\Column(name="mesure", type="float", nullable=true)
      */
     private $mesure;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantite", type="integer", nullable=true)
+     */
+    private $quantite;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="charges", type="integer", nullable=true)
+     */
+    private $charges;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix_achat", type="integer", nullable=true)
+     */
+    private $prixAchat;
 
     /**
      * @var \tontineBundle\Entity\Agent
@@ -339,30 +367,6 @@ class FicheTravail
     public function getCommande()
     {
         return $this->commande;
-    }
-
-    /**
-     * Set mesure
-     *
-     * @param integer $mesure
-     *
-     * @return FicheTravail
-     */
-    public function setMesure($mesure)
-    {
-        $this->mesure = $mesure;
-
-        return $this;
-    }
-
-    /**
-     * Get mesure
-     *
-     * @return integer
-     */
-    public function getMesure()
-    {
-        return $this->mesure;
     }
 
     /**
@@ -820,5 +824,125 @@ class FicheTravail
     public function getPagne()
     {
         return $this->pagne;
+    }
+
+    /**
+     * Set quantite
+     *
+     * @param integer $quantite
+     *
+     * @return FicheTravail
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get quantite
+     *
+     * @return integer
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * Set prixAchat
+     *
+     * @param integer $prixAchat
+     *
+     * @return FicheTravail
+     */
+    public function setPrixAchat($prixAchat)
+    {
+        $this->prixAchat = $prixAchat;
+
+        return $this;
+    }
+
+    /**
+     * Get prixAchat
+     *
+     * @return integer
+     */
+    public function getPrixAchat()
+    {
+        return $this->prixAchat;
+    }
+
+    /**
+     * Set benefice
+     *
+     * @param integer $benefice
+     *
+     * @return FicheTravail
+     */
+    public function setBenefice($benefice)
+    {
+        $this->benefice = $benefice;
+
+        return $this;
+    }
+
+    /**
+     * Get benefice
+     *
+     * @return integer
+     */
+    public function getBenefice()
+    {
+        return $this->benefice;
+    }
+
+    /**
+     * Set mesure
+     *
+     * @param float $mesure
+     *
+     * @return FicheTravail
+     */
+    public function setMesure($mesure)
+    {
+        $this->mesure = $mesure;
+
+        return $this;
+    }
+
+    /**
+     * Get mesure
+     *
+     * @return float
+     */
+    public function getMesure()
+    {
+        return $this->mesure;
+    }
+
+    /**
+     * Set charges
+     *
+     * @param integer $charges
+     *
+     * @return FicheTravail
+     */
+    public function setCharges($charges)
+    {
+        $this->charges = $charges;
+
+        return $this;
+    }
+
+    /**
+     * Get charges
+     *
+     * @return integer
+     */
+    public function getCharges()
+    {
+        return $this->charges;
     }
 }

@@ -38,11 +38,17 @@ class Modele
      * @var integer
      *
      * @ORM\Column(name="quantite", type="integer", nullable=true)
-     * 
      *  
      */
-    
     private $quantite;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="mesure", type="float", nullable=true)
+     *  
+    */
+    private $mesure;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -204,5 +210,29 @@ class Modele
     public function getPagne()
     {
         return $this->pagne;
+    }
+
+    /**
+     * Set mesure
+     *
+     * @param float $mesure
+     *
+     * @return Modele
+     */
+    public function setMesure($mesure)
+    {
+        $this->mesure = $mesure;
+
+        return $this;
+    }
+
+    /**
+     * Get mesure
+     *
+     * @return float
+     */
+    public function getMesure()
+    {
+        return $this->mesure;
     }
 }

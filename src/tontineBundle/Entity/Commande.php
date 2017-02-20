@@ -16,8 +16,9 @@ use \Symfony\Component\HttpFoundation\File\File;
  * @ORM\Entity(repositoryClass="tontineBundle\Repository\CommandeRepository")
  */
 
-// status = 1 => Avance payée par le client
-// status = 2 => Reste payé par le client
+// status = 1 => Avance payée par le client et commande en cours
+// status = 3 => commande finalisée
+
 class Commande
 {
     /**
@@ -60,6 +61,13 @@ class Commande
     /**
      * @var integer
      *
+     * @ORM\Column(name="nbreModele", type="integer", nullable=true)
+     */
+    private $nbreModele;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="montant", type="integer", nullable=true)
      */
     private $montant;
@@ -67,9 +75,37 @@ class Commande
     /**
      * @var integer
      *
+     * @ORM\Column(name="benefice", type="integer", nullable=true)
+     */
+    private $benefice;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix_achat", type="integer", nullable=true)
+     */
+    private $prixAchat;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="reste_a_payer", type="integer", nullable=true)
+     */
+    private $reteAPayer;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="avance", type="integer", nullable=true)
      */
     private $avance;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="relicat", type="integer", nullable=true)
+     */
+    private $relicat;
 
     /**
      * @var \DateTime
@@ -592,5 +628,125 @@ class Commande
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * Set reteAPayer
+     *
+     * @param integer $reteAPayer
+     *
+     * @return Commande
+     */
+    public function setReteAPayer($reteAPayer)
+    {
+        $this->reteAPayer = $reteAPayer;
+
+        return $this;
+    }
+
+    /**
+     * Get reteAPayer
+     *
+     * @return integer
+     */
+    public function getReteAPayer()
+    {
+        return $this->reteAPayer;
+    }
+
+    /**
+     * Set relicat
+     *
+     * @param integer $relicat
+     *
+     * @return Commande
+     */
+    public function setRelicat($relicat)
+    {
+        $this->relicat = $relicat;
+
+        return $this;
+    }
+
+    /**
+     * Get relicat
+     *
+     * @return integer
+     */
+    public function getRelicat()
+    {
+        return $this->relicat;
+    }
+
+    /**
+     * Set prixAchat
+     *
+     * @param integer $prixAchat
+     *
+     * @return Commande
+     */
+    public function setPrixAchat($prixAchat)
+    {
+        $this->prixAchat = $prixAchat;
+
+        return $this;
+    }
+
+    /**
+     * Get prixAchat
+     *
+     * @return integer
+     */
+    public function getPrixAchat()
+    {
+        return $this->prixAchat;
+    }
+
+    /**
+     * Set nbreModele
+     *
+     * @param integer $nbreModele
+     *
+     * @return Commande
+     */
+    public function setNbreModele($nbreModele)
+    {
+        $this->nbreModele = $nbreModele;
+
+        return $this;
+    }
+
+    /**
+     * Get nbreModele
+     *
+     * @return integer
+     */
+    public function getNbreModele()
+    {
+        return $this->nbreModele;
+    }
+
+    /**
+     * Set benefice
+     *
+     * @param integer $benefice
+     *
+     * @return Commande
+     */
+    public function setBenefice($benefice)
+    {
+        $this->benefice = $benefice;
+
+        return $this;
+    }
+
+    /**
+     * Get benefice
+     *
+     * @return integer
+     */
+    public function getBenefice()
+    {
+        return $this->benefice;
     }
 }

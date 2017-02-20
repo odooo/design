@@ -21,9 +21,30 @@
                                     </div>
                                 </div>
                             </div>
+                            {% if commande.typeCommande == 'o' %}
+                            <div class="col-sm-4" style="display: none;">
+                                <div class="form-group">
+                                        {{ form_label(form.charges, 'Prix d\'achat du modèle (en fcfa)'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.charges) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
+                            <div class="col-sm-4">
+                                {{ form_errors(form.charges) }}
+                                <div class="form-group">
+                                    {{ form_label(form.charges, 'Charges de confections (en fcfa)'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.charges) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <span style="color: green"><u>Client</u> : <b>{{ client.name }}</b></span>
+                                    <span style="color: green"><u>Client</u> : <b>{% if client %} {{ client.name }}{% endif %} </b></span>
                                 </div>
                             </div>
                         </div>
@@ -38,24 +59,88 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-3">
-                                {{ form_errors(form.mesure) }}
-                                <div class="form-group">
-                                    {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                            {% if commande.typeCommande == 'v' %}
+                                <div class="col-sm-3">
+                                    {{ form_errors(form.mesure) }}
                                     <div class="form-group">
-                                        {{ form_widget(form.mesure) }}
+                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.mesure) }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-sm-3" style="display: none;">
+                                    {{ form_errors(form.quantite) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.quantite, 'Quantité'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.quantite) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elseif commande.typeCommande == 'a' %}
+                                <div class="col-sm-3" style="display: none;">
+                                    {{ form_errors(form.mesure) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.mesure) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    {{ form_errors(form.quantite) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.quantite, 'Quantité'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.quantite) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-sm-3" style="display: none;">
+                                    {{ form_errors(form.mesure) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.mesure) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" style="display: none;">
+                                    {{ form_errors(form.quantite) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.quantite, 'Quantité'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.quantite) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
                             {% if pagnes is not empty %}
                                 <div class="col-sm-3">
                                     <div class="form-group">
                                         <span>Pagnes</span>
                                         <div class="form-group">
-                                        <select class="form-control" name="pagne">
+                                        <select class="form-control select2" name="pagne">
                                             {% for cmdpgn in pagnes %}
                                                 {% if cmdpgn.pagne %}
                                                     <option value="{{ cmdpgn.pagne.id }}">{{ cmdpgn.pagne.reference }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elseif modeles is not empty %}
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <span>Modèles</span>
+                                        <div class="form-group">
+                                        <select class="form-control select2" name="modele">
+                                            {% for cmdmod in modeles %}
+                                                {% if cmdmod.modele %}
+                                                    <option value="{{ cmdmod.modele.id }}">{{ cmdmod.modele.libelle }}</option>
                                                 {% endif %}
                                             {% endfor %}
                                         </select>
@@ -76,14 +161,14 @@
                                 <div class="form-group">
                                 <span>Date de livraison</span>
                                     <div class="input-group">
-                                        <input type='text' id="dateLivraison" name="dateLivraison" class="form-control datetimepicker" value="{{ date()|date('d/m/Y h:i:s') }}"/>
+                                        <input type='text' id="dateLivraison" name="dateLivraison" class="form-control datetimepicker" value="{{ date()|date('d/m/Y h:m:s') }}" required="required" />
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-
-                        <div class="col-sm-6">
+                        {% if commande.typeCommande == 'o' or commande.typeCommande == 'a' %}
+                        <div class="col-sm-6" style="display: none;">
                         <h3 class="box-title"><u>MESURES CHEMISES</u> : </h3>
                             {{ form_errors(form.longGHChemise) }}
                             <div class="form-group">
@@ -149,7 +234,143 @@
                                 </div>
                             </div>
                         </div>
+                        {% else %}
+                            <div class="col-sm-6">
+                        <h3 class="box-title"><u>MESURES CHEMISES</u> : </h3>
+                            {{ form_errors(form.longGHChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.longGHChemise, 'LONG GH'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.longGHChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.dosChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.dosChemise, 'DOS'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.dosChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poitrineChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.poitrineChemise, 'POITRINE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poitrineChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.tailleChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.tailleChemise, 'TAILLE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.tailleChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.hancheChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.hancheChemise, 'HANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.hancheChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.tmancheChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.tmancheChemise, 'T.MANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.tmancheChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.colChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.colChemise, 'COL'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.colChemise) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poignetChemise) }}
+                            <div class="form-group">
+                                {{ form_label(form.poignetChemise, 'POIGNET'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poignetChemise) }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
 
+                        {% if commande.typeCommande == 'o' or commande.typeCommande == 'a' %}
+                        <div class="col-sm-6" style="display: none;">
+                        <h3 class="box-title"><u>MESURES PANTALON/JUPES</u> : </h3>
+                            {{ form_errors(form.longGHPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.longGHPantalon, 'LONG GH'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.longGHPantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.dosPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.dosPantalon, 'DOS'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.dosPantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poitrinePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.poitrinePantalon, 'POITRINE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poitrinePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.taillePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.taillePantalon, 'TAILLE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.taillePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.hanchePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.hanchePantalon, 'HANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.hanchePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.tmanchePantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.tmanchePantalon, 'T.MANCHE'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.tmanchePantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.colPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.colPantalon, 'COL'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.colPantalon) }}
+                                </div>
+                            </div>
+                            <span>&nbsp;</span>
+                            {{ form_errors(form.poignetPantalon) }}
+                            <div class="form-group">
+                                {{ form_label(form.poignetPantalon, 'POIGNET'|trans) }}
+                                <div class="form-group">
+                                    {{ form_widget(form.poignetPantalon) }}
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
                         <div class="col-sm-6">
                         <h3 class="box-title"><u>MESURES PANTALON/JUPES</u> : </h3>
                             {{ form_errors(form.longGHPantalon) }}
@@ -216,6 +437,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
 
                     </div>
 
@@ -243,19 +465,19 @@
                 src="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
 
 <script type="text/javascript">
-            $(function(){
-                
-                $('.datepicker').datetimepicker({
-                    locale:'fr',
-                    format:'DD/MM/YYYY'
-                });
-                
-                $('.datetimepicker').datetimepicker({
-                    locale:'fr',
-                    format:'DD/MM/YYYY HH:mm:s'
-                });
+    $(function(){
+        
+        /*$('.datepicker').datetimepicker({
+            locale:'fr',
+            format:'DD/MM/YYYY'
+        });*/
+        
+        $('.datetimepicker').datetimepicker({
+            locale:'fr',
+            format:'YYYY-MM-DD HH:mm:s'
+        });
 
-                $('.select2').select2([{multiple: true}]);
-                
-            });
-        </script>
+        $('.select2').select2([{multiple: true}]);
+        
+    });
+</script>

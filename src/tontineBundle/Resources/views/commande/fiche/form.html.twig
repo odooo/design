@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div role="form">
+        <div class="modal-header">
+            <h3 class="modal-title" id="exempleModalLabel">MESURES CHEMISES</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        {% if fiche.longGHChemise %} <th>LONG GH</th>{% endif %}
+                        {% if fiche.dosChemise %}<th>DOS</th>{% endif %}
+                        {% if fiche.poitrineChemise %}<th>POITRINE</th>{% endif %}
+                        {% if fiche.tailleChemise %}<th>TAILLE</th>{% endif %}
+                        {% if fiche.hancheChemise %}<th>HANCHE</th>{% endif %}
+                        {% if fiche.tmancheChemise %}<th>T.MANCHE</th>{% endif %}
+                        {% if fiche.colChemise %}<th>COL</th>{% endif %}
+                        {% if fiche.poignetChemise %}<th>POIGNET</th>{% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% if fiche.longGHChemise %}<td>{{ fiche.longGHChemise }}</td>{% endif %}
+                        {% if fiche.dosChemise %}<td>{{ fiche.dosChemise }}</td>{% endif %}
+                        {% if fiche.poitrineChemise %}<td>{{ fiche.poitrineChemise }}</td>{% endif %}
+                        {% if fiche.tailleChemise %}<td>{{ fiche.tailleChemise }}</td>{% endif %}
+                        {% if fiche.hancheChemise %}<td>{{ fiche.hancheChemise }}</td>{% endif %}
+                        {% if fiche.tmancheChemise %}<td>{{ fiche.tmancheChemise }}</td>{% endif %}
+                        {% if fiche.colChemise %}<td>{{ fiche.colChemise }}</td>{% endif %}
+                        {% if fiche.poignetChemise %}<td>{{ fiche.poignetChemise }}</td>{% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-header">
+            <h3 class="modal-title" id="exempleModalLabel">MESURES PANTALON/JUPES</h3>
+        </div>
+
+        <div class="modal-body">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        {% if fiche.longGHPantalon %} <th>LONG GH</th>{% endif %}
+                        {% if fiche.dosPantalon %}<th>DOS</th>{% endif %}
+                        {% if fiche.poitrinePantalon %}<th>POITRINE</th>{% endif %}
+                        {% if fiche.taillePantalon %}<th>TAILLE</th>{% endif %}
+                        {% if fiche.hanchePantalon %}<th>HANCHE</th>{% endif %}
+                        {% if fiche.tmanchePantalon %}<th>T.MANCHE</th>{% endif %}
+                        {% if fiche.colPantalon %}<th>COL</th>{% endif %}
+                        {% if fiche.poignetPantalon %}<th>POIGNET</th>{% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% if fiche.longGHPantalon %}<td>{{ fiche.longGHPantalon }}</td>{% endif %}
+                        {% if fiche.dosPantalon %}<td>{{ fiche.dosPantalon }}</td>{% endif %}
+                        {% if fiche.poitrinePantalon %}<td>{{ fiche.poitrinePantalon }}</td>{% endif %}
+                        {% if fiche.taillePantalon %}<td>{{ fiche.taillePantalon }}</td>{% endif %}
+                        {% if fiche.hanchePantalon %}<td>{{ fiche.hanchePantalon }}</td>{% endif %}
+                        {% if fiche.tmanchePantalon %}<td>{{ fiche.tmanchePantalon }}</td>{% endif %}
+                        {% if fiche.colPantalon %}<td>{{ fiche.colPantalon }}</td>{% endif %}
+                        {% if fiche.poignetPantalon %}<td>{{ fiche.poignetPantalon }}</td>{% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fermer</button>
+        </div>
+    </div>
+</div>

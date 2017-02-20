@@ -13,12 +13,13 @@
         </div>
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table id="listeModeles" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Libellé</th>
                             <th>Quantité</th>
+                            <th>Mesure unitaire (en m)</th>
                             <th>Pagne</th>
                             <th>
                             <div class="btn-group pull-right">
@@ -27,7 +28,7 @@
                                     <span class="fa fa-caret-down"></span>
                                 </button>
                             </div>
-                            <th>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,6 +37,7 @@
                             <td>{{ loop.index }}</td>
                             <td>{{ modele.libelle }}</td>
                             <td>{{ modele.quantite }}</td>
+                            <td>{{ modele.mesure }}</td>
                             <td>{% if modele.pagne %} {{ modele.pagne.reference }}{% endif %} </td>
                             <td>
                             <div class="btn-group pull-right">
@@ -63,8 +65,34 @@
         <div class="box-footer">
             <a href="{{ path('tontine_modele_new') }}" class="btn btn-primary">
                 <i class="fa fa-plus"></i>                
-                Ajouter un modèle
+                Ajouter un nouveau modèle
             </a>
         </div>
     </div>
+
+<script src="{{ asset('bundles/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bundles/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(function () {
+
+        $('#listeModeles').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": true,
+            "language": {
+                "paginate": {"previous": "Précédent", "next": "Suivant"},
+                "search": "<i class='fa fa-search'></i> Rechercher: ",
+                "emptyTable": "Aucun modèle enregistré pour le moment",
+                "zeroRecords": "Aucun modèle enregistré pour le moment"
+            }
+        });
+    });
+</script>
 {% endblock %}

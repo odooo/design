@@ -29,7 +29,8 @@ class CommandeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $commandes = $em->getRepository('tontineBundle:Commande')->findAll();
+        $commandes = $em->getRepository('tontineBundle:Commande')->findBy(
+            array(), array('id' => 'desc'));
         $fiches = $em->getRepository('tontineBundle:FicheTravail')->findAll();
 
         return $this->render('tontineBundle:commande:index.html.twig', array(
@@ -61,27 +62,33 @@ class CommandeController extends Controller
             $commande->setCreatedAt(new \DateTime());
             $commande->setMontant(0);
             $commande->setHasBill(0);
+            $commande->setPrixAchat(0);
+            $commande->setReteAPayer(0);
 
             $em->persist($commande);
             $i = 0;
-            foreach ($pagnes as $pagne) {
-                $i++;
-                $cmdPagne = new CommandePagne();
-                /*$fiche = new FicheTravail();
-                $fiche->setDateCommande($commande->getCreatedAt());
-                $fiche->setCommande($commande);
-                $em->persist($fiche);*/
-                $cmdPagne->setPagne($pagne);
-                $cmdPagne->setCommande($commande);
-                $cmdPagne->setFiche(null);
-                $cmdPagne->setHasFiche(0);
-                $em->persist($cmdPagne);
+            if($pagnes){
+                foreach ($pagnes as $pagne) {
+                    $i++;
+                    $cmdPagne = new CommandePagne();
+                    /*$fiche = new FicheTravail();
+                    $fiche->setDateCommande($commande->getCreatedAt());
+                    $fiche->setCommande($commande);
+                    $em->persist($fiche);*/
+                    $cmdPagne->setPagne($pagne);
+                    $cmdPagne->setCommande($commande);
+                    $cmdPagne->setFiche(null);
+                    $cmdPagne->setHasFiche(0);
+                    $em->persist($cmdPagne);
+                }
             }
 
             $commande->setNbrePagne($i);
 
+            $j = 0;
             if ($modeles) {
                 foreach ($modeles as $modele) {
+                    $j++;
                     $cmdModele = new CommandeModele();
 //                    $fiche = new FicheTravail();
 //                    $fiche->setPagne($pagne);
@@ -92,6 +99,8 @@ class CommandeController extends Controller
 //                    $em->persist($fiche);
                 }
             }
+
+            $commande->setNbreModele($j);
 
             $em->flush();
 
@@ -288,7 +297,7 @@ class CommandeController extends Controller
         }
     }
 
-    public function payerAvanceAction(Request $request, $id)
+    public function payerAvanceAction(Request $request, $id, $action)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -296,31 +305,79 @@ class CommandeController extends Controller
         $fiches = $em->getRepository('tontineBundle:FicheTravail')->findBy(
             array('commande' => $commande));
 
-        if($request->getMethod() == 'POST')
-        {
+        if ($request->getMethod() == 'POST') {
             $form = $request->request->get('shop_paid_form');
 
-            if(isset($form['date']) && !empty($form['date']))
-            {
-                $date = new \DateTime($form['date'].' 00:00:00');
-                $commande->setDatePaidAvance($date);
+            switch ($action) {
+                case 'avance':
+                    if (isset($form['date']) && !empty($form['date'])) {
+                        $date = new \DateTime($form['date'] . ' 00:00:00');
+                        $commande->setDatePaidAvance($date);
+                    } else {
+                        return false;
+                    }
+                    if (isset($form['montant']) && !empty($form['montant'])) {
+                        $avance = $form['montant'];
+                        $commande->setAvance($avance);
+                        $commande->setReteAPayer($commande->getMontant() - $avance);
+                        /*if ($avance > $commande->getMontant()) {
+                            $relicat = $avance - $commande->getMontant();
+                            $commande->setRelicat($relicat);
+                            $commande->setStatus(2);
+                        } else {*/
+                            $commande->setStatus(1); // avance payée
+                            if($commande->getReteAPayer() == 0) $commande->setStatus(3);//finalisé
+                        //}
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 'reste':
+                    if (isset($form['montant']) && !empty($form['montant'])) {
+                        $reste = $form['montant'];
+                        //$restePaye = $commande->getReteAPayer() + $reste;
+                        //$totalPaye = $restePaye + $commande->getAvance();
+
+                        /*if ($commande->getMontant() <= $totalPaye) {
+                            $relicat = $commande->getMontant() - $totalPaye;
+                            if ($relicat <= 0) {
+                                $commande->setRelicat($relicat * (-1));
+                                $commande->setStatus(2);
+                            }
+                            $commande->setReteAPayer($restePaye);
+                        } else {
+                            $commande->setReteAPayer($restePaye);
+                            $commande->setStatus(1);
+                        }*/
+
+                        $commande->setReteAPayer($commande->getReteAPayer() - $reste);
+
+                        if($commande->getReteAPayer() == 0) $commande->setStatus(3);//finalisé
+
+                    } else {
+                        return false;
+                    }
+                    break;
+                case 'reliquat':
+                    if (isset($form['montant']) && !empty($form['montant'])) {
+                        $relicat = $form['montant'];
+
+                        /*if( ($commande->getRelicat() - $relicat) == 0){
+                            $commande->setStatus(3);
+                        }
+                        $commande->setRelicat($commande->getRelicat() - $relicat); */
+
+                        $commande->setReteAPayer($commande->getReteAPayer() + $relicat);
+                        if($commande->getReteAPayer() == 0) $commande->setStatus(3);
+
+                    } else {
+                        return false;
+                    }
+                    break;
+                default:
+
             }
-            else
-            {
-                return false;
-            }
-            if(isset($form['montant']) && !empty($form['montant']))
-            {
-                $avance = $form['montant'];
-                $commande->setAvance($avance);
-            }
-            else
-            {
-                return false;
-            }
-            
-            $commande->setStatus(1);
-            
+
             $em->flush();
 
             return $this->redirectToRoute('shop_command_index');
@@ -329,6 +386,7 @@ class CommandeController extends Controller
         return new Response($this->renderView('tontineBundle:commande/modal:paid-avance-modal.html.twig', array(
             'fiches' => $fiches,
             'commande' => $commande,
+            'action' => $action,
         )));
     }
 
@@ -337,7 +395,31 @@ class CommandeController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('tontineBundle:Commande')->find($id);
-        $pagnes = $commande->getCmdPagne();
+        $pagnesP = $commande->getCmdPagne();
+        $modelesM = $commande->getCmdModele();
+
+        $pagnes = array();
+        $modeles = array();
+
+        $a = 0;
+        if($pagnesP){
+            foreach ($pagnesP as $value) {
+                if($value->getHasFiche() == 0){
+                    $pagnes[$a] = $value;
+                    $a++;
+                }
+            }
+        }
+
+        $a = 0;
+        if($modelesM){
+            foreach ($modelesM as $value) {
+                if($value->getHasFiche() == 0){
+                    $modeles[$a] = $value;
+                    $a++;
+                }
+            }
+        }
 
         $fiche = new FicheTravail();
 
@@ -346,23 +428,89 @@ class CommandeController extends Controller
 
         $user = $this->getUser();
 
-        $date = $request->request->get('dateLivraison');
-        $pagneId = $request->request->get('pagne');
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             $fiche->setCommande($commande);
             $fiche->setDateCommande($commande->getCreatedAt());
             $fiche->setCreatedBy($user);
+            $dateL = $request->request->get('dateLivraison');
 
-            $pagne = $em->getRepository('tontineBundle:Pagne')->find($pagneId);
-            $fiche->setPagne($pagne);
+            $dateI = \DateTime::createFromFormat('d/m/Y h:m:s', $dateL);
+            $date = \DateTime::createFromFormat('Y-m-d h:m:s', $dateI->format('Y-m-d h:m:s'));
+
+            $fiche->setDateLivraison($date);
+            $prixAchat = 0;
+
+            $recup = $request->request->get('tontinebundle_fichetravail');
+
+            if($commande->getTypeCommande() == 'v'){
+
+                $pagneId = $request->request->get('pagne');
+
+                if(!is_null($pagneId)){
+
+                    $pagne = $em->getRepository('tontineBundle:Pagne')->find($pagneId);
+                    $fiche->setPagne($pagne);
+                    if($recup['mesure'] > $pagne->getMesure()){
+                        return new Response('La mesure renseignée dépasse la mesure disponible en stock pour ce pagne');
+                    }else{
+
+                        $pagne->setMesure($pagne->getMesure() - $recup['mesure']);
+                        $fiche->setMesure($recup['mesure']);
+                        $fiche->setQuantite(0);
+                        $prixAchat = $pagne->getPrix()*$recup['mesure'];
+                        $fiche->setPrixAchat($prixAchat + $recup['charges']);
+
+                        foreach ($commande->getCmdPagne() as $value) {
+                            if($value->getPagne() == $pagne) $value->setHasFiche(1);
+                        }
+
+                    }
+                }
+            }elseif($commande->getTypeCommande() == 'a'){
+                
+                $modeleId = $request->request->get('modele');
+
+                if(!is_null($modeleId)){
+
+                    $modele = $em->getRepository('tontineBundle:Modele')->find($modeleId);
+ 
+                    $pagne = $modele->getPagne();
+
+                    $fiche->setPagne($pagne);
+
+                    if($recup['quantite'] > $modele->getQuantite()){
+                        return new Response('La quantité renseignée dépasse la quantité disponible en stock pour ce modèle');
+                    }else{
+
+                        $modele->setQuantite($modele->getQuantite() - $recup['quantite']);
+                        $fiche->setMesure(0);
+                        $fiche->setQuantite($recup['quantite']);
+                        $prixAchat = $pagne->getPrix()*$modele->getMesure();
+                        $fiche->setPrixAchat($prixAchat*$recup['quantite'] + $recup['charges']);
+                        
+                        foreach ($commande->getCmdModele() as $value) {
+                            if($value->getModele() == $modele) $value->setHasFiche(1);
+                        }
+
+                    }
+                }
+            }else{
+
+                $fiche->setPrixAchat($recup['charges']);
+                $fiche->setMesure(0);
+                $fiche->setQuantite(0);
+
+            }
 
             $em->persist($fiche);
 
-            $montant = $commande->getMontant() + $fiche->getMontant();
+            $fiche->setBenefice($fiche->getMontant() - $fiche->getPrixAchat());
 
-            $commande->setMontant($montant);
+            $commande->setMontant($commande->getMontant() + $fiche->getMontant());
+            $commande->setPrixAchat($commande->getPrixAchat() + $fiche->getPrixAchat());
+
+            $commande->setBenefice($commande->getMontant() - $commande->getPrixAchat());
 
             $em->flush();
 
@@ -372,6 +520,7 @@ class CommandeController extends Controller
         return $this->render('tontineBundle:commande:fiche/new.html.twig', array(
             'commande' => $commande,
             'pagnes' => $pagnes,
+            'modeles' => $modeles,
             'client' => $commande->getClient(),
             'form' => $form->createView(),
         ));
@@ -390,5 +539,18 @@ class CommandeController extends Controller
             'fiches' => $fiches,
             'commande' => $commande,
         ));
+    }
+
+    public function voirMesureFicheAction(Request $request, $id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $fiche = $em->getRepository('tontineBundle:FicheTravail')->find($id);
+
+        return new Response($this->renderView('tontineBundle:commande/fiche:see-mesure-modal.html.twig', array(
+            'fiche' => $fiche,
+        )));
+
     }
 }

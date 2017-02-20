@@ -29,14 +29,14 @@ shop_command_facture_edit:
     methods:  GET
 
 shop_command_avance_payement:
-    path:     /{id}/commande/payement/avance
-    defaults: { _controller: "tontineBundle:Commande:payerAvance" }
+    path:     /{id}/commande/payement/avance/{action}
+    defaults: { _controller: "tontineBundle:Commande:payerAvance", action = null }
     methods:  [GET, POST]
 
 # fiche de travail
 
 shop_fiche_travail_new:
-    path:     /{id}/new
+    path:     /{id}/new-fiche
     defaults: { _controller: "tontineBundle:Commande:setFiche" }
     methods:  [GET, POST]
 
@@ -44,3 +44,8 @@ shop_fiche_travail_index:
     path:     /{id}/fiche-de-travail
     defaults: { _controller: "tontineBundle:Commande:indexFiche" }
     methods:  GET
+
+shop_fiche_travail_voir_mesure:
+    path:     /{id}/fiche/voir/mesure
+    defaults: { _controller: "tontineBundle:Commande:voirMesureFiche" }
+    methods:  [GET, POST]

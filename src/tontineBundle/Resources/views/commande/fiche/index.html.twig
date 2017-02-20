@@ -3,7 +3,7 @@
 {% block title %}Liste des fiches de travail{% endblock %}
 
 {% block content_header %}
-    <h3>Liste des commandes de Global Design</h3>
+    <h3>Liste des fiches de travail</h3>
 {% endblock %}
 
 {% block content %}
@@ -23,6 +23,7 @@
                         <th>Montant (en FCFA)</th>
                         <th>Contact client</th>
                         <th>Client</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,18 +36,38 @@
                             <td>{{ fiche.designation }}</td>
                             <td>{{ fiche.montant|number_format(0,',','.') }}</td>
                             <td>
-                            	{% if fiche.commande %}
-	                            	{% if fiche.commande.client %}
-	                                    {{ fiche.commande.client.name }}
-	                                {% endif %} 
-                                {% endif %} 
-                            </td>
-                            <td>
                                 {% if fiche.commande %}
                                     {% if fiche.commande.client %}
                                         {{ fiche.commande.client.contacts | phone_number_format('INTERNATIONAL') }}
                                     {% endif %} 
                                 {% endif %} 
+                            </td>
+                            <td>
+                                {% if fiche.commande %}
+                                    {% if fiche.commande.client %}
+                                        {{ fiche.commande.client.name }}
+                                    {% endif %} 
+                                {% endif %} 
+                            </td>
+                            <td>
+                                {% if fiche.commande %}
+                                {% if fiche.commande.typeCommande == 'v' or fiche.commande.typeCommande == 'm'  %}
+                                <div class="btn-group pull-center">
+                                    <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
+                                            data-toggle="dropdown">
+                                        Actions
+                                        <span class="fa fa-caret-down"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+
+                                        <li>
+                                            <a href="#" onclick="showModal(event, this, '{{ path('shop_fiche_travail_voir_mesure', { 'id': fiche.id }) }}','GET');">Voir les mesures</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
@@ -55,14 +76,31 @@
             </div>
         </div>
         <div class="box-footer">
-            <a href="{{ path('shop_command_new') }}" class="btn btn-primary">
+            <a href="{{ path('shop_command_index') }}" class="btn btn-primary">
                 <i class="fa fa-plus"></i>
-                Ajouter une nouvelle commande
+                Liste des commandes
             </a>
         </div>
     </div>
+    {% include 'tontineBundle:modal:popup-fiche.html.twig' %}
 {% endblock %}
 
 {% block javascript %}
     {{ parent() }}
+    <script>
+        function showModal(event, $this, url, method) {
+            $('#waitModal').modal('show');
+            $.ajax({
+                url: url,
+                type: method,
+                success: function (data) {
+                    $('#waitModal').modal('hide');
+                    $("#idModal .modal-content").html(data);
+                    //$("#idModal .modal-title").html(title);
+                    $('#idModal').modal('show');
+                }
+            });
+            event.preventDefault();
+        }
+    </script>
 {% endblock %}

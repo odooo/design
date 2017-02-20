@@ -6,9 +6,54 @@ roma roma Mise-A-Jour 2017-Feb-09:11:55:33 2
 Commande roma Mise-A-Jour 2017-Feb-09:11:55:33
 Agent roma Mise-A-Jour 2017-Feb-09:11:57:14
 Commande roma Mise-A-Jour 2017-Feb-09:11:57:14
+<<<<<<< HEAD
 >>>>>>> 5efba407a967b199592246e49e8f26734eb2f7e6
 
 Agent Edgar Mise-A-Jour 2017-Feb-09:12:20:50
 Facture Edgar Enregistrement 2017-Feb-09:12:22:52
 Agent Edgar Mise-A-Jour 2017-Feb-09:12:22:52
 Commande Edgar Mise-A-Jour 2017-Feb-09:12:22:52
+=======
+Agent roma Mise-A-Jour 2017-Feb-09:12:08:27
+Agent roma Mise-A-Jour 2017-Feb-09:13:33:36
+Agent roma Mise-A-Jour 2017-Feb-09:13:35:19
+Commande roma Mise-A-Jour 2017-Feb-09:13:35:19
+Agent roma Mise-A-Jour 2017-Feb-09:13:36:08
+Commande roma Mise-A-Jour 2017-Feb-09:13:36:08
+Agent roma Mise-A-Jour 2017-Feb-09:13:36:31
+Commande roma Mise-A-Jour 2017-Feb-09:13:36:31
+Agent roma Mise-A-Jour 2017-Feb-09:13:41:04
+Commande roma Mise-A-Jour 2017-Feb-09:13:41:04
+Agent roma Mise-A-Jour 2017-Feb-09:13:46:11
+Commande roma Mise-A-Jour 2017-Feb-09:13:46:11
+Agent roma Mise-A-Jour 2017-Feb-09:13:56:20
+Commande roma Mise-A-Jour 2017-Feb-09:13:56:20
+Agent roma Mise-A-Jour 2017-Feb-09:14:00:48
+Commande roma Mise-A-Jour 2017-Feb-09:14:00:48
+Agent roma Mise-A-Jour 2017-Feb-09:14:02:04
+Commande roma Mise-A-Jour 2017-Feb-09:14:02:04
+Agent roma Mise-A-Jour 2017-Feb-09:14:02:27
+Commande roma Mise-A-Jour 2017-Feb-09:14:02:27
+Agent roma Mise-A-Jour 2017-Feb-09:14:02:57
+Commande roma Mise-A-Jour 2017-Feb-09:14:02:57
+Agent roma Mise-A-Jour 2017-Feb-09:14:05:11
+Commande roma Mise-A-Jour 2017-Feb-09:14:05:11
+Agent roma Mise-A-Jour 2017-Feb-09:14:05:31
+Commande roma Mise-A-Jour 2017-Feb-09:14:05:31
+Agent roma Mise-A-Jour 2017-Feb-09:14:15:29
+Commande roma Mise-A-Jour 2017-Feb-09:14:15:29
+Agent roma Mise-A-Jour 2017-Feb-09:14:21:51
+Commande roma Mise-A-Jour 2017-Feb-09:14:21:51
+Agent roma Mise-A-Jour 2017-Feb-09:14:38:11
+Commande roma Mise-A-Jour 2017-Feb-09:14:38:11
+Agent roma Mise-A-Jour 2017-Feb-09:14:57:03
+Commande roma Mise-A-Jour 2017-Feb-09:14:57:03
+Agent roma Mise-A-Jour 2017-Feb-09:15:08:24
+Commande roma Mise-A-Jour 2017-Feb-09:15:08:24
+>>>>>>> 534e4231aead71b395baf2728e1e037df43e86cb
+
+Agent Edgar Mise-A-Jour 2017-Feb-09:17:47:48
+Agent Edgar Mise-A-Jour 2017-Feb-09:17:50:01
+Commande Edgar Mise-A-Jour 2017-Feb-09:17:50:01
+Agent Edgar Mise-A-Jour 2017-Feb-09:19:03:59
+Agent Edgar Mise-A-Jour 2017-Feb-09:22:15:48

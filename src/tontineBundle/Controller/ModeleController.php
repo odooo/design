@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Modele controller.
@@ -124,12 +125,26 @@ class ModeleController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $form1 = $request->request->get('tontinebundle_modele');
+
             $em = $this->getDoctrine()->getManager();
             $modele = $form->getData();       
             $em->persist($modele);
-            $em->flush();
 
-            return true;
+            $pagne = $modele->getPagne();
+
+            if($form1['mesure']*$form1['quantite'] > $pagne->getMesure()){
+                return false;
+            }else{
+
+                $pagne->setMesure($pagne->getMesure() - $form1['mesure']*$form1['quantite']);
+
+                $em->flush();
+
+                return true;
+            }
+
         }
 
         return false;

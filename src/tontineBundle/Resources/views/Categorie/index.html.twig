@@ -13,7 +13,7 @@
         </div>
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped">
+                <table id="listeCategories" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -59,8 +59,33 @@
         <div class="box-footer">
             <a href="{{ path('tontine_categorie_new') }}" class="btn btn-primary">
                 <i class="fa fa-plus"></i>                
-                Ajouter une catégorie
+                Ajouter une nouvelle catégorie
             </a>
         </div>
     </div>
+
+<script src="{{ asset('bundles/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bundles/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(function () {
+
+        $('#listeCategories').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": true,
+            "language": {
+                "paginate": {"previous": "Précédent", "next": "Suivant"},
+                "search": "<i class='fa fa-search'></i> Rechercher: ",
+                "emptyTable": "Aucune catégorie enregistrée pour le moment",
+                "zeroRecords": "Aucune catégorie enregistrée pour le moment"
+            }
+        });
+    });
+</script>
 {% endblock %}

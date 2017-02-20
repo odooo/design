@@ -53,6 +53,11 @@ abstract class User implements UserInterface, GroupableInterface
     protected $enabled;
 
     /**
+     * @var bool
+     */
+    protected $locked;
+
+    /**
      * The salt to use for hashing.
      *
      * @var string
@@ -106,6 +111,7 @@ abstract class User implements UserInterface, GroupableInterface
     public function __construct()
     {
         $this->enabled = false;
+        $this->locked = true;
         $this->roles = array();
     }
 
@@ -137,6 +143,7 @@ abstract class User implements UserInterface, GroupableInterface
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
+            $this->locked,
             $this->id,
             $this->email,
             $this->emailCanonical,
@@ -166,6 +173,7 @@ abstract class User implements UserInterface, GroupableInterface
             $this->usernameCanonical,
             $this->username,
             $this->enabled,
+            $this->locked,
             $this->id,
             $this->email,
             $this->emailCanonical
@@ -316,6 +324,11 @@ abstract class User implements UserInterface, GroupableInterface
         return $this->enabled;
     }
 
+    public function isLocked()
+    {
+        return $this->locked;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -393,6 +406,16 @@ abstract class User implements UserInterface, GroupableInterface
     public function setEnabled($boolean)
     {
         $this->enabled = (bool) $boolean;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocked($boolean)
+    {
+        $this->locked = (bool) $boolean;
 
         return $this;
     }

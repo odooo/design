@@ -23,7 +23,7 @@
                     <div><strong>Référence : </strong><strong>{{ pagne.reference }}</strong></div>
                     <div><strong>Désignation : </strong>{{ pagne.designation }}</div>
                     <div><strong>Mesure : </strong>{{ pagne.mesure }} mètres</div>
-                    <div><strong>Prix : </strong>{{ pagne.prix|number_format(0,',','.') }} F CFA</div>
+                    <div><strong>Prix unitaire d'achat: </strong>{{ pagne.prix|number_format(0,',','.') }} F CFA</div>
                     <div><strong>Catégorie : </strong>{% if pagne.categorie %} {{ pagne.categorie.libelle }}{% endif %} </div>
                     <div><strong>Fournisseur : </strong>{% if pagne.fournisseur %} {{ pagne.fournisseur.name }}{% endif %} </div>
                     <div class="btn-group" style="margin-top: 20px">

@@ -24,21 +24,26 @@ class CommandeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('reference')
+        $builder->add('reference', null, array('required' => true))
             ->add('designation', TextareaType::class, array(
                     'attr' => array(
                         'class' => 'c4')
                 )
             )
-//            ->add('mesure')
-            ->add('client')
+            ->add('client', null, [
+                'label' => 'Client',
+                'required' => true,
+                'placeholder' => 'Choisissez le client',
+                'choice_label' => 'name',
+            ])
             ->add('typeCommande', ChoiceType::class, array(
                 'choices' => array(
                     'Main d\'oeuvre' => 'm',
                     'Vente' => 'v',
-                    'Autres' => 'a'
+                    'Vente de modèles' => 'a',
+                    'Autres' => 'o'
                 ),
-                'required' => false,
+                'required' => true,
                 'placeholder' => 'Choisissez le type de commande',
                 'empty_data' => null
             ))
