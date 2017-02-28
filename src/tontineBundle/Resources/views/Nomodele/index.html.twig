@@ -1,0 +1,89 @@
+{% extends "default/index.html.twig" %}
+
+{% block title %}Liste des modèles{% endblock %}
+
+{% block content_header %}
+    <h3>Liste des modèles non boutique</h3>
+{% endblock %}
+
+{% block content %}
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Liste des modèles non boutique</h3>
+        </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="listeModeles" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Libellé</th>
+                            <th>Quantité</th>
+                            <th>Prix d'achat unitaire</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for nomodele in nomodeles %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ nomodele.libelle }}</td>
+                            <td>{{ nomodele.quantite }}</td>
+                            <td>{{ nomodele.prixAchat }}</td>
+                            <td>
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="fa fa-caret-down"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    
+                                    {% if  is_granted('ROLE_MODELE_EDIT') %}
+                                            <li>
+                                                <a onclick="getEditModeleForm({{nomodele.id}})" href="{{ path('tontine_nomodele_edit', { 'id': nomodele.id }) }}" data-rec = "{{nomodele.id}}" >Modifier</a>
+                                            </li>
+                                    {% endif  %}
+                                    
+                                </ul>
+                            </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a href="{{ path('tontine_nomodele_new') }}" class="btn btn-primary">
+                <i class="fa fa-plus"></i>                
+                Ajouter un nouveau modèle non boutique
+            </a>
+        </div>
+    </div>
+
+<script src="{{ asset('bundles/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('bundles/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(function () {
+
+        $('#listeModeles').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": true,
+            "language": {
+                "paginate": {"previous": "Précédent", "next": "Suivant"},
+                "search": "<i class='fa fa-search'></i> Rechercher: ",
+                "emptyTable": "Aucun modèle non boutique enregistré pour le moment",
+                "zeroRecords": "Aucun modèle non boutique enregistré pour le moment"
+            }
+        });
+    });
+</script>
+{% endblock %}

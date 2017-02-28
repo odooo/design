@@ -9,6 +9,7 @@ use tontineBundle\Entity\Commande;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use tontineBundle\Entity\CommandeModele;
+use tontineBundle\Entity\CommandeNomodele;
 use tontineBundle\Entity\CommandePagne;
 use tontineBundle\Entity\Facture;
 use tontineBundle\Entity\FicheTravail;
@@ -57,6 +58,7 @@ class CommandeController extends Controller
 
             $pagnes = $form['pagne']->getData();
             $modeles = $form['modele']->getData();
+            $nomodeles = $form['nomodele']->getData();
 
             $commande->setCreatedBy($user);
             $commande->setCreatedAt(new \DateTime());
@@ -71,10 +73,6 @@ class CommandeController extends Controller
                 foreach ($pagnes as $pagne) {
                     $i++;
                     $cmdPagne = new CommandePagne();
-                    /*$fiche = new FicheTravail();
-                    $fiche->setDateCommande($commande->getCreatedAt());
-                    $fiche->setCommande($commande);
-                    $em->persist($fiche);*/
                     $cmdPagne->setPagne($pagne);
                     $cmdPagne->setCommande($commande);
                     $cmdPagne->setFiche(null);
@@ -90,17 +88,28 @@ class CommandeController extends Controller
                 foreach ($modeles as $modele) {
                     $j++;
                     $cmdModele = new CommandeModele();
-//                    $fiche = new FicheTravail();
-//                    $fiche->setPagne($pagne);
                     $cmdModele->setModele($modele);
                     $cmdModele->setCommande($commande);
                     $cmdModele->setHasFiche(0);
                     $em->persist($cmdModele);
-//                    $em->persist($fiche);
                 }
             }
 
             $commande->setNbreModele($j);
+
+            $k = 0;
+            if ($nomodeles) {
+                foreach ($nomodeles as $nomodele) {
+                    $k++;
+                    $cmdNomodele = new CommandeNomodele();
+                    $cmdNomodele->setNomodele($nomodele);
+                    $cmdNomodele->setCommande($commande);
+                    $cmdNomodele->setHasFiche(0);
+                    $em->persist($cmdNomodele);
+                }
+            }
+
+            $commande->setNbreNomodele($k);
 
             $em->flush();
 
@@ -311,7 +320,10 @@ class CommandeController extends Controller
             switch ($action) {
                 case 'avance':
                     if (isset($form['date']) && !empty($form['date'])) {
-                        $date = new \DateTime($form['date'] . ' 00:00:00');
+                        //$date = new \DateTime($form['date'] . ' 00:00:00');
+                        $dateL = $form['date'];
+                        $dateI = \DateTime::createFromFormat('d/m/Y', $dateL);
+                        $date = \DateTime::createFromFormat('Y-m-d', $dateI->format('Y-m-d'));
                         $commande->setDatePaidAvance($date);
                     } else {
                         return false;
@@ -397,9 +409,11 @@ class CommandeController extends Controller
         $commande = $em->getRepository('tontineBundle:Commande')->find($id);
         $pagnesP = $commande->getCmdPagne();
         $modelesM = $commande->getCmdModele();
+        $nomodeles = $commande->getCmdNomodele();
 
         $pagnes = array();
         $modeles = array();
+        $nomods = array();
 
         $a = 0;
         if($pagnesP){
@@ -421,6 +435,16 @@ class CommandeController extends Controller
             }
         }
 
+        $a = 0;
+        if($nomodeles){
+            foreach ($nomodeles as $value) {
+                if($value->getHasFiche() == 0){
+                    $nomods[$a] = $value;
+                    $a++;
+                }
+            }
+        }
+
         $fiche = new FicheTravail();
 
         $form = $this->createForm('tontineBundle\Form\FicheTravailType', $fiche);
@@ -435,8 +459,8 @@ class CommandeController extends Controller
             $fiche->setCreatedBy($user);
             $dateL = $request->request->get('dateLivraison');
 
-            $dateI = \DateTime::createFromFormat('d/m/Y h:m:s', $dateL);
-            $date = \DateTime::createFromFormat('Y-m-d h:m:s', $dateI->format('Y-m-d h:m:s'));
+            $dateI = \DateTime::createFromFormat('d/m/Y', $dateL);
+            $date = \DateTime::createFromFormat('Y-m-d', $dateI->format('Y-m-d'));
 
             $fiche->setDateLivraison($date);
             $prixAchat = 0;
@@ -495,6 +519,32 @@ class CommandeController extends Controller
 
                     }
                 }
+            }elseif($commande->getTypeCommande() == 'o'){
+
+                $nomodeleId = $request->request->get('nomodele');
+
+                if(!is_null($nomodeleId)){
+
+                    $nomodele = $em->getRepository('tontineBundle:Nomodele')->find($nomodeleId);
+
+                    $fiche->setPagne(null);
+
+                    if($recup['quantite'] > $nomodele->getQuantite()){
+                        return new Response('La quantité renseignée dépasse la quantité disponible en stock pour ce modèle');
+                    }else{
+
+                        $nomodele->setQuantite($nomodele->getQuantite() - $recup['quantite']);
+                        $fiche->setMesure(0);
+                        $fiche->setQuantite($recup['quantite']);
+                        $prixAchat = $nomodele->getPrixAchat()*$recup['quantite'];
+                        $fiche->setPrixAchat($prixAchat);
+                        
+                        foreach ($commande->getCmdNomodele() as $value) {
+                            if($value->getNomodele() == $nomodele) $value->setHasFiche(1);
+                        }
+
+                    }
+                }
             }else{
 
                 $fiche->setPrixAchat($recup['charges']);
@@ -521,6 +571,7 @@ class CommandeController extends Controller
             'commande' => $commande,
             'pagnes' => $pagnes,
             'modeles' => $modeles,
+            'nomods' => $nomods,
             'client' => $commande->getClient(),
             'form' => $form->createView(),
         ));
@@ -553,4 +604,90 @@ class CommandeController extends Controller
         )));
 
     }
+
+    public function etatAction(Request $request)
+    {
+        $nbParPage = 10;
+        if ($request->getMethod() == "POST") {
+            $post = $request->request;
+            $em = $this->getDoctrine()->getManager();
+
+            $nbEntity = $em->getRepository("tontineBundle:Commande")->count($post);
+            $page = ceil($nbEntity / $nbParPage);
+
+            $entities = $em->getRepository("tontineBundle:Commande")->search($post, 0, (int)$nbParPage);
+            $request->getSession()->set("rech", $post);
+            $request->getSession()->set("page", $page);
+            return $this->render('tontineBundle:commande:etat.html.twig', [
+                "active" => $post->get("active"),
+                "entities" => $entities,
+                "post" => $post,
+                "page" => $page,
+                "min" => 1,
+            ]);
+        }
+
+        if ($request->getMethod() == "GET" && $request->query->get("page")) {
+            $em = $this->getDoctrine()->getManager();
+            $post = $this->get('session')->get("rech");
+            $page = $this->get('session')->get("page");
+            $init = ((int)$request->query->get("page") - 1) * (int)$nbParPage;
+
+            $entities = $em->getRepository("tontineBundle:Commande")->search($post, $init, $nbParPage);
+            return $this->render('tontineBundle:commande:etat.html.twig', [
+                "active" => $post->get("active"),
+                "entities" => $entities,
+                "post" => $post,
+                "page" => $page,
+                "min" => ($request->query->get("m") ? $request->query->get("m") : 1),
+            ]);
+        }
+        $post = $request->request;
+        return $this->render('tontineBundle:commande:etat.html.twig', array(
+            "active" => Null,
+            "post" => $post,
+            "entities" => Null,
+            "page" => null,
+        ));
+    } 
+
+    public function formModifMesureFicheAction(Request $request, $id){
+
+        $em = $this->getDoctrine()->getManager();
+        $fiche = $em->getRepository('tontineBundle:FicheTravail')->find($id);
+
+        if($request->getMethod() == 'POST'){
+
+            $form = $request->request->get('tontinebundle_shop_modif_mesure_fiche');
+
+            $fiche->setLongGHChemise($form['longGHChemise']);
+            $fiche->setDosChemise($form['dosChemise']);
+            $fiche->setPoitrineChemise($form['poitrineChemise']);
+            $fiche->setTailleChemise($form['tailleChemise']);
+            $fiche->setHancheChemise($form['hancheChemise']);
+            $fiche->setTmancheChemise($form['tmancheChemise']);
+            $fiche->setColChemise($form['colChemise']);
+            $fiche->setPoignetChemise($form['poignetChemise']);
+
+            $fiche->setLongGHPantalon($form['longGHPantalon']);
+            $fiche->setDosPantalon($form['dosPantalon']);
+            $fiche->setPoitrinePantalon($form['poitrinePantalon']);
+            $fiche->setTaillePantalon($form['taillePantalon']);
+            $fiche->setHanchePantalon($form['hanchePantalon']);
+            $fiche->setTmanchePantalon($form['tmanchePantalon']);
+            $fiche->setColPantalon($form['colPantalon']);
+            $fiche->setPoignetPantalon($form['poignetPantalon']);
+
+            $em->flush();
+
+            return $this->redirectToRoute('shop_fiche_travail_index', array('id'=>$fiche->getCommande()->getId()));
+
+        }
+
+        return $this->render('tontineBundle:commande/fiche:modif-fiche.html.twig', array(
+            'commande' => $fiche->getCommande(),
+            'fiche' => $fiche,
+        ));
+    }
+
 }

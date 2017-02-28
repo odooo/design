@@ -68,6 +68,13 @@ class Commande
     /**
      * @var integer
      *
+     * @ORM\Column(name="nbreNomodele", type="integer", nullable=true)
+     */
+    private $nbreNomodele;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="montant", type="integer", nullable=true)
      */
     private $montant;
@@ -180,9 +187,19 @@ class Commande
      */
     private $cmdModele;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * One Commande can contain Many Nomodele.
+     * @ORM\OneToMany(targetEntity="tontineBundle\Entity\CommandeNomodele", mappedBy="commande", cascade={"persist", "remove"})
+     */
+    private $cmdNomodele;
+
     protected $pagnes;
 
     protected $modeles;
+
+    protected $nomodeles;
 
 
     /**
@@ -432,8 +449,29 @@ class Commande
 
         return $this->modeles;
     }
+    
     // Important
     public function setModele($modeles)
+    {
+
+    }
+
+    public function getNomodele()
+    {
+        $nomodeles = new ArrayCollection();
+
+        if(!empty($this->cmdNomodele))
+        {
+            foreach($this->cmdNomodele as $c)
+            {
+                $this->nomodeles[] = $c->getNomodele();
+            }
+        }
+
+        return $this->nomodeles;
+    }
+    // Important
+    public function setNomodele($nomodeles)
     {
 
     }
@@ -748,5 +786,63 @@ class Commande
     public function getBenefice()
     {
         return $this->benefice;
+    }
+
+    /**
+     * Set nbreNomodele
+     *
+     * @param integer $nbreNomodele
+     *
+     * @return Commande
+     */
+    public function setNbreNomodele($nbreNomodele)
+    {
+        $this->nbreNomodele = $nbreNomodele;
+
+        return $this;
+    }
+
+    /**
+     * Get nbreNomodele
+     *
+     * @return integer
+     */
+    public function getNbreNomodele()
+    {
+        return $this->nbreNomodele;
+    }
+
+    /**
+     * Add cmdNomodele
+     *
+     * @param \tontineBundle\Entity\CommandeNomodele $cmdNomodele
+     *
+     * @return Commande
+     */
+    public function addCmdNomodele(\tontineBundle\Entity\CommandeNomodele $cmdNomodele)
+    {
+        $this->cmdNomodele[] = $cmdNomodele;
+
+        return $this;
+    }
+
+    /**
+     * Remove cmdNomodele
+     *
+     * @param \tontineBundle\Entity\CommandeNomodele $cmdNomodele
+     */
+    public function removeCmdNomodele(\tontineBundle\Entity\CommandeNomodele $cmdNomodele)
+    {
+        $this->cmdNomodele->removeElement($cmdNomodele);
+    }
+
+    /**
+     * Get cmdNomodele
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCmdNomodele()
+    {
+        return $this->cmdNomodele;
     }
 }

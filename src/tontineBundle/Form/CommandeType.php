@@ -14,6 +14,7 @@ use tontineBundle\Form\PagneType;
 
 use tontineBundle\Entity\Pagne;
 use tontineBundle\Form\Type\ReferencePagneType;
+use tontineBundle\Repository\NomodeleRepository;
 use tontineBundle\Repository\ModeleRepository;
 use tontineBundle\Repository\PagneRepository;
 
@@ -40,8 +41,8 @@ class CommandeType extends AbstractType
                 'choices' => array(
                     'Main d\'oeuvre' => 'm',
                     'Vente' => 'v',
-                    'Vente de modèles' => 'a',
-                    'Autres' => 'o'
+                    'Vente de modèles boutique' => 'a',
+                    'Vente de modèles non boutique' => 'o'
                 ),
                 'required' => true,
                 'placeholder' => 'Choisissez le type de commande',
@@ -55,7 +56,6 @@ class CommandeType extends AbstractType
                         ->orderBy('p.reference', 'ASC');
                 },
                 'required' => false,
-//                'expanded' => true,
                 'multiple' => true,
                 'choice_label' => 'reference',
             ))
@@ -67,7 +67,17 @@ class CommandeType extends AbstractType
                         ->orderBy('m.libelle', 'ASC');
                 },
                 'required' => false,
-//                'expanded' => true,
+                'multiple' => true,
+                'choice_label' => 'libelle',
+            ))
+            ->add('nomodele', EntityType::class, array(
+                'class' => 'tontineBundle\Entity\Nomodele',
+                'query_builder' => function (NomodeleRepository $er) {
+                    return $er->createQueryBuilder('n')
+                        ->where('n.quantite > 0 ')
+                        ->orderBy('n.libelle', 'ASC');
+                },
+                'required' => false,
                 'multiple' => true,
                 'choice_label' => 'libelle',
             ));

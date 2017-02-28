@@ -1,0 +1,44 @@
+<table class="table table-striped table-bordered">
+    <tbody>    
+                                                
+        <tr>
+            <th>#</th>
+            <td>{{ nomodele.id }}</td>            
+        </tr>
+        
+                                                
+        <tr>
+            <th>Libellé</th>
+            <td>{{ nomodele.libelle }}</td>            
+        </tr>
+
+        <tr>
+            <th>Quantité</th>
+            <td>{{ nomodele.quantite }}</td>            
+        </tr> 
+
+        <tr>
+            <th>Prix unitaire achat</th>
+            <td>{{ modele.prixAchat }}</td>            
+        </tr>    
+        
+        <tr>
+            <th>Actions</th>
+            <td>
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="fa fa-caret-down"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li>
+                    <a href="{{ path('tontine_nomodele_edit', { 'id': nomodele.id }) }}"  class = "nomodele_edit" data-rec = "{{nomodele.id}}" >Modifier</a>
+                </li>
+            </ul>
+        </div>
+    </td>
+        </tr>
+        
+  
+    </tbody>
+</table>

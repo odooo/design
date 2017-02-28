@@ -17,6 +17,7 @@
                     <thead>
                     <tr>
                         <th>#</th>
+                        <th>Type commande</th>
                         <th>Date commande</th>
                         <th>Date livraison</th>
                         <th>Désignation</th>
@@ -31,6 +32,19 @@
                     {% for fiche in fiches %}
                         <tr>
                             <td><a href="#">{{ loop.index }}</a></td>
+                            <td>
+                                {% if fiche.commande %}
+                                    {% if fiche.commande.typeCommande == 'v' %}
+                                        Vente 
+                                    {% elseif fiche.commande.typeCommande == 'm' %}
+                                        Main  d'oeuvre
+                                    {% elseif fiche.commande.typeCommande == 'a' %}
+                                        Vente de modèle boutique
+                                    {% else %}
+                                        Vente de modèle non boutique
+                                    {% endif %}
+                                {% endif %}
+                            </td>
                             <td>{{ fiche.dateCommande|date('d/m/Y h:i:s') }}</td>
                             <td>{{ fiche.dateLivraison|date('d/m/Y h:i:s') }}</td>
                             <td>{{ fiche.designation }}</td>
@@ -63,6 +77,11 @@
                                         <li>
                                             <a href="#" onclick="showModal(event, this, '{{ path('shop_fiche_travail_voir_mesure', { 'id': fiche.id }) }}','GET');">Voir les mesures</a>
                                         </li>
+                                        {% if fiche.commande.status != 3 %}
+                                        <li>
+                                            <a href="{{ path('shop_fiche_travail_modif_mesure_form',{'id': fiche.id})}}" >Modifier les mesures</a>
+                                        </li>
+                                        {% endif %}
 
                                     </ul>
                                 </div>

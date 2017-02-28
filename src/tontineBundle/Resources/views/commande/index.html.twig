@@ -17,7 +17,6 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Date commande</th>
                         <th>Référence</th>
                         <th>Désignation</th>
                         <th>Type de commande</th>
@@ -45,9 +44,14 @@
                             {% endif %}
                         {% endfor %}
 
+                        {% set b = 0 %}
+
+                        {% if  (cpt < commande.nbrePagne or commande.nbrePagne == 0 and commande.typeCommande == 'v') or (cpt < commande.nbreModele or commande.nbreModele == 0 and commande.typeCommande == 'a') or (cptm == 0 and commande.typeCommande == 'm') or (commande.typeCommande == 'o' and cpt < commande.nbreNomodele ) %}
+                            {% set b = 1 %}
+                        {% endif %}
+
                         <tr>
                             <td><a href="#">{{ loop.index }}</a></td>
-                            <td>{{ commande.createdAt|date('d/m/Y h:i:s') }}</td>
                             <td><span class="btn-xs btn-info">{{ commande.reference }}</span></td>
                             <td>{{ commande.designation }}</td>
                             <td>{% if commande.typeCommande == 'v' %}
@@ -55,16 +59,15 @@
                                 {% elseif commande.typeCommande == 'm' %}
                                     Main  d'oeuvre
                                 {% elseif commande.typeCommande == 'a' %}
-                                    Vente de modèle
+                                    Vente de modèle boutique
                                 {% else %}
-                                    Autres
+                                    Vente de modèle non boutique
                                 {% endif %}
                             </td>
                             <td>
-                                {% if commande.status is null or commande.status == 0 %}
-                                    <span class="label label-warning">{{ '0'|number_format(0, ',', '.')~' FCFA' }}</span>
+                                {% if commande.status is null or commande.status == 0 %}{{ '0'|number_format(0, ',', '.')~' FCFA' }}
                                 {% elseif commande.status in [1,2,3] %}
-                                    <span class="label label-success">{{ commande.avance|number_format(0, ',', '.')~' FCFA' }}</span>
+                                    {{ commande.avance|number_format(0, ',', '.')~' FCFA' }}
                                 {% endif %}
                             </td>
                             <td>
@@ -79,10 +82,16 @@
                             </td>
                             <td>
                                 {% if commande.status is null or commande.status == 0 %}
-                                    <button type="button" class="btn btn-info btn-xs"
-                                            onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'avance' }) }}','GET', 'Paiement de l\'avance');">
-                                        Payer l'avance
-                                    </button>
+                                    {% if b == 0 %}
+                                        <button type="button" class="btn btn-info btn-xs"
+                                                onclick="showModal(event, this, '{{ path('shop_command_avance_payement', { 'id': commande.id, 'action':'avance' }) }}','GET', 'Paiement de l\'avance');">
+                                            Payer l'avance
+                                        </button>
+                                    {% elseif b == 1 %}
+                                        <button type="button" class="btn btn-info btn-xs">
+                                            Editer fiche de travail
+                                        </button>
+                                    {% endif %}
                                 {% elseif commande.status == 1 %}
                                     {% if commande.reteAPayer > 0 %}
                                         <button type="button" class="btn btn-warning btn-xs"
@@ -96,9 +105,19 @@
                                     <button type="button" class="btn btn-success btn-xs">Soldé</button>
                                 {% endif %}
                             </td>
-                            {% if is_granted('ROLE_BENEFICE_VIEW') %}<td>
-                                {{ commande.benefice|number_format(0, ',', '.')~' FCFA' }}
-                            </td>{% endif %}
+                            {% if is_granted('ROLE_BENEFICE_VIEW') %}
+                                <td>
+                                    {% if commande.benefice > 0 %} 
+                                        <span class="label label-primary">
+                                    {% elseif commande.benefice < 0 %} 
+                                        <span class="label label-danger">
+                                    {% else %}
+                                        <span class="label label-default">
+                                    {% endif %}
+                                    {{ commande.benefice|number_format(0, ',', '.')~' FCFA' }} 
+                                        </span>
+                                </td>
+                            {% endif %}
                             <td>
                                 <div class="btn-group pull-right">
                                     <button type="button" class="btn btn-primary btn-xs dropdown-toggle"
@@ -121,7 +140,7 @@
                                         {#{% endif  %}#}
 
                                         {% if  is_granted('ROLE_FICHE_EDIT') %}
-                                            {% if  (cpt < commande.nbrePagne or commande.nbrePagne == 0 and commande.typeCommande == 'v') or (cpt < commande.nbreModele or commande.nbreModele == 0 and commande.typeCommande == 'a') or (cptm == 0 and commande.typeCommande == 'm') or (commande.typeCommande == 'o' and commande.prixAchat == 0 ) %}
+                                            {% if  (cpt < commande.nbrePagne or commande.nbrePagne == 0 and commande.typeCommande == 'v') or (cpt < commande.nbreModele or commande.nbreModele == 0 and commande.typeCommande == 'a') or (cptm == 0 and commande.typeCommande == 'm') or (commande.typeCommande == 'o' and cpt < commande.nbreNomodele ) %}
                                                 <li>
                                                     <a href="{{ path('shop_fiche_travail_new', { 'id': commande.id }) }}">Editer
                                                         la fiche de travail</a>
@@ -162,6 +181,12 @@
                 <i class="fa fa-plus"></i>
                 Ajouter une nouvelle commande
             </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            {% if is_granted('ROLE_BENEFICE_VIEW') %}
+                <a href="{{ path('shop_command_etat') }}" class="btn btn-success">
+                    Etat des commandes
+                </a>
+            {% endif %}
         </div>
     </div>
     {% include 'tontineBundle:modal:popup.html.twig' %}

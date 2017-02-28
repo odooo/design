@@ -3,13 +3,13 @@
 {% block title %}Liste des modèles{% endblock %}
 
 {% block content_header %}
-    <h3>Liste des modèles</h3>
+    <h3>Liste des modèles boutique</h3>
 {% endblock %}
 
 {% block content %}
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Liste des modèles</h3>
+            <h3 class="box-title">Liste des modèles boutique</h3>
         </div>
         <div class="box-body">
             <div class="table-responsive">
@@ -21,14 +21,7 @@
                             <th>Quantité</th>
                             <th>Mesure unitaire (en m)</th>
                             <th>Pagne</th>
-                            <th>
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    Actions
-                                    <span class="fa fa-caret-down"></span>
-                                </button>
-                            </div>
-                            </th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -65,7 +58,7 @@
         <div class="box-footer">
             <a href="{{ path('tontine_modele_new') }}" class="btn btn-primary">
                 <i class="fa fa-plus"></i>                
-                Ajouter un nouveau modèle
+                Ajouter un nouveau modèle boutique
             </a>
         </div>
     </div>
@@ -89,8 +82,8 @@
             "language": {
                 "paginate": {"previous": "Précédent", "next": "Suivant"},
                 "search": "<i class='fa fa-search'></i> Rechercher: ",
-                "emptyTable": "Aucun modèle enregistré pour le moment",
-                "zeroRecords": "Aucun modèle enregistré pour le moment"
+                "emptyTable": "Aucun modèle boutique enregistré pour le moment",
+                "zeroRecords": "Aucun modèle boutique enregistré pour le moment"
             }
         });
     });

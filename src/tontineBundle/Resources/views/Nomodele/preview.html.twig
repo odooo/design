@@ -1,0 +1,33 @@
+<div style="padding: 10px;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Informations</h3>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+                            Actions
+                            <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            
+                            {% if  is_granted('ROLE_MODELE_EDIT') %}
+                                    <li>
+                                        <a onclick="getEditModeleForm({{nomodele.id}})" href="{{ path('tontine_nomodele_edit', { 'id': nomodele.id }) }}" data-rec = "{{nomodele.id}}" >Modifier</a>
+                                    </li>
+                            {% endif  %}
+                            
+                        </ul>
+                    </div>
+                    <div><strong>Libellé : </strong><strong>{{ nomodele.libelle }}</strong></div>
+                    <div><strong>Quantité : </strong><strong>{{ nomodele.quantite }}</strong></div>
+                    <div><strong>Prix unitaire achat : </strong><strong>{{ nomodele.prixAchat }}</strong></div>
+                </div>        
+            </div>
+        </div>
+    </div>            
+
+</div>    
+

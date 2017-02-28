@@ -1,0 +1,234 @@
+
+<link rel="stylesheet"
+              href="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+<div class="container-fluid container-small">
+    <div class='row'>
+        <div class="col-sm-12">
+            <form method="post" action="{{path('shop_fiche_travail_modif_mesure_form', {'id': fiche.id })}}" name="tontinebundle_shop_modif_mesure_fiche">
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Fiche de travail : {{ fiche.designation }}</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    Prix de la commande (en fcfa)
+                                    <div class="form-group">
+                                        {{ fiche.montant }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if commande.typeCommande == 'o' %}
+                            {% else %}
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    Charges de confections (en fcfa)
+                                    <div class="form-group">
+                                       {{ fiche.charges }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <span style="color: green"><u>Client</u> : <b>{% if commande.client %} {{ commande.client.name }}{% endif %} </b></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    Désignation
+                                    <div class="form-group">
+                                        {{ fiche.designation }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if commande.typeCommande == 'v' %}
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        Mesure (en m)
+                                        <div class="form-group">
+                                            {{ fiche.mesure }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elseif commande.typeCommande == 'a' %}
+                                
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        Quantité
+                                        <div class="form-group">
+                                            {{ fiche.quantite }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elseif commande.typeCommande == 'o' %}
+                                
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        Quantité
+                                        <div class="form-group">
+                                            {{ fiche.quantite }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if fiche.pagne and commande.typeCommande == 'v' %}
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <span>Pagnes</span>
+                                        <div class="form-group">
+                                            {{ fiche.pagne.reference }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <u>Référence Commande</u>
+                                        <div class="form-group">
+                                            {{ commande.reference }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                <span>Date de livraison</span>
+                                    <div class="input-group">
+                                        <input type='text' id="dateLivraison" name="dateLivraison" class="form-control datepicker" value="{{ fiche.dateLivraison|date('d/m/Y') }}" readonly="readonly" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if commande.typeCommande == 'o' or commande.typeCommande == 'a' %}
+                        
+                        {% else %}
+                        <div class="col-sm-6">
+                            <h3 class="box-title"><u>MESURES CHEMISES</u> : </h3>
+                            <div class="form-group">
+                                <label>LONG GH : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_longGHChemise" name="tontinebundle_shop_modif_mesure_fiche[longGHChemise]" class="form-control" value="{{ fiche.longGHChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>DOS : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_dosChemise" name="tontinebundle_shop_modif_mesure_fiche[dosChemise]" class="form-control" value="{{ fiche.dosChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>POITRINE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_poitrineChemise" name="tontinebundle_shop_modif_mesure_fiche[poitrineChemise]" class="form-control" value="{{ fiche.poitrineChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>TAILLE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_tailleChemise" name="tontinebundle_shop_modif_mesure_fiche[tailleChemise]" class="form-control" value="{{ fiche.tailleChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>HANCHE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_hancheChemise" name="tontinebundle_shop_modif_mesure_fiche[hancheChemise]" class="form-control" value="{{ fiche.hancheChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>T.MANCHE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_tmancheChemise" name="tontinebundle_shop_modif_mesure_fiche[tmancheChemise]" class="form-control" value="{{ fiche.tmancheChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>COL : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_colChemise" name="tontinebundle_shop_modif_mesure_fiche[colChemise]" class="form-control" value="{{ fiche.colChemise }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>POIGNET : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_poignetChemise" name="tontinebundle_shop_modif_mesure_fiche[poignetChemise]" class="form-control" value="{{ fiche.poignetChemise }}" />
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if commande.typeCommande == 'o' or commande.typeCommande == 'a' %}
+                        
+                        {% else %}
+                        <div class="col-sm-6">
+                            <h3 class="box-title"><u>MESURES PANTALON/JUPES</u> : </h3>
+                            <div class="form-group">
+                                <label>LONG GH : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_longGHPantalon" name="tontinebundle_shop_modif_mesure_fiche[longGHPantalon]" class="form-control" value="{{ fiche.longGHPantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>DOS : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_dosPantalon" name="tontinebundle_shop_modif_mesure_fiche[dosPantalon]" class="form-control" value="{{ fiche.dosPantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>POITRINE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_poitrinePantalon" name="tontinebundle_shop_modif_mesure_fiche[poitrinePantalon]" class="form-control" value="{{ fiche.poitrinePantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>TAILLE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_taillePantalon" name="tontinebundle_shop_modif_mesure_fiche[taillePantalon]" class="form-control" value="{{ fiche.taillePantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>HANCHE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_hanchePantalon" name="tontinebundle_shop_modif_mesure_fiche[hanchePantalon]" class="form-control" value="{{ fiche.hanchePantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>T.MANCHE : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_tmanchePantalon" name="tontinebundle_shop_modif_mesure_fiche[tmanchePantalon]" class="form-control" value="{{ fiche.tmanchePantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>COL : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_colPantalon" name="tontinebundle_shop_modif_mesure_fiche[colPantalon]" class="form-control" value="{{ fiche.colPantalon }}" />
+                            </div>
+                            <div class="form-group">
+                                <label>POIGNET : </label>
+                                <input type='text' id="tontinebundle_shop_modif_mesure_fiche_poignetPantalon" name="tontinebundle_shop_modif_mesure_fiche[poignetPantalon]" class="form-control" value="{{ fiche.poignetPantalon }}" />
+                            </div>
+                        </div>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+                <div class="box-footer">
+                    {% if isModal is not defined %}
+                        {% block form_actions %}
+                            <div class="record-actions pull-left">
+                                <a href="{{ path('shop_fiche_travail_index',{'id': commande.id}) }}" class="btn btn-default" style="margin: 5px;">Retour</a>
+                            </div>
+                            <div class="record-actions pull-right">
+                                <input type="submit" class="btn btn-primary" value="{% if submit is defined %}{{ submit }}{% else %}Modifier{% endif %}" />
+                            </div>
+                        {% endblock %}
+                    {% endif %}
+                </div>
+            </div>
+            
+
+            </form>
+            
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript"
+                src="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(function(){
+        
+        $('.datepicker').datetimepicker({
+            locale:'fr',
+            format:'DD/MM/YYYY'
+        });
+        
+        $('.datetimepicker').datetimepicker({
+            locale:'fr',
+            format:'YYYY-MM-DD'
+        });
+
+        $('.select2').select2([{multiple: true}]);
+        
+    });
+</script>

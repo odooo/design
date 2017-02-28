@@ -49,3 +49,15 @@ shop_fiche_travail_voir_mesure:
     path:     /{id}/fiche/voir/mesure
     defaults: { _controller: "tontineBundle:Commande:voirMesureFiche" }
     methods:  [GET, POST]
+
+shop_fiche_travail_modif_mesure_form:
+    path:     /{id}/fiche/form/modif/mesure
+    defaults: { _controller: "tontineBundle:Commande:formModifMesureFiche" }
+    methods: [GET, POST]
+
+# etat des benefices
+
+shop_command_etat:
+    path:     /etat
+    defaults: { _controller: "tontineBundle:Commande:etat" }
+    methods:  [POST, GET]

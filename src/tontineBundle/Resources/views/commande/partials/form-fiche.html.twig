@@ -97,6 +97,25 @@
                                         </div>
                                     </div>
                                 </div>
+                            {% elseif commande.typeCommande == 'o' %}
+                                <div class="col-sm-3" style="display: none;">
+                                    {{ form_errors(form.mesure) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.mesure) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    {{ form_errors(form.quantite) }}
+                                    <div class="form-group">
+                                        {{ form_label(form.quantite, 'Quantité'|trans) }}
+                                        <div class="form-group">
+                                            {{ form_widget(form.quantite) }}
+                                        </div>
+                                    </div>
+                                </div>
                             {% else %}
                                 <div class="col-sm-3" style="display: none;">
                                     {{ form_errors(form.mesure) }}
@@ -135,12 +154,27 @@
                             {% elseif modeles is not empty %}
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <span>Modèles</span>
+                                        <span>Modèles boutique</span>
                                         <div class="form-group">
                                         <select class="form-control select2" name="modele">
                                             {% for cmdmod in modeles %}
                                                 {% if cmdmod.modele %}
                                                     <option value="{{ cmdmod.modele.id }}">{{ cmdmod.modele.libelle }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% elseif nomods is not empty %}
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <span>Modèles non boutique</span>
+                                        <div class="form-group">
+                                        <select class="form-control select2" name="nomodele">
+                                            {% for cmdnomod in nomods %}
+                                                {% if cmdnomod.nomodele %}
+                                                    <option value="{{ cmdnomod.nomodele.id }}">{{ cmdnomod.nomodele.libelle }}</option>
                                                 {% endif %}
                                             {% endfor %}
                                         </select>
@@ -161,7 +195,7 @@
                                 <div class="form-group">
                                 <span>Date de livraison</span>
                                     <div class="input-group">
-                                        <input type='text' id="dateLivraison" name="dateLivraison" class="form-control datetimepicker" value="{{ date()|date('d/m/Y h:m:s') }}" required="required" />
+                                        <input type='text' id="dateLivraison" name="dateLivraison" class="form-control datepicker" value="{{ date()|date('d/m/Y') }}" required="required" />
                                     </div>
                                 </div>
                             </div>
@@ -467,14 +501,14 @@
 <script type="text/javascript">
     $(function(){
         
-        /*$('.datepicker').datetimepicker({
+        $('.datepicker').datetimepicker({
             locale:'fr',
             format:'DD/MM/YYYY'
-        });*/
+        });
         
         $('.datetimepicker').datetimepicker({
             locale:'fr',
-            format:'YYYY-MM-DD HH:mm:s'
+            format:'YYYY-MM-DD'
         });
 
         $('.select2').select2([{multiple: true}]);

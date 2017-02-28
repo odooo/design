@@ -1,0 +1,43 @@
+{% extends 'default/yop-layout.html.twig' %}
+
+{% block title %}Gestion des catégories{% endblock %}
+
+{% block content %}
+    <div class="yop-app two-pane">
+        <div class="pane pane-one" id="user-list" data-title="Catégorie : ">
+            <div class="pane-header">
+                <div class="user-search-bar">
+                    <input type="text" name="search" class="form-control search-form" placeholder="Recherchez une catégorie..." />                
+                </div>
+            </div>
+            <div class="pane-body">
+                <div class="infinite-list">
+                    {% for categorie in categories %}
+                        <div class="list-item" data-search="{{ categorie.libelle }}" data-href="{{ path('tontine_categorie_preview', { 'id': categorie.id }) }}" data-name="{{ categorie.libelle }}">                                                  
+                            <div class="user-description">
+                                <div class="user-name">{{ categorie.libelle }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>             
+        </div>
+        <div class="pane pane-two" id="user-pagelet" yop-with-toolbar>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+    {% if cli is defined %}
+        <script>
+            $(function(){
+                Yop.Pagelet({            
+                   url: "{{ path('tontine_categorie_preview', {'id':cat.id }) }}",
+                   pagelet: '#user-pagelet',
+                   title: '{{cat.libelle}}'
+               });
+            });
+        </script>
+    {% endif %}
+{% endblock %}

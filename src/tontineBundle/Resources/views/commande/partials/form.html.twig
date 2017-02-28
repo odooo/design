@@ -60,13 +60,25 @@
                                     </div>
                                 </div>
                             </div>
+
                             <span>&nbsp;&nbsp;&nbsp;</span>
                             <div id="modele">
                                 {{ form_errors(form.modele) }}
                                 <div class="form-group">
-                                    {{ form_label(form.modele, 'Modèles'|trans) }}
+                                    {{ form_label(form.modele, 'Modèles boutique'|trans) }}
                                     <div class="form-group">
                                         {{ form_widget(form.modele) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <span>&nbsp;&nbsp;&nbsp;</span>
+                            <div id="nomodele">
+                                {{ form_errors(form.nomodele) }}
+                                <div class="form-group">
+                                    {{ form_label(form.nomodele, 'Modèles non boutique'|trans) }}
+                                    <div class="form-group">
+                                        {{ form_widget(form.nomodele) }}
                                     </div>
                                 </div>
                             </div>

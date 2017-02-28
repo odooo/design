@@ -38,21 +38,31 @@
         {
             $('#pagne').removeClass('hidden');
             $('#modele').addClass('hidden');
+            $('#nomodele').addClass('hidden');
         }
         else if ($option.val() == 'm')
         {
             $('#pagne').addClass('hidden');
             $('#modele').addClass('hidden');
+            $('#nomodele').addClass('hidden');
         }
         else if ($option.val() == 'a')
         {
             $('#pagne').addClass('hidden');
             $('#modele').removeClass('hidden');
+            $('#nomodele').addClass('hidden');
+        }
+        else if ($option.val() == 'o')
+        {
+            $('#pagne').addClass('hidden');
+            $('#nomodele').removeClass('hidden');
+            $('#modele').addClass('hidden');
         }
         else
         {
             $('#pagne').addClass('hidden');
             $('#modele').addClass('hidden');
+            $('#nomodele').addClass('hidden');
         }
 
         $('#tontinebundle_commande_typeCommande').change(function () {
@@ -61,21 +71,31 @@
             {
                 $('#pagne').removeClass('hidden');
                 $('#modele').addClass('hidden');
+                $('#nomodele').addClass('hidden');
             }
             else if ($option.val() == 'm')
             {
                 $('#pagne').addClass('hidden');
                 $('#modele').addClass('hidden');
+                $('#nomodele').addClass('hidden');
             }
             else if ($option.val() == 'a')
             {
                 $('#pagne').addClass('hidden');
                 $('#modele').removeClass('hidden');
+                $('#nomodele').addClass('hidden');
+            }
+            else if ($option.val() == 'o')
+            {
+                $('#pagne').addClass('hidden');
+                $('#nomodele').removeClass('hidden');
+                $('#modele').addClass('hidden');
             }
             else
             {
                 $('#pagne').addClass('hidden');
                 $('#modele').addClass('hidden');
+                $('#nomodele').addClass('hidden');
             }
 //            alert($option.val());
         });

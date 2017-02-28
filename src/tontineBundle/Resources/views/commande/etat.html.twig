@@ -1,0 +1,337 @@
+{% extends "default/index.html.twig" %}
+
+{% set paginationParPage=4 %}
+
+{% block content %}
+<link rel="stylesheet"
+              href="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}"/>
+    <div class="row">
+        <div class=" col-sm-12">
+            <div class=" nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs ui-sortable-handle">
+
+                    <li {% if active==2 %}{{'class="active"'}}{% endif %}><a aria-expanded="true" href="#recherche-tissu" data-toggle="tab">Recherche par tissu</a></li>
+                    <li {% if active==4 %}{{'class="active"'}}{% endif %}><a aria-expanded="true" href="#recherche-commande" data-toggle="tab">Recherche par commande</a></li>
+                    <li {% if active==3 %}{{'class="active"'}}{% endif %}><a aria-expanded="true" href="#recherche-date" data-toggle="tab">Recherche par date commande</a></li>
+                    
+                    
+                    <li class="pull-right header"><i class="fa fa-search"></i>Commande</li>
+                </ul>
+                <div class="tab-content no-padding">
+                    <!-- Morris chart - Sales -->
+                   
+
+                    <div class="chart tab-pane {% if active==2 %}{{ " active" }}{% endif %}" id="recherche-tissu"
+                         style="position: relative;min-height: 100px;">
+                        <span>&nbsp;</span>
+
+                        <div class="row">
+                            <div class="col-xs-offset-3 col-xs-6">
+                                <form action="{{ path("shop_command_etat") }}" method="POST">
+                                    <span class="">&nbsp;</span>
+
+                                    <div class="form-row">
+                                        <span> Référence du Tissu</span>
+                                        <input type="text" {{ post.get("tissu")?"value="~post.get("tissu"):null }}
+                                               name="tissu" class="form-control"/>
+                                    </div>
+                                    <span class="">&nbsp;</span>
+
+                                    <div class="form-row">
+                                        <button type="submit" class="btn btn-default pull-right "><i
+                                                    class="fa fa-search"></i> Rechercher
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="active" value="2">
+                                </form>
+
+                            </div>
+                        </div>
+                        <span class="">&nbsp;</span>
+
+                    </div>
+
+                    <div class="chart tab-pane {% if active==4 %}{{ " active" }}{% endif %}" id="recherche-commande"
+                         style="position: relative;min-height: 100px;">
+                        <span>&nbsp;</span>
+
+                        <div class="row">
+                            <div class="col-xs-offset-3 col-xs-6">
+                                <form action="{{ path("shop_command_etat") }}" method="POST">
+                                    <span class="">&nbsp;</span>
+
+                                    <div class="form-row">
+                                        <span>Référence/désignation de la commande</span>
+                                        <input type="text" {{ post.get("commande")?"value="~post.get("commande"):null }}
+                                               name="commande" class="form-control"/>
+                                    </div>
+                                    <span class="">&nbsp;</span>
+
+                                    <div class="form-row">
+                                        <button type="submit" class="btn btn-default pull-right "><i
+                                                    class="fa fa-search"></i> Rechercher
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="active" value="4">
+                                </form>
+
+                            </div>
+                        </div>
+                        <span class="">&nbsp;</span>
+
+                    </div>
+
+                    <div class="chart tab-pane {% if active==3 %}{{ " active" }}{% endif %} " id="recherche-date"
+                         style="position: relative;min-height: 100px;">
+                        <span>&nbsp;</span>
+
+                        <div class="row">
+                            <div class="col-xs-offset-3 col-xs-6">
+                                <form action="{{ path("shop_command_etat") }}" method="POST">
+                                    <span class="">&nbsp;</span>
+
+                                    <div class="form-row">
+                                        <div class="col-xs-6">
+                                            <span> De</span>
+                                            <input {{ post.get("dateMin")?"value="~post.get("dateMin"):null }} type="text" class="form-control datepicker" name="dateMin"  />
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <span> A</span>
+                                            <input {{ post.get("dateMax")?"value="~post.get("dateMax"):null }} type="text" class="form-control datepicker" name="dateMax"  />
+                                        </div>
+                                    </div>
+                                    <span class="">&nbsp;</span>
+
+                                    <div class="form-row">
+                                        <button type="submit" class="btn btn-default pull-right "><i
+                                                    class="fa fa-search"></i> Rechercher
+                                        </button>
+                                    </div>
+                                    <input type="hidden" name="active" value="3">
+                                </form>
+
+                            </div>
+                        </div>
+                        <span class="">&nbsp;</span>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- recherche resultat-->
+    {% if entities is not null %}
+        <div class="row" id="result">
+            <div class='col-xs-12'>
+                {% if post.get("active")==2 or post.get("active")==3 or post.get("active")==4 %}
+                    <div class="box">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Recherche Resultat</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table class="table table-bordered table-striped">
+                                <tbody>
+                                <tr>
+                                    <th style="width: 5%">#</th>
+                                    <th>Référence</th>
+                                    <th>Désignation</th>
+                                    <th>Date commande</th>
+                                    <th>Type commande</th>
+                                    <th>Client</th>
+                                    <th>Bénéfice</th>
+                                </tr>
+                                {% set som = 0 %}
+                                {% for entity in entities %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{entity.reference}}</td>
+                                        <td>{{entity.designation}}</td>
+                                        <td>{{entity.createdAt|date('d/m/Y h:i:s')}}</td>
+                                        <td>{{entity.typeCommande}}</td>
+                                        <td>{% if entity.client %}{{entity.client.name}}{% endif %}</td>
+                                        <td>{{entity.benefice|number_format(0,',','.')}} FCFA</td>
+                                    </tr>
+                                    {% set som = som + entity.benefice %}
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            
+                            <br/>
+
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <th style="text-align: center;">
+                                        Marge bénéficiaire
+                                    </th>
+                                    <td style="text-align: center;">
+                                        {% if som < 0 %}<sapn class="btn btn-xs btn-danger">PERTE</span>{% endif %}
+                                        {% if som == 0 %}<sapn class="btn btn-xs btn-primary">EQUITABLE</span>{% endif %}
+                                        {% if som > 0 %}<sapn class="btn btn-xs btn-success">GAIN</span>{% endif %}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {% if som < 0 %}<sapn class="btn btn-xs btn-danger">{{ som|number_format(0,',','.') }} F CFA</span>{% endif %}
+                                        {% if som == 0 %}<sapn class="btn btn-xs btn-primary">{{ som|number_format(0,',','.') }} F CFA</span>{% endif %}
+                                        {% if som > 0 %}<sapn class="btn btn-xs btn-success">{{ som|number_format(0,',','.') }} F CFA</span>{% endif %}
+                                    </td>
+                                </tr>
+                            </table>
+
+                            {% if entities|length<1 %}
+                                <h3>
+                                    <center>Aucun resultat trouvé.</center>
+                                </h3>
+                            {% endif %}
+
+                        </div>
+                        <!-- /.box-body -->
+                        {% if page == 0 %}
+
+                        {% else %}
+                            <div class="box-footer clearfix">
+                                <ul class="pagination pagination-sm no-margin pull-right" id="pagination"
+                                    data-page='{{ page }}'>
+
+                                    <li><a href="#" id='back'>«</a></li>
+                                    {% if min>page %} {% set min=page %} {% endif %}
+                                    {% if min<=0 %} {% set min=1 %} {% endif %}
+                                    {% for i in min..(page>(min+paginationParPage-1)?(min+paginationParPage-1):page) %}
+                                        <li class="page"><a href="?page={{ i }}">{{ i }}</a></li>
+                                    {% endfor %}
+                                    <li><a href="#" id='next'>»</a></li>
+                                </ul>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+    {% endif %}
+
+
+    <script>
+        $(function () {
+
+            $pagination = $("#pagination");
+            $next = $("#next");
+            $back = $("#back");
+            $nbPagAf ={{paginationParPage}};
+            $nbTotalPage = $pagination.data("page");
+            $next.click(function (event) {
+                event.preventDefault();
+                elem = $("#pagination .page");
+                last = elem.last().text();
+                if ((last = parseInt(last, 10)) >= $nbTotalPage)return;
+                elem.remove();
+                min = last + 1;
+                for (i = min, j = 0; i <= $nbTotalPage; i++, j++) {
+                    if (j >= $nbPagAf)break;
+                    k = i;
+                    $(this).parent().before($("<li/>")
+                            .addClass("page")
+                            .append(
+                            $("<a/>").attr({"href": ("?page=" + k + "&m=" + min)}).html(k)
+                    ));
+                }
+
+            });
+            $back.click(function (event) {
+                event.preventDefault();
+                elem = $("#pagination .page");
+
+                first = elem.first().text();
+                if (first <= 1)return;
+                elem.remove();
+                min = first - $nbPagAf;
+                for (i = first - 1, j = 0; 1 <= i; i--, j++) {
+
+                    if (j >= $nbPagAf)break;
+                    k = i;
+                    $(this).parent().after($("<li/>")
+                            .addClass("page")
+                            .append(
+                            $("<a/>").attr({"href": ("?page=" + k + "&m=" + min)}).html(k)
+                    ));
+                }
+            });
+
+        });
+
+        $('.btn-details-bien').click(function (e) {
+            e.preventDefault();
+
+
+            $('#detail-bien .modal-body').html($('#load').html());
+            $('#detail-bien').modal('show');
+            $.ajax({
+                url: $(this).attr('href'),
+                type: 'GET',
+                dataType: 'html',
+                success: function (code_html, status) {
+                    $('#detail-bien .modal-body').html(code_html);
+                    $('#myCarousel').carousel();
+                },
+                error: function (resultat, statut, erreur) {
+                    $('#detail-bien .modal-body').html('Erreur de chargement : ' + statut);
+                }
+            });
+        });
+
+        function showdetailaffectation(contenu) {
+            var table_interactions = $('#liste-interactions').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "pageLength": 1,
+                "order": [2, 'desc'],
+                "autoWidth": true,
+                "language": {
+                    "paginate": {"previous": "Précédent", "next": "Suivant"},
+                    "search": "Rechercher: ",
+                    "emptyTable": "Actuellement, la Base  Est Vide",
+                    "zeroRecords": "Aucune correspondance trouvee a votre recherche...Merci!!!."
+                }
+            });
+            table_interactions.search('').draw();
+
+        }
+    </script>
+
+    <script type="text/javascript"
+                src="{{ asset('bundles/plugins/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(function(){
+        
+        $('.datepicker').datetimepicker({
+            locale: 'fr',
+            format: 'YYYY-MM-DD',
+            //daysOfWeekDisabled: [0, 9],
+            widgetPositioning: {
+                horizontal: 'auto',
+                vertical: 'top'
+            },
+            icons: {
+                time: 'fa fa-clock-o',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                //today: 'fa fa-screenshot',
+                clear: 'fa fa-trash-o',
+                close: 'fa fa-close'
+            }
+        });
+
+        $('.select2').select2([{multiple: true}]);
+        
+    });
+</script>
+{% endblock %}

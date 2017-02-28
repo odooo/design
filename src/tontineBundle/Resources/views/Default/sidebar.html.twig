@@ -137,7 +137,8 @@
                     <li><a href="{{ path('tontine_fournisseur_new') }}"><i class="fa fa-angle-right"></i> Enregistrer un fournisseur</a></li>
                 {% endif %}
                 {% if is_granted('ROLE_MODELE_VIEW') %}                
-                    <li><a href="{{ path('tontine_modele_index') }}"><i class="fa fa-angle-right"></i> Liste des modèles</a></li>
+                    <li><a href="{{ path('tontine_modele_index') }}"><i class="fa fa-angle-right"></i> Liste des modèles boutique</a></li>
+                    <li><a href="{{ path('tontine_nomodele_index') }}"><i class="fa fa-angle-right"></i> Liste des modèles non boutique</a></li>
                 {% endif %}
             </ul>
         </li>
