@@ -3,6 +3,7 @@
 namespace tontineBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * CommandeRepository
@@ -45,15 +46,15 @@ class CommandeRepository extends EntityRepository
                     ->getResult();
 
             case 4:
-                return $this->findCommandeWithReferenceOrDesignation($param->get("commande"), $init, $offset);
+                return $this->findCommandeWithDesignation($param->get("commande"), $init, $offset);
             case 5:
             default :
-                return Null;
+                return null;
 
         }
     }
 
-    public function count($param)
+    public function counter($param)
     {
         switch ($param->get("active")) {
             case 1:
@@ -137,8 +138,7 @@ class CommandeRepository extends EntityRepository
                 return $this->getEntityManager()->getRepository("tontineBundle:Commande")
                     ->createQueryBuilder('c')
                     ->select("COUNT(c)")
-                    ->where("c.reference like :commande")
-                    ->orwhere("c.designation like :commande")
+                    ->where("c.designation like :commande")
                     ->setParameter("commande", "%" . $param->get("commande") . "%")
                     ->getQuery()
                     ->getSingleScalarResult();
@@ -212,7 +212,7 @@ class CommandeRepository extends EntityRepository
         }
     }
 
-    public function findCommandeWithReferenceOrDesignation($var, $init = 0, $offset = 100)
+    public function findCommandeWithDesignation($var, $init = 0, $offset = 100)
     {
         $init = (int)$init;
         $offset = (int)$offset;
@@ -221,12 +221,111 @@ class CommandeRepository extends EntityRepository
             ->createQueryBuilder('c')
             ->setFirstResult($init)
             ->setMaxResults($offset)
-            ->where("c.reference like :commande")
             ->orwhere("c.designation like :commande")
             ->setParameter("commande", "%" . $var . "%")
             ->getQuery()
             ->getResult();
 
+    }
+
+    /**
+     * @param  array  $criteria 
+     * 
+     * @return integer           
+     */
+    public function count(array $criteria = array())    
+    {
+        $queryBuilder = $this->getQueryBuilder();
+        $this->applyCriteria($queryBuilder, $criteria);
+
+        $queryBuilder->select('COUNT('. $this->getAlias() .')');
+
+        return $queryBuilder
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * @return QueryBuilder
+     */
+    protected function getQueryBuilder()
+    {
+        return $this->createQueryBuilder($this->getAlias());
+    }
+
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param array        $criteria
+     */
+    protected function applyCriteria(QueryBuilder $queryBuilder, array $criteria = array())
+    {
+        foreach ($criteria as $property => $value) {            
+            
+            if (is_integer($property) && is_array($value) && count($value) == 3) {
+                
+                list($property, $operator, $val) = $value;
+                $name = $this->getPropertyName($property);
+                
+                switch ($operator) {
+
+                    case 'like':
+                        $parameter = str_replace('.', '_', $property);
+                        $queryBuilder
+                            ->andWhere(sprintf("%s LIKE :%s", $name, $parameter))
+                            ->setParameter($parameter, '%'. $val .'%');
+                        break;
+                    default:
+                        $parameter = str_replace('.', '_', $property);
+                        $queryBuilder
+                            ->andWhere(sprintf("%s %s :%s", $name, $operator, $parameter))
+                            ->setParameter($parameter, $val);
+                        break;
+                }
+
+            } else {
+
+                $name = $this->getPropertyName($property);
+
+                if ($value === null) {
+
+                    $queryBuilder->andWhere($queryBuilder->expr()->isNull($name));
+
+                } elseif (is_array($value)) {
+
+                    $queryBuilder->andWhere($queryBuilder->expr()->in($name, $value));
+
+                } elseif ($value !== '') {
+
+                    $parameter = str_replace('.', '_', $property);
+                    $queryBuilder
+                        ->andWhere($queryBuilder->expr()->eq($name, ':'.$parameter))
+                        ->setParameter($parameter, $value)
+                    ;
+                }
+            }
+        }
+    }
+
+    /**
+     * @return string
+     */
+    protected function getAlias()
+    {
+        return $this->getEntityName();
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return string
+     */
+    protected function getPropertyName($name)
+    {
+        if (strpos($name, '.') === false) {
+            return $this->getAlias().'.'.$name;
+        }
+
+        return $name;
     }
 
 }

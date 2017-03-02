@@ -123,12 +123,12 @@
                 </tr>
             {% endif %} #}
             <tr>
-                <td style="text-align: center;"><b>{{ 'Montant HT' }}</b></td>
+                <td style="text-align: center;"><b>{{ 'Montant Total' }}</b></td>
                 <td style="text-align: center;">{{ facture[0].total|number_format(0, ',', ' ') }}</td>
             </tr>
             <tr>
-                <td style="text-align: center;"><b>{{ 'TVA' }}</b></td>
-                <td style="text-align: center;">{{ '------' }}</td>
+                <td style="text-align: center;"><b>{{ 'Reste à Payer' }}</b></td>
+                <td style="text-align: center;">{{ commande.reteAPayer|number_format(0,',',' ') }}</td>
             </tr>
             <tr>
                 <td style="text-align: center;"><b>{{ 'Montant TTC' }}</b></td>

@@ -28,6 +28,12 @@ shop_command_facture_edit:
     defaults: { _controller: "tontineBundle:Commande:printBill" }
     methods:  GET
 
+# livraison
+
+shop_command_livraison:
+    path:     /{id}/livraison-commande
+    defaults: { _controller: "tontineBundle:Commande:livraison" }
+
 shop_command_avance_payement:
     path:     /{id}/commande/payement/avance/{action}
     defaults: { _controller: "tontineBundle:Commande:payerAvance", action = null }

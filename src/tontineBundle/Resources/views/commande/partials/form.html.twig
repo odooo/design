@@ -15,30 +15,24 @@
                         <div class="col-sm-6">
                             {{ form_errors(form.designation) }}
                             <div class="form-group">
-                                {{ form_label(form.designation, 'Désignation'|trans) }}
+                                {{ form_label(form.designation, 'Désignation de la commande'|trans) }}
                                 <div class="form-group">
                                     {{ form_widget(form.designation) }}
                                 </div>
-
                             </div>
                             <span>&nbsp;&nbsp;&nbsp;</span>
-                            {{ form_errors(form.reference) }}
-                            <div class="form-group">
-                                {{ form_label(form.reference, 'Référence'|trans) }}
-                                <div class="form-group">
-                                    {{ form_widget(form.reference) }}
-                                </div>
 
-                            </div>
-                            <span>&nbsp;&nbsp;&nbsp;</span>
-                            {{ form_errors(form.client) }}
                             <div class="form-group">
-                                {{ form_label(form.client, 'Client'|trans) }}
+                                <span>Client</span>
                                 <div class="form-group">
-                                    {{ form_widget(form.client) }}
+                                    <select class="form-control select2" name="tontinebundle_commande[client]">
+                                        {% for client in clients %}
+                                            <option value="{{ client.id }}">{{ client.name }}</option>
+                                        {% endfor %}
+                                    </select> 
                                 </div>
-
                             </div>
+
                         </div>
 
                         <div class="col-sm-6">
@@ -51,35 +45,38 @@
                             </div>
 
                             <span>&nbsp;&nbsp;&nbsp;</span>
-                            <div id="pagne">
-                                {{ form_errors(form.pagne) }}
+                            <div class="form-group" id="pagne">
+                                <span>Pagnes</span>
                                 <div class="form-group">
-                                    {{ form_label(form.pagne, 'Pagnes'|trans ) }}
-                                    <div class="form-group">
-                                        {{ form_widget(form.pagne ) }}
-                                    </div>
+                                    <select class="form-control select2" multiple="true" name="tontinebundle_commande[pagne][]" style="width: 100%;">
+                                        {% for pagne in pagnes %}
+                                            <option value="{{ pagne.id }}">{{ pagne.reference }}</option>
+                                        {% endfor %}
+                                    </select> 
                                 </div>
                             </div>
 
                             <span>&nbsp;&nbsp;&nbsp;</span>
                             <div id="modele">
-                                {{ form_errors(form.modele) }}
+                                <span>Modèles</span>
                                 <div class="form-group">
-                                    {{ form_label(form.modele, 'Modèles boutique'|trans) }}
-                                    <div class="form-group">
-                                        {{ form_widget(form.modele) }}
-                                    </div>
+                                    <select class="form-control select2" multiple="true" name="tontinebundle_commande[modele][]" style="width: 100%;">
+                                        {% for modele in modeles %}
+                                            <option value="{{ modele.id }}">{{ modele.libelle }}</option>
+                                        {% endfor %}
+                                    </select> 
                                 </div>
                             </div>
 
                             <span>&nbsp;&nbsp;&nbsp;</span>
                             <div id="nomodele">
-                                {{ form_errors(form.nomodele) }}
+                                <span>Modèles non boutique</span>
                                 <div class="form-group">
-                                    {{ form_label(form.nomodele, 'Modèles non boutique'|trans) }}
-                                    <div class="form-group">
-                                        {{ form_widget(form.nomodele) }}
-                                    </div>
+                                    <select class="form-control select2" multiple="true" name="tontinebundle_commande[nomodele][]" style="width: 100%;">
+                                        {% for nomodele in nomodeles %}
+                                            <option value="{{ nomodele.id }}">{{ nomodele.libelle }}</option>
+                                        {% endfor %}
+                                    </select> 
                                 </div>
                             </div>
                         </div>

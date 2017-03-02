@@ -109,6 +109,7 @@
                                         </button>
                                     </div>
                                     <input type="hidden" name="active" value="3">
+                                        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
                                 </form>
 
                             </div>
@@ -122,6 +123,7 @@
 
         </div>
     </div>
+
     <!-- recherche resultat-->
     {% if entities is not null %}
         <div class="row" id="result">
@@ -137,7 +139,6 @@
                                 <tbody>
                                 <tr>
                                     <th style="width: 5%">#</th>
-                                    <th>Référence</th>
                                     <th>Désignation</th>
                                     <th>Date commande</th>
                                     <th>Type commande</th>
@@ -148,7 +149,6 @@
                                 {% for entity in entities %}
                                     <tr>
                                         <td>{{loop.index}}</td>
-                                        <td>{{entity.reference}}</td>
                                         <td>{{entity.designation}}</td>
                                         <td>{{entity.createdAt|date('d/m/Y h:i:s')}}</td>
                                         <td>{{entity.typeCommande}}</td>
@@ -261,46 +261,6 @@
 
         });
 
-        $('.btn-details-bien').click(function (e) {
-            e.preventDefault();
-
-
-            $('#detail-bien .modal-body').html($('#load').html());
-            $('#detail-bien').modal('show');
-            $.ajax({
-                url: $(this).attr('href'),
-                type: 'GET',
-                dataType: 'html',
-                success: function (code_html, status) {
-                    $('#detail-bien .modal-body').html(code_html);
-                    $('#myCarousel').carousel();
-                },
-                error: function (resultat, statut, erreur) {
-                    $('#detail-bien .modal-body').html('Erreur de chargement : ' + statut);
-                }
-            });
-        });
-
-        function showdetailaffectation(contenu) {
-            var table_interactions = $('#liste-interactions').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": false,
-                "pageLength": 1,
-                "order": [2, 'desc'],
-                "autoWidth": true,
-                "language": {
-                    "paginate": {"previous": "Précédent", "next": "Suivant"},
-                    "search": "Rechercher: ",
-                    "emptyTable": "Actuellement, la Base  Est Vide",
-                    "zeroRecords": "Aucune correspondance trouvee a votre recherche...Merci!!!."
-                }
-            });
-            table_interactions.search('').draw();
-
-        }
     </script>
 
     <script type="text/javascript"
@@ -312,7 +272,7 @@
         $('.datepicker').datetimepicker({
             locale: 'fr',
             format: 'YYYY-MM-DD',
-            //daysOfWeekDisabled: [0, 9],
+            daysOfWeekDisabled: [0, 9],
             widgetPositioning: {
                 horizontal: 'auto',
                 vertical: 'top'
@@ -324,7 +284,7 @@
                 down: 'fa fa-chevron-down',
                 previous: 'fa fa-chevron-left',
                 next: 'fa fa-chevron-right',
-                //today: 'fa fa-screenshot',
+                today: 'fa fa-screenshot',
                 clear: 'fa fa-trash-o',
                 close: 'fa fa-close'
             }

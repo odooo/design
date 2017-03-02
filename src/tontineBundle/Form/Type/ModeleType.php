@@ -20,6 +20,10 @@ class ModeleType extends AbstractType
                 'label' => 'Libellé * : ',
                 'required' => true,
             ])
+            ->add('frais', null, [
+                'label' => 'Frais de confection * : ',
+                'required' => true,
+            ])
             ->add('quantite', null, [
                 'label' => 'Quantité * : ',
                 'required' => true,

@@ -54,11 +54,15 @@ class CommandeController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() /*&& $form->isValid()*/) {
 
-            $pagnes = $form['pagne']->getData();
-            $modeles = $form['modele']->getData();
-            $nomodeles = $form['nomodele']->getData();
+            $formm = $request->request->get('tontinebundle_commande');
+
+            $commande->setTypeCommande($formm['typeCommande']);
+
+            if($formm['typeCommande'] == 'v') $pagnes = $formm['pagne'];//->getData();
+            if($formm['typeCommande'] == 'a') $modeles = $formm['modele'];//->getData();
+            if($formm['typeCommande'] == 'o') $nomodeles = $formm['nomodele'];//->getData();
 
             $commande->setCreatedBy($user);
             $commande->setCreatedAt(new \DateTime());
@@ -66,13 +70,18 @@ class CommandeController extends Controller
             $commande->setHasBill(0);
             $commande->setPrixAchat(0);
             $commande->setReteAPayer(0);
+            $commande->setEtat(false);
+
+            $client = $em->getRepository('tontineBundle:Client')->find($formm['client']);
+            $commande->setClient($client);
 
             $em->persist($commande);
             $i = 0;
-            if($pagnes){
-                foreach ($pagnes as $pagne) {
+            if(isset($pagnes)){
+                foreach ($pagnes as $idPagne) {
                     $i++;
                     $cmdPagne = new CommandePagne();
+                    $pagne = $em->getRepository('tontineBundle:Pagne')->find($idPagne);
                     $cmdPagne->setPagne($pagne);
                     $cmdPagne->setCommande($commande);
                     $cmdPagne->setFiche(null);
@@ -84,10 +93,11 @@ class CommandeController extends Controller
             $commande->setNbrePagne($i);
 
             $j = 0;
-            if ($modeles) {
-                foreach ($modeles as $modele) {
+            if (isset($modeles)) {
+                foreach ($modeles as $idModele) {
                     $j++;
                     $cmdModele = new CommandeModele();
+                    $modele = $em->getRepository('tontineBundle:Modele')->find($idModele);
                     $cmdModele->setModele($modele);
                     $cmdModele->setCommande($commande);
                     $cmdModele->setHasFiche(0);
@@ -98,10 +108,11 @@ class CommandeController extends Controller
             $commande->setNbreModele($j);
 
             $k = 0;
-            if ($nomodeles) {
-                foreach ($nomodeles as $nomodele) {
+            if (isset($nomodeles)) {
+                foreach ($nomodeles as $idNomodele) {
                     $k++;
                     $cmdNomodele = new CommandeNomodele();
+                    $nomodele = $em->getRepository('tontineBundle:Modele')->find($idNomodele);
                     $cmdNomodele->setNomodele($nomodele);
                     $cmdNomodele->setCommande($commande);
                     $cmdNomodele->setHasFiche(0);
@@ -116,8 +127,51 @@ class CommandeController extends Controller
             return $this->redirectToRoute('shop_command_index');
         }
 
+        $clients = $em->getRepository('tontineBundle:Client')->findAll();
+
+        $listePagnes = $em->getRepository('tontineBundle:Pagne')->findBy(
+            array(), array('id' => 'asc'));
+
+        $listeModeles = $em->getRepository('tontineBundle:Modele')->findBy(
+            array(), array('id' => 'asc'));
+
+        $listeNomodeles = $em->getRepository('tontineBundle:Nomodele')->findBy(
+            array(), array('id' => 'asc'));
+
+        $pagnes = array();
+        $modeles = array();
+        $nomodeles = array();
+        $i = 0;
+
+        foreach ($listePagnes as $value) {
+            if($value->getMesure() > 0){
+                $pagnes[$i] = $value;
+                $i++;
+            }
+        }
+
+        $i = 0;
+        foreach ($listeModeles as $key) {
+            if($key->getQuantite() > 0){
+                $modeles[$i] = $key;
+                $i++;
+            }
+        }
+
+        $i = 0;
+        foreach ($listeNomodeles as $val) {
+            if($val->getQuantite() > 0){
+                $nomodeles[$i] = $val;
+                $i++;
+            }
+        }
+
         return $this->render('tontineBundle:commande:new.html.twig', array(
             'commande' => $commande,
+            'clients' => $clients,
+            'pagnes' => $pagnes,
+            'modeles' => $modeles,
+            'nomodeles' => $nomodeles,
             'form' => $form->createView(),
         ));
     }
@@ -302,7 +356,7 @@ class CommandeController extends Controller
             $dompdf->render();
 
             // Output the generated PDF to Browser
-            $dompdf->stream('facture_' . $facture[0]->getNumero(), array('Attachment' => 0));
+            $dompdf->stream('facture_'.$facture[0]->getNumero(), array('Attachment' => 0));
         }
     }
 
@@ -511,7 +565,7 @@ class CommandeController extends Controller
                         $fiche->setMesure(0);
                         $fiche->setQuantite($recup['quantite']);
                         $prixAchat = $pagne->getPrix()*$modele->getMesure();
-                        $fiche->setPrixAchat($prixAchat*$recup['quantite'] + $recup['charges']);
+                        $fiche->setPrixAchat($prixAchat*$recup['quantite'] + $modele->getFrais()*$recup['quantite']);
                         
                         foreach ($commande->getCmdModele() as $value) {
                             if($value->getModele() == $modele) $value->setHasFiche(1);
@@ -608,11 +662,12 @@ class CommandeController extends Controller
     public function etatAction(Request $request)
     {
         $nbParPage = 10;
+        $em = $this->getDoctrine()->getManager();
+
         if ($request->getMethod() == "POST") {
             $post = $request->request;
-            $em = $this->getDoctrine()->getManager();
 
-            $nbEntity = $em->getRepository("tontineBundle:Commande")->count($post);
+            $nbEntity = $em->getRepository("tontineBundle:Commande")->counter($post);
             $page = ceil($nbEntity / $nbParPage);
 
             $entities = $em->getRepository("tontineBundle:Commande")->search($post, 0, (int)$nbParPage);
@@ -642,11 +697,12 @@ class CommandeController extends Controller
                 "min" => ($request->query->get("m") ? $request->query->get("m") : 1),
             ]);
         }
+
         $post = $request->request;
         return $this->render('tontineBundle:commande:etat.html.twig', array(
-            "active" => Null,
+            "active" => null,
             "post" => $post,
-            "entities" => Null,
+            "entities" => null,
             "page" => null,
         ));
     } 
@@ -688,6 +744,19 @@ class CommandeController extends Controller
             'commande' => $fiche->getCommande(),
             'fiche' => $fiche,
         ));
+    }
+
+    public function livraisonAction($id){
+        
+        $em = $this->getDoctrine()->getManager();
+
+        $commande = $em->getRepository('tontineBundle:Commande')->find($id);
+        $commande->setEtat(true);
+        $commande->setDateLivraison(new \DateTime());
+
+        $em->flush();
+
+        return $this->redirectToRoute('shop_command_index');
     }
 
 }

@@ -17,14 +17,15 @@
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Référence</th>
                         <th>Désignation</th>
                         <th>Type de commande</th>
-                        <th>Montant avance</th>
-                        <th>Montant commande</th>
                         <th>Date commande</th>
+                        <th>Etape</th>
+                        <th>Montant total</th>
+                        <th>Montant avance</th>
+                        <th>Montant restant</th>
+                        <th>Etat</th>
                         <th>Client</th>
-                        <th>Etat de paiement</th>
                         {% if is_granted('ROLE_BENEFICE_VIEW') %} <th>Bénéfice</th>{% endif %}
                         <th>Actions</th>
                     </tr>
@@ -52,33 +53,19 @@
 
                         <tr>
                             <td><a href="#">{{ loop.index }}</a></td>
-                            <td><span class="btn-xs btn-info">{{ commande.reference }}</span></td>
                             <td>{{ commande.designation }}</td>
                             <td>{% if commande.typeCommande == 'v' %}
-                                    Vente
+                                    Achat et Confection
                                 {% elseif commande.typeCommande == 'm' %}
-                                    Main  d'oeuvre
+                                    Confection
                                 {% elseif commande.typeCommande == 'a' %}
-                                    Vente de modèle boutique
+                                    Achat de modèles
                                 {% else %}
-                                    Vente de modèle non boutique
+                                    Achat de modèles non boutique
                                 {% endif %}
-                            </td>
-                            <td>
-                                {% if commande.status is null or commande.status == 0 %}{{ '0'|number_format(0, ',', '.')~' FCFA' }}
-                                {% elseif commande.status in [1,2,3] %}
-                                    {{ commande.avance|number_format(0, ',', '.')~' FCFA' }}
-                                {% endif %}
-                            </td>
-                            <td>
-                                {{ commande.montant|number_format(0, ',', '.')~' FCFA' }}
                             </td>
                             <td>
                                 {{ commande.createdAt|date('d/m/Y h:i:s') }}
-                            </td>
-                            <td>{% if commande.client %}
-                                    {{ commande.client.name }}
-                                {% endif %}
                             </td>
                             <td>
                                 {% if commande.status is null or commande.status == 0 %}
@@ -103,6 +90,29 @@
                                     {% endif %}
                                 {% elseif commande.status == 3 %}
                                     <button type="button" class="btn btn-success btn-xs">Soldé</button>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ commande.montant|number_format(0, ',', '.')~' FCFA' }}
+                            </td>
+                            <td>
+                                {% if commande.status is null or commande.status == 0 %}{{ '0'|number_format(0, ',', '.')~' FCFA' }}
+                                {% elseif commande.status in [1,2,3] %}
+                                    {{ commande.avance|number_format(0, ',', '.')~' FCFA' }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {{ commande.reteAPayer|number_format(0, ',', '.')~' FCFA' }}
+                            </td>
+                            <td>
+                                {% if commande.etat == 1 %}
+                                    <span class="label label-info">Commande Livrée</span>
+                                {% else %}
+                                     <span class="label label-default">Non livrée</span>
+                                {% endif %}
+                            </td>
+                            <td>{% if commande.client %}
+                                    {{ commande.client.name }}
                                 {% endif %}
                             </td>
                             {% if is_granted('ROLE_BENEFICE_VIEW') %}
@@ -165,6 +175,11 @@
                                             <li>
                                                 <a href="{{ path('shop_command_facture_edit', { 'id': commande.id }) }}"
                                                    target="new">Editer la facture</a>
+                                            </li>
+                                        {% endif %}
+                                        {% if commande.status == 3 and commande.etat == 0 %}
+                                            <li>
+                                                <a href="{{ path('shop_command_livraison', { 'id': commande.id }) }}">Livrer la commande</a>
                                             </li>
                                         {% endif %}
                                     </ul>

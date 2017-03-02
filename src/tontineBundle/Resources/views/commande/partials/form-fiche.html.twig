@@ -15,13 +15,13 @@
                             <div class="col-sm-4">
                                 {{ form_errors(form.montant) }}
                                 <div class="form-group">
-                                    {{ form_label(form.montant, 'Prix de la commande (en fcfa)'|trans) }}
+                                    {{ form_label(form.montant, 'Montant de la commande (en fcfa)'|trans) }}
                                     <div class="form-group">
                                         {{ form_widget(form.montant) }}
                                     </div>
                                 </div>
                             </div>
-                            {% if commande.typeCommande == 'o' %}
+                            {% if commande.typeCommande == 'o' or commande.typeCommande == 'a' %}
                             <div class="col-sm-4" style="display: none;">
                                 <div class="form-group">
                                         {{ form_label(form.charges, 'Prix d\'achat du modèle (en fcfa)'|trans) }}
@@ -34,7 +34,7 @@
                             <div class="col-sm-4">
                                 {{ form_errors(form.charges) }}
                                 <div class="form-group">
-                                    {{ form_label(form.charges, 'Charges de confections (en fcfa)'|trans) }}
+                                    {{ form_label(form.charges, 'Frais de confections (en fcfa)'|trans) }}
                                     <div class="form-group">
                                         {{ form_widget(form.charges) }}
                                     </div>
@@ -53,7 +53,7 @@
                             <div class="col-sm-3">
                                 {{ form_errors(form.designation) }}
                                 <div class="form-group">
-                                    {{ form_label(form.designation, 'Désignation'|trans) }}
+                                    {{ form_label(form.designation, 'Désignation de la fiche'|trans) }}
                                     <div class="form-group">
                                         {{ form_widget(form.designation) }}
                                     </div>
@@ -63,7 +63,7 @@
                                 <div class="col-sm-3">
                                     {{ form_errors(form.mesure) }}
                                     <div class="form-group">
-                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        {{ form_label(form.mesure, 'Mesure'|trans) }}
                                         <div class="form-group">
                                             {{ form_widget(form.mesure) }}
                                         </div>
@@ -101,7 +101,7 @@
                                 <div class="col-sm-3" style="display: none;">
                                     {{ form_errors(form.mesure) }}
                                     <div class="form-group">
-                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        {{ form_label(form.mesure, 'Mesure'|trans) }}
                                         <div class="form-group">
                                             {{ form_widget(form.mesure) }}
                                         </div>
@@ -120,7 +120,7 @@
                                 <div class="col-sm-3" style="display: none;">
                                     {{ form_errors(form.mesure) }}
                                     <div class="form-group">
-                                        {{ form_label(form.mesure, 'Mesure (en m)'|trans) }}
+                                        {{ form_label(form.mesure, 'Mesure'|trans) }}
                                         <div class="form-group">
                                             {{ form_widget(form.mesure) }}
                                         </div>
@@ -184,9 +184,9 @@
                             {% else %}
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <u>Référence Commande</u>
+                                        <u>Désignation de la Commande</u>
                                         <div class="form-group">
-                                            {{ commande.reference }}
+                                            {{ commande.designation }}
                                         </div>
                                     </div>
                                 </div>

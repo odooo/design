@@ -33,13 +33,6 @@ class Commande
     /**
      * @var string
      *
-     * @ORM\Column(name="reference", type="text")
-     */
-    private $reference;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="designation", type="text")
      */
     private $designation;
@@ -57,6 +50,13 @@ class Commande
      * @ORM\Column(name="nbrePagne", type="integer", nullable=true)
      */
     private $nbrePagne;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="etat", type="boolean", nullable=true)
+     */
+    private $etat;
 
     /**
      * @var integer
@@ -120,6 +120,13 @@ class Commande
      * @ORM\Column(name="date_paid_avance", type="datetime", nullable=true)
      */
     private $datePaidAvance;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_livraison", type="datetime", nullable=true)
+     */
+    private $dateLivraison;
 
     /**
      * @var boolean
@@ -844,5 +851,53 @@ class Commande
     public function getCmdNomodele()
     {
         return $this->cmdNomodele;
+    }
+
+    /**
+     * Set etat
+     *
+     * @param boolean $etat
+     *
+     * @return Commande
+     */
+    public function setEtat($etat)
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * Get etat
+     *
+     * @return boolean
+     */
+    public function getEtat()
+    {
+        return $this->etat;
+    }
+
+    /**
+     * Set dateLivraison
+     *
+     * @param \DateTime $dateLivraison
+     *
+     * @return Commande
+     */
+    public function setDateLivraison($dateLivraison)
+    {
+        $this->dateLivraison = $dateLivraison;
+
+        return $this;
+    }
+
+    /**
+     * Get dateLivraison
+     *
+     * @return \DateTime
+     */
+    public function getDateLivraison()
+    {
+        return $this->dateLivraison;
     }
 }

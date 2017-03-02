@@ -43,6 +43,14 @@ class Modele
     private $quantite;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="frais", type="integer", nullable=true)
+     *  
+     */
+    private $frais;
+
+    /**
      * @var float
      *
      * @ORM\Column(name="mesure", type="float", nullable=true)
@@ -234,5 +242,29 @@ class Modele
     public function getMesure()
     {
         return $this->mesure;
+    }
+
+    /**
+     * Set frais
+     *
+     * @param integer $frais
+     *
+     * @return Modele
+     */
+    public function setFrais($frais)
+    {
+        $this->frais = $frais;
+
+        return $this;
+    }
+
+    /**
+     * Get frais
+     *
+     * @return integer
+     */
+    public function getFrais()
+    {
+        return $this->frais;
     }
 }
